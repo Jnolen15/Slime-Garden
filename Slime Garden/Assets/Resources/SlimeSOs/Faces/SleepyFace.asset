@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff9f8a2499cd864c8e69172e743d121, type: 3}
+  m_Name: SleepyFace
+  m_EditorClassIdentifier: 
+  faceSprite: {fileID: -1049641511376401200, guid: 32201e35de5c3b540a70147d4f2724bb,
+    type: 3}
+  faceIdle: {fileID: 5204487084075329271, guid: 32201e35de5c3b540a70147d4f2724bb,
+    type: 3}
+  faceJump: {fileID: 5174375301884307925, guid: 32201e35de5c3b540a70147d4f2724bb,
+    type: 3}

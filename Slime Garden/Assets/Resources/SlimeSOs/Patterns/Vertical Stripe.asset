@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98719490c6fded94e815b9d2525202cb, type: 3}
+  m_Name: Vertical Stripe
+  m_EditorClassIdentifier: 
+  sPatternSprite: {fileID: 2728784460336584121, guid: a94cdedc165fdad48b6de8e66da18b08,
+    type: 3}
+  sPatternIdle: {fileID: -6663964011932278240, guid: a94cdedc165fdad48b6de8e66da18b08,
+    type: 3}
+  sPatternJump: {fileID: -6590522490592500017, guid: a94cdedc165fdad48b6de8e66da18b08,
+    type: 3}
+  sPattern: Vertical Stripe
+  sRarity: 1

@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AquamarineBase
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: ce8e631833609744195c86078937df85,
+      type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sSprite
+    value: 
+    objectReference: {fileID: 5489424976362002667, guid: 71dd01f11af2ac544acdede290d88573,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: sIdle
+    value: 
+    objectReference: {fileID: 4390078632408385754, guid: 71dd01f11af2ac544acdede290d88573,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: sJump
+    value: 
+    objectReference: {fileID: -568971567685923178, guid: 71dd01f11af2ac544acdede290d88573,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: sPatternSprite
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sPatternIdle
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sPatternJump
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sParticles
+    value: 
+    objectReference: {fileID: 4161182041321369850, guid: 4cab60cca4a811c4db1da04ec3d7b1fd,
+      type: 3}
+  - target: {fileID: 0}
+    propertyPath: sName
+    value: Aquamarine
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sBaseColor
+    value: Aquamarine
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sPatternColor
+    value: None
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sPattern
+    value: None
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: sRarity
+    value: 0
+    objectReference: {fileID: 0}

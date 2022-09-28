@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a96a3bdcc38343890f129608787bd, type: 3}
+  m_Name: Jade
+  m_EditorClassIdentifier: 
+  sSprite: {fileID: 2084404897586001107, guid: 95e9f4e28dfc4b24295f479432359f4a, type: 3}
+  sIdle: {fileID: 3663497392115578957, guid: 95e9f4e28dfc4b24295f479432359f4a, type: 3}
+  sJump: {fileID: 3622669878786391685, guid: 95e9f4e28dfc4b24295f479432359f4a, type: 3}
+  sParticles: {fileID: 6737321773770221231, guid: c4b2532becce0a440bb8cb6df547fa44,
+    type: 3}
+  sName: Jade
+  sBaseColor: Jade
+  sRarity: 1

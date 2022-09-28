@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ccbc1d50e028f44c87bd5f1664a1ad5, type: 3}
+  m_Name: S Base Dictionary
+  m_EditorClassIdentifier: 
+  slimeBases:
+  - slimeBaseName: Amethyst
+    slimeBaseSO: {fileID: 11400000, guid: 7ecf45d900b0af347b2547a6730464dc, type: 2}
+  - slimeBaseName: Aquamarine
+    slimeBaseSO: {fileID: 11400000, guid: a0665ad8ae5c81b41b2eb65652214ad2, type: 2}
+  - slimeBaseName: Bixbite
+    slimeBaseSO: {fileID: 11400000, guid: 5837078a8e5a31a4c951771bf3f563c2, type: 2}
+  - slimeBaseName: Citrine
+    slimeBaseSO: {fileID: 11400000, guid: 311b708e752aebc4884b479ff04fb13e, type: 2}
+  - slimeBaseName: Emerald
+    slimeBaseSO: {fileID: 11400000, guid: 8ce51abad69b97f409a104d04d336d3e, type: 2}
+  - slimeBaseName: Jade
+    slimeBaseSO: {fileID: 11400000, guid: 4e6fa09f9fdddf246953fd41653f7f78, type: 2}
+  - slimeBaseName: Obsidian
+    slimeBaseSO: {fileID: 11400000, guid: c42b5527feff5e643991e6e1369d71b9, type: 2}
+  - slimeBaseName: Peridot
+    slimeBaseSO: {fileID: 11400000, guid: f8aa832a44a8ac04db3aa639fd23c33e, type: 2}
+  - slimeBaseName: Quartz
+    slimeBaseSO: {fileID: 11400000, guid: 07796994ae50f064cbfb876918ee6f46, type: 2}
+  - slimeBaseName: Ruby
+    slimeBaseSO: {fileID: 11400000, guid: d095c1a04d8ccaf41b9081c41a347814, type: 2}
+  - slimeBaseName: Sapphire
+    slimeBaseSO: {fileID: 11400000, guid: 94f60adc0ab2c5b479ae16a5877cee7b, type: 2}
+  - slimeBaseName: Topaz
+    slimeBaseSO: {fileID: 11400000, guid: db16eeb1d03191f4abc2d432462728a4, type: 2}
+  - slimeBaseName: Diamond
+    slimeBaseSO: {fileID: 11400000, guid: ae7f519478140a545865e665fe13459e, type: 2}

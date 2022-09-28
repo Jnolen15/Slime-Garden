@@ -1,0 +1,340 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fe20b62f6b6c04eb8b6da0cae330c6, type: 3}
+  m_Name: S Pattern Dictionary
+  m_EditorClassIdentifier: 
+  sColors:
+  - Amethyst
+  - Aquamarine
+  - Bixbite
+  - Citrine
+  - Emerald
+  - Jade
+  - Obsidian
+  - Peridot
+  - Quartz
+  - Ruby
+  - Sapphire
+  - Topaz
+  sPatterns:
+  - Null
+  - Gradient
+  - Vertical Stripe
+  - Kitty
+  - Imp
+  - Honeycomb
+  - Planet
+  Amethyst: {r: 0.5019608, g: 0, b: 1, a: 1}
+  Aquamarine: {r: 0, g: 1, b: 1, a: 1}
+  Bixbite: {r: 1, g: 0.2, b: 1, a: 1}
+  Citrine: {r: 1, g: 1, b: 0, a: 1}
+  Emerald: {r: 0, g: 0.6156863, b: 0, a: 1}
+  Jade: {r: 0, g: 1, b: 0.5019608, a: 1}
+  Obsidian: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+  Peridot: {r: 0.6, g: 1, b: 0.2, a: 1}
+  Quartz: {r: 1, g: 1, b: 1, a: 1}
+  Ruby: {r: 1, g: 0, b: 0, a: 1}
+  Sapphire: {r: 0, g: 0.18431373, b: 1, a: 1}
+  Topaz: {r: 1, g: 0.5019608, b: 0, a: 1}
+  slimePatterns:
+  - slimePatternName: Null Null
+    slimePatternColorName: Null
+    slimePatternColor: {r: 1, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f82585fb5e57557458fc9b69b3f3f9b1, type: 2}
+  - slimePatternName: Amethyst Null
+    slimePatternColorName: Amethyst
+    slimePatternColor: {r: 0.5019608, g: 0, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Aquamarine Null
+    slimePatternColorName: Aquamarine
+    slimePatternColor: {r: 0, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Bixbite Null
+    slimePatternColorName: Bixbite
+    slimePatternColor: {r: 1, g: 0.2, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Citrine Null
+    slimePatternColorName: Citrine
+    slimePatternColor: {r: 1, g: 1, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Emerald Null
+    slimePatternColorName: Emerald
+    slimePatternColor: {r: 0, g: 0.6156863, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Jade Null
+    slimePatternColorName: Jade
+    slimePatternColor: {r: 0, g: 1, b: 0.5019608, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Obsidian Null
+    slimePatternColorName: Obsidian
+    slimePatternColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Peridot Null
+    slimePatternColorName: Peridot
+    slimePatternColor: {r: 0.6, g: 1, b: 0.2, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Quartz Null
+    slimePatternColorName: Quartz
+    slimePatternColor: {r: 1, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Ruby Null
+    slimePatternColorName: Ruby
+    slimePatternColor: {r: 1, g: 0, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Sapphire Null
+    slimePatternColorName: Sapphire
+    slimePatternColor: {r: 0, g: 0.18431373, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Topaz Null
+    slimePatternColorName: Topaz
+    slimePatternColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
+  - slimePatternName: Amethyst Gradient
+    slimePatternColorName: Amethyst
+    slimePatternColor: {r: 0.5019608, g: 0, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Aquamarine Gradient
+    slimePatternColorName: Aquamarine
+    slimePatternColor: {r: 0, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Bixbite Gradient
+    slimePatternColorName: Bixbite
+    slimePatternColor: {r: 1, g: 0.2, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Citrine Gradient
+    slimePatternColorName: Citrine
+    slimePatternColor: {r: 1, g: 1, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Emerald Gradient
+    slimePatternColorName: Emerald
+    slimePatternColor: {r: 0, g: 0.6156863, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Jade Gradient
+    slimePatternColorName: Jade
+    slimePatternColor: {r: 0, g: 1, b: 0.5019608, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Obsidian Gradient
+    slimePatternColorName: Obsidian
+    slimePatternColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Peridot Gradient
+    slimePatternColorName: Peridot
+    slimePatternColor: {r: 0.6, g: 1, b: 0.2, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Quartz Gradient
+    slimePatternColorName: Quartz
+    slimePatternColor: {r: 1, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Ruby Gradient
+    slimePatternColorName: Ruby
+    slimePatternColor: {r: 1, g: 0, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Sapphire Gradient
+    slimePatternColorName: Sapphire
+    slimePatternColor: {r: 0, g: 0.18431373, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Topaz Gradient
+    slimePatternColorName: Topaz
+    slimePatternColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
+  - slimePatternName: Amethyst Vertical Stripe
+    slimePatternColorName: Amethyst
+    slimePatternColor: {r: 0.5019608, g: 0, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Aquamarine Vertical Stripe
+    slimePatternColorName: Aquamarine
+    slimePatternColor: {r: 0, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Bixbite Vertical Stripe
+    slimePatternColorName: Bixbite
+    slimePatternColor: {r: 1, g: 0.2, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Citrine Vertical Stripe
+    slimePatternColorName: Citrine
+    slimePatternColor: {r: 1, g: 1, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Emerald Vertical Stripe
+    slimePatternColorName: Emerald
+    slimePatternColor: {r: 0, g: 0.6156863, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Jade Vertical Stripe
+    slimePatternColorName: Jade
+    slimePatternColor: {r: 0, g: 1, b: 0.5019608, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Obsidian Vertical Stripe
+    slimePatternColorName: Obsidian
+    slimePatternColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Peridot Vertical Stripe
+    slimePatternColorName: Peridot
+    slimePatternColor: {r: 0.6, g: 1, b: 0.2, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Quartz Vertical Stripe
+    slimePatternColorName: Quartz
+    slimePatternColor: {r: 1, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Ruby Vertical Stripe
+    slimePatternColorName: Ruby
+    slimePatternColor: {r: 1, g: 0, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Sapphire Vertical Stripe
+    slimePatternColorName: Sapphire
+    slimePatternColor: {r: 0, g: 0.18431373, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Topaz Vertical Stripe
+    slimePatternColorName: Topaz
+    slimePatternColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+  - slimePatternName: Amethyst Kitty
+    slimePatternColorName: Amethyst
+    slimePatternColor: {r: 0.5019608, g: 0, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Aquamarine Kitty
+    slimePatternColorName: Aquamarine
+    slimePatternColor: {r: 0, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Bixbite Kitty
+    slimePatternColorName: Bixbite
+    slimePatternColor: {r: 1, g: 0.2, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Citrine Kitty
+    slimePatternColorName: Citrine
+    slimePatternColor: {r: 1, g: 1, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Emerald Kitty
+    slimePatternColorName: Emerald
+    slimePatternColor: {r: 0, g: 0.6156863, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Jade Kitty
+    slimePatternColorName: Jade
+    slimePatternColor: {r: 0, g: 1, b: 0.5019608, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Obsidian Kitty
+    slimePatternColorName: Obsidian
+    slimePatternColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Peridot Kitty
+    slimePatternColorName: Peridot
+    slimePatternColor: {r: 0.6, g: 1, b: 0.2, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Quartz Kitty
+    slimePatternColorName: Quartz
+    slimePatternColor: {r: 1, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Ruby Kitty
+    slimePatternColorName: Ruby
+    slimePatternColor: {r: 1, g: 0, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Sapphire Kitty
+    slimePatternColorName: Sapphire
+    slimePatternColor: {r: 0, g: 0.18431373, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Topaz Kitty
+    slimePatternColorName: Topaz
+    slimePatternColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
+  - slimePatternName: Amethyst Imp
+    slimePatternColorName: Amethyst
+    slimePatternColor: {r: 0.5019608, g: 0, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Aquamarine Imp
+    slimePatternColorName: Aquamarine
+    slimePatternColor: {r: 0, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Bixbite Imp
+    slimePatternColorName: Bixbite
+    slimePatternColor: {r: 1, g: 0.2, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Citrine Imp
+    slimePatternColorName: Citrine
+    slimePatternColor: {r: 1, g: 1, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Emerald Imp
+    slimePatternColorName: Emerald
+    slimePatternColor: {r: 0, g: 0.6156863, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Jade Imp
+    slimePatternColorName: Jade
+    slimePatternColor: {r: 0, g: 1, b: 0.5019608, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Obsidian Imp
+    slimePatternColorName: Obsidian
+    slimePatternColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Peridot Imp
+    slimePatternColorName: Peridot
+    slimePatternColor: {r: 0.6, g: 1, b: 0.2, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Quartz Imp
+    slimePatternColorName: Quartz
+    slimePatternColor: {r: 1, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Ruby Imp
+    slimePatternColorName: Ruby
+    slimePatternColor: {r: 1, g: 0, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Sapphire Imp
+    slimePatternColorName: Sapphire
+    slimePatternColor: {r: 0, g: 0.18431373, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Topaz Imp
+    slimePatternColorName: Topaz
+    slimePatternColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
+  - slimePatternName: Amethyst Honeycomb
+    slimePatternColorName: Amethyst
+    slimePatternColor: {r: 0.5019608, g: 0, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Aquamarine Honeycomb
+    slimePatternColorName: Aquamarine
+    slimePatternColor: {r: 0, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Bixbite Honeycomb
+    slimePatternColorName: Bixbite
+    slimePatternColor: {r: 1, g: 0.2, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Citrine Honeycomb
+    slimePatternColorName: Citrine
+    slimePatternColor: {r: 1, g: 1, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Emerald Honeycomb
+    slimePatternColorName: Emerald
+    slimePatternColor: {r: 0, g: 0.6156863, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Jade Honeycomb
+    slimePatternColorName: Jade
+    slimePatternColor: {r: 0, g: 1, b: 0.5019608, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Obsidian Honeycomb
+    slimePatternColorName: Obsidian
+    slimePatternColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Peridot Honeycomb
+    slimePatternColorName: Peridot
+    slimePatternColor: {r: 0.6, g: 1, b: 0.2, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Quartz Honeycomb
+    slimePatternColorName: Quartz
+    slimePatternColor: {r: 1, g: 1, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Ruby Honeycomb
+    slimePatternColorName: Ruby
+    slimePatternColor: {r: 1, g: 0, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Sapphire Honeycomb
+    slimePatternColorName: Sapphire
+    slimePatternColor: {r: 0, g: 0.18431373, b: 1, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+  - slimePatternName: Topaz Honeycomb
+    slimePatternColorName: Topaz
+    slimePatternColor: {r: 1, g: 0.5019608, b: 0, a: 1}
+    slimePatternSO: {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
