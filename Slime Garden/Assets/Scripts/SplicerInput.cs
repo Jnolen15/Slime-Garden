@@ -61,7 +61,7 @@ public class SplicerInput : MonoBehaviour
             // Get slime attributes
             currentSlime = col.gameObject;
             slimeControll = col.gameObject.GetComponent<SlimeController>();
-            slimeControll.state = "splice";
+            slimeControll.ChangeState(SlimeController.State.splice);
             slimeControll.dragDrop.isHeld = false;
             Vector3 offset = new Vector3(0, 0.1f, 0);
             slimeControll.transform.position = this.transform.position + offset;
@@ -96,7 +96,7 @@ public class SplicerInput : MonoBehaviour
             splicer.Removed();
 
             slimeControll = col.gameObject.GetComponent<SlimeController>();
-            slimeControll.state = "idle";
+            slimeControll.ChangeState(SlimeController.State.idle);
             occupied = false;
 
             currentSlime = null;
@@ -119,8 +119,8 @@ public class SplicerInput : MonoBehaviour
         {
             Vector3 targetPosition = new Vector3(Random.Range(-1f, 1f), -1.5f, 0f);
             targetPosition += currentSlime.GetComponent<SlimeController>().transform.position;
-            currentSlime.GetComponent<SlimeController>().JumpToo(targetPosition);
-            currentSlime.GetComponent<SlimeController>().state = "idle";
+            //currentSlime.GetComponent<SlimeController>().JumpToo(targetPosition);
+            currentSlime.GetComponent<SlimeController>().ChangeState(SlimeController.State.idle);
             particles.Stop();
             occupied = false;
             currentSlime = null;

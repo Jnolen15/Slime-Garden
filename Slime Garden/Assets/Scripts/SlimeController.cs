@@ -17,6 +17,7 @@ public class SlimeController : MonoBehaviour
     public SpriteRenderer patternsr;            //The SpriteRenderer of the pattern child object.
     public SpriteRenderer shadowsr;             //The SpriteRenderer for the shadows of the slimes.
     public SpriteRenderer facesr;               //The SpriteRenderer for the faces of the slimes.
+    public Animator baseAnimator;               //The animator for the base
     public DragDrop dragDrop;                   //The Drag and Drop script
     private SBrain brain;                       //The Slime Brain Script
 
@@ -44,8 +45,8 @@ public class SlimeController : MonoBehaviour
     private bool inplayState = false;           //Bool for play state
     public bool isJumping = false;              //Bool for jumping (used to switch to jump sprite)
 
-    public string state = "idle";               //The string that denotes which state the slime should be in
-    public string queuedState = "idle";         //The string that denotes which state the slime should be in next
+    //public string state = "idle";               //The string that denotes which state the slime should be in
+    //public string queuedState = "idle";         //The string that denotes which state the slime should be in next
 
     private float spliceCD = 0.4f;              //Cooldown between splice animation cycles
     private float idleCD = 0.2f;                //Cooldown between idle animation cycles
@@ -57,6 +58,21 @@ public class SlimeController : MonoBehaviour
 
     public Sprite shadow1;
     public Sprite shadow2;
+
+    public enum State
+    {
+        idle,
+        jump,
+        held,
+        splice,
+        sleep,
+        love,
+        play
+    }
+    [SerializeField] private State state;
+    public State GetState() { return state; }
+
+    public bool stateChanged; // Bool to make sure initial state changes only happen once
 
     // Start is called before the first frame update
     void Start()
@@ -100,20 +116,93 @@ public class SlimeController : MonoBehaviour
     */
     void Update()
     {
-        // Update sorting layer
-        Basesr.sortingOrder = 0 + (int)(100 * -transform.position.y);
-        patternsr.sortingOrder = 1 + (int)(100 * -transform.position.y);
-        facesr.sortingOrder = 2 + (int)(100 * -transform.position.y);
-
-        if (dragDrop.isHeld)
+        //FOR TESTING
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            StopAllCoroutines();
-            state = "held";
-            HeldState();
+            ChangeState(State.play);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            ChangeState(State.sleep);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ChangeState(State.love);
         }
 
-        //if(state != "jump") isJumping = false;
+        // State machine swithc
+        switch (state)
+        {
+            case State.idle:
+                if (stateChanged)
+                {
+                    Debug.Log("State has been changed to IDLE");
+                    stateChanged = false;
+                    baseAnimator.SetTrigger("Idle");
+                }
+                break;
+            case State.jump:
+                if (stateChanged)
+                {
+                    Debug.Log("State has been changed to JUMP");
+                    stateChanged = false;
+                }
+                break;
+            case State.held:
+                if (stateChanged)
+                {
+                    Debug.Log("State has been changed to HELD");
+                    stateChanged = false;
+                    baseAnimator.SetTrigger("Held");
+                }
+                break;
+            case State.splice:
+                if (stateChanged)
+                {
+                    Debug.Log("State has been changed to SPLICE");
+                    stateChanged = false;
+                    baseAnimator.SetTrigger("Stationary");
+                }
+                break;
+            case State.sleep:
+                if (stateChanged)
+                {
+                    Debug.Log("State has been changed to SLEEP");
+                    stateChanged = false;
+                    baseAnimator.SetTrigger("Sleep");
+                }
+                break;
+            case State.love:
+                if (stateChanged)
+                {
+                    Debug.Log("State has been changed to LOVE");
+                    stateChanged = false;
+                    baseAnimator.SetTrigger("Hop");
+                }
+                break;
+            case State.play:
+                if (stateChanged)
+                {
+                    Debug.Log("State has been changed to PLAY");
+                    stateChanged = false;
+                    baseAnimator.SetTrigger("Hop");
+                }
+                break;
+        }
 
+
+        if (dragDrop.isHeld && state != State.held)
+        {
+            ChangeState(State.held);
+            //StopAllCoroutines();
+            //state = "held";
+            //HeldState();
+        } else if (!dragDrop.isHeld && state == State.held)
+        {
+            ChangeState(State.idle);
+        }
+
+        /*
         // Splice State
         if (state == "splice" && !inspliceState)
             SpliceState();
@@ -156,13 +245,15 @@ public class SlimeController : MonoBehaviour
         {
             JumpState();
         }
+        */
     }
 
-    void FixedUpdate()
+    public void ChangeState(State newState)
     {
-
-        // this is where the if (state == "jump") thing used to be. I dont remeber why
-
+        Debug.Log("Changed to " + newState + " state.");
+        state = newState;
+        stateChanged = true;
+        baseAnimator.SetTrigger("AnimEnded");
     }
 
     // ========================== HELD STATE ==========================
@@ -179,7 +270,7 @@ public class SlimeController : MonoBehaviour
 
     // ========================== SPLICE STATE ==========================
 
-    public void SpliceState()
+    /*public void SpliceState()
     {
         inspliceState = true;
         this.slimeFace = brain.slimeFaceDefault;
@@ -355,7 +446,7 @@ public class SlimeController : MonoBehaviour
          * then back to normal scale duing the second half.
          * This makes it seem like the slime is moving upwards. 
          */
-
+    /*
         float time = 0;
         Vector3 startPosition = transform.position;
         Vector3 startScale = transform.localScale;
@@ -519,7 +610,7 @@ public class SlimeController : MonoBehaviour
             state = queuedState;
         }
     }
-
+    */
     // ========================== MISC ==========================
 
     public void spawnlandingparticles()

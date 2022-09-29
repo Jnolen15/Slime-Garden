@@ -58,8 +58,10 @@ MonoBehaviour:
   patternsr: {fileID: 0}
   shadowsr: {fileID: 0}
   facesr: {fileID: 0}
+  baseAnimator: {fileID: 2188785811832034858}
   dragDrop: {fileID: 0}
   slimeSpeciesBase: {fileID: 0}
+  slimeSpeciesBaseColor: {r: 0, g: 0, b: 0, a: 0}
   slimeSpeciesPattern: {fileID: 0}
   slimeSpeciesPatternColor: {r: 0, g: 0, b: 0, a: 0}
   slimeFace: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
@@ -70,12 +72,12 @@ MonoBehaviour:
   sRarity: 0
   sSpecial: 0
   isJumping: 0
-  state: idle
-  queuedState: idle
   habitatX: 10
   habitatZ: 10
   shadow1: {fileID: 21300000, guid: 59c50d11ac054fb4caca9e2072008bd0, type: 3}
   shadow2: {fileID: 21300000, guid: ae3c542b45541b14d9a91e22107291da, type: 3}
+  state: 0
+  stateChanged: 0
 --- !u!114 &6095753772148874148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1188084660883902925}
   - component: {fileID: 6002049576306807813}
+  - component: {fileID: 2188785811832034858}
   m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
@@ -202,9 +205,29 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2188785811832034858
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2494440072748695486}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 00109cbf1acacd74fa42606a2e179a86, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3829484580544148921
 GameObject:
   m_ObjectHideFlags: 0

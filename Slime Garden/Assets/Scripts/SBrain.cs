@@ -48,9 +48,10 @@ public class SBrain : MonoBehaviour
                     prevSlimes.Add(slimeIndex); // Add slime to list of effected slimes
 
                     GameObject currslime = activeSlimes[slimeIndex]; // Get slime game object
-                    if (currslime.gameObject.GetComponent<SlimeController>().state != "held" && 
-                        currslime.gameObject.GetComponent<SlimeController>().state != "splice" &&
-                        currslime.gameObject.GetComponent<SlimeController>().state != "jump") 
+                    SlimeController currslimeControler = currslime.gameObject.GetComponent<SlimeController>(); // Get slime controler
+                    if (currslimeControler.GetState() != SlimeController.State.held &&
+                        currslimeControler.GetState() != SlimeController.State.splice &&
+                        currslimeControler.GetState() != SlimeController.State.jump) 
                         // As long as the slime isn't being held, in the splicer, or jumping
                     {
                         int randInt = Random.Range(0, 25); // Random number 0-19
@@ -59,14 +60,14 @@ public class SBrain : MonoBehaviour
                             if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0) // Remove particle FX from previous state if they were still there.
                                 Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
 
-                            currslime.gameObject.GetComponent<SlimeController>().queuedState = "jump";
+                            //currslimeControler.ChangeState(SlimeController.State.jump);
                         }
                         else if (randInt >= 16 && randInt <= 17) // If 16-17 Sleep
                         {
                             if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0)
                                 Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
 
-                            currslime.gameObject.GetComponent<SlimeController>().queuedState = "sleep";
+                            currslimeControler.ChangeState(SlimeController.State.sleep);
                             currslime.gameObject.GetComponent<SlimeController>().stateParticles = sleepParticles;
                         }
                         else if (randInt >= 18 && randInt <= 19) // If 18-19 Love
@@ -74,7 +75,7 @@ public class SBrain : MonoBehaviour
                             if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0)
                                 Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
 
-                            currslime.gameObject.GetComponent<SlimeController>().queuedState = "love";
+                            currslimeControler.ChangeState(SlimeController.State.love);
                             currslime.gameObject.GetComponent<SlimeController>().stateParticles = heartParticles;
                         }
                         else if (randInt >= 20) // If 20 or above Play
@@ -82,7 +83,7 @@ public class SBrain : MonoBehaviour
                             if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0)
                                 Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
 
-                            currslime.gameObject.GetComponent<SlimeController>().queuedState = "play";
+                            currslimeControler.ChangeState(SlimeController.State.play);
                         }
                     }
                 }

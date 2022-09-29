@@ -255,8 +255,8 @@ public class SplicerScript : MonoBehaviour
         // Eject New Slime
         Vector3 targetPosition = new Vector3(Random.Range(-2f, 2f), -1.5f, 0f);
         targetPosition += newSlime.GetComponent<SlimeController>().transform.position;
-        newSlime.GetComponent<SlimeController>().JumpToo(targetPosition);
-        newSlime.GetComponent<SlimeController>().state = "idle";
+        //newSlime.GetComponent<SlimeController>().JumpToo(targetPosition);
+        newSlime.GetComponent<SlimeController>().ChangeState(SlimeController.State.idle);
         // Reset Strings
         newSlimeBase = "";
         newSlimePatternColor = "";
