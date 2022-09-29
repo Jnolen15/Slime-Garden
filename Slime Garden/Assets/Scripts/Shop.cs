@@ -6,7 +6,7 @@ public class Shop : MonoBehaviour
 {
     public int price = 10;
     public int xBounds;
-    public int yBounds;
+    public int zBounds;
 
     public GameObject slimeCrate;
 
@@ -38,8 +38,8 @@ public class Shop : MonoBehaviour
 
             // Spawn a slime crate somewhere in the pen
             float randX = Random.Range(-xBounds, xBounds);
-            float randY = Random.Range(-yBounds, yBounds);
-            Vector3 pos = new Vector3(randX, randY, 0);
+            float randZ = Random.Range(-zBounds, zBounds);
+            Vector3 pos = new Vector3(randX, 0, randZ);
 
             GameObject crate = Instantiate(slimeCrate, pos, transform.rotation);
         }

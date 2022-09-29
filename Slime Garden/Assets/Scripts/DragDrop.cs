@@ -7,7 +7,7 @@ public class DragDrop : MonoBehaviour
     public SlimeController sc;
     public SBrain sb;
     private float startPosx;
-    private float startPosy;
+    private float startPosz;
     public bool isHeld = false;
 
     private void Start()
@@ -17,35 +17,35 @@ public class DragDrop : MonoBehaviour
 
     private void Update()
     {
-        if (isHeld)
+        /*if (isHeld)
         {
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosx, mousePos.y - startPosy, 0);
-        }
+            this.gameObject.transform.position = new Vector3(mousePos.x - startPosx, 0, mousePos.z - startPosz);
+        }*/
     }
 
     private void OnMouseDown()
     {
-        if (Input.GetMouseButtonDown(0) && !sc.isJumping)
+        /*if (Input.GetMouseButtonDown(0) && !sc.isJumping)
         {
             Vector3 mousePos;
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
 
-            startPosx = mousePos.x - this.transform.localPosition.x;
-            startPosy = mousePos.y - this.transform.localPosition.y;
+            startPosx = mousePos.x - this.transform.position.x;
+            startPosz = mousePos.z - this.transform.position.z;
 
             isHeld = true;
             sb.isHeld(this.transform.gameObject);
-        }
+        }*/
     }
 
     private void OnMouseUp()
     {
-        if (isHeld)
+        /*if (isHeld)
         {
             isHeld = false;
             sc.Basesr.sprite = sc.slimeSpeciesBase.sIdle;
@@ -54,6 +54,6 @@ public class DragDrop : MonoBehaviour
             sc.spawnlandingparticles();
             if (sc.state != "splice")
                 sc.state = "idle";
-        }
+        }*/
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class SlimeController : MonoBehaviour
 {
     // COMPONENTS ===============
+    private GameObject baseSlime;               //The child gameobject containing the base SR
     private GameObject pattern;                 //The child gameobject containing the pattern SR
     private GameObject particles;               //The landing particle system
     public GameObject stateParticles;           //The state particle system
@@ -51,7 +52,7 @@ public class SlimeController : MonoBehaviour
     private float loveCD = 0.2f;                //Cooldown between love animation cycles
 
     public float habitatX = 10;                 //X postiton of habitat bounds
-    public float habitatY = 10;                 //Y postiton of habitat bounds
+    public float habitatZ = 10;                 //Y postiton of habitat bounds
 
     public Sprite shadow1;
     public Sprite shadow2;
@@ -59,12 +60,13 @@ public class SlimeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pattern = this.transform.GetChild(0).gameObject;
-        landingParticleSpawnPos = this.transform.GetChild(1).gameObject;
-        shadow = this.transform.GetChild(2).gameObject;
-        face = this.transform.GetChild(3).gameObject;
-        stateParticleSpawnPos = this.transform.GetChild(4).gameObject;
-        Basesr = gameObject.GetComponent<SpriteRenderer>();
+        baseSlime = this.transform.GetChild(0).gameObject;
+        pattern = this.transform.GetChild(1).gameObject;
+        landingParticleSpawnPos = this.transform.GetChild(4).gameObject;
+        shadow = this.transform.GetChild(3).gameObject;
+        face = this.transform.GetChild(2).gameObject;
+        stateParticleSpawnPos = this.transform.GetChild(5).gameObject;
+        Basesr = baseSlime.GetComponent<SpriteRenderer>();
         patternsr = pattern.GetComponent<SpriteRenderer>();
         shadowsr = shadow.GetComponent<SpriteRenderer>();
         facesr = face.GetComponent<SpriteRenderer>();
@@ -275,7 +277,7 @@ public class SlimeController : MonoBehaviour
             Vector3 newPos = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);             //Makes a random position ro jump to
             newPos = newPos + transform.position;
             int count = 0;
-            while (newPos.x > habitatX || newPos.y > habitatY || newPos.x < -habitatX || newPos.y < -habitatY) // Testing to make sure newPos is in habitat bounds
+            while (newPos.x > habitatX || newPos.y > habitatZ || newPos.x < -habitatX || newPos.y < -habitatZ) // Testing to make sure newPos is in habitat bounds
             {
                 if (count > 20)
                 {
@@ -283,7 +285,7 @@ public class SlimeController : MonoBehaviour
                     transform.position = new Vector3(0f, 0f, 0f);
                 }
                 //Debug.Log("NewPos was not within bounds. Rerolling.");
-                newPos = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f); // If not, get a new pos
+                newPos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)); // If not, get a new pos
                 newPos = newPos + transform.position;
                 count += 1;
             }
@@ -499,14 +501,14 @@ public class SlimeController : MonoBehaviour
             Vector3 newPos = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
             newPos += transform.position;
             int count = 0;
-            while (newPos.x > habitatX || newPos.y > habitatY || newPos.x < -habitatX || newPos.y < -habitatY)
+            while (newPos.x > habitatX || newPos.y > habitatZ || newPos.x < -habitatX || newPos.y < -habitatZ)
             {
                 if (count > 20)
                 {
                     Debug.Log("Slime out of bounds. Repositioning");
                     transform.position = new Vector3(0f, 0f, 0f);
                 }
-                newPos = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f) + transform.position;
+                newPos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)) + transform.position;
                 count++;
             }
             JumpToo(newPos);
