@@ -40,7 +40,7 @@ public class Manager : MonoBehaviour
             // Test to see if pattern is Null
             if (sPattern == "Null")
             {
-                sSpecial = SBaseDictionary.GetSlime(sBaseColor).sSpecial;
+                sSpecial = SBaseDictionary.GetSlime(sBaseColor).isSpecial;
                 if (sSpecial) //If Base is Diamond then pattern Color is Null (There is no Diamond pattern)
                 {
                     sPatternColor = "Null";
@@ -78,7 +78,9 @@ public class Manager : MonoBehaviour
         sPatterntype = sPatternColor + " " + sPattern;
 
         GameObject newSlime = Instantiate(slimePrefab, pos, Quaternion.identity);
-        newSlime.GetComponent<SlimeController>().slimeSpeciesBase = SBaseDictionary.GetSlime(sBaseColor);
+        newSlime.GetComponent<SlimeController>().slimeSpeciesBase = SBaseDictionary.GetSlime(sBaseColor).slimeBaseSO;
+        newSlime.GetComponent<SlimeController>().sBaseColor = SBaseDictionary.GetSlime(sBaseColor).slimeBaseName;
+        newSlime.GetComponent<SlimeController>().slimeSpeciesBaseColor = SBaseDictionary.GetSlime(sBaseColor).slimeBaseColor;
         newSlime.GetComponent<SlimeController>().slimeSpeciesPattern = SPatternDictionary.GetSlime(sPatterntype).slimePatternSO;
         newSlime.GetComponent<SlimeController>().sPatternColor = SPatternDictionary.GetSlime(sPatterntype).slimePatternColorName;
         newSlime.GetComponent<SlimeController>().slimeSpeciesPatternColor = SPatternDictionary.GetSlime(sPatterntype).slimePatternColor;

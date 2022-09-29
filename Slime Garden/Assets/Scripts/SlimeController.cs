@@ -23,6 +23,7 @@ public class SlimeController : MonoBehaviour
     // SCRIPTABLE OBJECT ===============
     //public SlimeSO slimeSpecies;              //The SO of this slime species. Info is taken from here.
     public SlimeBaseSO slimeSpeciesBase;        //The SO of this slime species Base color. Info is taken from here.
+    public Color slimeSpeciesBaseColor;         //The Color that will be applied to the Base
     public SlimePatternSO slimeSpeciesPattern;  //The SO of this slime species. Info is taken from here.
     public Color slimeSpeciesPatternColor;      //The Color that will be applied to the Pattern
     public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
@@ -73,13 +74,14 @@ public class SlimeController : MonoBehaviour
         dragDrop = gameObject.GetComponent<DragDrop>();
         brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
 
-        speciesName = slimeSpeciesBase.sName + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;
+        speciesName = sBaseColor + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;
         sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
-        sBaseColor = slimeSpeciesBase.sBaseColor;
+        //sBaseColor = slimeSpeciesBase.sName;
         //sPatternColor = slimeSpeciesPattern.sPatternColor;
         sPattern = slimeSpeciesPattern.sPattern;
         sSpecial = slimeSpeciesBase.sSpecial;
         Basesr.sprite = slimeSpeciesBase.sSprite;
+        Basesr.color = slimeSpeciesBaseColor;
         patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
         patternsr.color = slimeSpeciesPatternColor;
         particles = slimeSpeciesBase.sParticles;

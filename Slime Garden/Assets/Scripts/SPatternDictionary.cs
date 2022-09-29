@@ -144,7 +144,6 @@ public class SPatternDictionary : ScriptableObject
 
     // Method that searches the array for a matching slime name and returns that slime's SO
     // Returns null if slime is not found.
-
     public static SlimePatternEntry GetSlime(string sName)
     {
         SlimePatternEntry foundSlime = null;
@@ -157,7 +156,7 @@ public class SPatternDictionary : ScriptableObject
         else
         {
             // Failure
-            Debug.Log("Failed to find slime: " + sName);
+            Debug.LogError("Failed to find slime: " + sName);
             return null;
         }
     }

@@ -234,7 +234,8 @@ public class SplicerScript : MonoBehaviour
         // Gives prefab the correct SO from the dictionary via GetSlime
         Vector3 offset = new Vector3(0, 0.2f, 0);
         GameObject newSlime = Instantiate(slimePrefab, Output.transform.position + offset, Quaternion.identity);
-        newSlime.GetComponent<SlimeController>().slimeSpeciesBase = SBaseDictionary.GetSlime(newSlimeBase);
+        newSlime.GetComponent<SlimeController>().slimeSpeciesBase = SBaseDictionary.GetSlime(newSlimeBase).slimeBaseSO;
+        newSlime.GetComponent<SlimeController>().slimeSpeciesBaseColor = SBaseDictionary.GetSlime(newSlimeBase).slimeBaseColor;
         newSlime.GetComponent<SlimeController>().slimeSpeciesPattern = SPatternDictionary.GetSlime(newSlimePattern).slimePatternSO;
         newSlime.GetComponent<SlimeController>().sPatternColor = SPatternDictionary.GetSlime(newSlimePattern).slimePatternColorName;
         newSlime.GetComponent<SlimeController>().slimeSpeciesPatternColor = SPatternDictionary.GetSlime(newSlimePattern).slimePatternColor;
