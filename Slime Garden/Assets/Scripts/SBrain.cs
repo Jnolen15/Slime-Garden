@@ -60,7 +60,7 @@ public class SBrain : MonoBehaviour
                             if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0) // Remove particle FX from previous state if they were still there.
                                 Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
 
-                            //currslimeControler.ChangeState(SlimeController.State.jump);
+                            currslimeControler.ChangeState(SlimeController.State.jump);
                         }
                         else if (randInt >= 16 && randInt <= 17) // If 16-17 Sleep
                         {

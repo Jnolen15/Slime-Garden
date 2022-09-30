@@ -51,7 +51,7 @@ public class MouseControl : MonoBehaviour
     {
         heldSlime = slime;
         holding = true;
-        heldSlime.GetComponent<DragDrop>().isHeld = true;
+        heldSlime.GetComponent<DragDrop>().PickedUp();
 
         pickupOffsetX = mousePos.x - heldSlime.transform.position.x;
         pickupOffsetZ = mousePos.z - heldSlime.transform.position.z;
@@ -64,7 +64,7 @@ public class MouseControl : MonoBehaviour
 
     private void SlimeDropped()
     {
-        heldSlime.GetComponent<DragDrop>().isHeld = false;
+        heldSlime.GetComponent<DragDrop>().LetGo();
         holding = false;
         heldSlime = null;
     }

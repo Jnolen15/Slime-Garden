@@ -73,9 +73,9 @@ MonoBehaviour:
   sPattern: 
   sRarity: 0
   sSpecial: 0
-  isJumping: 0
   habitatX: 10
   habitatZ: 10
+  isJumping: 0
   shadow1: {fileID: 21300000, guid: 59c50d11ac054fb4caca9e2072008bd0, type: 3}
   shadow2: {fileID: 21300000, guid: ae3c542b45541b14d9a91e22107291da, type: 3}
   state: 0
@@ -93,7 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sc: {fileID: 3820516103340025377}
-  sb: {fileID: 0}
   isHeld: 0
 --- !u!54 &4861891018881040446
 Rigidbody:
@@ -473,8 +472,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2409596806499744702, guid: b6bce531470874e4e99d32ee45f8d42f,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -482,7 +480,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &6340564199885307835

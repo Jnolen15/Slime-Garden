@@ -40,28 +40,15 @@ public class SlimeController : MonoBehaviour
     public float sRarity;                       //Rarity of slime
     public bool sSpecial;                       //Special is true if the base color isn't one of the basic 12
 
-    // OTHER ===============
-    private bool inspliceState = false;         //Bool for splice state
-    private bool inidleState = false;           //Bool for idle state
-    private bool insleepState = false;          //Bool for sleep state
-    private bool inloveState = false;           //Bool for love state
-    private bool inplayState = false;           //Bool for play state
-    public bool isJumping = false;              //Bool for jumping (used to switch to jump sprite)
-
-    //public string state = "idle";               //The string that denotes which state the slime should be in
-    //public string queuedState = "idle";         //The string that denotes which state the slime should be in next
-
-    private float spliceCD = 0.4f;              //Cooldown between splice animation cycles
-    private float idleCD = 0.2f;                //Cooldown between idle animation cycles
-    private float sleepCD = 2f;                 //Cooldown between sleep animation cycles
-    private float loveCD = 0.2f;                //Cooldown between love animation cycles
-
     public float habitatX = 10;                 //X postiton of habitat bounds
     public float habitatZ = 10;                 //Y postiton of habitat bounds
+
+    public bool isJumping = false;
 
     public Sprite shadow1;
     public Sprite shadow2;
 
+    // State stuff
     public enum State
     {
         idle,
@@ -77,7 +64,6 @@ public class SlimeController : MonoBehaviour
 
     public bool stateChanged; // Bool to make sure initial state changes only happen once
 
-    // Start is called before the first frame update
     void Start()
     {
         baseSlime = this.transform.GetChild(0).gameObject;
@@ -103,41 +89,30 @@ public class SlimeController : MonoBehaviour
         //sPatternColor = slimeSpeciesPattern.sPatternColor;
         sPattern = slimeSpeciesPattern.sPattern;
         sSpecial = slimeSpeciesBase.sSpecial;
-        Basesr.sprite = slimeSpeciesBase.sSprite;
+        //Basesr.sprite = slimeSpeciesBase.sSprite;
         Basesr.color = slimeSpeciesBaseColor;
-        patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
+        //patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
         patternsr.color = slimeSpeciesPatternColor;
         particles = slimeSpeciesBase.sParticles;
     }
 
-    // Update is called once per frame
-    /* In here i add (int)(100 * -transform.position.y) to the sorting layer.
-     * I do this so slimes that are closer to the bottom of the screen
-     * appear above ones that are further back.
-     * THIS IS A BANDAID SOLUTION
-     * A better solution to this should be found
-     * RN the most promising idea would just be to make the game 3D
-     * I can still have 2d assets and colliders ect.
-     * 
-     * Acctualy its kinda OK. so maybe fine now
-    */
     void Update()
     {
         //FOR TESTING
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
             ChangeState(State.play);
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             ChangeState(State.sleep);
         }
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             ChangeState(State.love);
         }
 
-        // State machine swithc
+        // State machine switch
         switch (state)
         {
             case State.idle:
@@ -151,7 +126,7 @@ public class SlimeController : MonoBehaviour
                 {
                     Debug.Log("State has been changed to JUMP");
                     stateChanged = false;
-                    this.slimeFace = brain.slimeFaceDefault;
+                    JumpState();
                 }
                 break;
             case State.held:
@@ -186,63 +161,6 @@ public class SlimeController : MonoBehaviour
                 // JUMP AROUND
                 break;
         }
-
-
-        if (dragDrop.isHeld && state != State.held)
-        {
-            ChangeState(State.held);
-            //StopAllCoroutines();
-            //state = "held";
-            //HeldState();
-        } else if (!dragDrop.isHeld && state == State.held)
-        {
-            ChangeState(State.idle);
-        }
-
-        /*
-        // Splice State
-        if (state == "splice" && !inspliceState)
-            SpliceState();
-
-        if (inspliceState && state != "splice")
-            inspliceState = false;
-
-        // Idle State
-        if (state == "idle" && !inidleState)
-            IdleState();
-
-        if (inidleState && state != "idle")
-            inidleState = false;
-
-        // Sleep State
-        if (state == "sleep" && !insleepState)
-            SleepState();
-
-        if (insleepState && state != "sleep")
-            insleepState = false;
-
-        // Love state
-        if (state == "love" && !inloveState)
-            LoveState();
-
-        if (inloveState && state != "love")
-            inloveState = false;
-
-        // Play state
-        if (state == "play" && !isJumping)
-            PlayState();
-
-        if (inplayState && state != "play")
-        {
-            state = queuedState;
-            inplayState = false;
-        }
-
-        if (state == "jump")
-        {
-            JumpState();
-        }
-        */
     }
 
     public void ChangeState(State newState)
@@ -262,125 +180,25 @@ public class SlimeController : MonoBehaviour
         baseAnimator.SetTrigger(sName);
         patternAnimator.SetTrigger(sName);
         faceAnimator.SetTrigger(sName);
-
+        //shadowsr.sprite = shadow1;
         stateChanged = false;
-    }
-
-    // ========================== HELD STATE ==========================
-
-    public void HeldState()
-    {
-        isJumping = false;
-        Basesr.sprite = slimeSpeciesBase.sJump;
-        patternsr.sprite = slimeSpeciesPattern.sPatternJump;
-        facesr.sprite = slimeFace.faceJump;
-        shadowsr.sprite = shadow1;
-        this.slimeFace = brain.slimeFaceDefault;
-    }
-
-    // ========================== SPLICE STATE ==========================
-
-    /*public void SpliceState()
-    {
-        inspliceState = true;
-        this.slimeFace = brain.slimeFaceDefault;
-        StartCoroutine(spliceAnimation());
-    }
-
-    IEnumerator spliceAnimation()
-    {
-        while (state == "splice")
-        {
-            // switches between sprites each half second
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "splice")
-                yield return new WaitForSeconds(spliceCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sIdle;
-            patternsr.sprite = slimeSpeciesPattern.sPatternIdle;
-            facesr.sprite = slimeFace.faceIdle;
-            shadowsr.sprite = shadow2;
-            if (state == "splice")
-                yield return new WaitForSeconds(spliceCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "splice")
-                yield return new WaitForSeconds(spliceCD);
-            else
-                yield break;
-        }
-    }
-
-    // ========================== IDLE STATE ==========================
-
-    public void IdleState()
-    {
-        inidleState = true;
-        this.slimeFace = brain.slimeFaceDefault;
-        StartCoroutine(IdleAnimation());
-    }
-
-    IEnumerator IdleAnimation()
-    {
-        while (state == "idle" && state == queuedState)
-        {
-            // switches between sprites each half second
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "idle")
-                yield return new WaitForSeconds(idleCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sIdle;
-            patternsr.sprite = slimeSpeciesPattern.sPatternIdle;
-            facesr.sprite = slimeFace.faceIdle;
-            shadowsr.sprite = shadow2;
-            if (state == "idle")
-                yield return new WaitForSeconds(idleCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "idle")
-                yield return new WaitForSeconds(idleCD);
-            else
-                yield break;
-            idleCD = 0.3f + Random.Range(0f, 0.4f);
-        }
-        state = queuedState;
-        yield break;
     }
 
     // ========================== JUMPING STATE ==========================
 
     public void JumpState()
     {
-        this.slimeFace = brain.slimeFaceDefault;
-        if (isJumping == false && state == "jump" && state == queuedState)
+        if (!isJumping)
         {
             isJumping = true;
 
-            Basesr.sprite = slimeSpeciesBase.sJump;
-            patternsr.sprite = slimeSpeciesPattern.sPatternJump;
-            facesr.sprite = slimeFace.faceJump;
-            shadowsr.sprite = shadow1;
-
-            Vector3 newPos = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);             //Makes a random position ro jump to
+            //Makes a random position ro jump too
+            Vector3 newPos = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
             newPos = newPos + transform.position;
+
+            // Testing to make sure newPos is in habitat bounds (Will try 20 times then reposition at center)
             int count = 0;
-            while (newPos.x > habitatX || newPos.y > habitatZ || newPos.x < -habitatX || newPos.y < -habitatZ) // Testing to make sure newPos is in habitat bounds
+            while (newPos.x > habitatX || newPos.y > habitatZ || newPos.x < -habitatX || newPos.y < -habitatZ) 
             {
                 if (count > 20)
                 {
@@ -392,13 +210,16 @@ public class SlimeController : MonoBehaviour
                 newPos = newPos + transform.position;
                 count += 1;
             }
-            float hypotenuse = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - newPos.x), 2)    //Uses Pythagorean theorem to get hypotenuse
+
+            // Uses Pythagorean theorem to get hypotenuse, which is used to calculate jump height and speed
+            float hypotenuse = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - newPos.x), 2)
                                     + Mathf.Pow(Mathf.Abs(transform.position.y - newPos.y), 2));
-            float jumpDuration = hypotenuse / 1.5f;            // Calculating jump speed.
-            float maxHeight = 1f + (hypotenuse / 3);  //hypotenuse / 3 to get the jump height because this makes for a larger height the larger the jump.
+            float jumpDuration = hypotenuse / 1.5f;
+            float maxHeight = 1f + (hypotenuse / 3);
             Vector3 height = new Vector3(maxHeight, maxHeight, 0f);
 
-            if (newPos.x < transform.position.x) // Flipping the sprite in the direction it jumps
+            // Flipping the sprite in the direction it jumps
+            if (newPos.x < transform.position.x)
             {
                 height.x = height.x * 1;
                 transform.localScale = new Vector3(1, 1, 1);
@@ -410,8 +231,6 @@ public class SlimeController : MonoBehaviour
             }
 
             StartCoroutine(Jump(newPos, height, jumpDuration)); // Call to jump
-            state = "idle";
-            queuedState = "idle";
         }
     }
 
@@ -419,11 +238,6 @@ public class SlimeController : MonoBehaviour
     public void JumpToo(Vector3 targetPosition)
     {
         isJumping = true;
-
-        Basesr.sprite = slimeSpeciesBase.sJump;
-        patternsr.sprite = slimeSpeciesPattern.sPatternJump;
-        facesr.sprite = slimeFace.faceJump;
-        shadowsr.sprite = shadow1;
 
         float hypotenuse = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - targetPosition.x), 2)    //Uses Pythagorean theorem to get hypotenuse
                                     + Mathf.Pow(Mathf.Abs(transform.position.y - targetPosition.y), 2));
@@ -445,25 +259,25 @@ public class SlimeController : MonoBehaviour
         StartCoroutine(Jump(targetPosition, height, jumpDuration));
     }
 
-    IEnumerator Jump(Vector3 targetPosition, Vector3 targetScale, float duration)
+    IEnumerator Jump(Vector3 targetPosition, Vector3 targetHeight, float duration)
     {
         /* Jump Code
          * targetPosition - Landing spot
          * targetScale - Max height it will reach in jump
          * duration - length of jump
          * This uses Lerp to smoothly move the slime to its target position.
-         * It will also lerp up to targetScale in the first half
-         * then back to normal scale duing the second half.
-         * This makes it seem like the slime is moving upwards. 
+         * It will also lerp up to targetHeight in the first half
+         * then back to normal scale duing the second half. 
          */
-    /*
         float time = 0;
         Vector3 startPosition = transform.position;
         Vector3 startScale = transform.localScale;
         Vector3 shadowstartPosition = shadow.transform.position;
         Vector3 sadowStartScale = shadow.transform.localScale;
-        Vector3 sadowtargetScale = new Vector3(0.5f - (Mathf.Abs(targetScale.x) - 1), 0.5f - (Mathf.Abs(targetScale.y) - 1), 0f);
-        Vector3 sadowtargetDist = new Vector3(0f, -(Mathf.Abs(targetScale.y) - 1), 0f);
+        Vector3 sadowtargetScale = new Vector3(0.5f - (Mathf.Abs(targetHeight.x) - 1), 0.5f - (Mathf.Abs(targetHeight.y) - 1), 0f);
+        Vector3 sadowtargetDist = new Vector3(0f, -(Mathf.Abs(targetHeight.y) - 1), 0f);
+
+        Debug.Log("Jumping from " + startPosition + " to " + targetPosition);
 
         while (time < duration)
         {
@@ -471,13 +285,13 @@ public class SlimeController : MonoBehaviour
 
             if(time < duration / 2)
             {
-                transform.localScale = Vector3.Lerp(startScale, targetScale, time / (duration / 2));
+                transform.localScale = Vector3.Lerp(startScale, targetHeight, time / (duration / 2));
                 shadow.transform.localScale = Vector3.Lerp(sadowStartScale, sadowtargetScale, time / (duration / 2));
                 shadow.transform.position = Vector3.Lerp(transform.position, transform.position + sadowtargetDist, time / (duration / 2));
             }
             else if(time < duration)
             {
-                transform.localScale = Vector3.Lerp(targetScale, startScale, time / duration);
+                transform.localScale = Vector3.Lerp(targetHeight, startScale, time / duration);
                 shadow.transform.localScale = Vector3.Lerp(sadowtargetScale, sadowStartScale, time / duration);
                 shadow.transform.position = Vector3.Lerp(transform.position + sadowtargetDist, transform.position, time / duration);
             }
@@ -487,141 +301,17 @@ public class SlimeController : MonoBehaviour
         }
         transform.position = targetPosition;
         transform.localScale = startScale;
-        Basesr.sprite = slimeSpeciesBase.sIdle;
-        patternsr.sprite = slimeSpeciesPattern.sPatternIdle;
-        facesr.sprite = slimeFace.faceIdle;
         spawnlandingparticles();
 
         yield return new WaitForSeconds(0.2f);
 
+        ChangeState(State.idle);
         isJumping = false;
     }
 
-    // ========================== SLEEP STATE ==========================
-
-    public void SleepState()
-    {
-        insleepState = true;
-        spawnstateparticles(stateParticles);
-        this.slimeFace = brain.slimeFaceSleep;
-        StartCoroutine(SleepAnimation());
-    }
-
-    IEnumerator SleepAnimation()
-    {
-        while (state == "sleep" && state == queuedState)
-        {
-            // switches between sprites each half second
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "sleep")
-                yield return new WaitForSeconds(sleepCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sIdle;
-            patternsr.sprite = slimeSpeciesPattern.sPatternIdle;
-            facesr.sprite = slimeFace.faceIdle;
-            shadowsr.sprite = shadow2;
-            if (state == "sleep")
-                yield return new WaitForSeconds(sleepCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "sleep")
-                yield return new WaitForSeconds(sleepCD);
-            else
-                yield break;
-        }
-        state = queuedState;
-        yield break;
-    }
-
-    // ========================== LOVE STATE ==========================
-
-    public void LoveState()
-    {
-        inloveState = true;
-        spawnstateparticles(stateParticles);
-        this.slimeFace = brain.slimeFaceHappy;
-        StartCoroutine(LoveAnimation());
-    }
-
-    IEnumerator LoveAnimation()
-    {
-        while (state == "love" && state == queuedState)
-        {
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "love")
-                yield return new WaitForSeconds(loveCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sIdle;
-            patternsr.sprite = slimeSpeciesPattern.sPatternIdle;
-            facesr.sprite = slimeFace.faceIdle;
-            shadowsr.sprite = shadow2;
-            if (state == "love")
-                yield return new WaitForSeconds(loveCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sSprite;
-            patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
-            facesr.sprite = slimeFace.faceSprite;
-            shadowsr.sprite = shadow1;
-            if (state == "love")
-                yield return new WaitForSeconds(loveCD);
-            else
-                yield break;
-            Basesr.sprite = slimeSpeciesBase.sJump;
-            patternsr.sprite = slimeSpeciesPattern.sPatternJump;
-            facesr.sprite = slimeFace.faceJump;
-            shadowsr.sprite = shadow1;
-            if (state == "love")
-                yield return new WaitForSeconds(loveCD);
-            else
-                yield break;
-        }
-        state = queuedState;
-        yield break;
-    }
-
-    // ========================== PLAY STATE ========================== THIS STATE IS CURRENTLY EMPTY. REMOVE OR ADD TOO
-
-    public void PlayState()
-    {
-        if (state == "play" && state == queuedState)
-        {
-            isJumping = true;
-            inplayState = true;
-            //Make a random position ro jump to
-            Vector3 newPos = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
-            newPos += transform.position;
-            int count = 0;
-            while (newPos.x > habitatX || newPos.y > habitatZ || newPos.x < -habitatX || newPos.y < -habitatZ)
-            {
-                if (count > 20)
-                {
-                    Debug.Log("Slime out of bounds. Repositioning");
-                    transform.position = new Vector3(0f, 0f, 0f);
-                }
-                newPos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)) + transform.position;
-                count++;
-            }
-            JumpToo(newPos);
-        } else
-        {
-            state = queuedState;
-        }
-    }
-    */
     // ========================== MISC ==========================
+
+    // RESOURCES.LOAD THIS PARTICAL STUFF
 
     public void spawnlandingparticles()
     {
