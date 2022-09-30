@@ -18,5 +18,7 @@ MonoBehaviour:
     type: 3}
   sPatternJump: {fileID: -6339623910531379040, guid: f0123be27b6744e44928821f1e8e6e4e,
     type: 3}
+  libraryAsset: {fileID: 7108339969198208228, guid: fcaf0bca31c34744295d7e3cc7114fd9,
+    type: 3}
   sPattern: Planet
   sRarity: 6

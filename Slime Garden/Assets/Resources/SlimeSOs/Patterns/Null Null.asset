@@ -15,7 +15,7 @@ MonoBehaviour:
   sPatternSprite: {fileID: 21300000, guid: cf087843fc673ae45aeb19c01d8dc841, type: 3}
   sPatternIdle: {fileID: 21300000, guid: cf087843fc673ae45aeb19c01d8dc841, type: 3}
   sPatternJump: {fileID: 21300000, guid: cf087843fc673ae45aeb19c01d8dc841, type: 3}
-  sName: Null Null
-  sPatternColor: Null
+  libraryAsset: {fileID: 7108339969198208228, guid: 669f9b1faa8c3b347a4ae707003fee7e,
+    type: 3}
   sPattern: Null
   sRarity: 0

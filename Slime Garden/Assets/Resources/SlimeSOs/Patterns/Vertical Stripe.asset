@@ -18,5 +18,7 @@ MonoBehaviour:
     type: 3}
   sPatternJump: {fileID: -6590522490592500017, guid: a94cdedc165fdad48b6de8e66da18b08,
     type: 3}
+  libraryAsset: {fileID: 7108339969198208228, guid: 35cf424c66820e84e95f3cb43024d31d,
+    type: 3}
   sPattern: Vertical Stripe
   sRarity: 1

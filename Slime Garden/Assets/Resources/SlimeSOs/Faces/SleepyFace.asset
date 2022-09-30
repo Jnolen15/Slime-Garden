@@ -18,3 +18,5 @@ MonoBehaviour:
     type: 3}
   faceJump: {fileID: 5174375301884307925, guid: 32201e35de5c3b540a70147d4f2724bb,
     type: 3}
+  libraryAsset: {fileID: 7108339969198208228, guid: 68321349ae452b94db62baa126e57ae3,
+    type: 3}

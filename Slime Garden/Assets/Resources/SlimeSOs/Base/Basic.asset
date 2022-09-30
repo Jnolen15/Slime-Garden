@@ -16,9 +16,10 @@ MonoBehaviour:
     type: 3}
   sIdle: {fileID: 2743582117663559403, guid: 9372bf941d027d24492ba559a2987e14, type: 3}
   sJump: {fileID: 374196799985808654, guid: 9372bf941d027d24492ba559a2987e14, type: 3}
+  libraryAsset: {fileID: 7108339969198208228, guid: 4592757f78bf91f428894389b7a95c4e,
+    type: 3}
   sParticles: {fileID: 2198331844512738840, guid: 2218d9ca1bb34564aa70423692de76e5,
     type: 3}
-  sName: SCHLEEP
-  sBaseColor: SCHLEEP
+  sName: Basic
   sRarity: 0
   sSpecial: 0

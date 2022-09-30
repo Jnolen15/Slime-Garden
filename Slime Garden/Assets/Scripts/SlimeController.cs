@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D.Animation;
 
 public class SlimeController : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class SlimeController : MonoBehaviour
     public SpriteRenderer shadowsr;             //The SpriteRenderer for the shadows of the slimes.
     public SpriteRenderer facesr;               //The SpriteRenderer for the faces of the slimes.
     public Animator baseAnimator;               //The animator for the base
+    public Animator patternAnimator;            //The animator for the pattern
+    public Animator faceAnimator;               //The animator for the face
     public DragDrop dragDrop;                   //The Drag and Drop script
     private SBrain brain;                       //The Slime Brain Script
 
@@ -90,6 +93,10 @@ public class SlimeController : MonoBehaviour
         dragDrop = gameObject.GetComponent<DragDrop>();
         brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
 
+        baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
+        pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
+        face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
+
         speciesName = sBaseColor + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;
         sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
         //sBaseColor = slimeSpeciesBase.sName;
@@ -136,9 +143,7 @@ public class SlimeController : MonoBehaviour
             case State.idle:
                 if (stateChanged)
                 {
-                    Debug.Log("State has been changed to IDLE");
-                    stateChanged = false;
-                    baseAnimator.SetTrigger("Idle");
+                    StartState("Idle", brain.slimeFaceDefault);
                 }
                 break;
             case State.jump:
@@ -146,47 +151,39 @@ public class SlimeController : MonoBehaviour
                 {
                     Debug.Log("State has been changed to JUMP");
                     stateChanged = false;
+                    this.slimeFace = brain.slimeFaceDefault;
                 }
                 break;
             case State.held:
                 if (stateChanged)
                 {
-                    Debug.Log("State has been changed to HELD");
-                    stateChanged = false;
-                    baseAnimator.SetTrigger("Held");
+                    StartState("Held", brain.slimeFaceDefault);
                 }
                 break;
             case State.splice:
                 if (stateChanged)
                 {
-                    Debug.Log("State has been changed to SPLICE");
-                    stateChanged = false;
-                    baseAnimator.SetTrigger("Stationary");
+                    StartState("Stationary", brain.slimeFaceDefault);
                 }
                 break;
             case State.sleep:
                 if (stateChanged)
                 {
-                    Debug.Log("State has been changed to SLEEP");
-                    stateChanged = false;
-                    baseAnimator.SetTrigger("Sleep");
+                    StartState("Sleep", brain.slimeFaceSleep);
                 }
                 break;
             case State.love:
                 if (stateChanged)
                 {
-                    Debug.Log("State has been changed to LOVE");
-                    stateChanged = false;
-                    baseAnimator.SetTrigger("Hop");
+                    StartState("Hop", brain.slimeFaceHappy);
                 }
                 break;
             case State.play:
                 if (stateChanged)
                 {
-                    Debug.Log("State has been changed to PLAY");
-                    stateChanged = false;
-                    baseAnimator.SetTrigger("Hop");
+                    StartState("Hop", brain.slimeFaceHappy);
                 }
+                // JUMP AROUND
                 break;
         }
 
@@ -253,7 +250,20 @@ public class SlimeController : MonoBehaviour
         Debug.Log("Changed to " + newState + " state.");
         state = newState;
         stateChanged = true;
-        baseAnimator.SetTrigger("AnimEnded");
+    }
+
+    private void StartState(string sName, SlimeFaceSO sface)
+    {
+        Debug.Log(sName + " state is being started");
+
+        this.slimeFace = sface;
+        face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
+
+        baseAnimator.SetTrigger(sName);
+        patternAnimator.SetTrigger(sName);
+        faceAnimator.SetTrigger(sName);
+
+        stateChanged = false;
     }
 
     // ========================== HELD STATE ==========================
