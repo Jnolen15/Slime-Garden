@@ -169,9 +169,9 @@ public class SlimeController : MonoBehaviour
 
             // Flipping the sprite in the direction it jumps
             if (newPos.x < transform.position.x)
-                transform.localScale = new Vector3(1, 1, 1);
+                FlipSprite(false);
             else
-                transform.localScale = new Vector3(-1, 1, 1);
+                FlipSprite(true);
 
             float jumpDuration = Vector3.Distance(transform.position, newPos) / 2f;
 
@@ -239,6 +239,13 @@ public class SlimeController : MonoBehaviour
     }
 
     // ========================== MISC ==========================
+
+    private void FlipSprite(bool flip)
+    {
+        Basesr.flipX = flip;
+        patternsr.flipX = flip;
+        facesr.flipX = flip;
+    }
 
     // RESOURCES.LOAD THIS PARTICAL STUFF
     public void spawnlandingparticles()

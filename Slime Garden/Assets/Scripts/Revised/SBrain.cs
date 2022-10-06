@@ -13,10 +13,6 @@ public class SBrain : MonoBehaviour
     public SlimeFaceSO slimeFaceHappy;              //The SO with Happy slime facial expressions. Info is taken from here.
     public SlimeFaceSO slimeFaceSleep;              //The SO with Sleep slime facial expressions. Info is taken from here.
 
-    public GameObject sleepParticles;               //The particles used for sleeping slimes
-    public GameObject heartParticles;               //The particles used for loving slimes
-
-
     // COMPONENTS ===============
     public List<GameObject> activeSlimes;           //List of all active slimes
 
@@ -57,32 +53,18 @@ public class SBrain : MonoBehaviour
                         int randInt = Random.Range(0, 25); // Random number 0-19
                         if (randInt >= 0 && randInt < 16) // If 0-15 Jump
                         {
-                            if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0) // Remove particle FX from previous state if they were still there.
-                                Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
-
                             currslimeControler.ChangeState(SlimeController.State.jump);
                         }
                         else if (randInt >= 16 && randInt <= 17) // If 16-17 Sleep
                         {
-                            if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0)
-                                Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
-
                             currslimeControler.ChangeState(SlimeController.State.sleep);
-                            //currslime.gameObject.GetComponent<SlimeController>().stateParticles = sleepParticles;
                         }
                         else if (randInt >= 18 && randInt <= 19) // If 18-19 Love
                         {
-                            if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0)
-                                Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
-
                             currslimeControler.ChangeState(SlimeController.State.love);
-                            //currslime.gameObject.GetComponent<SlimeController>().stateParticles = heartParticles;
                         }
                         else if (randInt >= 20) // If 20 or above Play
                         {
-                            if (currslime.transform.GetChild(4).gameObject.transform.childCount > 0)
-                                Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
-
                             currslimeControler.ChangeState(SlimeController.State.play);
                         }
                     }
@@ -92,12 +74,4 @@ public class SBrain : MonoBehaviour
             stateCD += 0.2f + Random.Range(0f, 3f);
         }
     }
-
-    public void isHeld(GameObject slime) // This gets called from the drag drop script. if a slime is being held.
-    {
-        //slime.gameObject.GetComponent<SlimeController>().state = "held";
-        if (slime.transform.GetChild(4).gameObject.transform.childCount > 0)
-            Destroy(slime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
-    }
-
 }
