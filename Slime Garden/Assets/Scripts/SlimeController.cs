@@ -5,51 +5,33 @@ using UnityEngine.U2D.Animation;
 
 public class SlimeController : MonoBehaviour
 {
-    // COMPONENTS ===============
-    private GameObject baseSlime;               //The child gameobject containing the base SR
-    private GameObject pattern;                 //The child gameobject containing the pattern SR
-    private GameObject particles;               //The landing particle system
-    public GameObject stateParticles;           //The state particle system
-    private GameObject landingParticleSpawnPos; //The spawn position of the landing particles
-    private GameObject stateParticleSpawnPos;   //The spawn position of the state particles
-    private GameObject shadow;                  //The shadow rendered under the slime
-    private GameObject face;                    //The face rendered above the slime
-    public SpriteRenderer Basesr;               //The SpriteRenderer. Needed to change between sprites.
-    public SpriteRenderer patternsr;            //The SpriteRenderer of the pattern child object.
-    public SpriteRenderer shadowsr;             //The SpriteRenderer for the shadows of the slimes.
-    public SpriteRenderer facesr;               //The SpriteRenderer for the faces of the slimes.
-    public Animator baseAnimator;               //The animator for the base
-    public Animator patternAnimator;            //The animator for the pattern
-    public Animator faceAnimator;               //The animator for the face
-    public DragDrop dragDrop;                   //The Drag and Drop script
-    private SBrain brain;                       //The Slime Brain Script
+    //=============== SLIME ATTRIBUTES ===============
+    public string speciesName;                  //Name of slime species
+    public float sRarity;                       //Rarity of slime
 
-    // SCRIPTABLE OBJECT ===============
-    //public SlimeSO slimeSpecies;              //The SO of this slime species. Info is taken from here.
+    //=============== SCRIPTABLE OBJECTS ===============
     public SlimeBaseSO slimeSpeciesBase;        //The SO of this slime species Base color. Info is taken from here.
+    public string sBaseColor;                   //Base color of species
     public Color slimeSpeciesBaseColor;         //The Color that will be applied to the Base
     public SlimePatternSO slimeSpeciesPattern;  //The SO of this slime species. Info is taken from here.
+    public string sPatternColor;                //Pattern color of species
     public Color slimeSpeciesPatternColor;      //The Color that will be applied to the Pattern
     public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
 
-    // SLIME ATTRIBUTES ===============
-    public string speciesName;                  //Name of slime species
-    public string sBaseColor;                   //Base color of species
-    public string sPatternColor;                //Pattern color of species
-    public string sPattern;                     //Pattern of species
-    public float sRarity;                       //Rarity of slime
-    public bool sSpecial;                       //Special is true if the base color isn't one of the basic 12
+    //=============== COMPONENTS ===============
+    private GameObject baseSlime;               //The child gameobject containing the base SR
+    private GameObject pattern;                 //The child gameobject containing the pattern SR
+    private GameObject face;                    //The face rendered above the slime
+    private SpriteRenderer Basesr;              //The SpriteRenderer of the base child object
+    private SpriteRenderer patternsr;           //The SpriteRenderer of the pattern child object
+    private SpriteRenderer facesr;              //The SpriteRenderer of the face child object
+    private Animator baseAnimator;              //The animator for the base
+    private Animator patternAnimator;           //The animator for the pattern
+    private Animator faceAnimator;              //The animator for the face
+    private SBrain brain;                       //The Slime Brain Script
 
-    public float habitatX = 10;                 //X postiton of habitat bounds
-    public float habitatZ = 10;                 //Y postiton of habitat bounds
-
-    public bool isJumping = false;
-
-    public Sprite shadow1;
-    public Sprite shadow2;
-
-    // State stuff
-    public enum State
+    //=============== SLIME STATES ===============
+    public enum State                           // All possible slime states
     {
         idle,
         jump,
@@ -59,41 +41,41 @@ public class SlimeController : MonoBehaviour
         love,
         play
     }
-    [SerializeField] private State state;
-    public State GetState() { return state; }
+    [SerializeField] private State state;       // This slimes current state
+    public State GetState() { return state; }   // Get State function so it can stay private
+    
+    private bool stateChanged;                  // Bool to make sure initial state changes only happen once
+    private bool isJumping;                     // Bool to make sure jumping isn't called when alredy in progress
 
-    public bool stateChanged; // Bool to make sure initial state changes only happen once
 
     void Start()
     {
-        baseSlime = this.transform.GetChild(0).gameObject;
-        pattern = this.transform.GetChild(1).gameObject;
-        landingParticleSpawnPos = this.transform.GetChild(4).gameObject;
-        shadow = this.transform.GetChild(3).gameObject;
-        face = this.transform.GetChild(2).gameObject;
-        stateParticleSpawnPos = this.transform.GetChild(5).gameObject;
-        Basesr = baseSlime.GetComponent<SpriteRenderer>();
-        patternsr = pattern.GetComponent<SpriteRenderer>();
-        shadowsr = shadow.GetComponent<SpriteRenderer>();
-        facesr = face.GetComponent<SpriteRenderer>();
-        dragDrop = gameObject.GetComponent<DragDrop>();
+        // Find Brain
         brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
 
+        // Create name and calculate rarity
+        speciesName = sBaseColor + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;
+        sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
+
+        // ========== Sprite stuff ==========
+        baseSlime = this.transform.GetChild(0).gameObject;
+        pattern = this.transform.GetChild(1).gameObject;
+        face = this.transform.GetChild(2).gameObject;
+        // Sprite renderers
+        Basesr = baseSlime.GetComponent<SpriteRenderer>();
+        patternsr = pattern.GetComponent<SpriteRenderer>();
+        facesr = face.GetComponent<SpriteRenderer>();
+        // Sprite animators
+        baseAnimator = baseSlime.GetComponent<Animator>();
+        patternAnimator = pattern.GetComponent<Animator>();
+        faceAnimator = face.GetComponent<Animator>();
+        // Sprite library assets (Used to swap out sprites in animations)
         baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
         pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
         face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
-
-        speciesName = sBaseColor + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;
-        sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
-        //sBaseColor = slimeSpeciesBase.sName;
-        //sPatternColor = slimeSpeciesPattern.sPatternColor;
-        sPattern = slimeSpeciesPattern.sPattern;
-        sSpecial = slimeSpeciesBase.sSpecial;
-        //Basesr.sprite = slimeSpeciesBase.sSprite;
+        // Assign Colors
         Basesr.color = slimeSpeciesBaseColor;
-        //patternsr.sprite = slimeSpeciesPattern.sPatternSprite;
         patternsr.color = slimeSpeciesPatternColor;
-        particles = slimeSpeciesBase.sParticles;
     }
 
     void Update()
@@ -197,7 +179,7 @@ public class SlimeController : MonoBehaviour
             newPos = newPos + transform.position;
 
             // Testing to make sure newPos is in habitat bounds (Will try 20 times then reposition at center)
-            int count = 0;
+            /*int count = 0;
             while (newPos.x > habitatX || newPos.y > habitatZ || newPos.x < -habitatX || newPos.y < -habitatZ) 
             {
                 if (count > 20)
@@ -209,7 +191,7 @@ public class SlimeController : MonoBehaviour
                 newPos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)); // If not, get a new pos
                 newPos = newPos + transform.position;
                 count += 1;
-            }
+            }*/
 
             // Uses Pythagorean theorem to get hypotenuse, which is used to calculate jump height and speed
             float hypotenuse = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - newPos.x), 2)
@@ -272,8 +254,6 @@ public class SlimeController : MonoBehaviour
         float time = 0;
         Vector3 startPosition = transform.position;
         Vector3 startScale = transform.localScale;
-        Vector3 shadowstartPosition = shadow.transform.position;
-        Vector3 sadowStartScale = shadow.transform.localScale;
         Vector3 sadowtargetScale = new Vector3(0.5f - (Mathf.Abs(targetHeight.x) - 1), 0.5f - (Mathf.Abs(targetHeight.y) - 1), 0f);
         Vector3 sadowtargetDist = new Vector3(0f, -(Mathf.Abs(targetHeight.y) - 1), 0f);
 
@@ -286,14 +266,10 @@ public class SlimeController : MonoBehaviour
             if(time < duration / 2)
             {
                 transform.localScale = Vector3.Lerp(startScale, targetHeight, time / (duration / 2));
-                shadow.transform.localScale = Vector3.Lerp(sadowStartScale, sadowtargetScale, time / (duration / 2));
-                shadow.transform.position = Vector3.Lerp(transform.position, transform.position + sadowtargetDist, time / (duration / 2));
             }
             else if(time < duration)
             {
                 transform.localScale = Vector3.Lerp(targetHeight, startScale, time / duration);
-                shadow.transform.localScale = Vector3.Lerp(sadowtargetScale, sadowStartScale, time / duration);
-                shadow.transform.position = Vector3.Lerp(transform.position + sadowtargetDist, transform.position, time / duration);
             }
 
             time += Time.deltaTime;
@@ -315,11 +291,11 @@ public class SlimeController : MonoBehaviour
 
     public void spawnlandingparticles()
     {
-        Instantiate(particles, landingParticleSpawnPos.transform.position, Quaternion.identity, landingParticleSpawnPos.transform);
+        //Instantiate(particles, landingParticleSpawnPos.transform.position, Quaternion.identity, landingParticleSpawnPos.transform);
     }
 
     public void spawnstateparticles(GameObject ptype)
     {
-        Instantiate(ptype, stateParticleSpawnPos.transform.position, Quaternion.identity, stateParticleSpawnPos.transform);
+        //Instantiate(ptype, stateParticleSpawnPos.transform.position, Quaternion.identity, stateParticleSpawnPos.transform);
     }
 }

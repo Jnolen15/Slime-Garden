@@ -62,15 +62,15 @@ public class SplicerInput : MonoBehaviour
             currentSlime = col.gameObject;
             slimeControll = col.gameObject.GetComponent<SlimeController>();
             slimeControll.ChangeState(SlimeController.State.splice);
-            slimeControll.dragDrop.isHeld = false;
+            slimeControll.gameObject.GetComponent<DragDrop>().isHeld = false;
             Vector3 offset = new Vector3(0, 0.1f, 0);
             slimeControll.transform.position = this.transform.position + offset;
             occupied = true;
             sBaseColor = slimeControll.sBaseColor;
             sPatternColor = slimeControll.sPatternColor;
-            sPattern = slimeControll.sPattern;
+            sPattern = slimeControll.slimeSpeciesPattern.sPattern;
             sRarity = slimeControll.sRarity;
-            sSpecial = slimeControll.sSpecial;
+            sSpecial = slimeControll.slimeSpeciesBase.sSpecial;
 
             // Change color of lights to base color of input slime
             SetColor(sBaseColor);
@@ -83,7 +83,7 @@ public class SplicerInput : MonoBehaviour
         } else // If a slime is already in the input it ejects slime to default pos
         {
             slimeControll = col.gameObject.GetComponent<SlimeController>();
-            slimeControll.dragDrop.isHeld = false;
+            slimeControll.gameObject.GetComponent<DragDrop>().isHeld = false;
             slimeControll.transform.position = new Vector3(0f, 0f, 0f);
         }
     }

@@ -68,7 +68,7 @@ public class SBrain : MonoBehaviour
                                 Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
 
                             currslimeControler.ChangeState(SlimeController.State.sleep);
-                            currslime.gameObject.GetComponent<SlimeController>().stateParticles = sleepParticles;
+                            //currslime.gameObject.GetComponent<SlimeController>().stateParticles = sleepParticles;
                         }
                         else if (randInt >= 18 && randInt <= 19) // If 18-19 Love
                         {
@@ -76,7 +76,7 @@ public class SBrain : MonoBehaviour
                                 Destroy(currslime.transform.GetChild(4).gameObject.transform.GetChild(0).gameObject);
 
                             currslimeControler.ChangeState(SlimeController.State.love);
-                            currslime.gameObject.GetComponent<SlimeController>().stateParticles = heartParticles;
+                            //currslime.gameObject.GetComponent<SlimeController>().stateParticles = heartParticles;
                         }
                         else if (randInt >= 20) // If 20 or above Play
                         {
