@@ -80,20 +80,6 @@ public class SlimeController : MonoBehaviour
 
     void Update()
     {
-        //FOR TESTING
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            ChangeState(State.play);
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            ChangeState(State.sleep);
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            ChangeState(State.love);
-        }
-
         // State machine switch
         switch (state)
         {
@@ -147,14 +133,14 @@ public class SlimeController : MonoBehaviour
 
     public void ChangeState(State newState)
     {
-        Debug.Log("Changed to " + newState + " state.");
+        //Debug.Log("Changed to " + newState + " state.");
         state = newState;
         stateChanged = true;
     }
 
     private void StartState(string sName, SlimeFaceSO sface)
     {
-        Debug.Log(sName + " state is being started");
+        //Debug.Log(sName + " state is being started");
 
         this.slimeFace = sface;
         face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
@@ -162,7 +148,6 @@ public class SlimeController : MonoBehaviour
         baseAnimator.SetTrigger(sName);
         patternAnimator.SetTrigger(sName);
         faceAnimator.SetTrigger(sName);
-        //shadowsr.sprite = shadow1;
         stateChanged = false;
     }
 
@@ -174,50 +159,28 @@ public class SlimeController : MonoBehaviour
         {
             isJumping = true;
 
-            //Makes a random position ro jump too
+            //Makes a random position to jump too
             Vector3 newPos = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
             newPos = newPos + transform.position;
 
-            // Testing to make sure newPos is in habitat bounds (Will try 20 times then reposition at center)
-            /*int count = 0;
-            while (newPos.x > habitatX || newPos.y > habitatZ || newPos.x < -habitatX || newPos.y < -habitatZ) 
-            {
-                if (count > 20)
-                {
-                    //Debug.Log("Slime out of bounds. Repositioning");
-                    transform.position = new Vector3(0f, 0f, 0f);
-                }
-                //Debug.Log("NewPos was not within bounds. Rerolling.");
-                newPos = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)); // If not, get a new pos
-                newPos = newPos + transform.position;
-                count += 1;
-            }*/
-
-            // Uses Pythagorean theorem to get hypotenuse, which is used to calculate jump height and speed
-            float hypotenuse = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - newPos.x), 2)
-                                    + Mathf.Pow(Mathf.Abs(transform.position.y - newPos.y), 2));
-            float jumpDuration = hypotenuse / 1.5f;
-            float maxHeight = 1f + (hypotenuse / 3);
-            Vector3 height = new Vector3(maxHeight, maxHeight, 0f);
+            // TODO:
+            // Here test if within bounds
+            // Idea: raycast, if hits a bordeer fence, jump in opposite direction.
 
             // Flipping the sprite in the direction it jumps
             if (newPos.x < transform.position.x)
-            {
-                height.x = height.x * 1;
                 transform.localScale = new Vector3(1, 1, 1);
-            }
             else
-            {
-                height.x = height.x * -1;
                 transform.localScale = new Vector3(-1, 1, 1);
-            }
 
-            StartCoroutine(Jump(newPos, height, jumpDuration)); // Call to jump
+            float jumpDuration = Vector3.Distance(transform.position, newPos) / 2f;
+
+            StartCoroutine(Jump(newPos, jumpDuration));
         }
     }
 
     // Used by other scripts to make a slime jump to a specific location
-    public void JumpToo(Vector3 targetPosition)
+    /*public void JumpToo(Vector3 targetPosition)
     {
         isJumping = true;
 
@@ -239,45 +202,35 @@ public class SlimeController : MonoBehaviour
         }
 
         StartCoroutine(Jump(targetPosition, height, jumpDuration));
-    }
+    }*/
 
-    IEnumerator Jump(Vector3 targetPosition, Vector3 targetHeight, float duration)
+    IEnumerator Jump(Vector3 targetPosition, float duration)
     {
-        /* Jump Code
-         * targetPosition - Landing spot
-         * targetScale - Max height it will reach in jump
-         * duration - length of jump
-         * This uses Lerp to smoothly move the slime to its target position.
-         * It will also lerp up to targetHeight in the first half
-         * then back to normal scale duing the second half. 
-         */
         float time = 0;
         Vector3 startPosition = transform.position;
-        Vector3 startScale = transform.localScale;
-        Vector3 sadowtargetScale = new Vector3(0.5f - (Mathf.Abs(targetHeight.x) - 1), 0.5f - (Mathf.Abs(targetHeight.y) - 1), 0f);
-        Vector3 sadowtargetDist = new Vector3(0f, -(Mathf.Abs(targetHeight.y) - 1), 0f);
-
-        Debug.Log("Jumping from " + startPosition + " to " + targetPosition);
 
         while (time < duration)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, time / duration);
+            var x = Mathf.Lerp(startPosition.x, targetPosition.x, time / duration);
+            var y = 0.0f;
+            var z = Mathf.Lerp(startPosition.z, targetPosition.z, time / duration);
 
             if(time < duration / 2)
             {
-                transform.localScale = Vector3.Lerp(startScale, targetHeight, time / (duration / 2));
+                y = Mathf.Lerp(startPosition.y, duration, time / duration);
             }
             else if(time < duration)
             {
-                transform.localScale = Vector3.Lerp(targetHeight, startScale, time / duration);
+                y = Mathf.Lerp(duration, 0, time / duration);
             }
-
+            
+            transform.position = new Vector3(x, y, z);
             time += Time.deltaTime;
             yield return null;
         }
+
         transform.position = targetPosition;
-        transform.localScale = startScale;
-        spawnlandingparticles();
+        //spawnlandingparticles();
 
         yield return new WaitForSeconds(0.2f);
 
@@ -288,7 +241,6 @@ public class SlimeController : MonoBehaviour
     // ========================== MISC ==========================
 
     // RESOURCES.LOAD THIS PARTICAL STUFF
-
     public void spawnlandingparticles()
     {
         //Instantiate(particles, landingParticleSpawnPos.transform.position, Quaternion.identity, landingParticleSpawnPos.transform);
