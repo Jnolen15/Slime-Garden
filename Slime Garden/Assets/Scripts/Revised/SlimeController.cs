@@ -92,7 +92,6 @@ public class SlimeController : MonoBehaviour
             case State.jump:
                 if (stateChanged)
                 {
-                    Debug.Log("State has been changed to JUMP");
                     stateChanged = false;
                     JumpState();
                 }

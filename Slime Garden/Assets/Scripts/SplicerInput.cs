@@ -6,9 +6,8 @@ public class SplicerInput : MonoBehaviour
 {
     private SplicerScript splicer;
     private SlimeController slimeControll;
-
+    public Transform slimePos;
     public GameObject currentSlime;
-
     public bool occupied = false;
     public string sBaseColor;
     public string sPatternColor;
@@ -17,7 +16,7 @@ public class SplicerInput : MonoBehaviour
     public bool sSpecial = false;
 
     // STUFF FOR COLOR CHANGING
-    private SpriteRenderer lightsSR;
+    public Material lightsMat;
     public Color defaultColor;
     public Color currentColor;
     public Color Amethyst;
@@ -34,92 +33,68 @@ public class SplicerInput : MonoBehaviour
     public Color Topaz;
     public Color Diamond;
 
-    public ParticleSystem particles;
+    private ParticleSystem particles;
 
-    // Start is called before the first frame update
     void Start()
     {
-        // Get access to the main splicerr script which does the generation
         splicer = this.transform.parent.gameObject.GetComponent<SplicerScript>();
-
-        // Get access to the SR of the Ligths object so we can change its color
-        lightsSR = this.transform.GetChild(0).GetComponent<SpriteRenderer>();
 
         particles = GetComponent<ParticleSystem>();
     }
 
     private void Update()
     {
-        lightsSR.color = Color.Lerp(lightsSR.color, currentColor, 0.01f);
+        lightsMat.color = Color.Lerp(lightsMat.color, currentColor, 0.01f);
     }
 
     // When a slime enters this inputs trigger, it gets its info.
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay(Collider col)
     {
-        if (!occupied)
+        if (col.gameObject.tag == "Slime" && !col.gameObject.GetComponent<DragDrop>().isHeld)
         {
-            // Get slime attributes
-            currentSlime = col.gameObject;
-            slimeControll = col.gameObject.GetComponent<SlimeController>();
-            slimeControll.ChangeState(SlimeController.State.splice);
-            slimeControll.gameObject.GetComponent<DragDrop>().isHeld = false;
-            Vector3 offset = new Vector3(0, 0.1f, 0);
-            slimeControll.transform.position = this.transform.position + offset;
-            occupied = true;
-            sBaseColor = slimeControll.sBaseColor;
-            sPatternColor = slimeControll.sPatternColor;
-            sPattern = slimeControll.slimeSpeciesPattern.sPattern;
-            sRarity = slimeControll.sRarity;
-            sSpecial = slimeControll.slimeSpeciesBase.sSpecial;
+            if (!occupied)
+            {
+                // Set up
+                occupied = true;
+                currentSlime = col.gameObject;
+                slimeControll = currentSlime.GetComponent<SlimeController>();
+                currentSlime.GetComponent<DragDrop>().LetGo();
+                slimeControll.ChangeState(SlimeController.State.splice);
+                currentSlime.transform.localPosition = slimePos.position;
+                // Get slime attributes
 
-            // Change color of lights to base color of input slime
-            SetColor(sBaseColor);
+                sBaseColor = slimeControll.sBaseColor;
+                sPatternColor = slimeControll.sPatternColor;
+                sPattern = slimeControll.slimeSpeciesPattern.sPattern;
+                sRarity = slimeControll.sRarity;
+                sSpecial = slimeControll.slimeSpeciesBase.sSpecial;
 
-            // Start Particles
-            particles.Play();
-            ParticleSystem.MainModule settings = particles.GetComponent<ParticleSystem>().main;
-            settings.startColor = new ParticleSystem.MinMaxGradient(currentColor);
+                // Change color of lights to base color of input slime
+                SetColor(sBaseColor);
 
-        } else // If a slime is already in the input it ejects slime to default pos
-        {
-            slimeControll = col.gameObject.GetComponent<SlimeController>();
-            slimeControll.gameObject.GetComponent<DragDrop>().isHeld = false;
-            slimeControll.transform.position = new Vector3(0f, 0f, 0f);
+                // Start Particles
+                particles.Play();
+                ParticleSystem.MainModule settings = particles.GetComponent<ParticleSystem>().main;
+                settings.startColor = new ParticleSystem.MinMaxGradient(currentColor);
+
+            }
         }
     }
 
     // When a slime is taken out or ejected it resets its data feilds
-    private void OnTriggerExit2D(Collider2D col)
+    private void OnTriggerExit(Collider col)
     {
         if (col.gameObject == currentSlime)
         {
-            splicer.Removed();
-
-            slimeControll = col.gameObject.GetComponent<SlimeController>();
-            slimeControll.ChangeState(SlimeController.State.idle);
-            occupied = false;
-
-            currentSlime = null;
-            sBaseColor = null;
-            sPatternColor = null;
-            sPattern = null;
-            sSpecial = false;
-
-            currentColor = defaultColor;
-
-            particles.Stop();
+            Eject();
         }
-        
     }
 
-    // Sends slime out to default pos
+    // Resets fields
     public void Eject()
     {
         if (currentSlime != null)
         {
-            Vector3 targetPosition = new Vector3(Random.Range(-1f, 1f), -1.5f, 0f);
-            targetPosition += currentSlime.GetComponent<SlimeController>().transform.position;
-            //currentSlime.GetComponent<SlimeController>().JumpToo(targetPosition);
             currentSlime.GetComponent<SlimeController>().ChangeState(SlimeController.State.idle);
             particles.Stop();
             occupied = false;
@@ -131,12 +106,16 @@ public class SplicerInput : MonoBehaviour
         }
 
         currentColor = defaultColor;
+        particles.Stop();
     }
 
     private void SetColor(string changeTo)
     {
         switch (changeTo)
         {
+            default:
+                Debug.LogError("BASE COLOR NOT RECOGNIZED" + changeTo);
+                break;
             case "Amethyst":
                 currentColor = Amethyst;
                 break;

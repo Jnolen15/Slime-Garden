@@ -129,7 +129,7 @@ public class SBaseDictionary : ScriptableObject
         if (slimeBaseDict.TryGetValue(sName, out foundSlime))
         {
             // Success
-            Debug.Log("Found slime: " + foundSlime);
+            Debug.Log("Found slime: " + foundSlime.slimeBaseName);
             return foundSlime;
         }
         else

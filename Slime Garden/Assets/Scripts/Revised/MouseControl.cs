@@ -22,7 +22,7 @@ public class MouseControl : MonoBehaviour
             mouseVisual.transform.position = mousePos.point;
 
             if (holding)
-                SlimeHeld(mousePos.point);
+                heldSlime.GetComponent<DragDrop>().SlimeHeld(mousePos.point, pickupOffsetX, pickupOffsetZ);
         }
 
         // Mouse click
@@ -45,6 +45,15 @@ public class MouseControl : MonoBehaviour
         {
             SlimeDropped();
         }
+
+        // DragDrop letgo is called without mouse being let go (Ex: Splicer input)
+        if (heldSlime != null)
+        {
+            if (!heldSlime.GetComponent<DragDrop>().isHeld)
+            {
+                SlimeDropped();
+            }
+        }
     }
 
     private void SlimePickUp(GameObject slime, Vector3 mousePos)
@@ -55,11 +64,6 @@ public class MouseControl : MonoBehaviour
 
         pickupOffsetX = mousePos.x - heldSlime.transform.position.x;
         pickupOffsetZ = mousePos.z - heldSlime.transform.position.z;
-    }
-
-    private void SlimeHeld(Vector3 mousePos)
-    {
-        heldSlime.transform.position = new Vector3(mousePos.x - pickupOffsetX, 0, mousePos.z - pickupOffsetZ);
     }
 
     private void SlimeDropped()

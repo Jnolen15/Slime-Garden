@@ -13,8 +13,8 @@ public class SplicerScript : MonoBehaviour
     public GameObject slimePrefab;
     public GameObject InputLeft;
     public GameObject InputRight;
-    public GameObject Output;
     public GameObject Button;
+    public Transform Output;
     private SplicerButton sb;
     private bool splicing = false;
     private string newSlimeBase;
@@ -22,38 +22,25 @@ public class SplicerScript : MonoBehaviour
     private string newSlimePatternStyle;
     private string newSlimeName;
     private string newSlimePattern;
-    private bool newSlimeSpecial;
+    //private bool newSlimeSpecial;
     private int price = 0;
-    private SpriteRenderer OutputlightsSR;
-    private SpriteRenderer ButtonlightsSR;
+    public Material lightsMat;
+    public Material buttonLightsMat;
     private Color currentColor;
 
     // SLIME PARTS ===============
     //LEFT
-    public string lsBaseColor;
-    public string lsPatternColor;
-    public string lsPattern;
-    public bool lsSpecial = false;
-    //RIGHT
-    public string rsBaseColor;
-    public string rsPatternColor;
-    public string rsPattern;
-    public bool rsSpecial = false;
+    private SplicerInput ls;
+    private SplicerInput rs;
 
-    // Start is called before the first frame update
     void Start()
     {
         brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
         pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-
-        InputLeft = this.transform.GetChild(0).gameObject;
-        InputRight = this.transform.GetChild(1).gameObject;
-        Output = this.transform.GetChild(2).gameObject;
-        Button = this.transform.GetChild(3).gameObject;
+        ls = InputLeft.GetComponent<SplicerInput>();
+        rs = InputRight.GetComponent<SplicerInput>();
         sb = Button.GetComponent<SplicerButton>();
-        // Get access to the SR of the Ligths object so we can change its color
-        OutputlightsSR = Output.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        ButtonlightsSR = Button.transform.GetChild(0).GetComponent<SpriteRenderer>();
+
         currentColor = InputRight.GetComponent<SplicerInput>().defaultColor;
     }
 
@@ -62,16 +49,17 @@ public class SplicerScript : MonoBehaviour
         //If Left and right inputs are full
         if (InputLeft.GetComponent<SplicerInput>().currentSlime != null && InputRight.GetComponent<SplicerInput>().currentSlime != null && !splicing)
         {
-            // If the player can afford it or not
+            // Calculate Price
             if (price == 0)
             {
                 CalculatePrice();
                 sb.priceText.enabled = true;
                 sb.priceText.text = price.ToString();
             }
+            // If the player can afford it or not
             if (pc.cs >= price)
             {
-                ButtonlightsSR.color = Color.green;
+                buttonLightsMat.color = Color.green;
                 sb.priceText.color = Color.green;
                 sb.canBePressed = true;
                 if (sb.isPressed)
@@ -83,19 +71,22 @@ public class SplicerScript : MonoBehaviour
                 }
             } else
             {
-                ButtonlightsSR.color = Color.red;
+                buttonLightsMat.color = Color.red;
                 sb.priceText.color = Color.red;
             }
+        } else
+        {
+            Removed();
         }
 
         // Update Lights
-        OutputlightsSR.color = Color.Lerp(OutputlightsSR.color, currentColor, 0.01f);
-        ButtonlightsSR.color = Color.Lerp(ButtonlightsSR.color, currentColor, 0.01f);
+        lightsMat.color = Color.Lerp(lightsMat.color, currentColor, 0.01f);
+        buttonLightsMat.color = Color.Lerp(buttonLightsMat.color, currentColor, 0.01f);
     }
 
     private void CalculatePrice()
     {
-        price = (int)InputLeft.GetComponent<SplicerInput>().sRarity + (int)InputRight.GetComponent<SplicerInput>().sRarity;
+        price = (int)InputLeft.GetComponent<SplicerInput>().sRarity + (int)InputRight.GetComponent<SplicerInput>().sRarity + 2;
     }
 
     // Called when a slime is taken out of one of the inputs
@@ -108,17 +99,8 @@ public class SplicerScript : MonoBehaviour
 
     private void Splice()
     {
-        // Get slime components from each input
-        lsBaseColor = InputLeft.GetComponent<SplicerInput>().sBaseColor;
-        lsPatternColor = InputLeft.GetComponent<SplicerInput>().sPatternColor;
-        lsPattern = InputLeft.GetComponent<SplicerInput>().sPattern;
-        lsSpecial = InputLeft.GetComponent<SplicerInput>().sSpecial;
-        Debug.Log("Left input: " + lsBaseColor + " " + lsPatternColor + " " + lsPattern);
-        rsBaseColor = InputRight.GetComponent<SplicerInput>().sBaseColor;
-        rsPatternColor = InputRight.GetComponent<SplicerInput>().sPatternColor;
-        rsPattern = InputRight.GetComponent<SplicerInput>().sPattern;
-        rsSpecial = InputRight.GetComponent<SplicerInput>().sSpecial;
-        Debug.Log("Right input: " + rsBaseColor + " " + rsPatternColor + " " + rsPattern);
+        Debug.Log("Left input: " + ls.sBaseColor + " " + ls.sPatternColor + " " + ls.sPattern);
+        Debug.Log("Right input: " + rs.sBaseColor + " " + rs.sPatternColor + " " + rs.sPattern);
 
         // Test Odds is a function that generates 1000 slimes 
         // and displays all the combos of slimes generated, 
@@ -141,52 +123,38 @@ public class SplicerScript : MonoBehaviour
         bool compatableName = false;
         while (!compatableName)
         {
-            // Base color: 50/50 choose left or right base
+            // ======== Base color ========
             if (Random.Range(0, 2) == 0)
-            {
-                newSlimeBase += lsBaseColor;
-                newSlimeSpecial = lsSpecial;
-            }
+                newSlimeBase += ls.sBaseColor;
             else
-            {
-                newSlimeBase += rsBaseColor;
-                newSlimeSpecial = rsSpecial;
-            }
+                newSlimeBase += rs.sBaseColor;
 
             Debug.Log("Base color: " + newSlimeBase);
 
-            // Pattern Style: 50/50 choose left or right pattern style
+            // ======== Pattern Style ========
             if (Random.Range(0, 2) == 0)
-                newSlimePatternStyle += lsPattern;
+                newSlimePatternStyle += ls.sPattern;
             else
-                newSlimePatternStyle += rsPattern;
+                newSlimePatternStyle += rs.sPattern;
 
             Debug.Log("Pattern Style: " + newSlimePatternStyle);
 
-            // Test to see if pattern is Null
+            // If Pattern is null, make basic slime
             if (newSlimePatternStyle == "Null")
             {
                 Debug.Log("Pattern Style was Null, Making a basic slime");
 
-                if (newSlimeSpecial) //If Base is special then pattern Color is Null (There are no special patterns)
-                {
-                    newSlimePatternColor = "Null";
-                    compatableName = true;
-                }
-                else //Otherwise The pattern color is = to the Base color
-                {
-                    newSlimePatternColor = newSlimeBase;
-                    compatableName = true;
-                }
+                newSlimePatternColor = newSlimeBase;
+                compatableName = true;
             }
 
             if (!compatableName)
             {
-                // Pattern Color: 50/50 choose left or right pattern color
+                // ======== Pattern Color ========
                 if (Random.Range(0, 2) == 0)
-                    newSlimePatternColor += lsPatternColor;
+                    newSlimePatternColor += ls.sPatternColor;
                 else
-                    newSlimePatternColor += rsPatternColor;
+                    newSlimePatternColor += rs.sPatternColor;
 
                 Debug.Log("Pattern Color: " + newSlimePatternColor);
 
@@ -201,8 +169,10 @@ public class SplicerScript : MonoBehaviour
                     {
                         Debug.Log("Pattern Color was same as Base Color. Re-rolling");
                     }
+                } else
+                {
+                    Debug.LogError("pattern Color was Null, Re-rolling");
                 }
-
             }
 
             if (!compatableName) //If slime still does not work, reset values and try again
@@ -224,7 +194,7 @@ public class SplicerScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Change Lights color to Base color of Created Slime
-        if (newSlimeBase == lsBaseColor) currentColor = InputLeft.GetComponent<SplicerInput>().currentColor;
+        if (newSlimeBase == ls.sBaseColor) currentColor = InputLeft.GetComponent<SplicerInput>().currentColor;
         else currentColor = InputRight.GetComponent<SplicerInput>().currentColor;
 
         yield return new WaitForSeconds(1);
@@ -232,31 +202,25 @@ public class SplicerScript : MonoBehaviour
         // Spawn new slime apply selected SO
         // Instantates the basic slime prefab
         // Gives prefab the correct SO from the dictionary via GetSlime
-        Vector3 offset = new Vector3(0, 0.2f, 0);
-        GameObject newSlime = Instantiate(slimePrefab, Output.transform.position + offset, Quaternion.identity);
-        newSlime.GetComponent<SlimeController>().slimeSpeciesBase = SBaseDictionary.GetSlime(newSlimeBase).slimeBaseSO;
-        newSlime.GetComponent<SlimeController>().slimeSpeciesBaseColor = SBaseDictionary.GetSlime(newSlimeBase).slimeBaseColor;
-        newSlime.GetComponent<SlimeController>().slimeSpeciesPattern = SPatternDictionary.GetSlime(newSlimePattern).slimePatternSO;
-        newSlime.GetComponent<SlimeController>().sPatternColor = SPatternDictionary.GetSlime(newSlimePattern).slimePatternColorName;
-        newSlime.GetComponent<SlimeController>().slimeSpeciesPatternColor = SPatternDictionary.GetSlime(newSlimePattern).slimePatternColor;
-        // ^ Scriptable object scripts can be directly called without them needing to be in a scene
+        GameObject newSlime = Instantiate(slimePrefab, Output.position, Quaternion.identity);
+        SlimeController newSC = newSlime.GetComponent<SlimeController>();
+        var newBase = SBaseDictionary.GetSlime(newSlimeBase);
+        var newpattern = SPatternDictionary.GetSlime(newSlimePattern);
 
+        newSC.slimeSpeciesBase = newBase.slimeBaseSO;
+        newSC.sBaseColor = newBase.slimeBaseName;
+        newSC.slimeSpeciesBaseColor = newBase.slimeBaseColor;
+        newSC.slimeSpeciesPattern = newpattern.slimePatternSO;
+        newSC.sPatternColor = newpattern.slimePatternColorName;
+        newSC.slimeSpeciesPatternColor = newpattern.slimePatternColor;
 
         brain.activeSlimes.Add(newSlime);
 
         yield return new WaitForSeconds(0.5f);
 
-        // Eject Inputs
-        InputLeft.GetComponent<SplicerInput>().Eject();
-        InputRight.GetComponent<SplicerInput>().Eject();
-
-        yield return new WaitForSeconds(0.5f);
-
         // Eject New Slime
-        Vector3 targetPosition = new Vector3(Random.Range(-2f, 2f), -1.5f, 0f);
-        targetPosition += newSlime.GetComponent<SlimeController>().transform.position;
-        //newSlime.GetComponent<SlimeController>().JumpToo(targetPosition);
-        newSlime.GetComponent<SlimeController>().ChangeState(SlimeController.State.idle);
+        newSlime.GetComponent<SlimeController>().ChangeState(SlimeController.State.jump);
+
         // Reset Strings
         newSlimeBase = "";
         newSlimePatternColor = "";
@@ -272,6 +236,9 @@ public class SplicerScript : MonoBehaviour
         currentColor = InputRight.GetComponent<SplicerInput>().defaultColor;
     }
 
+
+
+    // FOR TESTING ODDS OF EACH SLIME TYPE
     private void RunTestOdds()
     {
         // Get all possible Combos
@@ -283,52 +250,40 @@ public class SplicerScript : MonoBehaviour
             bool compatableName = false;
             while (!compatableName)
             {
-                // Base color
+                // ======== Base color ========
                 if (Random.Range(0, 2) == 0)
-                    newSlimeBase += lsBaseColor;
+                    newSlimeBase += ls.sBaseColor;
                 else
-                    newSlimeBase += rsBaseColor;
+                    newSlimeBase += rs.sBaseColor;
 
-                // Pattern Style
+                Debug.Log("Base color: " + newSlimeBase);
+
+                // ======== Pattern Style ========
                 if (Random.Range(0, 2) == 0)
-                    newSlimePatternStyle += lsPattern;
+                    newSlimePatternStyle += ls.sPattern;
                 else
-                    newSlimePatternStyle += rsPattern;
+                    newSlimePatternStyle += rs.sPattern;
 
-                // Test to see if pattern is Null
+                Debug.Log("Pattern Style: " + newSlimePatternStyle);
+
+                // If Pattern is null, make basic slime
                 if (newSlimePatternStyle == "Null")
                 {
-                    // Basic slimes seem to be twice as likely as pattern slimes when its a Basic + a pattern
-                    // So here I just do another odds to keep it as a basic or generate again
-                    // This will make getting a pattern one more likely. (Which is fine cuz getteing a pattern is more fun)
-                    if (Random.Range(0, 3) == 0)
-                    {
-                        if (newSlimeBase == "Diamond") //If Base is Diamond then pattern Color is Null (There is no Diamond pattern)
-                        {
-                            newSlimePatternColor = "Null";
-                            compatableName = true;
-                        }
-                        else //Otherwise The pattern color is = to the Base color
-                        {
-                            newSlimePatternColor = newSlimeBase;
-                            compatableName = true;
-                        }
-                    }
-                    else
-                    {
-                        if (lsPattern == "Null") newSlimePatternStyle = rsPattern;
-                        else if (rsPattern == "Null") newSlimePatternStyle = lsPattern;
-                    }
+                    Debug.Log("Pattern Style was Null, Making a basic slime");
 
+                    newSlimePatternColor = newSlimeBase;
+                    compatableName = true;
                 }
 
                 if (!compatableName)
                 {
-                    // Pattern Color
+                    // ======== Pattern Color ========
                     if (Random.Range(0, 2) == 0)
-                        newSlimePatternColor += lsPatternColor;
+                        newSlimePatternColor += ls.sPatternColor;
                     else
-                        newSlimePatternColor += rsPatternColor;
+                        newSlimePatternColor += rs.sPatternColor;
+
+                    Debug.Log("Pattern Color: " + newSlimePatternColor);
 
                     if (newSlimePatternColor != "Null") // Test to see if pattern color is Null
                     {
@@ -337,6 +292,14 @@ public class SplicerScript : MonoBehaviour
                         {
                             compatableName = true;
                         }
+                        else
+                        {
+                            Debug.Log("Pattern Color was same as Base Color. Re-rolling");
+                        }
+                    }
+                    else
+                    {
+                        Debug.LogError("pattern Color was Null, Re-rolling");
                     }
                 }
 
@@ -372,10 +335,6 @@ public class SplicerScript : MonoBehaviour
         Debug.Log(generatedSlimes);
         foreach (KeyValuePair<string, int> kvp in generatedSlimes)
             Debug.Log(kvp.Key + " generated " + kvp.Value + " times.");
-
-        // Eject Inputs
-        InputLeft.GetComponent<SplicerInput>().Eject();
-        InputRight.GetComponent<SplicerInput>().Eject();
 
         splicing = false;
     }

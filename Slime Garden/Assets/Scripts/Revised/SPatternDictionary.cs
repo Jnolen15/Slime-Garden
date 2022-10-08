@@ -150,7 +150,7 @@ public class SPatternDictionary : ScriptableObject
         if (slimePatternDict.TryGetValue(sName, out foundSlime))
         {
             // Success
-            //Debug.Log("Found slime: " + foundSlime);
+            Debug.Log("Found slime: " + foundSlime.slimePatternName);
             return foundSlime;
         }
         else
