@@ -6,7 +6,7 @@ public class Crate : MonoBehaviour
 {
     public GameObject contents;
 
-    private Manager gm;
+    private RandomSlime rs;
 
     public enum Type
     {
@@ -18,12 +18,7 @@ public class Crate : MonoBehaviour
 
     void Start()
     {
-        gm = GameObject.Find("GameManager").GetComponent<Manager>();
-    }
-
-    void Update()
-    {
-        
+        rs = GameObject.Find("GameManager").GetComponent<RandomSlime>();
     }
 
     private void OnMouseDown()
@@ -31,7 +26,7 @@ public class Crate : MonoBehaviour
         if(type == Type.Slime)
         {
             Debug.Log("Generating Slime");
-            gm.CreateSlime(transform.position);
+            rs.CreateSlime(transform.position);
         }
         Destroy(this.gameObject);
     }

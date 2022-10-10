@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+public class RandomSlime : MonoBehaviour
 {
     [SerializeField]
     private string[] sBaseColors;

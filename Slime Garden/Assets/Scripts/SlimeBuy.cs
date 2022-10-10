@@ -14,11 +14,6 @@ public class SlimeBuy : MonoBehaviour
         shop = this.transform.GetComponentInParent<Shop>();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void OnMouseDown()
     {
         shop.SlimePurchased();

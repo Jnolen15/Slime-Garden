@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Cheats : MonoBehaviour
 {
-    private Manager gm;
+    private RandomSlime rs;
     private PlayerController pc;
 
     // Start is called before the first frame update
     void Start()
     {
         pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        gm = GetComponentInParent<Manager>();
+        rs = GetComponentInParent<RandomSlime>();
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class Cheats : MonoBehaviour
         // Spawn a random slime on button press
         if (Input.GetKeyDown(KeyCode.G))
         {
-            gm.CreateSlime(Vector3.zero);
+            rs.CreateSlime(Vector3.zero);
         }
     }
 }
