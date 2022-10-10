@@ -45,7 +45,6 @@ public class SlimeController : MonoBehaviour
     public State GetState() { return state; }   // Get State function so it can stay private
     
     private bool stateChanged;                  // Bool to make sure initial state changes only happen once
-    private bool isJumping;                     // Bool to make sure jumping isn't called when alredy in progress
 
 
     void Start()
@@ -80,6 +79,9 @@ public class SlimeController : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.J))
+            JumpState();
+
         // State machine switch
         switch (state)
         {
@@ -154,87 +156,24 @@ public class SlimeController : MonoBehaviour
 
     public void JumpState()
     {
-        if (!isJumping)
-        {
-            isJumping = true;
+        Debug.Log("Jumping");
+        Vector3 newPos = new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
 
-            //Makes a random position to jump too
-            Vector3 newPos = new Vector3(Random.Range(-2f, 2f), 0f, Random.Range(-2f, 2f));
-            newPos = newPos + transform.position;
+        // TODO:
+        // Here test if within bounds
+        // Idea: raycast, if hits a bordeer fence, jump in opposite direction.
 
-            // TODO:
-            // Here test if within bounds
-            // Idea: raycast, if hits a bordeer fence, jump in opposite direction.
-
-            // Flipping the sprite in the direction it jumps
-            if (newPos.x < transform.position.x)
-                FlipSprite(false);
-            else
-                FlipSprite(true);
-
-            float jumpDuration = Vector3.Distance(transform.position, newPos) / 2f;
-
-            StartCoroutine(Jump(newPos, jumpDuration));
-        }
-    }
-
-    // Used by other scripts to make a slime jump to a specific location
-    /*public void JumpToo(Vector3 targetPosition)
-    {
-        isJumping = true;
-
-        float hypotenuse = Mathf.Sqrt(Mathf.Pow(Mathf.Abs(transform.position.x - targetPosition.x), 2)    //Uses Pythagorean theorem to get hypotenuse
-                                    + Mathf.Pow(Mathf.Abs(transform.position.y - targetPosition.y), 2));
-        float jumpDuration = hypotenuse / 1.5f;            // Calculating jump speed.
-        float maxHeight = 1f + (hypotenuse / 3);  //hypotenuse / 3 to get the jump height because this makes for a larger height the larger the jump.
-        Vector3 height = new Vector3(maxHeight, maxHeight, 0f);
-
-        if (targetPosition.x < transform.position.x) // Flipping the sprite in the direction it jumps
-        {
-            height.x = height.x * 1;
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+        // Flipping the sprite in the direction it jumps
+        if (newPos.x < transform.position.x)
+            FlipSprite(false);
         else
-        {
-            height.x = height.x * -1;
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
+            FlipSprite(true);
 
-        StartCoroutine(Jump(targetPosition, height, jumpDuration));
-    }*/
+        // Jump by force
+        this.GetComponent<Rigidbody>().AddForce(newPos * 4, ForceMode.Impulse);
 
-    IEnumerator Jump(Vector3 targetPosition, float duration)
-    {
-        float time = 0;
-        Vector3 startPosition = transform.position;
-
-        while (time < duration)
-        {
-            var x = Mathf.Lerp(startPosition.x, targetPosition.x, time / duration);
-            var y = 0.0f;
-            var z = Mathf.Lerp(startPosition.z, targetPosition.z, time / duration);
-
-            if(time < duration / 2)
-            {
-                y = Mathf.Lerp(startPosition.y, duration, time / duration);
-            }
-            else if(time < duration)
-            {
-                y = Mathf.Lerp(duration, 0, time / duration);
-            }
-            
-            transform.position = new Vector3(x, y, z);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = targetPosition;
-        //spawnlandingparticles();
-
-        yield return new WaitForSeconds(0.2f);
-
+        // Reset state
         ChangeState(State.idle);
-        isJumping = false;
     }
 
     // ========================== MISC ==========================
