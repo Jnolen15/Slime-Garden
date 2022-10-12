@@ -30,6 +30,15 @@ public class SlimeController : MonoBehaviour
     private Animator faceAnimator;              //The animator for the face
     private SBrain brain;                       //The Slime Brain Script
 
+    //=============== HELP VARIABLES ===============
+    private bool stateChanged;                  // Bool to make sure initial state changes only happen once
+    [SerializeField]
+    private bool grounded;                      // Bool to make sure slime is grounded
+    [SerializeField]
+    private bool jumped;                        // Bool to see if slime has already jumped
+    [SerializeField]    
+    private float stateTimer;                   // Used to add pauses to certain states
+
     //=============== SLIME STATES ===============
     public enum State                           // All possible slime states
     {
@@ -43,11 +52,6 @@ public class SlimeController : MonoBehaviour
     }
     [SerializeField] private State state;       // This slimes current state
     public State GetState() { return state; }   // Get State function so it can stay private
-    
-    private bool stateChanged;                  // Bool to make sure initial state changes only happen once
-    [SerializeField] private bool grounded;                  // Bool to make sure slime is grounded
-    [SerializeField] private bool jumped;                  // Bool to make sure slime is grounded
-    [SerializeField] private float stateTimer;                  // Used to ad pauses to certain states
 
 
     void Start()
