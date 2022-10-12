@@ -45,6 +45,9 @@ public class SlimeController : MonoBehaviour
     public State GetState() { return state; }   // Get State function so it can stay private
     
     private bool stateChanged;                  // Bool to make sure initial state changes only happen once
+    [SerializeField] private bool grounded;                  // Bool to make sure slime is grounded
+    [SerializeField] private bool jumped;                  // Bool to make sure slime is grounded
+    [SerializeField] private float stateTimer;                  // Used to ad pauses to certain states
 
 
     void Start()
@@ -94,8 +97,13 @@ public class SlimeController : MonoBehaviour
             case State.jump:
                 if (stateChanged)
                 {
-                    stateChanged = false;
+                    StartState("Held", brain.slimeFaceDefault);
                     JumpState();
+                }
+                if (jumped && grounded)
+                {
+                    jumped = false;
+                    ChangeState(State.idle);
                 }
                 break;
             case State.held:
@@ -125,23 +133,35 @@ public class SlimeController : MonoBehaviour
             case State.play:
                 if (stateChanged)
                 {
-                    StartState("Hop", brain.slimeFaceHappy);
+                    StartState("Held", brain.slimeFaceHappy);
                 }
-                // JUMP AROUND
+                // JUMP AROUND (WIP)
+                if (stateTimer > 0) stateTimer -= Time.deltaTime;
+                if (!jumped && grounded && stateTimer <= 0)
+                {
+                    StartState("Held", brain.slimeFaceHappy);
+                    JumpState();
+                }
+                if (jumped && grounded)
+                {
+                    StartState("Idle", brain.slimeFaceHappy);
+                    jumped = false;
+                    stateTimer = 0.2f;
+                }
                 break;
         }
     }
 
     public void ChangeState(State newState)
     {
-        //Debug.Log("Changed to " + newState + " state.");
         state = newState;
         stateChanged = true;
     }
 
     private void StartState(string sName, SlimeFaceSO sface)
     {
-        //Debug.Log(sName + " state is being started");
+        // Changes the slime face, sets animations, and re-sets stateChanged bool
+        // Be sure to set stateChanged to false if changing state without this function
 
         this.slimeFace = sface;
         face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
@@ -164,7 +184,8 @@ public class SlimeController : MonoBehaviour
         // Idea: raycast, if hits a bordeer fence, jump in opposite direction.
 
         // Flipping the sprite in the direction it jumps
-        if (newPos.x < transform.position.x)
+        Debug.Log("newPosx: " + newPos.x + " transformpositionx: " + transform.position.x);
+        if ((newPos.x + transform.position.x) < transform.position.x)
             FlipSprite(false);
         else
             FlipSprite(true);
@@ -172,8 +193,8 @@ public class SlimeController : MonoBehaviour
         // Jump by force
         this.GetComponent<Rigidbody>().AddForce(newPos * 4, ForceMode.Impulse);
 
-        // Reset state
-        ChangeState(State.idle);
+        jumped = true;
+        grounded = false;
     }
 
     // ========================== MISC ==========================
@@ -183,6 +204,22 @@ public class SlimeController : MonoBehaviour
         Basesr.flipX = flip;
         patternsr.flipX = flip;
         facesr.flipX = flip;
+    }
+
+    private void OnCollisionEnter(Collision col)
+    {
+        if(col.gameObject.tag == "Ground")
+        {
+            grounded = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision col)
+    {
+        if (col.gameObject.tag == "Ground")
+        {
+            grounded = false;
+        }
     }
 
     // RESOURCES.LOAD THIS PARTICAL STUFF
