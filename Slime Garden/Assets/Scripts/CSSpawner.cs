@@ -6,7 +6,7 @@ using UnityEngine;
 public class CSSpawner : MonoBehaviour
 {
     // COMPONENTS ===============
-    private SBrain brain;               //The Slime Brain Script
+    private HabitatControl hControl;               //The Slime Brain Script
     private Vector3 position;
     private bool gotData = false;
     [SerializeField] private float csCooldownVal = 10f;
@@ -17,7 +17,7 @@ public class CSSpawner : MonoBehaviour
     public GameObject CongealedSlimeDrop;
     public float csCooldown = 10f;
     public float habitatX = 9;                  //X postiton of habitat bounds
-    public float habitatY = 9;                  //Y postiton of habitat bounds
+    public float habitatZ = 9;                  //Y postiton of habitat bounds
 
     private Color Amethyst = new Color32(0x80, 0x00, 0xFF, 0xFF);
     private Color Aquamarine = new Color32(0x00, 0x00, 0xFF, 0xFF);
@@ -35,7 +35,7 @@ public class CSSpawner : MonoBehaviour
     void Start()
     {
         // Get access to brain script
-        brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
+        hControl = this.GetComponent<HabitatControl>();
     }
 
     void Update()
@@ -52,10 +52,10 @@ public class CSSpawner : MonoBehaviour
     {
         csSpawnMod = 0;
         totalRarity = 0;
-        numSlimes = brain.activeSlimes.Count;
+        numSlimes = hControl.activeSlimes.Count;
 
         // Get total rarity of slimes
-        foreach (GameObject slime in brain.activeSlimes)
+        foreach (GameObject slime in hControl.activeSlimes)
         {
             totalRarity += slime.gameObject.GetComponent<SlimeController>().sRarity;
         }
@@ -81,7 +81,7 @@ public class CSSpawner : MonoBehaviour
             // Spawn CS
             for (int i = 0; i < csSpawnMod; i++)
             {
-                position = new Vector3(Random.Range(-habitatX, habitatX), Random.Range(-habitatY, habitatY), 0);
+                position = new Vector3(Random.Range(-habitatX, habitatX), 0, Random.Range(-habitatZ, habitatZ));
                 GameObject drop = Instantiate(CongealedSlimeDrop, position, Quaternion.identity);
                 PickColor(drop.GetComponent<CongealedSlime>());
             }

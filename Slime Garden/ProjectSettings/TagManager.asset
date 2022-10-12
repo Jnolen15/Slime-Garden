@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Slime
   - Brain
+  - GameManager
   layers:
   - Default
   - TransparentFX

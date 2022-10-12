@@ -19,11 +19,11 @@ public class RandomSlime : MonoBehaviour
     private string sPatterntype = "";
     private bool sSpecial = false;
 
-    private SBrain brain;
+    private HabitatControl hControl;
 
     void Start()
     {
-        brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
+        hControl = this.GetComponent<HabitatControl>();
     }
 
     public void CreateSlime(Vector3 pos)
@@ -85,7 +85,7 @@ public class RandomSlime : MonoBehaviour
         newSlime.GetComponent<SlimeController>().sPatternColor = SPatternDictionary.GetSlime(sPatterntype).slimePatternColorName;
         newSlime.GetComponent<SlimeController>().slimeSpeciesPatternColor = SPatternDictionary.GetSlime(sPatterntype).slimePatternColor;
 
-        brain.activeSlimes.Add(newSlime);
+        hControl.activeSlimes.Add(newSlime);
 
         sBaseColor = "";
         sPattern = "";

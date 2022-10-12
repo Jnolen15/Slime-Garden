@@ -50,7 +50,7 @@ public class SlimeController : MonoBehaviour
     void Start()
     {
         // Find Brain
-        brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
+        brain = this.GetComponent<SBrain>();
 
         // Create name and calculate rarity
         speciesName = sBaseColor + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;

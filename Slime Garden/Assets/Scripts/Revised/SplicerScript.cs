@@ -8,7 +8,7 @@ public class SplicerScript : MonoBehaviour
     public bool TestOdds = true;
 
     // COMPONENTS ===============
-    private SBrain brain;
+    private HabitatControl hControl;
     private PlayerController pc;
     public GameObject slimePrefab;
     public GameObject InputLeft;
@@ -35,7 +35,7 @@ public class SplicerScript : MonoBehaviour
 
     void Start()
     {
-        brain = GameObject.FindGameObjectWithTag("Brain").GetComponent<SBrain>();
+        hControl = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
         pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         ls = InputLeft.GetComponent<SplicerInput>();
         rs = InputRight.GetComponent<SplicerInput>();
@@ -214,7 +214,7 @@ public class SplicerScript : MonoBehaviour
         newSC.sPatternColor = newpattern.slimePatternColorName;
         newSC.slimeSpeciesPatternColor = newpattern.slimePatternColor;
 
-        brain.activeSlimes.Add(newSlime);
+        hControl.activeSlimes.Add(newSlime);
 
         yield return new WaitForSeconds(0.5f);
 

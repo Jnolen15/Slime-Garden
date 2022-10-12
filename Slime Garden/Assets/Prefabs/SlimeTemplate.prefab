@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2476212351923915012}
   - component: {fileID: 3820516103340025377}
+  - component: {fileID: 3296617851318787812}
   - component: {fileID: 6095753772148874148}
   - component: {fileID: 8598985467623667190}
   - component: {fileID: 5529369700081967155}
@@ -62,6 +63,21 @@ MonoBehaviour:
   slimeSpeciesPatternColor: {r: 0, g: 0, b: 0, a: 0}
   slimeFace: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
   state: 0
+--- !u!114 &3296617851318787812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538871180620568560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b68d50b4afae2c41a40d6af25e76837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slimeFaceDefault: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
+  slimeFaceHappy: {fileID: 11400000, guid: b2c25ee572af2b746ba999c01885030f, type: 2}
+  slimeFaceSleep: {fileID: 11400000, guid: 5f15569523c8a454e91928ca358cf23a, type: 2}
 --- !u!114 &6095753772148874148
 MonoBehaviour:
   m_ObjectHideFlags: 0
