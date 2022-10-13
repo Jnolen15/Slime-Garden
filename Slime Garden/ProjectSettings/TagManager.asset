@@ -10,6 +10,7 @@ TagManager:
   - Ground
   - CS
   - MousePos
+  - Border
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Ground
   - Slimes
   - CS
-  - 
+  - Border
   - 
   - 
   - 

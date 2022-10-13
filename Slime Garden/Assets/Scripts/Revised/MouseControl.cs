@@ -9,12 +9,21 @@ public class MouseControl : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
+    [SerializeField] private LayerMask borderLayerMask;
     [SerializeField] private GameObject mouseVisual;
     private float pickupOffsetX;
-    private float pickupOffsetZ;
 
     void Update()
     {
+        // border detection
+        Ray borderRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
+        {
+            Debug.Log("HitBorder");
+            if (holding)
+                SlimeDropped();
+        }
+
         // Mouse position in world space
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
@@ -22,7 +31,7 @@ public class MouseControl : MonoBehaviour
             mouseVisual.transform.position = mousePos.point;
 
             if (holding)
-                heldSlime.GetComponent<DragDrop>().SlimeHeld(mousePos.point, pickupOffsetX, pickupOffsetZ);
+                heldSlime.GetComponent<DragDrop>().SlimeHeld(mousePos.point, pickupOffsetX);
         }
 
         // Mouse click
@@ -63,7 +72,6 @@ public class MouseControl : MonoBehaviour
         heldSlime.GetComponent<DragDrop>().PickedUp();
 
         pickupOffsetX = mousePos.x - heldSlime.transform.position.x;
-        pickupOffsetZ = mousePos.z - heldSlime.transform.position.z;
     }
 
     private void SlimeDropped()

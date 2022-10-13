@@ -19,9 +19,8 @@ public class DragDrop : MonoBehaviour
         sc.ChangeState(SlimeController.State.idle);
     }
 
-    public void SlimeHeld(Vector3 mousePos, float xOffset, float zOffset)
+    public void SlimeHeld(Vector3 mousePos, float xOffset)
     {
-        this.transform.position = new Vector3(mousePos.x - xOffset, 0.2f, mousePos.z - zOffset);
+        this.transform.position = new Vector3(mousePos.x, 0.2f, mousePos.z);
     }
-
 }

@@ -39,7 +39,7 @@ public class SlimeController : MonoBehaviour
     private bool jumped;                        // Bool to see if slime has already jumped
     [SerializeField]    
     private float stateTimer;                   // Used to add pauses to certain states
-    public GameObject stateParticles;           // Used to keep track of state particles so they can be disabled later
+    private GameObject stateParticles;           // Used to keep track of state particles so they can be disabled later
 
     //=============== SLIME STATES ===============
     public enum State                           // All possible slime states
