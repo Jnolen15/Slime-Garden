@@ -17,6 +17,7 @@ public class SlimeController : MonoBehaviour
     public string sPatternColor;                //Pattern color of species
     public Color slimeSpeciesPatternColor;      //The Color that will be applied to the Pattern
     public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
+    public GameObject sCrystal;                 //The crystal Game object this slime produces
 
     //=============== COMPONENTS ===============
     private GameObject baseSlime;               //The child gameobject containing the base SR
@@ -180,7 +181,6 @@ public class SlimeController : MonoBehaviour
 
     public void JumpState()
     {
-        Debug.Log("Jumping");
         Vector3 newPos = new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
 
         // TODO:
@@ -188,7 +188,6 @@ public class SlimeController : MonoBehaviour
         // Idea: raycast, if hits a bordeer fence, jump in opposite direction.
 
         // Flipping the sprite in the direction it jumps
-        Debug.Log("newPosx: " + newPos.x + " transformpositionx: " + transform.position.x);
         if ((newPos.x + transform.position.x) < transform.position.x)
             FlipSprite(false);
         else

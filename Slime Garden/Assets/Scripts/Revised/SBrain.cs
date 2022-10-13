@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SBrain : MonoBehaviour
 {
+    [SerializeField] private GameObject cs;
+    private SlimeController currslimeControler;
+
     // STATE STUFF ============
     public SlimeFaceSO slimeFaceDefault;            //The SO with Default slime facial expressions. Info is taken from here.
     public SlimeFaceSO slimeFaceHappy;              //The SO with Happy slime facial expressions. Info is taken from here.
@@ -11,13 +14,23 @@ public class SBrain : MonoBehaviour
 
     public float stateCD = 5f;
 
+    private void Start()
+    {
+        currslimeControler = this.GetComponent<SlimeController>();
+        cs = currslimeControler.sCrystal;
+    }
+
     private void Update()
+    {
+        UpdateState();
+    }
+
+    private void UpdateState()
     {
         // After a random ammount of time the brain picks a few random slimes and changes what state they are in.
         stateCD -= Time.deltaTime;
         if (stateCD <= 0)
         {
-            SlimeController currslimeControler = this.GetComponent<SlimeController>(); // Get slime controler
             if (currslimeControler.GetState() != SlimeController.State.held &&
                 currslimeControler.GetState() != SlimeController.State.splice &&
                 currslimeControler.GetState() != SlimeController.State.jump)
@@ -44,5 +57,13 @@ public class SBrain : MonoBehaviour
 
             stateCD += 10f + Random.Range(0f, 20f);
         }
+    }
+
+    public void SpawnCS()
+    {
+        Debug.Log("Plort!");
+        var crystal = Instantiate(cs, transform.position, transform.rotation);
+        Vector3 newPos = new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
+        crystal.GetComponent<Rigidbody>().AddForce(newPos * 2, ForceMode.Impulse);
     }
 }

@@ -78,12 +78,17 @@ public class RandomSlime : MonoBehaviour
         sPatterntype = sPatternColor + " " + sPattern;
 
         GameObject newSlime = Instantiate(slimePrefab, pos, Quaternion.identity);
-        newSlime.GetComponent<SlimeController>().slimeSpeciesBase = SBaseDictionary.GetSlime(sBaseColor).slimeBaseSO;
-        newSlime.GetComponent<SlimeController>().sBaseColor = SBaseDictionary.GetSlime(sBaseColor).slimeBaseName;
-        newSlime.GetComponent<SlimeController>().slimeSpeciesBaseColor = SBaseDictionary.GetSlime(sBaseColor).slimeBaseColor;
-        newSlime.GetComponent<SlimeController>().slimeSpeciesPattern = SPatternDictionary.GetSlime(sPatterntype).slimePatternSO;
-        newSlime.GetComponent<SlimeController>().sPatternColor = SPatternDictionary.GetSlime(sPatterntype).slimePatternColorName;
-        newSlime.GetComponent<SlimeController>().slimeSpeciesPatternColor = SPatternDictionary.GetSlime(sPatterntype).slimePatternColor;
+        SlimeController newSC = newSlime.GetComponent<SlimeController>();
+        var newBase = SBaseDictionary.GetSlime(sBaseColor);
+        var newpattern = SPatternDictionary.GetSlime(sPatterntype);
+
+        newSC.slimeSpeciesBase = newBase.slimeBaseSO;
+        newSC.sBaseColor = newBase.slimeBaseName;
+        newSC.slimeSpeciesBaseColor = newBase.slimeBaseColor;
+        newSC.slimeSpeciesPattern = newpattern.slimePatternSO;
+        newSC.sPatternColor = newpattern.slimePatternColorName;
+        newSC.slimeSpeciesPatternColor = newpattern.slimePatternColor;
+        newSC.sCrystal = newBase.slimeCrystal;
 
         hControl.activeSlimes.Add(newSlime);
 

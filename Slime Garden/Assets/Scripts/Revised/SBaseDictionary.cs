@@ -33,6 +33,7 @@ public class SBaseDictionary : ScriptableObject
         public string slimeBaseName;
         public Color slimeBaseColor;
         public SlimeBaseSO slimeBaseSO;
+        public GameObject slimeCrystal;
         public bool isSpecial; //RN this will alwys be false. Find way to re-implement special slimes later
     }
     [SerializeField]
@@ -70,39 +71,51 @@ public class SBaseDictionary : ScriptableObject
             {
                 case "Amethyst":
                     slimeBases[count].slimeBaseColor = Amethyst;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/AmethystCrystal");
                     break;
                 case "Aquamarine":
                     slimeBases[count].slimeBaseColor = Aquamarine;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/AquamarineCrystal");
                     break;
                 case "Bixbite":
                     slimeBases[count].slimeBaseColor = Bixbite;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/BixbiteCrystal");
                     break;
                 case "Citrine":
                     slimeBases[count].slimeBaseColor = Citrine;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/CitrineCrystal");
                     break;
                 case "Emerald":
                     slimeBases[count].slimeBaseColor = Emerald;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/EmeraldCrystal");
                     break;
                 case "Jade":
                     slimeBases[count].slimeBaseColor = Jade;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/JadeCrystal");
                     break;
                 case "Obsidian":
                     slimeBases[count].slimeBaseColor = Obsidian;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/ObsidianCrystal");
                     break;
                 case "Peridot":
                     slimeBases[count].slimeBaseColor = Peridot;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/PeridotCrystal");
                     break;
                 case "Quartz":
                     slimeBases[count].slimeBaseColor = Quartz;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/QuartzCrystal");
                     break;
                 case "Ruby":
                     slimeBases[count].slimeBaseColor = Ruby;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/RubyCrystal");
                     break;
                 case "Sapphire":
                     slimeBases[count].slimeBaseColor = Sapphire;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/SapphireCrystal");
                     break;
                 case "Topaz":
                     slimeBases[count].slimeBaseColor = Topaz;
+                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/TopazCrystal");
                     break;
             }
             // Reset and Increment

@@ -18,8 +18,9 @@ public class HabitatControl : MonoBehaviour
         }
     }
 
-    void Update()
+    public GameObject GetRandomSlime()
     {
-        
+        var rand = Random.Range(0, activeSlimes.Count);
+        return activeSlimes[rand];
     }
 }

@@ -213,6 +213,7 @@ public class SplicerScript : MonoBehaviour
         newSC.slimeSpeciesPattern = newpattern.slimePatternSO;
         newSC.sPatternColor = newpattern.slimePatternColorName;
         newSC.slimeSpeciesPatternColor = newpattern.slimePatternColor;
+        newSC.sCrystal = newBase.slimeCrystal;
 
         hControl.activeSlimes.Add(newSlime);
 

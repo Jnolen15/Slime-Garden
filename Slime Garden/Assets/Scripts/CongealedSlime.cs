@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class CongealedSlime : MonoBehaviour
 {
-    public Color color;
-    public int value = 1;
-
-    private SpriteRenderer sr;
     private PlayerController pc;
+    public int value = 1;
     
     void Start()
     {
-        sr = this.GetComponent<SpriteRenderer>();
         pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
     }
 
-    void Update()
-    {
-        sr.color = color;
-    }
-
-    private void OnMouseEnter()
+    public void Collect()
     {
         pc.cs += value;
         Destroy(this.gameObject);
