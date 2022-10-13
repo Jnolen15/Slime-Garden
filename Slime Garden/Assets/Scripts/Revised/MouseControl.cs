@@ -16,12 +16,13 @@ public class MouseControl : MonoBehaviour
     void Update()
     {
         // border detection
-        Ray borderRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
+        if (holding)
         {
-            Debug.Log("HitBorder");
-            if (holding)
+            Ray borderRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
+            {
                 SlimeDropped();
+            }
         }
 
         // Mouse position in world space
