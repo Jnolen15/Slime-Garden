@@ -62,9 +62,11 @@ MonoBehaviour:
   sPatternColor: 
   slimeSpeciesPatternColor: {r: 0, g: 0, b: 0, a: 0}
   slimeFace: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
+  sCrystal: {fileID: 0}
   grounded: 0
   jumped: 0
   stateTimer: 0
+  stateParticles: {fileID: 0}
   state: 0
 --- !u!114 &3296617851318787812
 MonoBehaviour:
@@ -82,6 +84,7 @@ MonoBehaviour:
   slimeFaceDefault: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
   slimeFaceHappy: {fileID: 11400000, guid: b2c25ee572af2b746ba999c01885030f, type: 2}
   slimeFaceSleep: {fileID: 11400000, guid: 5f15569523c8a454e91928ca358cf23a, type: 2}
+  slimeFaceFocused: {fileID: 11400000, guid: 78b4acf78e9cbef47a0c58a4172c868e, type: 2}
   stateCD: 5
 --- !u!114 &6095753772148874148
 MonoBehaviour:

@@ -39,6 +39,7 @@ public class SlimeController : MonoBehaviour
     private bool jumped;                        // Bool to see if slime has already jumped
     [SerializeField]    
     private float stateTimer;                   // Used to add pauses to certain states
+    public GameObject stateParticles;           // Used to keep track of state particles so they can be disabled later
 
     //=============== SLIME STATES ===============
     public enum State                           // All possible slime states
@@ -49,7 +50,8 @@ public class SlimeController : MonoBehaviour
         splice,
         sleep,
         love,
-        play
+        play,
+        crystalize
     }
     [SerializeField] private State state;       // This slimes current state
     public State GetState() { return state; }   // Get State function so it can stay private
@@ -87,9 +89,6 @@ public class SlimeController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-            JumpState();
-
         // State machine switch
         switch (state)
         {
@@ -97,6 +96,14 @@ public class SlimeController : MonoBehaviour
                 if (stateChanged)
                 {
                     StartState("Idle", brain.slimeFaceDefault);
+                }
+                if (stateTimer > 0) stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0.2f && stateTimer > 0)
+                    StartState("none", brain.slimeFaceSleep);
+                else if (stateTimer <= 0)
+                {
+                    StartState("none", brain.slimeFaceDefault);
+                    stateTimer = Random.Range(0.5f, 4f);
                 }
                 break;
             case State.jump:
@@ -126,13 +133,13 @@ public class SlimeController : MonoBehaviour
             case State.sleep:
                 if (stateChanged)
                 {
-                    StartState("Sleep", brain.slimeFaceSleep);
+                    StartState("Sleep", brain.slimeFaceSleep, "Sleep");
                 }
                 break;
             case State.love:
                 if (stateChanged)
                 {
-                    StartState("Hop", brain.slimeFaceHappy);
+                    StartState("Hop", brain.slimeFaceHappy, "Hearts");
                 }
                 break;
             case State.play:
@@ -154,6 +161,19 @@ public class SlimeController : MonoBehaviour
                     stateTimer = 0.2f;
                 }
                 break;
+            case State.crystalize:
+                if (stateChanged)
+                {
+                    StartState("Idle", brain.slimeFaceFocused);
+                    stateTimer = 2f;
+                }
+                if (stateTimer > 0) stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0)
+                {
+                    brain.SpawnCS();
+                    ChangeState(State.jump);
+                }
+                break;
         }
     }
 
@@ -161,19 +181,34 @@ public class SlimeController : MonoBehaviour
     {
         state = newState;
         stateChanged = true;
+        stateTimer = 0;
     }
 
-    private void StartState(string sName, SlimeFaceSO sface)
+    private void StartState(string sName, SlimeFaceSO sface, string particles = null)
     {
         // Changes the slime face, sets animations, and re-sets stateChanged bool
         // Be sure to set stateChanged to false if changing state without this function
 
+        if (stateParticles != null)
+            Destroy(stateParticles);
+
         this.slimeFace = sface;
         face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
 
-        baseAnimator.SetTrigger(sName);
-        patternAnimator.SetTrigger(sName);
-        faceAnimator.SetTrigger(sName);
+        if(sName != "none")
+        {
+            baseAnimator.SetTrigger(sName);
+            patternAnimator.SetTrigger(sName);
+            faceAnimator.SetTrigger(sName);
+        }
+
+        if(particles != null)
+        {
+            var par = Resources.Load<GameObject>("Particles/" + particles);
+            var pos = new Vector3(transform.position.x, transform.position.y + 0.6f, transform.position.z);
+            stateParticles = Instantiate(par, pos, transform.rotation, transform);
+        }
+
         stateChanged = false;
     }
 
@@ -223,16 +258,5 @@ public class SlimeController : MonoBehaviour
         {
             grounded = false;
         }
-    }
-
-    // RESOURCES.LOAD THIS PARTICAL STUFF
-    public void spawnlandingparticles()
-    {
-        //Instantiate(particles, landingParticleSpawnPos.transform.position, Quaternion.identity, landingParticleSpawnPos.transform);
-    }
-
-    public void spawnstateparticles(GameObject ptype)
-    {
-        //Instantiate(ptype, stateParticleSpawnPos.transform.position, Quaternion.identity, stateParticleSpawnPos.transform);
     }
 }

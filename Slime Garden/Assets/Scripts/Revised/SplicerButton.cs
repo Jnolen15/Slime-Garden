@@ -15,19 +15,6 @@ public class SplicerButton : MonoBehaviour
         priceText.enabled = false;
     }
 
-    void Update()
-    {
-        /*if (!isPressed && sr.sprite != buttonSprite)
-        {
-            sr.sprite = buttonSprite;
-            srLights.sprite = lightSprite;
-        } else if (isPressed && sr.sprite != buttonSpriteDown)
-        {
-            sr.sprite = buttonSpriteDown;
-            srLights.sprite = lightSpriteDown;
-        }*/
-    }
-
     private void OnMouseDown()
     {
         if(canBePressed) isPressed = true;

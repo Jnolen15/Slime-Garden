@@ -64,7 +64,7 @@ public class CSSpawner : MonoBehaviour
             for (int i = 0; i < csSpawnMod; i++)
             {
                 var chosenSlime = hControl.GetRandomSlime();
-                chosenSlime.GetComponent<SBrain>().SpawnCS();
+                chosenSlime.GetComponent<SBrain>().Crystalize();
             }
 
             // Reset cooldown

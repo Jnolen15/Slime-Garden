@@ -11,6 +11,7 @@ public class SBrain : MonoBehaviour
     public SlimeFaceSO slimeFaceDefault;            //The SO with Default slime facial expressions. Info is taken from here.
     public SlimeFaceSO slimeFaceHappy;              //The SO with Happy slime facial expressions. Info is taken from here.
     public SlimeFaceSO slimeFaceSleep;              //The SO with Sleep slime facial expressions. Info is taken from here.
+    public SlimeFaceSO slimeFaceFocused;            //The SO with Focused slime facial expressions. Info is taken from here.
 
     public float stateCD = 5f;
 
@@ -33,8 +34,9 @@ public class SBrain : MonoBehaviour
         {
             if (currslimeControler.GetState() != SlimeController.State.held &&
                 currslimeControler.GetState() != SlimeController.State.splice &&
-                currslimeControler.GetState() != SlimeController.State.jump)
-            // As long as the slime isn't being held, in the splicer, or jumping
+                currslimeControler.GetState() != SlimeController.State.jump &&
+                currslimeControler.GetState() != SlimeController.State.crystalize)
+            // As long as the slime isn't being held, in the splicer, jumping, or crystalizing
             {
                 int randInt = Random.Range(0, 25); // Random number 0-19
                 if (randInt >= 0 && randInt < 16) // If 0-15 Jump
@@ -57,6 +59,11 @@ public class SBrain : MonoBehaviour
 
             stateCD += 10f + Random.Range(0f, 20f);
         }
+    }
+
+    public void Crystalize()
+    {
+        currslimeControler.ChangeState(SlimeController.State.crystalize);
     }
 
     public void SpawnCS()
