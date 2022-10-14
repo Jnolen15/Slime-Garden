@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 20d797c3bfe6e004f92e9fdf5f9f75f0
+guid: a2639492bdc817e4d90bdab6763c802a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -153,91 +153,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Grass_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f6eab60f1879064780a2ed0425de1e1
-      internalID: 694229040
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cfaff9c1f16c2cf4c87432109bed7daa
-      internalID: 1687969094
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5dd9ce150fd423a49bd66710fa17aea5
-      internalID: 811141291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_3
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 13a32287966a2a74d808f47c845d1070
-      internalID: 789697725
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Grass_4
+      name: GrassSheet2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -247,18 +163,33 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 5, y: -2}
+        - {x: 3, y: -2}
+        - {x: 0, y: -5}
+        - {x: 0, y: 0}
+        - {x: -2, y: 2}
+        - {x: -5, y: 2}
+        - {x: -5, y: 0}
+        - {x: -2, y: -6}
+        - {x: -4, y: -4}
+        - {x: -6, y: -4}
+        - {x: -6, y: -6}
+        - {x: -4, y: -8}
+        - {x: 3, y: -8}
+        - {x: 3, y: -6}
+        - {x: 5, y: -4}
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: 1
       bones: []
-      spriteID: f6fad30f9437b0540926f548df392e01
-      internalID: -182029641
+      spriteID: e1a38c4de98c41a4ba6e5f33a9c91f82
+      internalID: -508531091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_5
+      name: GrassSheet2_1
       rect:
         serializedVersion: 2
         x: 16
@@ -268,18 +199,28 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 4, y: -4}
+        - {x: 3, y: -5}
+        - {x: 3, y: -8}
+        - {x: 0, y: -5}
+        - {x: -2, y: -5}
+        - {x: -2, y: -7}
+        - {x: -1, y: -8}
+        - {x: 4, y: -8}
+        - {x: 6, y: -7}
+        - {x: 6, y: -4}
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: 1
       bones: []
-      spriteID: 5406c30eda37c1c4baaf80f31aeb4503
-      internalID: 1131013386
+      spriteID: 47a3870b4c8df5e4cbd39f0325e231dc
+      internalID: 1577867326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_6
+      name: GrassSheet2_2
       rect:
         serializedVersion: 2
         x: 32
@@ -289,18 +230,28 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 3, y: -2}
+        - {x: 1, y: -4}
+        - {x: 1, y: -7}
+        - {x: -1, y: -3}
+        - {x: -4, y: -3}
+        - {x: -4, y: -6}
+        - {x: -2, y: -8}
+        - {x: 3, y: -8}
+        - {x: 5, y: -4}
+        - {x: 5, y: -2}
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: 1
       bones: []
-      spriteID: 0d2e31e8f5008534ea162de3037b841f
-      internalID: -524583047
+      spriteID: 8ad8d1b5d96e31e40a588a8ff1eff4a8
+      internalID: 1160369122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Grass_7
+      name: GrassSheet2_3
       rect:
         serializedVersion: 2
         x: 48
@@ -310,12 +261,23 @@ TextureImporter:
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: 1, y: -2}
+        - {x: -1, y: -6}
+        - {x: -1, y: 0}
+        - {x: -3, y: 2}
+        - {x: -4, y: 2}
+        - {x: -4, y: -5}
+        - {x: -2, y: -8}
+        - {x: 1, y: -8}
+        - {x: 2, y: -7}
+        - {x: 4, y: -4}
+        - {x: 4, y: -2}
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: 1
       bones: []
-      spriteID: b4fecfa6416832c419d8cc65384de3c1
-      internalID: 961201077
+      spriteID: b979889d1758b06408c7184ee2dbef0f
+      internalID: 1412953584
       vertices: []
       indices: 
       edges: []
@@ -331,14 +293,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Grass_5: 1131013386
-      Grass_0: 694229040
-      Grass_2: 811141291
-      Grass_1: 1687969094
-      Grass_6: -524583047
-      Grass_3: 789697725
-      Grass_7: 961201077
-      Grass_4: -182029641
+      GrassSheet2_2: 1160369122
+      GrassSheet2_0: -508531091
+      GrassSheet2_3: 1412953584
+      GrassSheet2_1: 1577867326
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
