@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class FPSCounter : MonoBehaviour
 {
-    public Text fpsDisplay;
+    public TextMeshProUGUI fpsDisplay;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        float fps = 1 / Time.unscaledDeltaTime;
+        InvokeRepeating("UpdateFPS", 0.1f, 1f);
+    }
+
+    private void UpdateFPS()
+    {
+        int fps = (int)(1f / Time.unscaledDeltaTime);
         fpsDisplay.text = "" + fps;
     }
 }
