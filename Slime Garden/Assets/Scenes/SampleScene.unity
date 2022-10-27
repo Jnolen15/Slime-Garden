@@ -8070,7 +8070,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.38268346, y: 0.000000015896623, z: -0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 12, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18866,7 +18866,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309957054}
-  m_LocalRotation: {x: 0.38268346, y: 0.000000015896623, z: -0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 12, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25339,18 +25339,18 @@ MonoBehaviour:
   lightsMat: {fileID: 2100000, guid: ebd0da0f222bf6e4b81ab0b0db92f82e, type: 2}
   defaultColor: {r: 0.2901961, g: 0.29411766, b: 0.3019608, a: 1}
   currentColor: {r: 0.2901961, g: 0.29411766, b: 0.3019608, a: 1}
-  Amethyst: {r: 0.5019608, g: 0, b: 1, a: 1}
-  Aquamarine: {r: 0, g: 1, b: 1, a: 1}
-  Bixbite: {r: 1, g: 0.20000002, b: 1, a: 1}
-  Citrine: {r: 1, g: 1, b: 0, a: 1}
-  Emerald: {r: 0, g: 0.6156863, b: 0, a: 1}
-  Jade: {r: 0, g: 1, b: 0.5019608, a: 1}
-  Obsidian: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+  Amethyst: {r: 0.49803925, g: 0.04705883, b: 0.9490197, a: 1}
+  Aquamarine: {r: 0, g: 0.87843144, b: 0.87843144, a: 1}
+  Bixbite: {r: 0.9058824, g: 0.20000002, b: 1, a: 1}
+  Citrine: {r: 1, g: 1, b: 0.14901961, a: 1}
+  Emerald: {r: 0, g: 0.43529415, b: 0, a: 1}
+  Jade: {r: 0, g: 0.87843144, b: 0.3803922, a: 1}
+  Obsidian: {r: 0.20000002, g: 0.20000002, b: 0.20000002, a: 1}
   Peridot: {r: 0.6, g: 1, b: 0.20000002, a: 1}
   Quartz: {r: 1, g: 1, b: 1, a: 1}
-  Ruby: {r: 1, g: 0, b: 0, a: 1}
-  Sapphire: {r: 0, g: 0.18431373, b: 1, a: 1}
-  Topaz: {r: 1, g: 0.5019608, b: 0, a: 1}
+  Ruby: {r: 0.87843144, g: 0.06666667, b: 0, a: 1}
+  Sapphire: {r: 0.14117648, g: 0.2901961, b: 0.87843144, a: 1}
+  Topaz: {r: 1, g: 0.3803922, b: 0.098039225, a: 1}
   Diamond: {r: 0, g: 0, b: 0, a: 1}
 --- !u!54 &1464980460
 Rigidbody:
@@ -25873,14 +25873,12 @@ MonoBehaviour:
   boundsZ: 10
   boundsY: 10
   edgeScrollSize: 20
-  zoomOffset: {x: 0, y: 0, z: 0}
   zoomMax: 25
   zoomMin: 5
   zoomYMax: 16
   zoomYMin: 4
   fovMax: 60
   fovMin: 30
-  targetFOV: 60
 --- !u!1001 &1515027615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39386,18 +39384,18 @@ MonoBehaviour:
   lightsMat: {fileID: 2100000, guid: 9ac8b3be86c063e4b8d9f959f51cf9e8, type: 2}
   defaultColor: {r: 0.2901961, g: 0.29411766, b: 0.3019608, a: 1}
   currentColor: {r: 0.2901961, g: 0.29411766, b: 0.3019608, a: 1}
-  Amethyst: {r: 0.5019608, g: 0, b: 1, a: 1}
-  Aquamarine: {r: 0, g: 1, b: 1, a: 1}
-  Bixbite: {r: 1, g: 0.20000002, b: 1, a: 1}
-  Citrine: {r: 1, g: 1, b: 0, a: 1}
-  Emerald: {r: 0, g: 0.6156863, b: 0, a: 1}
-  Jade: {r: 0, g: 1, b: 0.5019608, a: 1}
-  Obsidian: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
+  Amethyst: {r: 0.49803925, g: 0.04705883, b: 0.9490197, a: 1}
+  Aquamarine: {r: 0, g: 0.87843144, b: 0.87843144, a: 1}
+  Bixbite: {r: 0.9058824, g: 0.20000002, b: 1, a: 1}
+  Citrine: {r: 1, g: 1, b: 0.14901961, a: 1}
+  Emerald: {r: 0, g: 0.43529415, b: 0, a: 1}
+  Jade: {r: 0, g: 0.87843144, b: 0.3803922, a: 1}
+  Obsidian: {r: 0.20000002, g: 0.20000002, b: 0.20000002, a: 1}
   Peridot: {r: 0.6, g: 1, b: 0.20000002, a: 1}
   Quartz: {r: 1, g: 1, b: 1, a: 1}
-  Ruby: {r: 1, g: 0, b: 0, a: 1}
-  Sapphire: {r: 0, g: 0.18431373, b: 1, a: 1}
-  Topaz: {r: 1, g: 0.5019608, b: 0, a: 1}
+  Ruby: {r: 0.87843144, g: 0.06666667, b: 0, a: 1}
+  Sapphire: {r: 0.14117648, g: 0.2901961, b: 0.87843144, a: 1}
+  Topaz: {r: 1, g: 0.3803922, b: 0.098039225, a: 1}
   Diamond: {r: 0, g: 0, b: 0, a: 1}
 --- !u!54 &2263336981699077904
 Rigidbody:

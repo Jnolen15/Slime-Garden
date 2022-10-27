@@ -1,16 +1,7 @@
 fileFormatVersion: 2
-guid: f0123be27b6744e44928821f1e8e6e4e
+guid: b7e342a67ee4ee945abc7df5c01b0a69
 TextureImporter:
-  internalIDToNameTable:
-  - first:
-      213: 6080672979882827917
-    second: SlimeSheet_Planet3_0
-  - first:
-      213: 1669287374547843230
-    second: SlimeSheet_Planet3_1
-  - first:
-      213: -6339623910531379040
-    second: SlimeSheet_Planet3_2
+  internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -72,7 +63,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 1
+  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -162,7 +153,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimeSheet_Planet3_0
+      name: SlimeSheet_Planet4_0
       rect:
         serializedVersion: 2
         x: 0
@@ -176,14 +167,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d806b31cbd3e26450800000000000000
-      internalID: 6080672979882827917
+      spriteID: 0085c081d14d1ee4481518818da6e9b6
+      internalID: 339725313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeSheet_Planet3_1
+      name: SlimeSheet_Planet4_1
       rect:
         serializedVersion: 2
         x: 32
@@ -197,14 +188,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e98f7fbd5008a2710800000000000000
-      internalID: 1669287374547843230
+      spriteID: efc49641f0dbf0c42b5c6be93f3bb217
+      internalID: 640092616
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeSheet_Planet3_2
+      name: SlimeSheet_Planet4_2
       rect:
         serializedVersion: 2
         x: 64
@@ -218,8 +209,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a0543364a12508a0800000000000000
-      internalID: -6339623910531379040
+      spriteID: 804e1bcbb89199f4b855ae9cc3c265b0
+      internalID: 157320480
       vertices: []
       indices: 
       edges: []
@@ -235,9 +226,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SlimeSheet_Planet3_0: 6080672979882827917
-      SlimeSheet_Planet3_2: -6339623910531379040
-      SlimeSheet_Planet3_1: 1669287374547843230
+      SlimeSheet_Planet4_0: 339725313
+      SlimeSheet_Planet4_2: 157320480
+      SlimeSheet_Planet4_1: 640092616
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
