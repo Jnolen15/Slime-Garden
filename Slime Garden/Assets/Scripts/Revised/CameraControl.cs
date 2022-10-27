@@ -14,9 +14,11 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private int movSpeed = 5;
     [SerializeField] private int rotSpeed = 20;
     [SerializeField] private int zoomSpeed = 5;
+    [SerializeField] private int zoomFOVSpeed = 5;
     private int curMovSpeed;
     private int curRotSpeed;
     private int curZoomSpeed;
+    private int curZoomFOVSpeed;
     [SerializeField] private int boundsX = 10;
     [SerializeField] private int boundsZ = 10;
     [SerializeField] private int boundsY = 10;
@@ -109,14 +111,16 @@ public class CameraControl : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             curMovSpeed = movSpeed * 2;
-            curZoomSpeed = zoomSpeed * 2;
             curRotSpeed = rotSpeed * 2;
+            curZoomSpeed = zoomSpeed * 2;
+            curZoomFOVSpeed = zoomFOVSpeed * 2;
         }
         else
         {
             curMovSpeed = movSpeed;
-            curZoomSpeed = zoomSpeed;
             curRotSpeed = rotSpeed;
+            curZoomSpeed = zoomSpeed;
+            curZoomFOVSpeed = zoomFOVSpeed;
         }
     }
 
@@ -144,12 +148,12 @@ public class CameraControl : MonoBehaviour
         if (Input.mouseScrollDelta.y < 0)
         {
             zoomOffset.y += curZoomSpeed;
-            targetFOV += 5;
+            targetFOV += curZoomFOVSpeed;
         }
         if (Input.mouseScrollDelta.y > 0)
         {
             zoomOffset.y -= curZoomSpeed;
-            targetFOV -= 5;
+            targetFOV -= curZoomFOVSpeed;
         }
 
         zoomOffset.y = Mathf.Clamp(zoomOffset.y, zoomYMin, zoomYMax);

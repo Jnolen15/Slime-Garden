@@ -48,10 +48,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BlendHeight: 1
+    - _BlendHeight: 0.85
+    - _CellShading: 20
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _ColorA: {r: 0.27450982, g: 0.27450982, b: 0.27450982, a: 1}
+    - _ColorA: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
     - _ColorB: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
   m_BuildTextureStacks: []
