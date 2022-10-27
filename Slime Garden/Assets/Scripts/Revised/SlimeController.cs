@@ -20,6 +20,7 @@ public class SlimeController : MonoBehaviour
     public GameObject sCrystal;                 //The crystal Game object this slime produces
 
     //=============== COMPONENTS ===============
+    private GameObject sprites;               //The child gameobject that holds sprite objects
     private GameObject baseSlime;               //The child gameobject containing the base SR
     private GameObject pattern;                 //The child gameobject containing the pattern SR
     private GameObject face;                    //The face rendered above the slime
@@ -67,9 +68,10 @@ public class SlimeController : MonoBehaviour
         sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
 
         // ========== Sprite stuff ==========
-        baseSlime = this.transform.GetChild(0).gameObject;
-        pattern = this.transform.GetChild(1).gameObject;
-        face = this.transform.GetChild(2).gameObject;
+        sprites = this.transform.GetChild(0).gameObject;
+        baseSlime = sprites.transform.GetChild(0).gameObject;
+        pattern = sprites.transform.GetChild(1).gameObject;
+        face = sprites.transform.GetChild(2).gameObject;
         // Sprite renderers
         Basesr = baseSlime.GetComponent<SpriteRenderer>();
         patternsr = pattern.GetComponent<SpriteRenderer>();
