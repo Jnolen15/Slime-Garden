@@ -11,6 +11,7 @@ TagManager:
   - CS
   - MousePos
   - Border
+  - Grid
   layers:
   - Default
   - TransparentFX

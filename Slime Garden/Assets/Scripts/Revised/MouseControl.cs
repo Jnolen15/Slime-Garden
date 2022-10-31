@@ -13,6 +13,13 @@ public class MouseControl : MonoBehaviour
     [SerializeField] private GameObject mouseVisual;
     private float pickupOffsetX;
 
+    private PlayerController pc;
+
+    private void Start()
+    {
+        pc = this.GetComponent<PlayerController>();
+    }
+
     void Update()
     {
         // border detection
@@ -38,15 +45,18 @@ public class MouseControl : MonoBehaviour
         // Mouse click
         if (Input.GetMouseButtonDown(0))
         {
-            Ray clickray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
+            if(pc.state == PlayerController.State.Default)
             {
-                // Pick up slime of clicked
-                if (clickraycastHit.collider.gameObject.tag == "Slime")
+                Ray clickray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
                 {
-                    SlimePickUp(clickraycastHit.collider.gameObject, clickraycastHit.point);
-                }
+                    // Pick up slime of clicked
+                    if (clickraycastHit.collider.gameObject.tag == "Slime")
+                    {
+                        SlimePickUp(clickraycastHit.collider.gameObject, clickraycastHit.point);
+                    }
 
+                }
             }
         }
 

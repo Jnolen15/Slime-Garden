@@ -68,53 +68,13 @@ public class GridSystem : MonoBehaviour
         }
     }
 
-    // MOVE TO MOUSE CONTROL SCRIPT / Organize
     private void Update()
     {
+        // ================== DEBUG
+        // Middle click to get info on a grid space
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
-            // ================ PLACE
-            if (Input.GetMouseButtonDown(0))
-            {
-                grid.GetXZ(mousePos.point, out int x, out int y);
-
-                List<Vector2Int> gridPosList = placeable.GetGridPositionList(new Vector2Int(x, y), dir);
-                GridObject gridObject = grid.GetValue(x, y);
-
-                //Test can Build
-                bool canBuild = true;
-                foreach(Vector2Int gridPos in gridPosList)
-                {
-                    if(grid.GetValue(gridPos.x, gridPos.y) == null)
-                        canBuild = false;
-                    else if (!grid.GetValue(gridPos.x, gridPos.y).CanBuild())
-                        canBuild = false;
-                }
-
-                if (gridObject != null && canBuild)
-                {
-                    Vector2Int rotationOffset = placeable.GetRotationOffset(dir);
-                    Vector3 objWorldPos = grid.GetWorldPosition(x, y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * cellSize;
-
-                    PlaceableObject placeableObj = PlaceableObject.Create(objWorldPos, new Vector2Int(x, y), dir, placeable);
-                    
-                    foreach (Vector2Int gridPos in gridPosList)
-                    {
-                        grid.GetValue(gridPos.x, gridPos.y).SetPlaceableObject(placeableObj);
-                    }
-                }
-                else if (gridObject != null)
-                {
-                    Debug.Log("Can't build here!");
-                }
-                else
-                {
-                    Debug.Log("GridObject is null " + x + "," + y);
-                }
-            }
-
-            // ================== DEBUG
             if (Input.GetMouseButtonDown(2))
             {
                 // Debug
@@ -130,38 +90,76 @@ public class GridSystem : MonoBehaviour
                     Debug.Log("GridObject is null " + a + "," + b);
                 }
             }
+        }
+    }
 
-            // =================== ROTATE
-            if (Input.GetKeyDown(KeyCode.R))
+    // ================ Place ================
+    public void Place(Vector3 mousePos)
+    {
+        grid.GetXZ(mousePos, out int x, out int y);
+
+        List<Vector2Int> gridPosList = placeable.GetGridPositionList(new Vector2Int(x, y), dir);
+        GridObject gridObject = grid.GetValue(x, y);
+
+        //Test can Build
+        bool canBuild = true;
+        foreach (Vector2Int gridPos in gridPosList)
+        {
+            if (grid.GetValue(gridPos.x, gridPos.y) == null)
+                canBuild = false;
+            else if (!grid.GetValue(gridPos.x, gridPos.y).CanBuild())
+                canBuild = false;
+        }
+
+        if (gridObject != null && canBuild)
+        {
+            Vector2Int rotationOffset = placeable.GetRotationOffset(dir);
+            Vector3 objWorldPos = grid.GetWorldPosition(x, y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * cellSize;
+
+            PlaceableObject placeableObj = PlaceableObject.Create(objWorldPos, new Vector2Int(x, y), dir, placeable);
+
+            foreach (Vector2Int gridPos in gridPosList)
             {
-                dir = PlaceableObjectSO.GetNextDir(dir);
-                Debug.Log(dir);
+                grid.GetValue(gridPos.x, gridPos.y).SetPlaceableObject(placeableObj);
+            }
+        }
+        else if (gridObject != null)
+        {
+            Debug.Log("Can't build here!");
+        }
+        else
+        {
+            Debug.Log("GridObject is null " + x + "," + y);
+        }
+    }
+
+    // ================ Rotate ================
+    public void Rotate()
+    {
+        dir = PlaceableObjectSO.GetNextDir(dir);
+    }
+
+    // ================ Demolish ================
+    public void Demolish(Vector3 mousePos)
+    {
+        grid.GetXZ(mousePos, out int a, out int b);
+        GridObject gridObj = grid.GetValue(a, b);
+        PlaceableObject placeableObj = gridObj.GetPlaceableObject();
+
+        if (placeableObj != null)
+        {
+            List<Vector2Int> gridPosList = placeableObj.GetGridPositionList();
+
+            foreach (Vector2Int gridPos in gridPosList)
+            {
+                grid.GetValue(gridPos.x, gridPos.y).ClearPlaceableObject();
             }
 
-            // ================== Demolish
-            if (Input.GetMouseButtonDown(1))
-            {
-                // Debug
-                grid.GetXZ(mousePos.point, out int a, out int b);
-                GridObject gridObj = grid.GetValue(a, b);
-                PlaceableObject placeableObj = gridObj.GetPlaceableObject();
-
-                if (placeableObj != null)
-                {
-                    List<Vector2Int> gridPosList = placeableObj.GetGridPositionList();
-
-                    foreach (Vector2Int gridPos in gridPosList)
-                    {
-                        grid.GetValue(gridPos.x, gridPos.y).ClearPlaceableObject();
-                    }
-
-                    placeableObj.DestroySelf();
-                }
-                else
-                {
-                    Debug.Log("Nothing at " + a + "," + b + " to demolish");
-                }
-            }
+            placeableObj.DestroySelf();
+        }
+        else
+        {
+            Debug.Log("Nothing at " + a + "," + b + " to demolish");
         }
     }
 }
