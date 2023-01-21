@@ -12,6 +12,7 @@ TagManager:
   - MousePos
   - Border
   - Grid
+  - BuildVisual
   layers:
   - Default
   - TransparentFX

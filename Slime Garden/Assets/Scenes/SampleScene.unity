@@ -8204,7 +8204,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0.000000015896623, z: -0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 12, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -9882,7 +9882,7 @@ GameObject:
   - component: {fileID: 629779798}
   m_Layer: 0
   m_Name: BuildingVisual
-  m_TagString: Untagged
+  m_TagString: BuildVisual
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19322,7 +19322,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309957054}
-  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0.000000015896623, z: -0.0000000065845964, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 12, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27846,7 +27846,7 @@ MonoBehaviour:
   gridHeight: 20
   cellSize: 1
   offsett: {x: -10, y: 0, z: -10}
-  placeable: {fileID: 11400000, guid: 015af890f9d041b4ca138321f12ccd71, type: 2}
+  placeable: {fileID: 11400000, guid: f7b12b2e1edceb44692ab195b59bd571, type: 2}
 --- !u!4 &1611128136
 Transform:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayerMask;
     private GridSystem gridSystem;
 
+    private GameObject buildVisual;
+
     public enum State
     {
         Default,
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
+        buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
     }
 
     void Update()
@@ -46,6 +49,19 @@ public class PlayerController : MonoBehaviour
             {
                 gridSystem.Rotate();
             }
+        }
+
+        switch (state)
+        {
+            case (State.Default):
+                buildVisual.SetActive(false);
+                break;
+            case (State.Build):
+                buildVisual.SetActive(true);
+                break;
+            case (State.Demolish):
+                buildVisual.SetActive(false);
+                break;
         }
     }
 

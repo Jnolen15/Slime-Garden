@@ -23,6 +23,7 @@ public class BuildingVisual : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             Vector3 targetpos = gridSystem.GetSnappedWorldPos(mousePos.point);
+            targetpos = new Vector3(targetpos.x, 0.5f, targetpos.z);
 
             transform.position = targetpos;
             transform.rotation = Quaternion.Euler(0, placeableSO.GetRotationAngle(gridSystem.GetRotationDir()), 0);
