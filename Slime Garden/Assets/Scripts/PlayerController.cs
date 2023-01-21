@@ -42,10 +42,9 @@ public class PlayerController : MonoBehaviour
             }
 
             // =================== ROTATE
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) && state == State.Build)
             {
-                if (state == State.Build)
-                    gridSystem.Rotate();
+                gridSystem.Rotate();
             }
         }
     }

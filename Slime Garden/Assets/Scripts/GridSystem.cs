@@ -144,6 +144,13 @@ public class GridSystem : MonoBehaviour
     {
         grid.GetXZ(mousePos, out int a, out int b);
         GridObject gridObj = grid.GetValue(a, b);
+        
+        if (gridObj == null)
+        {
+            Debug.Log("Grid space is NULL");
+            return;
+        }
+
         PlaceableObject placeableObj = gridObj.GetPlaceableObject();
 
         if (placeableObj != null)
@@ -161,5 +168,26 @@ public class GridSystem : MonoBehaviour
         {
             Debug.Log("Nothing at " + a + "," + b + " to demolish");
         }
+    }
+
+    // ================ Helpers ================
+    public Vector3 GetSnappedWorldPos(Vector3 mousePos)
+    {
+        // Returns the world position snapped to the grid
+        grid.GetXZ(mousePos, out int x, out int y);
+        Vector2Int rotationOffset = placeable.GetRotationOffset(dir);
+        Vector3 objWorldPos = grid.GetWorldPosition(x, y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * cellSize;
+
+        return objWorldPos;
+    }
+
+    public PlaceableObjectSO GetPlaceableSO()
+    {
+        return placeable;
+    }
+    
+    public PlaceableObjectSO.Dir GetRotationDir()
+    {
+        return dir;
     }
 }
