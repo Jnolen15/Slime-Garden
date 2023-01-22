@@ -6,7 +6,17 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    public int cs = 0;  // The ammount of Congealed Slime held by the player
+    [SerializeField] private int money = 0;
+    public int Money
+    {
+        get { return money; }
+        set
+        {
+            money = value;
+            csDisplay.text = "Crystalized Slime: " + money.ToString();
+        }
+    }
+
     public TextMeshProUGUI csDisplay;
 
     [SerializeField] private LayerMask groundLayerMask;
@@ -30,8 +40,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        csDisplay.text = "Crystalized Slime: " + cs;
-
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
@@ -79,5 +87,11 @@ public class PlayerController : MonoBehaviour
                 state = State.Demolish;
                 break;
         }
+    }
+
+    public void SwapPlaceable(PlaceableObjectSO newP)
+    {
+        gridSystem.SwapPlaceable(newP);
+        buildVisual.GetComponent<BuildingVisual>().RefreshVisual();
     }
 }

@@ -170,6 +170,13 @@ public class GridSystem : MonoBehaviour
         }
     }
 
+    // ================ Swap Placeable ================
+    public void SwapPlaceable(PlaceableObjectSO newP)
+    {
+        placeable = newP;
+        Debug.Log("Updated placecable to " + placeable.name);
+    }
+
     // ================ Helpers ================
     public Vector3 GetSnappedWorldPos(Vector3 mousePos)
     {

@@ -20,7 +20,7 @@ public class Cheats : MonoBehaviour
         // Give money
         if (Input.GetKeyDown(KeyCode.M))
         {
-            pc.cs += 100;
+            pc.Money += 100;
         }
         
         // Spawn a random slime on button press

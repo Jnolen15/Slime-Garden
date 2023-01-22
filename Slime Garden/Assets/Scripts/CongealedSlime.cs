@@ -14,7 +14,7 @@ public class CongealedSlime : MonoBehaviour
 
     public void Collect()
     {
-        pc.cs += value;
+        pc.Money += value;
         Destroy(this.gameObject);
     }
 }
