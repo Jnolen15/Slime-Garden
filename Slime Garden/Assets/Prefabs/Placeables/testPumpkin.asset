@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
-  m_Name: testTree
+  m_Name: testPumpkin
   m_EditorClassIdentifier: 
-  placeableName: Tree
-  prefab: {fileID: 7212085286625646619, guid: 3e65c4811a7fde7438f0f026cd891888, type: 3}
+  placeableName: Pumkin
+  prefab: {fileID: 7212085286625646619, guid: 957c804031939b24c86361af5ae33ac1, type: 3}
   width: 1
   height: 1
