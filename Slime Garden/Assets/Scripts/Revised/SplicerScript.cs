@@ -57,7 +57,7 @@ public class SplicerScript : MonoBehaviour
                 sb.priceText.text = price.ToString();
             }
             // If the player can afford it or not
-            if (pc.cs >= price)
+            if (pc.Money >= price)
             {
                 buttonLightsMat.color = Color.green;
                 sb.priceText.color = Color.green;
@@ -66,7 +66,7 @@ public class SplicerScript : MonoBehaviour
                 {
                     sb.priceText.enabled = false;
                     splicing = true;
-                    pc.cs -= price;
+                    pc.Money -= price;
                     Splice();
                 }
             } else

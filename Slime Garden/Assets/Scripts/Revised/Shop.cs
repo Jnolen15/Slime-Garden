@@ -23,7 +23,7 @@ public class Shop : MonoBehaviour
     {
         // Update shop price texts
         SlimeBuy.priceText.text = price.ToString();
-        if (pc.cs >= price)
+        if (pc.Money >= price)
             SlimeBuy.priceText.color = Color.green;
         else
             SlimeBuy.priceText.color = Color.red;
@@ -31,9 +31,9 @@ public class Shop : MonoBehaviour
 
     public void SlimePurchased()
     {
-        if (pc.cs >= price)
+        if (pc.Money >= price)
         {
-            pc.cs -= price;
+            pc.Money -= price;
             Debug.Log("BOUGHT SLIME");
 
             // Spawn a slime crate somewhere in the pen

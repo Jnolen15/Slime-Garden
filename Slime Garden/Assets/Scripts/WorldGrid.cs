@@ -9,12 +9,12 @@ public class WorldGrid<TGridObject>
 {
     private int width;
     private int height;
-    private int cellSize;
+    private float cellSize;
     private Vector3 originPosition;
     private TGridObject[,] gridArray;
 
     // Grid constructor
-    public WorldGrid(int width, int height, int cellSize, Vector3 originPosition, Func<WorldGrid<TGridObject>, int, int, TGridObject> createGridObject)
+    public WorldGrid(int width, int height, float cellSize, Vector3 originPosition, Func<WorldGrid<TGridObject>, int, int, TGridObject> createGridObject)
     {
         this.width = width;
         this.height = height;
@@ -26,19 +26,19 @@ public class WorldGrid<TGridObject>
         // Intitialize Grid
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
-            for (int y = 0; y < gridArray.GetLength(1); y++)
+            for (int z = 0; z < gridArray.GetLength(1); z++)
             {
-                gridArray[x, y] = createGridObject(this, x, y);
+                gridArray[x, z] = createGridObject(this, x, z);
             }
         }
 
         // Create debug draw lines
         for (int x = 0; x < gridArray.GetLength(0); x++)
         {
-            for (int y = 0; y < gridArray.GetLength(1); y++)
+            for (int z = 0; z < gridArray.GetLength(1); z++)
             {
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x, y + 1), Color.blue, 100f);
-                Debug.DrawLine(GetWorldPosition(x, y), GetWorldPosition(x + 1, y), Color.blue, 100f);
+                Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x, z + 1), Color.blue, 100f);
+                Debug.DrawLine(GetWorldPosition(x, z), GetWorldPosition(x + 1, z), Color.blue, 100f);
             }
         }
         Debug.DrawLine(GetWorldPosition(0, height), GetWorldPosition(width, height), Color.blue, 100f);
@@ -48,16 +48,16 @@ public class WorldGrid<TGridObject>
     }
 
     // Get world position based on x, y of grid space
-    public Vector3 GetWorldPosition(int x, int y)
+    public Vector3 GetWorldPosition(int x, int z)
     {
-        return new Vector3(x, y) * cellSize + originPosition;
+        return new Vector3(x, 0, z) * cellSize + originPosition;
     }
 
     //Gets x, y of grid space based on world position
-    public void GetXY(Vector3 worldPosition, out int x, out int y)
+    public void GetXZ(Vector3 worldPosition, out int x, out int z)
     {
         x = Mathf.FloorToInt((worldPosition - originPosition).x / cellSize);
-        y = Mathf.FloorToInt((worldPosition - originPosition).y / cellSize);
+        z = Mathf.FloorToInt((worldPosition - originPosition).z / cellSize);
     }
 
     // Sets value at a given x, y grid space
@@ -72,16 +72,16 @@ public class WorldGrid<TGridObject>
     // Sets value at a given grid space based on a world position
     public void SetValue(Vector3 worldPosition, TGridObject value)
     {
-        int x, y;
-        GetXY(worldPosition, out x, out y);
-        SetValue(x, y, value);
+        int x, z;
+        GetXZ(worldPosition, out x, out z);
+        SetValue(x, z, value);
     }
 
     // Gets value at a given x, y grid space
-    public TGridObject GetValue(int x, int y)
+    public TGridObject GetValue(int x, int z)
     {
-        if (x >= 0 && y >= 0 && x < width && y < height)
-            return gridArray[x, y];
+        if (x >= 0 && z >= 0 && x < width && z < height)
+            return gridArray[x, z];
         else
             return default;
     }
@@ -89,8 +89,8 @@ public class WorldGrid<TGridObject>
     // Gets value at a given grid space based on a world position
     public TGridObject GetValue(Vector3 worldPosition)
     {
-        int x, y;
-        GetXY(worldPosition, out x, out y);
-        return GetValue(x, y);
+        int x, z;
+        GetXZ(worldPosition, out x, out z);
+        return GetValue(x, z);
     }
 }
