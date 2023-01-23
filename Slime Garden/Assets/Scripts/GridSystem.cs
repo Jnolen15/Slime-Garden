@@ -197,4 +197,16 @@ public class GridSystem : MonoBehaviour
     {
         return dir;
     }
+
+    public List<Vector2Int> GetPlaceablePositions(Vector3 mousePos)
+    {
+        grid.GetXZ(mousePos, out int x, out int y);
+        List<Vector2Int> gridPosList = placeable.GetGridPositionList(new Vector2Int(x, y), dir);
+        return gridPosList;
+    }
+
+    public Vector3 GetGridAsWorldPos(int x, int y)
+    {
+        return grid.GetWorldPosition(x, y);
+    }
 }
