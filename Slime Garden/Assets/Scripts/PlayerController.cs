@@ -27,8 +27,7 @@ public class PlayerController : MonoBehaviour
     public enum State
     {
         Default,
-        Build,
-        Demolish
+        Build
     }
     public State state;
 
@@ -44,11 +43,12 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             // ================ PLACE / Demolish
-            if (Input.GetMouseButtonDown(0))
+            if (state == State.Build)
             {
-                if(state == State.Build)
+                if (Input.GetMouseButtonDown(0))
                     gridSystem.Place(mousePos.point);
-                if (state == State.Demolish)
+
+                if (Input.GetMouseButtonDown(1))
                     gridSystem.Demolish(mousePos.point);
             }
 
@@ -67,9 +67,6 @@ public class PlayerController : MonoBehaviour
             case (State.Build):
                 buildVisual.SetActive(true);
                 break;
-            case (State.Demolish):
-                buildVisual.SetActive(false);
-                break;
         }
     }
 
@@ -82,9 +79,6 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Build":
                 state = State.Build;
-                break;
-            case "Demolish":
-                state = State.Demolish;
                 break;
         }
     }
