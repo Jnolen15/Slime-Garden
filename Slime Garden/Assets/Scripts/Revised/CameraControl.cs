@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class CameraControl : MonoBehaviour
@@ -24,6 +25,9 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private int boundsY = 10;
     [SerializeField] private int edgeScrollSize = 20;
     private Vector3 zoomOffset;
+    private Vector3 moveVector;
+    private float rotateDir;
+    private int snapCount;
 
     [Header("FOV and move down zoom")]
     [SerializeField] private float zoomMax = 120f;
@@ -39,41 +43,35 @@ public class CameraControl : MonoBehaviour
     private void Awake()
     {
         zoomOffset = cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
+
+        curMovSpeed = movSpeed;
+        curRotSpeed = rotSpeed;
+        curZoomSpeed = zoomSpeed;
+        curZoomFOVSpeed = zoomFOVSpeed;
     }
 
     void Update()
     {
-        camMovement();
+        camMovement(moveVector);
         if (useEdgeScrolling)
             camEdgeScrollMovement();
         camRotation();
-        camSpeedUp();
         if (changeZoom)
             camZoom();
         else
             camZoomLower();
     }
 
-    private void camMovement()
+    private void camMovement(Vector3 inputDir)
     {
-        Vector3 inputDir = new Vector3(0, 0, 0);
-
-        if (Input.GetKey(KeyCode.W) && this.transform.position.z < boundsZ)
-            inputDir.z = +1;
-        if (Input.GetKey(KeyCode.S) && this.transform.position.z > -boundsZ)
-            inputDir.z = -1;
-        if (Input.GetKey(KeyCode.A) && this.transform.position.x > -boundsX)
-            inputDir.x = -1;
-        if (Input.GetKey(KeyCode.D) && this.transform.position.x < boundsX)
-            inputDir.x = +1;
-
         Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
         this.transform.position += moveDir * curMovSpeed * Time.deltaTime;
     }
 
     private void camEdgeScrollMovement()
     {
-        Vector3 inputDir = new Vector3(0, 0, 0);
+        Debug.LogError("Edge scroll not implemented");
+        /*Vector3 inputDir = new Vector3(0, 0, 0);
 
         if (Input.mousePosition.x<edgeScrollSize) inputDir.x = -1;
         if (Input.mousePosition.y<edgeScrollSize) inputDir.z = -1;
@@ -81,52 +79,18 @@ public class CameraControl : MonoBehaviour
         if (Input.mousePosition.y > Screen.height - edgeScrollSize) inputDir.z = +1;
 
         Vector3 moveDir = transform.forward * inputDir.z + transform.right * inputDir.x;
-        this.transform.position += moveDir* curMovSpeed * Time.deltaTime;
+        this.transform.position += moveDir* curMovSpeed * Time.deltaTime;*/
     }
 
     private void camRotation()
     {
-        // Rotation Control
-        float rotateDir = 0f;
-        if (Input.GetKey(KeyCode.Q))
-            rotateDir = +1;
-        if (Input.GetKey(KeyCode.E))
-            rotateDir = -1;
-
         this.transform.eulerAngles += new Vector3(0, rotateDir * curRotSpeed * Time.deltaTime, 0);
-
-        // Snap to speciic angles Control
-        if (Input.GetKey(KeyCode.Alpha1))
-            this.transform.eulerAngles = new Vector3(0, 0, 0);
-        if (Input.GetKey(KeyCode.Alpha2))
-            this.transform.eulerAngles = new Vector3(0, 90, 0);
-        if (Input.GetKey(KeyCode.Alpha3))
-            this.transform.eulerAngles = new Vector3(0, 180, 0);
-        if (Input.GetKey(KeyCode.Alpha4))
-            this.transform.eulerAngles = new Vector3(0, -90, 0);
-    }
-
-    private void camSpeedUp()
-    {
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            curMovSpeed = movSpeed * 2;
-            curRotSpeed = rotSpeed * 2;
-            curZoomSpeed = zoomSpeed * 2;
-            curZoomFOVSpeed = zoomFOVSpeed * 2;
-        }
-        else
-        {
-            curMovSpeed = movSpeed;
-            curRotSpeed = rotSpeed;
-            curZoomSpeed = zoomSpeed;
-            curZoomFOVSpeed = zoomFOVSpeed;
-        }
     }
 
     private void camZoom()
     {
-        Vector3 zoomDir = zoomOffset.normalized;
+        Debug.LogError("Alt zoom not implemented");
+        /*Vector3 zoomDir = zoomOffset.normalized;
 
         if (Input.mouseScrollDelta.y < 0)
             zoomOffset += zoomDir;
@@ -140,27 +104,83 @@ public class CameraControl : MonoBehaviour
 
         float zoomSpeed = 10f;
         cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = 
-            Vector3.Lerp(cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, zoomOffset, Time.deltaTime * zoomSpeed);
+            Vector3.Lerp(cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, zoomOffset, Time.deltaTime * zoomSpeed);*/
     }
 
     private void camZoomLower()
     {
-        if (Input.mouseScrollDelta.y < 0)
-        {
-            zoomOffset.y += curZoomSpeed;
-            targetFOV += curZoomFOVSpeed;
-        }
-        if (Input.mouseScrollDelta.y > 0)
-        {
-            zoomOffset.y -= curZoomSpeed;
-            targetFOV -= curZoomFOVSpeed;
-        }
-
         zoomOffset.y = Mathf.Clamp(zoomOffset.y, zoomYMin, zoomYMax);
         targetFOV = Mathf.Clamp(targetFOV, fovMin, fovMax);
 
         cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
             Vector3.Lerp(cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, zoomOffset, Time.deltaTime * 10);
         cineCam.m_Lens.FieldOfView = Mathf.Lerp(cineCam.m_Lens.FieldOfView, targetFOV, Time.deltaTime * 10);
+    }
+
+    // ========== CONTROLS ==========
+    public void OnMovement(InputAction.CallbackContext context)
+    {
+        Vector2 inputVal = context.ReadValue<Vector2>();
+        moveVector = new Vector3(inputVal.x, 0, inputVal.y);
+    }
+
+    public void OnZoom(InputAction.CallbackContext context)
+    {
+        float z = context.ReadValue<float>();
+
+        if (z < 0)
+        {
+            zoomOffset.y += curZoomSpeed;
+            targetFOV += curZoomFOVSpeed;
+        }
+        if (z > 0)
+        {
+            zoomOffset.y -= curZoomSpeed;
+            targetFOV -= curZoomFOVSpeed;
+        }
+    }
+
+    public void OnRotate(InputAction.CallbackContext context)
+    {
+        var inputVal = context.ReadValue<float>();
+        rotateDir = inputVal;
+    }
+
+    public void OnCamSnap(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        snapCount++;
+
+        if (snapCount > 3)
+            snapCount = 0;
+
+        if (snapCount == 0)
+            this.transform.eulerAngles = new Vector3(0, 0, 0);
+        else if (snapCount == 1)
+            this.transform.eulerAngles = new Vector3(0, 90, 0);
+        else if (snapCount == 2)
+            this.transform.eulerAngles = new Vector3(0, 180, 0);
+        else if (snapCount == 3)
+            this.transform.eulerAngles = new Vector3(0, -90, 0);
+    }
+
+    public void OnCamSpeedUp(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            curMovSpeed = movSpeed * 2;
+            curRotSpeed = rotSpeed * 2;
+            curZoomSpeed = zoomSpeed * 2;
+            curZoomFOVSpeed = zoomFOVSpeed * 2;
+        }
+        else if (context.canceled)
+        {
+            curMovSpeed = movSpeed;
+            curRotSpeed = rotSpeed;
+            curZoomSpeed = zoomSpeed;
+            curZoomFOVSpeed = zoomFOVSpeed;
+        }
     }
 }
