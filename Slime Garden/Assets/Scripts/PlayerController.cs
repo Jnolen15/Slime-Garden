@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -19,11 +20,10 @@ public class PlayerController : MonoBehaviour
     }
 
     public TextMeshProUGUI csDisplay;
-
     [SerializeField] private LayerMask groundLayerMask;
     private GridSystem gridSystem;
-
     private GameObject buildVisual;
+    [SerializeField] private bool isOverUI;
 
     public enum State
     {
@@ -37,6 +37,16 @@ public class PlayerController : MonoBehaviour
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
         buildVisual.SetActive(false);
+    }
+
+    private void Update()
+    {
+        // Check to see if mouse is over UI element
+        // This proboably is not the best way to do this, so maybe fix later
+        if (EventSystem.current.IsPointerOverGameObject())
+            isOverUI = true;
+        else
+            isOverUI = false;
     }
 
     public void ChangeState(string newState)
@@ -70,7 +80,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
-            if (state == State.Build)
+            if (state == State.Build && !isOverUI)
                 gridSystem.Place(mousePos.point);
         }
 
@@ -96,7 +106,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
-            if (state == State.Build)
+            if (state == State.Build && !isOverUI)
                 gridSystem.Demolish(mousePos.point);
         }
     }
