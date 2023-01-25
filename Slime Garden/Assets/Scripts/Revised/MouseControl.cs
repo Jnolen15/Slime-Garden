@@ -60,8 +60,8 @@ public class MouseControl : MonoBehaviour
         heldSlime = null;
     }
 
-    // ========== CONTROLS ==========
 
+    // ========== CONTROLS ==========
     public void OnPrimaryHold(InputAction.CallbackContext context)
     {
         if (context.performed)
