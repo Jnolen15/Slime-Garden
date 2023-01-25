@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class PlayerController : MonoBehaviour
@@ -18,11 +20,10 @@ public class PlayerController : MonoBehaviour
     }
 
     public TextMeshProUGUI csDisplay;
-
     [SerializeField] private LayerMask groundLayerMask;
     private GridSystem gridSystem;
-
     private GameObject buildVisual;
+    [SerializeField] private bool isOverUI;
 
     public enum State
     {
@@ -35,39 +36,17 @@ public class PlayerController : MonoBehaviour
     {
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
+        buildVisual.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
-        {
-            // ================ PLACE / Demolish
-            if (state == State.Build)
-            {
-                if (Input.GetMouseButtonDown(0))
-                    gridSystem.Place(mousePos.point);
-
-                if (Input.GetMouseButtonDown(1))
-                    gridSystem.Demolish(mousePos.point);
-            }
-
-            // =================== ROTATE
-            if (Input.GetKeyDown(KeyCode.R) && state == State.Build)
-            {
-                gridSystem.Rotate();
-            }
-        }
-
-        switch (state)
-        {
-            case (State.Default):
-                buildVisual.SetActive(false);
-                break;
-            case (State.Build):
-                buildVisual.SetActive(true);
-                break;
-        }
+        // Check to see if mouse is over UI element
+        // This proboably is not the best way to do this, so maybe fix later
+        if (EventSystem.current.IsPointerOverGameObject())
+            isOverUI = true;
+        else
+            isOverUI = false;
     }
 
     public void ChangeState(string newState)
@@ -76,9 +55,11 @@ public class PlayerController : MonoBehaviour
         {
             case "Default": 
                 state = State.Default;
+                buildVisual.SetActive(false);
                 break;
             case "Build":
                 state = State.Build;
+                buildVisual.SetActive(true);
                 break;
         }
     }
@@ -87,5 +68,55 @@ public class PlayerController : MonoBehaviour
     {
         gridSystem.SwapPlaceable(newP);
         buildVisual.GetComponent<BuildingVisual>().RefreshVisual();
+    }
+
+    // ========== CONTROLS ==========
+    public void OnPrimary(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        // Click Ground
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
+        {
+            if (state == State.Build && !isOverUI)
+                gridSystem.Place(mousePos.point);
+        }
+
+        // Click Other
+        Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
+        {
+            if (objectRayHit.collider.gameObject.tag == "Interactable")
+            {
+                var interactable = objectRayHit.collider.gameObject.GetComponent<IInteractable>();
+                if (interactable == null) return;
+
+                interactable.Interact();
+            }
+        }
+    }
+
+    public void OnSecondary(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
+        {
+            if (state == State.Build && !isOverUI)
+                gridSystem.Demolish(mousePos.point);
+        }
+    }
+
+    public void OnRotate(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        if (state == State.Build)
+            gridSystem.Rotate();
     }
 }

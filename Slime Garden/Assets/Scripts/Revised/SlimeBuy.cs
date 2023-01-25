@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SlimeBuy : MonoBehaviour
+public class SlimeBuy : MonoBehaviour, IInteractable
 {
     private Shop shop;
 
@@ -14,7 +14,8 @@ public class SlimeBuy : MonoBehaviour
         shop = this.transform.GetComponentInParent<Shop>();
     }
 
-    private void OnMouseDown()
+
+    public void Interact()
     {
         shop.SlimePurchased();
     }
