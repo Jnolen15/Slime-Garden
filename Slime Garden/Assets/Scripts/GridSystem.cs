@@ -70,7 +70,7 @@ public class GridSystem : MonoBehaviour
 
     private void Update()
     {
-        /*// ================== DEBUG
+        // ================== DEBUG
         // Middle click to get info on a grid space
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
@@ -90,7 +90,7 @@ public class GridSystem : MonoBehaviour
                     Debug.Log("GridObject is null " + a + "," + b);
                 }
             }
-        }*/
+        }
     }
 
     // ================ Place ================

@@ -17,7 +17,7 @@ public class Cheats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*// Give money
+        // Give money
         if (Input.GetKeyDown(KeyCode.M))
         {
             pc.Money += 100;
@@ -27,6 +27,6 @@ public class Cheats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
         {
             rs.CreateSlime(Vector3.zero);
-        }*/
+        }
     }
 }
