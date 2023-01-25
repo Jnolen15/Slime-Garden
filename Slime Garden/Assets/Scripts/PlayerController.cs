@@ -66,11 +66,25 @@ public class PlayerController : MonoBehaviour
         if (!context.performed)
             return;
 
+        // Click Ground
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             if (state == State.Build)
                 gridSystem.Place(mousePos.point);
+        }
+
+        // Click Other
+        Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
+        {
+            if (objectRayHit.collider.gameObject.tag == "Interactable")
+            {
+                var interactable = objectRayHit.collider.gameObject.GetComponent<IInteractable>();
+                if (interactable == null) return;
+
+                interactable.Interact();
+            }
         }
     }
 

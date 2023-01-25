@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crate : MonoBehaviour
+public class Crate : MonoBehaviour, IInteractable
 {
     public GameObject contents;
 
@@ -21,9 +21,9 @@ public class Crate : MonoBehaviour
         rs = GameObject.Find("GameManager").GetComponent<RandomSlime>();
     }
 
-    private void OnMouseDown()
+    public void Interact()
     {
-        if(type == Type.Slime)
+        if (type == Type.Slime)
         {
             Debug.Log("Generating Slime");
             rs.CreateSlime(transform.position);

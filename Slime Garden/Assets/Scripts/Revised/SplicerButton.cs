@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SplicerButton : MonoBehaviour
+public class SplicerButton : MonoBehaviour, IInteractable
 {
     public bool canBePressed = false;
     public bool isPressed = false;
@@ -15,8 +15,8 @@ public class SplicerButton : MonoBehaviour
         priceText.enabled = false;
     }
 
-    private void OnMouseDown()
+    public void Interact()
     {
-        if(canBePressed) isPressed = true;
+        if (canBePressed) isPressed = true;
     }
 }

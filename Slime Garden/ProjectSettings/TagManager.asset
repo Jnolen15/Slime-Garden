@@ -13,6 +13,7 @@ TagManager:
   - Border
   - Grid
   - BuildVisual
+  - Interactable
   layers:
   - Default
   - TransparentFX
