@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MouseControl : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class MouseControl : MonoBehaviour
         // border detection
         if (holding)
         {
-            Ray borderRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray borderRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
             {
                 SlimeDropped();
@@ -33,46 +34,13 @@ public class MouseControl : MonoBehaviour
         }
 
         // Mouse position in world space
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             mouseVisual.transform.position = mousePos.point;
 
             if (holding)
                 heldSlime.GetComponent<DragDrop>().SlimeHeld(mousePos.point, pickupOffsetX);
-        }
-
-        // Mouse click
-        if (Input.GetMouseButtonDown(0))
-        {
-            if(pc.state == PlayerController.State.Default)
-            {
-                Ray clickray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
-                {
-                    // Pick up slime of clicked
-                    if (clickraycastHit.collider.gameObject.tag == "Slime")
-                    {
-                        SlimePickUp(clickraycastHit.collider.gameObject, clickraycastHit.point);
-                    }
-
-                }
-            }
-        }
-
-        // Let go of a slime if player was holding one
-        if (Input.GetMouseButtonUp(0) && holding)
-        {
-            SlimeDropped();
-        }
-
-        // DragDrop letgo is called without mouse being let go (Ex: Splicer input)
-        if (heldSlime != null)
-        {
-            if (!heldSlime.GetComponent<DragDrop>().isHeld)
-            {
-                SlimeDropped();
-            }
         }
     }
 
@@ -90,5 +58,31 @@ public class MouseControl : MonoBehaviour
         heldSlime.GetComponent<DragDrop>().LetGo();
         holding = false;
         heldSlime = null;
+    }
+
+    // ========== CONTROLS ==========
+
+    public void OnPrimaryHold(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if (pc.state == PlayerController.State.Default)
+            {
+                Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
+                {
+                    // Pick up slime of clicked
+                    if (clickraycastHit.collider.gameObject.tag == "Slime")
+                        SlimePickUp(clickraycastHit.collider.gameObject, clickraycastHit.point);
+                }
+            }
+        }
+        else if (context.canceled)
+        {
+            if (Input.GetMouseButtonUp(0) && holding)
+            {
+                SlimeDropped();
+            }
+        }
     }
 }

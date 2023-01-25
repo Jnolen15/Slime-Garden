@@ -15,12 +15,12 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Hold",
+                    "name": "PrimaryHold",
                     "type": "Button",
-                    "id": "fa27d549-1eb3-4f5a-8525-a7aa5e8a2373",
+                    "id": "35bea844-fc98-4b0b-8415-861d832a0370",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.2)",
                     "initialStateCheck": false
                 },
                 {
@@ -109,17 +109,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "CamSnap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "dcb6f4c5-89a8-4bdc-8eac-729b25ff2385",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Hold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -230,6 +219,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "CamSpeedUp",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ecb74574-6424-4788-9590-e524fcb07213",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrimaryHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

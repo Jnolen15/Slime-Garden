@@ -28959,10 +28959,6 @@ MonoBehaviour:
     m_ActionName: Basic/Primary[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: fa27d549-1eb3-4f5a-8525-a7aa5e8a2373
-    m_ActionName: Basic/Hold
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 15bb30c4-b494-43ec-922a-0d0edc914149
     m_ActionName: Basic/Secondary[/Mouse/rightButton]
   - m_PersistentCalls:
@@ -29044,6 +29040,22 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 0fb34cfd-96ab-4eb2-8deb-e0bf2619b021
+    m_ActionName: Basic/New action
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 832757453}
+        m_TargetAssemblyTypeName: MouseControl, Assembly-CSharp
+        m_MethodName: OnPrimaryHold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 35bea844-fc98-4b0b-8415-861d832a0370
     m_ActionName: Basic/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
