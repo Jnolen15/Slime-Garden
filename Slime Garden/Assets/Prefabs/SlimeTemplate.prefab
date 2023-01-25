@@ -131,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sc: {fileID: 3820516103340025377}
   isHeld: 0
+  followSpeed: 10
 --- !u!65 &8598985467623667190
 BoxCollider:
   m_ObjectHideFlags: 0
