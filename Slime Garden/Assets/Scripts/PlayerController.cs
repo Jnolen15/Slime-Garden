@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
     public enum State
     {
         Default,
-        Build
+        Build,
+        Water,
+        Plant
     }
     public State state;
 
@@ -51,15 +53,22 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeState(string newState)
     {
+        buildVisual.SetActive(false);
+
         switch (newState)
         {
             case "Default": 
                 state = State.Default;
-                buildVisual.SetActive(false);
                 break;
             case "Build":
                 state = State.Build;
                 buildVisual.SetActive(true);
+                break;
+            case "Water":
+                state = State.Water;
+                break;
+            case "Plant":
+                state = State.Plant;
                 break;
         }
     }
