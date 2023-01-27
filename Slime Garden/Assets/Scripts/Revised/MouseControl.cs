@@ -7,30 +7,48 @@ public class MouseControl : MonoBehaviour
 {
     public bool holding;
     public GameObject heldSlime;
-    [SerializeField] private GameObject potentialSlime;
+    private GameObject potentialSlime;
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
     [SerializeField] private LayerMask borderLayerMask;
     [SerializeField] private GameObject mouseVisual;
+    [SerializeField] private Texture2D cursorPoint;
+    [SerializeField] private Texture2D cursorClose;
+    [SerializeField] private Texture2D cursorOpen;
 
     private PlayerController pc;
 
     private void Start()
     {
         pc = this.GetComponent<PlayerController>();
+        UpdateCursor("point");
     }
 
     void Update()
     {
-        // border detection
+        
         if (holding)
         {
+            UpdateCursor("close");
+
+            // border detection
             Ray borderRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
             {
                 SlimeDropped();
             }
+        } else
+        {
+            // Cursor swapping
+            Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
+            {
+                if (clickraycastHit.collider.gameObject.tag == "Slime")
+                    UpdateCursor("open");
+            }
+            else
+                UpdateCursor("point");
         }
 
         // Mouse position in world space
@@ -59,6 +77,22 @@ public class MouseControl : MonoBehaviour
         holding = false;
         heldSlime = null;
         potentialSlime = null;
+    }
+
+    private void UpdateCursor(string type)
+    {
+        switch (type)
+        {
+            case "point":
+                Cursor.SetCursor(cursorPoint, Vector2.zero, CursorMode.Auto);
+                break;
+            case "close":
+                Cursor.SetCursor(cursorClose, Vector2.zero, CursorMode.Auto);
+                break;
+            case "open":
+                Cursor.SetCursor(cursorOpen, Vector2.zero, CursorMode.Auto);
+                break;
+        }
     }
 
 
