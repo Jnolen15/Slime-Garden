@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
         set
         {
             money = value;
-            csDisplay.text = "Crystalized Slime: " + money.ToString();
+            csDisplay.text = money.ToString();
         }
     }
 
