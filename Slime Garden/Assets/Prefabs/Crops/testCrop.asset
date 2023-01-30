@@ -13,3 +13,9 @@ MonoBehaviour:
   m_Name: testCrop
   m_EditorClassIdentifier: 
   cropName: Test Crop
+  growthTime: 10
+  spriteStages:
+  - {fileID: 1151688000, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}
+  - {fileID: 583528101, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}
+  - {fileID: -755540649, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}
+  - {fileID: 1893956086, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}

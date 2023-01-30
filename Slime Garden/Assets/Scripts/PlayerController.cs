@@ -113,20 +113,20 @@ public class PlayerController : MonoBehaviour
 
                 if(state == State.Plant)
                 {
-                    if (plantSpot.GetCrop() == null)
+                    if (plantSpot.GetCropSO() == null)
                     {
                         Debug.Log("Planted!");
                         plantSpot.Plant(crop);
                     }
                     else
-                        Debug.Log("spot already has plant: " + plantSpot.GetCrop().cropName);
+                        Debug.Log("spot already has plant: " + plantSpot.GetCropSO().cropName);
                 }
                 else if (state == State.Water)
                 {
-                    if (plantSpot.GetCrop() == null)
+                    if (plantSpot.GetCropSO() == null)
                         Debug.Log("Nothing to water!");
                     else
-                        Debug.Log("Watered " + plantSpot.GetCrop().cropName);
+                        Debug.Log("Watered " + plantSpot.GetCropSO().cropName);
 
                 }
             }
