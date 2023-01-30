@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private GridSystem gridSystem;
     private GameObject buildVisual;
     [SerializeField] private bool isOverUI;
+    [SerializeField] private CropSO crop;
 
     public enum State
     {
@@ -93,16 +94,41 @@ public class PlayerController : MonoBehaviour
                 gridSystem.Place(mousePos.point);
         }
 
-        // Click Other
+        // Click Interactable
         Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
         {
-            if (objectRayHit.collider.gameObject.tag == "Interactable")
+            if (state == State.Default && objectRayHit.collider.gameObject.tag == "Interactable")
             {
                 var interactable = objectRayHit.collider.gameObject.GetComponent<IInteractable>();
                 if (interactable == null) return;
 
                 interactable.Interact();
+            }
+
+            if (objectRayHit.collider.gameObject.tag == "Plantable")
+            {
+                var plantSpot = objectRayHit.collider.gameObject.GetComponent<PlantSpot>();
+                if (plantSpot == null) return;
+
+                if(state == State.Plant)
+                {
+                    if (plantSpot.GetCrop() == null)
+                    {
+                        Debug.Log("Planted!");
+                        plantSpot.Plant(crop);
+                    }
+                    else
+                        Debug.Log("spot already has plant: " + plantSpot.GetCrop().cropName);
+                }
+                else if (state == State.Water)
+                {
+                    if (plantSpot.GetCrop() == null)
+                        Debug.Log("Nothing to water!");
+                    else
+                        Debug.Log("Watered " + plantSpot.GetCrop().cropName);
+
+                }
             }
         }
     }
