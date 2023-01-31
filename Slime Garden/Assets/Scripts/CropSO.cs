@@ -6,6 +6,6 @@ using UnityEngine;
 public class CropSO : ScriptableObject
 {
     public string cropName;
-    public float growthTime;
-    public List<Sprite> spriteStages = new List<Sprite>();
+    public int[] growTicks;
+    public Sprite[] spriteStages;
 }
