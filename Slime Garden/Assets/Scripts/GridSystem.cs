@@ -209,4 +209,19 @@ public class GridSystem : MonoBehaviour
     {
         return grid.GetWorldPosition(x, y);
     }
+
+    public PlaceableObject GetPlaceableObject(Vector3 mousePos)
+    {
+        grid.GetXZ(mousePos, out int a, out int b);
+        GridObject gridObj = grid.GetValue(a, b);
+
+        if (gridObj == null)
+        {
+            Debug.Log("Grid space is NULL");
+            return null;
+        }
+
+        return gridObj.GetPlaceableObject();
+    }
+
 }

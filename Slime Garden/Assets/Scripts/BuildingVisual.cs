@@ -55,7 +55,7 @@ public class BuildingVisual : MonoBehaviour
 
         if (placeableSO != null)
         {
-            visual = Instantiate(placeableSO.prefab, Vector3.zero, Quaternion.identity);
+            visual = Instantiate(placeableSO.visual, Vector3.zero, Quaternion.identity);
             visual.parent = transform;
         }
     }

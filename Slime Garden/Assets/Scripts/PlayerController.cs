@@ -142,7 +142,20 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             if (state == State.Build && !isOverUI)
+            {
+                if (gridSystem.GetPlaceableObject(mousePos.point) == null)
+                    return;
+
+                // Remove garden refrence
+                var ps = gridSystem.GetPlaceableObject(mousePos.point).GetComponentsInChildren<PlantSpot>();
+                foreach (PlantSpot spot in ps)
+                {
+                    Debug.Log("Getting rid of garden refrence");
+                    spot.DestroySelf();
+                }
+
                 gridSystem.Demolish(mousePos.point);
+            }
         }
     }
 

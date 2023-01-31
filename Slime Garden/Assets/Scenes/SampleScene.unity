@@ -35805,6 +35805,7 @@ GameObject:
   - component: {fileID: 1887320835}
   - component: {fileID: 1887320832}
   - component: {fileID: 1887320834}
+  - component: {fileID: 1887320837}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -35920,6 +35921,21 @@ MonoBehaviour:
   sBaseDictionary: {fileID: 11400000, guid: 6b63382780fc7ef43a6687b4df4b2a4a, type: 2}
   sPatternDictionary: {fileID: 11400000, guid: 588174487cfc27d4f9d226b1112744fc, type: 2}
   activeSlimes: []
+--- !u!114 &1887320837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887320831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252b0a43befbabc46beeba73021ebc34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tickSpeed: 10
+  tickTime: 10
+  plantSpotList: []
 --- !u!1001 &1887562629
 PrefabInstance:
   m_ObjectHideFlags: 0
