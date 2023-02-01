@@ -15,6 +15,7 @@ TagManager:
   - BuildVisual
   - Interactable
   - Plantable
+  - UIManager
   layers:
   - Default
   - TransparentFX

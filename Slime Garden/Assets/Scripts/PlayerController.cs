@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private GameObject buildVisual;
     [SerializeField] private bool isOverUI;
     [SerializeField] private CropSO crop;
+    private MenuManager menus;
 
     public enum State
     {
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
         buildVisual.SetActive(false);
+        menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
     }
 
     private void Update()
@@ -54,6 +56,7 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeState(string newState)
     {
+        menus.CloseAllSubmenus();
         buildVisual.SetActive(false);
 
         switch (newState)
@@ -64,12 +67,14 @@ public class PlayerController : MonoBehaviour
             case "Build":
                 state = State.Build;
                 buildVisual.SetActive(true);
+                menus.BuildMenuActive(true);
                 break;
             case "Water":
                 state = State.Water;
                 break;
             case "Plant":
                 state = State.Plant;
+                menus.SeedMenuActive(true);
                 break;
         }
     }
@@ -78,6 +83,11 @@ public class PlayerController : MonoBehaviour
     {
         gridSystem.SwapPlaceable(newP);
         buildVisual.GetComponent<BuildingVisual>().RefreshVisual();
+    }
+    
+    public void SwapCrop(CropSO newC)
+    {
+        crop = newC;
     }
 
     // ========== CONTROLS ==========
