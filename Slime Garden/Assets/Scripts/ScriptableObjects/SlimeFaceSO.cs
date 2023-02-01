@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-[CreateAssetMenu(menuName = "SlimeFace")]
+[CreateAssetMenu(menuName = "SlimeSOs/SlimeFace")]
 
 public class SlimeFaceSO : ScriptableObject
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(menuName = "SlimeBaseDictionary")]
+[CreateAssetMenu(menuName = "SlimeSOs/SlimeBaseDictionary")]
 
 public class SBaseDictionary : ScriptableObject
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "SlimePatternDictionary")]
+[CreateAssetMenu(menuName = "SlimeSOs/SlimePatternDictionary")]
 
 public class SPatternDictionary : ScriptableObject
 {

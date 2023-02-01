@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(menuName = "OtherSOs/Crop")]
 public class CropSO : ScriptableObject
 {
     public string cropName;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu()]
+[CreateAssetMenu(menuName = "OtherSOs/PlaceableObject")]
 public class PlaceableObjectSO : ScriptableObject
 {
     public enum Dir

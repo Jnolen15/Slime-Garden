@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
-[CreateAssetMenu(menuName = "SlimeBase")]
+[CreateAssetMenu(menuName = "SlimeSOs/SlimeBase")]
 public class SlimeBaseSO : ScriptableObject
 {
     public SpriteLibraryAsset libraryAsset; // The slimes library of sprites
