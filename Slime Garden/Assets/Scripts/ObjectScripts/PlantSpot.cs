@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlantSpot : MonoBehaviour
 {
-    private Transform cropSpot;
     private Transform cropSprite;
+    private Transform model;
     private GardenManager gm;
+
+    [SerializeField] private Material dryMat;
+    [SerializeField] private Material wetMat;
 
     public CropSO curCropSO;
     public bool hasCrop;
     public bool fullyGrown;
     public int curTick;
+    public int wateredTicks;
     public int growthStage;
 
     private void Awake()
@@ -19,8 +23,8 @@ public class PlantSpot : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToList(this);
 
-        cropSpot = transform.GetChild(0);
-        cropSprite = transform.GetChild(1);
+        cropSprite = transform.GetChild(0);
+        model = transform.GetChild(1);
     }
 
     public CropSO GetCropSO()
@@ -37,14 +41,18 @@ public class PlantSpot : MonoBehaviour
 
     public void GrowTick()
     {
+        if (!hasCrop || fullyGrown)
+            return;
+
         Debug.Log("Growth Tick");
 
-        if (hasCrop && !fullyGrown)
+        if (wateredTicks > 0)
         {
             curTick++;
+            wateredTicks--;
 
             // Crop progresses growth stage
-            if(curTick == curCropSO.growTicks[growthStage])
+            if (curTick == curCropSO.growTicks[growthStage])
             {
                 Debug.Log(curCropSO.cropName + " has grown!");
                 growthStage++;
@@ -52,12 +60,59 @@ public class PlantSpot : MonoBehaviour
             }
 
             // Crop is fully grown
-            if(growthStage > (curCropSO.growTicks.Length - 1))
+            if (growthStage > (curCropSO.growTicks.Length - 1))
             {
                 Debug.Log(curCropSO.cropName + " is fully grown!");
                 fullyGrown = true;
             }
+        } else
+        {
+            Debug.Log("Crop was not watered, could not grow!");
         }
+
+        if(wateredTicks == 0)
+        {
+            model.GetComponent<Renderer>().material = dryMat;
+        }
+    }
+
+    // Called by clicked on in default player state
+    public void Interact()
+    {
+        // IF no plant nothing
+        if (!hasCrop)
+        {
+            Debug.Log("No crop planted");
+            return;
+        }
+
+        // If not fully grown plant
+        if (!fullyGrown)
+        {
+            // -> If not watered water
+            if (wateredTicks <= 0)
+            {
+                wateredTicks += 2;
+                model.GetComponent<Renderer>().material = wetMat;
+                Debug.Log("Crop watered!");
+            }
+            // -> If watered then nothing
+            else Debug.Log("crop already watered. Water left: " + wateredTicks);
+        }
+        // If fully grown harvest
+        else
+            Harvest();
+    }
+
+    private void Harvest()
+    {
+        Debug.Log("Crop harvested!");
+        hasCrop = false;
+        fullyGrown = false;
+        curTick = 0;
+        growthStage = 0;
+        curCropSO = null;
+        cropSprite.GetComponent<SpriteRenderer>().sprite = null;
     }
 
     public void DestroySelf()

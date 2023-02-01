@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
     {
         Default,
         Build,
-        Water,
         Plant
     }
     public State state;
@@ -69,9 +68,6 @@ public class PlayerController : MonoBehaviour
                 buildVisual.SetActive(true);
                 menus.BuildMenuActive(true);
                 break;
-            case "Water":
-                state = State.Water;
-                break;
             case "Plant":
                 state = State.Plant;
                 menus.SeedMenuActive(true);
@@ -104,7 +100,7 @@ public class PlayerController : MonoBehaviour
                 gridSystem.Place(mousePos.point);
         }
 
-        // Click Interactable
+        // Click Interactable / Plantable
         Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
         {
@@ -131,13 +127,9 @@ public class PlayerController : MonoBehaviour
                     else
                         Debug.Log("spot already has plant: " + plantSpot.GetCropSO().cropName);
                 }
-                else if (state == State.Water)
+                else if (state == State.Default)
                 {
-                    if (plantSpot.GetCropSO() == null)
-                        Debug.Log("Nothing to water!");
-                    else
-                        Debug.Log("Watered " + plantSpot.GetCropSO().cropName);
-
+                    plantSpot.Interact();
                 }
             }
         }
