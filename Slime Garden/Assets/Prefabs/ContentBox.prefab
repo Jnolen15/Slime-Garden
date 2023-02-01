@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3209495907885195787}
   - component: {fileID: 3209495907885195786}
   - component: {fileID: 3209495907885195785}
+  - component: {fileID: 5029786632941330289}
   m_Layer: 5
   m_Name: ContentBox
   m_TagString: Untagged
@@ -123,19 +124,33 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: SwapPlaceable
-        m_Mode: 2
+      - m_Target: {fileID: 5029786632941330289}
+        m_TargetAssemblyTypeName: placeableUIContent, Assembly-CSharp
+        m_MethodName: ButtonPressed
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 11400000, guid: 3e3cf7ccd792bc94bbdef221eea73b34,
-            type: 2}
-          m_ObjectArgumentAssemblyTypeName: PlaceableObjectSO, Assembly-CSharp
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &5029786632941330289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3209495907885195791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de470146c25fc34439daaab72bc7d4e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  titleText: {fileID: 3209495908172476297}
+  priceText: {fileID: 3209495908966228610}
+  so: {fileID: 0}
 --- !u!1 &3209495908172476303
 GameObject:
   m_ObjectHideFlags: 0
