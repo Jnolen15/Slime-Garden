@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 191027735658222410}
   - component: {fileID: 191027735658222413}
+  - component: {fileID: 6194680746705363862}
   m_Layer: 0
   m_Name: CropSprite
   m_TagString: Untagged
@@ -84,6 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6194680746705363862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191027735658222412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 557898596552f12408bd6f073a1494f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &872799558305206526
 GameObject:
   m_ObjectHideFlags: 0
