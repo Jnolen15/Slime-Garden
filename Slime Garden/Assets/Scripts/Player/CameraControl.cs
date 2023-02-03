@@ -55,7 +55,6 @@ public class CameraControl : MonoBehaviour
         camMovement(moveVector);
         if (useEdgeScrolling)
             camEdgeScrollMovement();
-        camRotation();
         if (changeZoom)
             camZoom();
         else
@@ -84,7 +83,28 @@ public class CameraControl : MonoBehaviour
 
     private void camRotation()
     {
-        this.transform.eulerAngles += new Vector3(0, rotateDir * curRotSpeed * Time.deltaTime, 0);
+        if (rotateDir > 0)
+            snapCount++;
+        else if (rotateDir < 0)
+            snapCount--;
+
+        if (snapCount > 3)
+            snapCount = 0;
+        else if (snapCount < 0)
+            snapCount = 3;
+
+        if (snapCount == 0)
+            this.transform.eulerAngles = new Vector3(0, 0, 0);
+        else if (snapCount == 1)
+            this.transform.eulerAngles = new Vector3(0, 90, 0);
+        else if (snapCount == 2)
+            this.transform.eulerAngles = new Vector3(0, 180, 0);
+        else if (snapCount == 3)
+            this.transform.eulerAngles = new Vector3(0, -90, 0);
+
+        // Old hold to rotate unsnapped method.
+        // To return to this, take method call out of OnRotate and add it to Update
+        //this.transform.eulerAngles += new Vector3(0, rotateDir * curRotSpeed * Time.deltaTime, 0);
     }
 
     private void camZoom()
@@ -142,10 +162,15 @@ public class CameraControl : MonoBehaviour
 
     public void OnRotate(InputAction.CallbackContext context)
     {
+        if (!context.performed)
+            return;
+
         var inputVal = context.ReadValue<float>();
         rotateDir = inputVal;
+        camRotation();
     }
 
+    // Not really used anymore since makine Q/E snap. Remove this if it stays that way
     public void OnCamSnap(InputAction.CallbackContext context)
     {
         if (!context.performed)
