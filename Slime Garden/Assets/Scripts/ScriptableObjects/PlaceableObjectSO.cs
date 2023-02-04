@@ -14,10 +14,17 @@ public class PlaceableObjectSO : ScriptableObject
     }
 
     public string placeableName;
+    public int price;
+    [TextArea]
+    public string description;
+
     public Transform prefab;
     public Transform visual;
     public int width;
     public int height;
+
+
+    // ============== Functionality ==============
 
     public static Dir GetNextDir(Dir dir)
     {

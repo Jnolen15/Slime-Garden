@@ -6,6 +6,11 @@ using UnityEngine;
 public class CropSO : ScriptableObject
 {
     public string cropName;
+    public int price;
+
+    [TextArea]
+    public string description;
+
     public int[] growTicks;
     public Sprite[] spriteStages;
 }

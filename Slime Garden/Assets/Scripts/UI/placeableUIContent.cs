@@ -2,18 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
-public class placeableUIContent : MonoBehaviour
+public class placeableUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI priceText;
-    public UIPlaceableSO so;
+    public PlaceableObjectSO so;
+    private MenuManager menuManager;
 
-    public void Setup(UIPlaceableSO data)
+    public void Setup(PlaceableObjectSO data, MenuManager manager)
     {
+        menuManager = manager;
+
         so = data;
-        titleText.text = so.title;
+        titleText.text = so.placeableName;
         priceText.text = so.price.ToString();
     }
 
@@ -22,6 +26,16 @@ public class placeableUIContent : MonoBehaviour
         var pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
         if (pc != null)
-            pc.SwapPlaceable(so.placeableData);
+            pc.SwapPlaceable(so);
+    }
+
+    void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
+    {
+        menuManager.SetInfoBox(so.placeableName, so.description);
+    }
+
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    {
+        menuManager.CloseInfoBox();
     }
 }

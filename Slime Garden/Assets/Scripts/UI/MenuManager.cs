@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MenuManager : MonoBehaviour
 {
@@ -8,8 +9,9 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject placeableUIPrefab;
     [SerializeField] private GameObject seedMenu;
     [SerializeField] private GameObject seedUIPrefab;
-    [SerializeField] private List<UIPlaceableSO> availablePlaceables = new List<UIPlaceableSO>();
-    [SerializeField] private List<UISeedSO> availableSeeds = new List<UISeedSO>();
+    [SerializeField] private GameObject infoBox;
+    [SerializeField] private List<PlaceableObjectSO> availablePlaceables = new List<PlaceableObjectSO>();
+    [SerializeField] private List<CropSO> availableSeeds = new List<CropSO>();
 
     void Start()
     {
@@ -17,6 +19,7 @@ public class MenuManager : MonoBehaviour
         buildMenu.SetActive(false);
         UpdateSeedMenu();
         seedMenu.SetActive(false);
+        infoBox.SetActive(false);
     }
 
     public void CloseAllSubmenus()
@@ -30,10 +33,10 @@ public class MenuManager : MonoBehaviour
     {
         var contentMenu = buildMenu.transform.GetChild(0).GetChild(0);
 
-        foreach (UIPlaceableSO so in availablePlaceables)
+        foreach (PlaceableObjectSO so in availablePlaceables)
         {
             var element = Instantiate(placeableUIPrefab, contentMenu);
-            element.GetComponent<placeableUIContent>().Setup(so);
+            element.GetComponent<placeableUIContent>().Setup(so, this);
         }
     }
 
@@ -47,15 +50,28 @@ public class MenuManager : MonoBehaviour
     {
         var contentMenu = seedMenu.transform.GetChild(0).GetChild(0);
 
-        foreach (UISeedSO so in availableSeeds)
+        foreach (CropSO so in availableSeeds)
         {
             var element = Instantiate(seedUIPrefab, contentMenu);
-            element.GetComponent<SeedUIContent>().Setup(so);
+            element.GetComponent<SeedUIContent>().Setup(so, this);
         }
     }
 
     public void SeedMenuActive(bool value)
     {
         seedMenu.SetActive(value);
+    }
+
+    // ============== Info Box ==============
+    public void SetInfoBox(string title, string description)
+    {
+        infoBox.SetActive(true);
+        infoBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = title;
+        infoBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = description;
+    }
+    
+    public void CloseInfoBox()
+    {
+        infoBox.SetActive(false);
     }
 }
