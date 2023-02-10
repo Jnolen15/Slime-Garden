@@ -4,29 +4,21 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "SlimeSOs/SlimeBaseDictionary")]
-public class SBaseDictionary : SerializedScriptableObject // Make just a normla serialized object if the Dictionary is taken out
+public class SBaseDictionary : SerializedScriptableObject
 {
-    // Array of Pattern Colors and Pattern types. Dictionary is auto-generated from these
-    [SerializeField]
-    private string[] sColors;
+    [SerializeField] private SlimeBaseSO basicSlime;
 
-    public Color Amethyst;
-    public Color Aquamarine;
-    public Color Bixbite;
-    public Color Citrine;
-    public Color Emerald;
-    public Color Jade;
-    public Color Obsidian;
-    public Color Peridot;
-    public Color Quartz;
-    public Color Ruby;
-    public Color Sapphire;
-    public Color Topaz;
+    [HideReferenceObjectPicker]
+    [ListDrawerSettings(CustomAddFunction = "@new colorListEntry()")]
+    [SerializeField] private List<colorListEntry> sColorList = new List<colorListEntry>();
 
-    public SlimeBaseSO basicSlime;
+    public class colorListEntry
+    {
+        public string cName;
+        public Color color;
+    }
 
-    // Serializable array that I can manually add slimes too
-    //[System.Serializable]
+    // Dictionary enty class. Holds all necessary info
     public class SlimeBaseEntry
     {
         public string slimeBaseName;
@@ -46,7 +38,7 @@ public class SBaseDictionary : SerializedScriptableObject // Make just a normla 
         }
     }
 
-    // Dictionary of data from array. A dictionary is used because it is more easily searchable
+    // Dictionary of SlimeBaseEntry. Used to be easily searchable by other scripts
     private static Dictionary<string, SlimeBaseEntry> slimeBaseDict = new Dictionary<string, SlimeBaseEntry>();
     //public Dictionary<string, SlimeBaseEntry> slimeBaseDictTWO = new Dictionary<string, SlimeBaseEntry>();
 
@@ -56,70 +48,14 @@ public class SBaseDictionary : SerializedScriptableObject // Make just a normla 
         Debug.Log("Filling Base Dictionary");
 
         // Add all slime patterns
-        string sName = "";
-        Color color = Quartz;
-        string crystal = "QuartzCrystal";
-        for (int c = 0; c < sColors.Length; c++)
+        for (int c = 0; c < sColorList.Count; c++)
         {
-            // Add color to name
-            sName += sColors[c];
-            switch (sColors[c])
-            {
-                case "Amethyst":
-                    color = Amethyst;
-                    crystal = "Crystals/AmethystCrystal";
-                    break;
-                case "Aquamarine":
-                    color = Aquamarine;
-                    crystal = "Crystals/AquamarineCrystal";
-                    break;
-                case "Bixbite":
-                    color = Bixbite;
-                    crystal = "Crystals/BixbiteCrystal";
-                    break;
-                case "Citrine":
-                    color = Citrine;
-                    crystal = "Crystals/CitrineCrystal";
-                    break;
-                case "Emerald":
-                    color = Emerald;
-                    crystal = "Crystals/EmeraldCrystal";
-                    break;
-                case "Jade":
-                    color = Jade;
-                    crystal = "Crystals/JadeCrystal";
-                    break;
-                case "Obsidian":
-                    color = Obsidian;
-                    crystal = "Crystals/ObsidianCrystal";
-                    break;
-                case "Peridot":
-                    color = Peridot;
-                    crystal = "Crystals/PeridotCrystal";
-                    break;
-                case "Quartz":
-                    color = Quartz;
-                    crystal = "Crystals/QuartzCrystal";
-                    break;
-                case "Ruby":
-                    color = Ruby;
-                    crystal = "Crystals/RubyCrystal";
-                    break;
-                case "Sapphire":
-                    color = Sapphire;
-                    crystal = "Crystals/SapphireCrystal";
-                    break;
-                case "Topaz":
-                    color = Topaz;
-                    crystal = "Crystals/TopazCrystal";
-                    break;
-            }
+            string crystal = "Crystals/" + sColorList[c].cName + "Crystal";
 
-            slimeBaseDict.Add(sName,
-                        new SlimeBaseEntry(sName, color, basicSlime, Resources.Load<GameObject>(crystal)));
-
-            // Reset and Increment
-            sName = "";
+            slimeBaseDict.Add(sColorList[c].cName,
+                    new SlimeBaseEntry(sColorList[c].cName, 
+                    sColorList[c].color, basicSlime, 
+                    Resources.Load<GameObject>(crystal)));
         }
 
         //slimeBaseDictTWO = slimeBaseDict;

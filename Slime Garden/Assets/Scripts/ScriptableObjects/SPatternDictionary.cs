@@ -4,29 +4,31 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "SlimeSOs/SlimePatternDictionary")]
-public class SPatternDictionary : SerializedScriptableObject // Make just a normla serialized object if the Dictionary is taken out
+public class SPatternDictionary : SerializedScriptableObject
 {
-    // Array of Pattern Colors and Pattern types. Dictionary is auto-generated from these
-    [SerializeField]
-    private string[] sColors;
-    [SerializeField]
-    private string[] sPatterns;
+    // List of Pattern Colors and Pattern types. Dictionary is auto-generated from these
+    public class colorListEntry
+    {
+        public string cName;
+        public Color color;
+    }
 
-    public Color Amethyst;
-    public Color Aquamarine;
-    public Color Bixbite;
-    public Color Citrine;
-    public Color Emerald;
-    public Color Jade;
-    public Color Obsidian;
-    public Color Peridot;
-    public Color Quartz;
-    public Color Ruby;
-    public Color Sapphire;
-    public Color Topaz;
+    public class patternListEntry
+    {
+        public string pName;
+        public SlimePatternSO pattern;
+    }
+
+    [HideReferenceObjectPicker]
+    [ListDrawerSettings(CustomAddFunction = "@new colorListEntry()")]
+    [SerializeField] private List<colorListEntry> sColorList = new List<colorListEntry>();
+
+    [HideReferenceObjectPicker]
+    [ListDrawerSettings(CustomAddFunction = "@new patternListEntry()")]
+    [SerializeField] private List<patternListEntry> sPatternList = new List<patternListEntry>();
+
 
     // Slime Pattern Entry class
-    //[System.Serializable]
     public class SlimePatternEntry
     {
         public string slimePatternName = "Null";
@@ -44,8 +46,9 @@ public class SPatternDictionary : SerializedScriptableObject // Make just a norm
         }
     }
 
-    // Dictionary of data from array. A dictionary is used because it is more easily searchable
+    // Dictionary of SlimePatternEntry. Used to be easily searchable by other scripts
     private static Dictionary<string, SlimePatternEntry> slimePatternDict = new Dictionary<string, SlimePatternEntry>();
+    // A second dictionary to see in inspector. Since static dictionaries can't be serialized
     //public Dictionary<string, SlimePatternEntry> slimePatternDictTWO = new Dictionary<string, SlimePatternEntry>();
 
     // Dictionary is filled
@@ -55,72 +58,30 @@ public class SPatternDictionary : SerializedScriptableObject // Make just a norm
 
         // Add Null, Null
         slimePatternDict.Add("Null Null", 
-            new SlimePatternEntry("Null Null", "Null", Quartz, Resources.Load<SlimePatternSO>("SlimeSOs/Patterns/Null Null")));
+            new SlimePatternEntry("Null Null", "Null", Color.white, Resources.Load<SlimePatternSO>("SlimeSOs/Patterns/Null Null")));
 
         // Add all slime patterns
         string sName = "";
-        string fileLocationName = "SlimeSOs/Patterns/";
-        for (int p = 0; p < sPatterns.Length; p++)
+        for (int p = 0; p < sPatternList.Count; p++)
         {
-            for (int c = 0; c < sColors.Length; c++)
+            for (int c = 0; c < sColorList.Count; c++)
             {
                 // Add color to name
-                sName += sColors[c];
+                sName += sColorList[c].cName;
                 sName += " ";
                 // Add pattern to name
-                sName += sPatterns[p];
-                fileLocationName += sPatterns[p];
+                sName += sPatternList[p].pName;
                 // Add to dictionary
                 slimePatternDict.Add(sName,
-                    new SlimePatternEntry(sName, sColors[c], Quartz, Resources.Load<SlimePatternSO>(fileLocationName)));
+                    new SlimePatternEntry(sName, sColorList[c].cName, 
+                    sColorList[c].color, sPatternList[p].pattern));
                 
-                switch (sColors[c])
-                {
-                    case "Amethyst":
-                        slimePatternDict[sName].slimePatternColor = Amethyst;
-                        break;
-                    case "Aquamarine":
-                        slimePatternDict[sName].slimePatternColor = Aquamarine;
-                        break;
-                    case "Bixbite":
-                        slimePatternDict[sName].slimePatternColor = Bixbite;
-                        break;
-                    case "Citrine":
-                        slimePatternDict[sName].slimePatternColor = Citrine;
-                        break;
-                    case "Emerald":
-                        slimePatternDict[sName].slimePatternColor = Emerald;
-                        break;
-                    case "Jade":
-                        slimePatternDict[sName].slimePatternColor = Jade;
-                        break;
-                    case "Obsidian":
-                        slimePatternDict[sName].slimePatternColor = Obsidian;
-                        break;
-                    case "Peridot":
-                        slimePatternDict[sName].slimePatternColor = Peridot;
-                        break;
-                    case "Quartz":
-                        slimePatternDict[sName].slimePatternColor = Quartz;
-                        break;
-                    case "Ruby":
-                        slimePatternDict[sName].slimePatternColor = Ruby;
-                        break;
-                    case "Sapphire":
-                        slimePatternDict[sName].slimePatternColor = Sapphire;
-                        break;
-                    case "Topaz":
-                        slimePatternDict[sName].slimePatternColor = Topaz;
-                        break;
-                }
-                // Reset and Increment
+                // Reset
                 sName = "";
-                fileLocationName = "SlimeSOs/Patterns/";
             }
         }
 
         //slimePatternDictTWO = slimePatternDict;
-
         Debug.Log("Done");
     }
 
