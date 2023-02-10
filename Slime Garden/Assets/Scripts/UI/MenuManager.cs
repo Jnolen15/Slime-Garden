@@ -43,6 +43,9 @@ public class MenuManager : MonoBehaviour
     public void BuildMenuActive(bool value)
     {
         buildMenu.SetActive(value);
+
+        if (!value)
+            CloseInfoBox();
     }
 
     // ============== Seed Menus ==============
@@ -63,15 +66,24 @@ public class MenuManager : MonoBehaviour
     }
 
     // ============== Info Box ==============
-    public void SetInfoBox(string title, string description)
+    public void SetInfoBox(string title, int price, string description)
     {
+        StopAllCoroutines();
         infoBox.SetActive(true);
         infoBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = title;
-        infoBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = description;
+        infoBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = price.ToString();
+        infoBox.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = description;
     }
     
     public void CloseInfoBox()
     {
+        StopAllCoroutines();
+        StartCoroutine(WaitCloseInfoBox());
+    }
+
+    IEnumerator WaitCloseInfoBox()
+    {
+        yield return new WaitForSeconds(0.4f);
         infoBox.SetActive(false);
     }
 }

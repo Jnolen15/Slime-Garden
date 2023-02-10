@@ -31,7 +31,7 @@ public class placeableUIContent : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        menuManager.SetInfoBox(so.placeableName, so.description);
+        menuManager.SetInfoBox(so.placeableName, so.price, so.description);
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
