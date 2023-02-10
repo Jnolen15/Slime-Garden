@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: testTree
   m_EditorClassIdentifier: 
   placeableName: Tree
+  price: 15
+  description: 
   prefab: {fileID: 7212085286625646619, guid: 3e65c4811a7fde7438f0f026cd891888, type: 3}
   visual: {fileID: 7212085286625646619, guid: f7dbeeefafa16574c9ce416963b1286d, type: 3}
   width: 1

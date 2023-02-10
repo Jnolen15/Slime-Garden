@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: testBush
   m_EditorClassIdentifier: 
   placeableName: Bush
+  price: 5
+  description: 
   prefab: {fileID: 3876073488070387028, guid: 29b0f79a604b76848b23c23d29ed7e3b, type: 3}
   visual: {fileID: 3876073488070387028, guid: 8366b32b9f3b1004e984b6784599307b, type: 3}
   width: 2

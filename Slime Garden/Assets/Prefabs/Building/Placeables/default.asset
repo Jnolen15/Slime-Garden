@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: default
   m_EditorClassIdentifier: 
   placeableName: Default
+  price: 5
+  description: 
   prefab: {fileID: 7212085286625646619, guid: f61bf6a8229ef80409decbeb86f958a1, type: 3}
   visual: {fileID: 7212085286625646619, guid: d642cab913f74624c88f563bf9b3d3fe, type: 3}
   width: 1

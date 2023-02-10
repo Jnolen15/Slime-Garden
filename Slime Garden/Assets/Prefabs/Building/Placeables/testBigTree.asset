@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: testBigTree
   m_EditorClassIdentifier: 
   placeableName: Big Tree
+  price: 20
+  description: 
   prefab: {fileID: 8031486142493394350, guid: 63120362cb91d8e4497aa4e2070372a9, type: 3}
   visual: {fileID: 8031486142493394350, guid: 7e4aba3485a9324408fdeb5609bd0400, type: 3}
   width: 2

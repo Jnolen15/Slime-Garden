@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: testPlanter
   m_EditorClassIdentifier: 
   placeableName: Planter
+  price: 10
+  description: 
   prefab: {fileID: 7212085286625646619, guid: 2a47634c2b930ae49a7dfb276cea1cc2, type: 3}
   visual: {fileID: 7212085286625646619, guid: 073768c88271897468bb77d3e4fd600c, type: 3}
   width: 1

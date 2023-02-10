@@ -7,6 +7,7 @@ public class CropSO : ScriptableObject
 {
     public string cropName;
     public int price;
+    public int sellValue;
 
     [TextArea]
     public string description;

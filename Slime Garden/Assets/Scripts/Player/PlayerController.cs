@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             if (state == State.Build && !isOverUI)
-                gridSystem.Place(mousePos.point);
+                BuyAndPlace(mousePos.point);
         }
 
         // Click Interactable / Plantable
@@ -113,25 +113,7 @@ public class PlayerController : MonoBehaviour
             }
 
             if (objectRayHit.collider.gameObject.tag == "Plantable")
-            {
-                var plantSpot = objectRayHit.collider.gameObject.GetComponent<PlantSpot>();
-                if (plantSpot == null) return;
-
-                if(state == State.Plant)
-                {
-                    if (plantSpot.GetCropSO() == null)
-                    {
-                        Debug.Log("Planted!");
-                        plantSpot.Plant(crop);
-                    }
-                    else
-                        Debug.Log("spot already has plant: " + plantSpot.GetCropSO().cropName);
-                }
-                else if (state == State.Default)
-                {
-                    plantSpot.Interact();
-                }
-            }
+                PlantInteraction(objectRayHit.collider.gameObject.GetComponent<PlantSpot>());
         }
     }
 
@@ -143,21 +125,7 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
-            if (state == State.Build && !isOverUI)
-            {
-                if (gridSystem.GetPlaceableObject(mousePos.point) == null)
-                    return;
-
-                // Remove garden refrence
-                var ps = gridSystem.GetPlaceableObject(mousePos.point).GetComponentsInChildren<PlantSpot>();
-                foreach (PlantSpot spot in ps)
-                {
-                    Debug.Log("Getting rid of garden refrence");
-                    spot.DestroySelf();
-                }
-
-                gridSystem.Demolish(mousePos.point);
-            }
+            RemoveBuildable(mousePos.point);
         }
     }
 
@@ -168,5 +136,71 @@ public class PlayerController : MonoBehaviour
 
         if (state == State.Build)
             gridSystem.Rotate();
+    }
+
+    // ========== ACTIONS ==========
+    private bool TryPurchase(int cost)
+    {
+        if (Money >= cost)
+        {
+            Debug.Log("Purchased!");
+            Money -= cost;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Cannot afford!");
+            return false;
+        }
+    }
+
+    private void BuyAndPlace(Vector3 pos)
+    {
+        var so = gridSystem.GetPlaceableSO();
+        
+        if (TryPurchase(so.price))
+            gridSystem.Place(pos);
+    }
+
+    private void PlantInteraction(PlantSpot plantSpot)
+    {
+        if (plantSpot == null) return;
+
+        // Plant in an empty plot
+        if (state == State.Plant)
+        {
+            if (plantSpot.GetCropSO() == null)
+            {
+                if(TryPurchase(crop.price))
+                    plantSpot.Plant(crop);
+            }
+            else
+                Debug.Log("spot already has plant: " + plantSpot.GetCropSO().cropName);
+        }
+
+        // Water or harvest a planted crop
+        else if (state == State.Default)
+        {
+            plantSpot.Interact();
+        }
+    }
+
+    private void RemoveBuildable(Vector3 pos)
+    {
+        if (state == State.Build && !isOverUI)
+        {
+            if (gridSystem.GetPlaceableObject(pos) == null)
+                return;
+
+            // Remove garden refrence
+            var ps = gridSystem.GetPlaceableObject(pos).GetComponentsInChildren<PlantSpot>();
+            foreach (PlantSpot spot in ps)
+            {
+                Debug.Log("Getting rid of garden refrence");
+                spot.DestroySelf();
+            }
+
+            gridSystem.Demolish(pos);
+        }
     }
 }

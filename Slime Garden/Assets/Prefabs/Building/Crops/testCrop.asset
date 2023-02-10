@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: testCrop
   m_EditorClassIdentifier: 
   cropName: Test Crop
-  price: 0
+  price: 5
+  sellValue: 10
   description: "Growing Time: 3 Ticks\nA delicious <TEST> crop! \n<WARNING DO NOT
     CONSUME>"
   growTicks: 010000000200000003000000

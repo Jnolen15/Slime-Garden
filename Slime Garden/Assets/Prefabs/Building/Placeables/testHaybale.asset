@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: testHaybale
   m_EditorClassIdentifier: 
   placeableName: Haybale
+  price: 5
+  description: 
   prefab: {fileID: 7212085286625646619, guid: 0aadee9b45b379d408f91ec5b3cffdbd, type: 3}
   visual: {fileID: 7212085286625646619, guid: f86e11215dd25c7478de74a597bc0ca6, type: 3}
   width: 2

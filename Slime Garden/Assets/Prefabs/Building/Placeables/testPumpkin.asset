@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: testPumpkin
   m_EditorClassIdentifier: 
   placeableName: Pumkin
+  price: 10
+  description: 
   prefab: {fileID: 7212085286625646619, guid: 957c804031939b24c86361af5ae33ac1, type: 3}
   visual: {fileID: 7212085286625646619, guid: bf8b8971d2c3fd545b1947b43ba49188, type: 3}
   width: 1

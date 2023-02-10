@@ -7,6 +7,7 @@ public class PlantSpot : MonoBehaviour
     private Transform cropSprite;
     private Transform model;
     private GardenManager gm;
+    private PlayerController pc;
 
     [SerializeField] private Material dryMat;
     [SerializeField] private Material wetMat;
@@ -20,6 +21,7 @@ public class PlantSpot : MonoBehaviour
 
     private void Awake()
     {
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToList(this);
 
@@ -107,6 +109,10 @@ public class PlantSpot : MonoBehaviour
     private void Harvest()
     {
         Debug.Log("Crop harvested!");
+        // Yeild
+        pc.Money += curCropSO.sellValue;
+
+        // Reset
         hasCrop = false;
         fullyGrown = false;
         curTick = 0;
