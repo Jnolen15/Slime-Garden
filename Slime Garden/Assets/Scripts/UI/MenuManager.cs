@@ -10,6 +10,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject seedMenu;
     [SerializeField] private GameObject seedUIPrefab;
     [SerializeField] private GameObject infoBox;
+    [SerializeField] private GameObject slimeInfoBox;
     [SerializeField] private List<PlaceableObjectSO> availablePlaceables = new List<PlaceableObjectSO>();
     [SerializeField] private List<CropSO> availableSeeds = new List<CropSO>();
 
@@ -20,6 +21,7 @@ public class MenuManager : MonoBehaviour
         UpdateSeedMenu();
         seedMenu.SetActive(false);
         infoBox.SetActive(false);
+        slimeInfoBox.SetActive(false);
     }
 
     public void CloseAllSubmenus()
@@ -85,5 +87,17 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         infoBox.SetActive(false);
+    }
+
+    // ============== Slime Inspect ==============
+    public void ShowSlimeStats(SlimeController slime)
+    {
+        slimeInfoBox.SetActive(true);
+        slimeInfoBox.GetComponent<SlimeInfoPannel>().Setup(slime);
+    }
+
+    public void CloseSlimeStats()
+    {
+        slimeInfoBox.SetActive(false);
     }
 }

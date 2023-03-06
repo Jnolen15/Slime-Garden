@@ -21,17 +21,21 @@ public class PlayerController : MonoBehaviour
 
     public TextMeshProUGUI csDisplay;
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private LayerMask slimeLayerMask;
     private GridSystem gridSystem;
     private GameObject buildVisual;
     [SerializeField] private CropSO crop;
     private MenuManager menus;
+    private CameraControl camcontrol;
     private bool isOverUI;
+    private bool inspectingSlime;
 
     public enum State
     {
         Default,
         Build,
-        Plant
+        Plant,
+        Inspect
     }
     public State state;
 
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
         buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
         buildVisual.SetActive(false);
         menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
+        camcontrol = GameObject.FindGameObjectWithTag("CamControl").GetComponent<CameraControl>();
     }
 
     private void Update()
@@ -51,6 +56,13 @@ public class PlayerController : MonoBehaviour
             isOverUI = true;
         else
             isOverUI = false;
+
+        // If inspect state is changed
+        if(inspectingSlime && state != State.Inspect)
+        {
+            StopInspectSlime();
+            camcontrol.EndFollowSlime();
+        }
     }
 
     public void ChangeState(string newState)
@@ -125,10 +137,27 @@ public class PlayerController : MonoBehaviour
         if (!context.performed)
             return;
 
+        if (MouseOverUI())
+            return;
+
+        // Click buildable
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
-            RemoveBuildable(mousePos.point);
+            if (state == State.Build)
+                RemoveBuildable(mousePos.point);
+        }
+
+        // Click slime
+        Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
+        {
+            // Inspect Slime Popup
+            if (state == State.Default && clickraycastHit.collider.gameObject.tag == "Slime")
+            {
+                var clickedSlime = clickraycastHit.collider.gameObject.GetComponent<SlimeController>();
+                InspectSlime(clickedSlime);
+            }
         }
     }
 
@@ -190,21 +219,33 @@ public class PlayerController : MonoBehaviour
 
     private void RemoveBuildable(Vector3 pos)
     {
-        if (state == State.Build && !MouseOverUI())
+        if (gridSystem.GetPlaceableObject(pos) == null)
+            return;
+
+        // Remove garden refrence
+        var ps = gridSystem.GetPlaceableObject(pos).GetComponentsInChildren<PlantSpot>();
+        foreach (PlantSpot spot in ps)
         {
-            if (gridSystem.GetPlaceableObject(pos) == null)
-                return;
-
-            // Remove garden refrence
-            var ps = gridSystem.GetPlaceableObject(pos).GetComponentsInChildren<PlantSpot>();
-            foreach (PlantSpot spot in ps)
-            {
-                Debug.Log("Getting rid of garden refrence");
-                spot.DestroySelf();
-            }
-
-            gridSystem.Demolish(pos);
+            Debug.Log("Getting rid of garden refrence");
+            spot.DestroySelf();
         }
+
+        gridSystem.Demolish(pos);
+    }
+
+    private void InspectSlime(SlimeController slime)
+    {
+        state = State.Inspect;
+        inspectingSlime = true;
+        menus.ShowSlimeStats(slime);
+        camcontrol.FollowSlime(slime.gameObject.transform);
+    }
+
+    public void StopInspectSlime()
+    {
+        state = State.Default;
+        inspectingSlime = false;
+        menus.CloseSlimeStats();
     }
 
     // ========== MISC ==========

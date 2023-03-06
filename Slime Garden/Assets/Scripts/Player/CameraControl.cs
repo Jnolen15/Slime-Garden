@@ -40,6 +40,12 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float fovMin = 40f;
     [SerializeField] private float targetFOV = 60f;
 
+    [Header("Slime Lock On")]
+    [SerializeField] private float slimeInspectZoom;
+    [SerializeField] private float slimeInspectFOV;
+    [SerializeField] private bool lockedToSlime;
+    [SerializeField] private Transform objectToFollow;
+
 
     private void Awake()
     {
@@ -60,13 +66,16 @@ public class CameraControl : MonoBehaviour
     void Update()
     {
         // Movement
-        camMovement(moveVector);
+        if (lockedToSlime)
+            this.transform.position = objectToFollow.position;
+        else
+            camMovement(moveVector);
+
+        // Option edge scroll movement
         if (useEdgeScrolling)
             camEdgeScrollMovement();
 
         // Zoom
-
-
         if (changeZoom)
             camZoom();
         else
@@ -141,8 +150,11 @@ public class CameraControl : MonoBehaviour
 
     private void camZoomLower()
     {
-        zoomOffset.y = Mathf.Clamp(zoomOffset.y, zoomYMin, zoomYMax);
-        targetFOV = Mathf.Clamp(targetFOV, fovMin, fovMax);
+        if (!lockedToSlime)
+        {
+            zoomOffset.y = Mathf.Clamp(zoomOffset.y, zoomYMin, zoomYMax);
+            targetFOV = Mathf.Clamp(targetFOV, fovMin, fovMax);
+        }
 
         cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset =
             Vector3.Lerp(cineCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset, zoomOffset, Time.deltaTime * 10);
@@ -152,6 +164,9 @@ public class CameraControl : MonoBehaviour
     // ========== CONTROLS ==========
     public void OnMovement(InputAction.CallbackContext context)
     {
+        if (lockedToSlime)
+            EndFollowSlime();
+
         Vector2 inputVal = context.ReadValue<Vector2>();
         moveVector = new Vector3(inputVal.x, 0, inputVal.y);
     }
@@ -160,6 +175,9 @@ public class CameraControl : MonoBehaviour
     {
         if (pc.MouseOverUI())
             return;
+
+        if (lockedToSlime)
+            EndFollowSlime();
 
         float z = context.ReadValue<float>();
 
@@ -222,5 +240,25 @@ public class CameraControl : MonoBehaviour
             curZoomSpeed = zoomSpeed;
             curZoomFOVSpeed = zoomFOVSpeed;
         }
+    }
+
+    // ========== CAMERA ACTIONS ==========
+
+    public void FollowSlime(Transform slimePos)
+    {
+        lockedToSlime = true;
+        objectToFollow = slimePos;
+        zoomOffset.y = slimeInspectZoom;
+        targetFOV = slimeInspectFOV;
+    }
+
+    public void EndFollowSlime()
+    {
+        lockedToSlime = false;
+        objectToFollow = null;
+        zoomOffset.y = zoomYMin;
+        targetFOV = fovMin;
+
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().StopInspectSlime();
     }
 }
