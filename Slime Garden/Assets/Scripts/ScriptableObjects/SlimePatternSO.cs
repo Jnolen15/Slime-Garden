@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "SlimeSOs/SlimePattern")]
+[InlineEditor]
 public class SlimePatternSO : ScriptableObject
 {
     public SpriteLibraryAsset libraryAsset; // The slimes library of sprites
