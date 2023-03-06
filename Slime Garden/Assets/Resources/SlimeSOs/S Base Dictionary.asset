@@ -12,102 +12,350 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ccbc1d50e028f44c87bd5f1664a1ad5, type: 3}
   m_Name: S Base Dictionary
   m_EditorClassIdentifier: 
-  sColors:
-  - Amethyst
-  - Aquamarine
-  - Bixbite
-  - Citrine
-  - Emerald
-  - Jade
-  - Obsidian
-  - Peridot
-  - Quartz
-  - Ruby
-  - Sapphire
-  - Topaz
-  Amethyst: {r: 0.49803922, g: 0.047058824, b: 0.9490196, a: 1}
-  Aquamarine: {r: 0, g: 0.8784314, b: 0.8784314, a: 1}
-  Bixbite: {r: 0.90588236, g: 0.20000002, b: 1, a: 1}
-  Citrine: {r: 1, g: 1, b: 0.14901961, a: 1}
-  Emerald: {r: 0, g: 0.43529412, b: 0, a: 1}
-  Jade: {r: 0, g: 0.8784314, b: 0.38039216, a: 1}
-  Obsidian: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-  Peridot: {r: 0.6, g: 1, b: 0.20000002, a: 1}
-  Quartz: {r: 1, g: 1, b: 1, a: 1}
-  Ruby: {r: 0.8784314, g: 0.06666667, b: 0, a: 1}
-  Sapphire: {r: 0.14117648, g: 0.2901961, b: 0.8784314, a: 1}
-  Topaz: {r: 1, g: 0.38039216, b: 0.09803922, a: 1}
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: sColorList
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[SBaseDictionary+colorListEntry,
+        Assembly-CSharp]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 12
+    - Name: 
+      Entry: 7
+      Data: 1|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Amethyst
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.498039246
+    - Name: 
+      Entry: 4
+      Data: 0.04705883
+    - Name: 
+      Entry: 4
+      Data: 0.9490197
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 2|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Aquamarine
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.878431439
+    - Name: 
+      Entry: 4
+      Data: 0.878431439
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Bixbite
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.9058824
+    - Name: 
+      Entry: 4
+      Data: 0.200000018
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Citrine
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0.149019614
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Emerald
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.435294151
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 6|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Jade
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0.878431439
+    - Name: 
+      Entry: 4
+      Data: 0.3803922
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 7|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Obsidian
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.200000018
+    - Name: 
+      Entry: 4
+      Data: 0.200000018
+    - Name: 
+      Entry: 4
+      Data: 0.200000018
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Peridot
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.6
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0.200000018
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Quartz
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 10|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Ruby
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.878431439
+    - Name: 
+      Entry: 4
+      Data: 0.06666667
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 11|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Sapphire
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0.141176477
+    - Name: 
+      Entry: 4
+      Data: 0.2901961
+    - Name: 
+      Entry: 4
+      Data: 0.878431439
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 12|SBaseDictionary+colorListEntry, Assembly-CSharp
+    - Name: cName
+      Entry: 1
+      Data: Topaz
+    - Name: color
+      Entry: 7
+      Data: UnityEngine.Color, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0.3803922
+    - Name: 
+      Entry: 4
+      Data: 0.0980392247
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   basicSlime: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-  slimeBases:
-  - slimeBaseName: Amethyst
-    slimeBaseColor: {r: 0.5019608, g: 0, b: 1, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: 39da68dd6dc620140b005a78a935922f,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Aquamarine
-    slimeBaseColor: {r: 0, g: 1, b: 1, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: 89e0535b50b4243499873650eb013498,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Bixbite
-    slimeBaseColor: {r: 1, g: 0.20000002, b: 1, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: a8c1b88a86ccff54ab1d9667d14b8037,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Citrine
-    slimeBaseColor: {r: 1, g: 1, b: 0, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: e0f67e90b3809e643a0042b36820278a,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Emerald
-    slimeBaseColor: {r: 0, g: 0.6156863, b: 0, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: 42c7a0a39ea06ab47bc8bde0c3b947aa,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Jade
-    slimeBaseColor: {r: 0, g: 1, b: 0.5019608, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: b5a3f163687632844bb9fa422b53c7fc,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Obsidian
-    slimeBaseColor: {r: 0.26666668, g: 0.26666668, b: 0.26666668, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: 73234774905284c48ad56c3f401ee172,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Peridot
-    slimeBaseColor: {r: 0.6, g: 1, b: 0.20000002, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: c6dc6f3ec14393947b67658fd3f8672e,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Quartz
-    slimeBaseColor: {r: 1, g: 1, b: 1, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: b9a1adeb01bccfe419d8f4de19dd6816,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Ruby
-    slimeBaseColor: {r: 1, g: 0, b: 0, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: 66355fa30e341a64abe3a78ac099b815,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Sapphire
-    slimeBaseColor: {r: 0, g: 0.18431373, b: 1, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: 63d5e845c0eabc34fa8af50a222bb531,
-      type: 3}
-    isSpecial: 0
-  - slimeBaseName: Topaz
-    slimeBaseColor: {r: 1, g: 0.5019608, b: 0, a: 1}
-    slimeBaseSO: {fileID: 11400000, guid: 0d29f007df27c034bb86e211fe9d7170, type: 2}
-    slimeCrystal: {fileID: 2327888589607342452, guid: 3a2070eb20cee6f46a5facafdcb98f44,
-      type: 3}
-    isSpecial: 0

@@ -1,33 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "SlimeSOs/SlimeBaseDictionary")]
-
-public class SBaseDictionary : ScriptableObject
+public class SBaseDictionary : SerializedScriptableObject
 {
-    // Array of Pattern Colors and Pattern types. Dictionary is auto-generated from these
-    [SerializeField]
-    private string[] sColors;
+    [SerializeField] private SlimeBaseSO basicSlime;
 
-    public Color Amethyst;
-    public Color Aquamarine;
-    public Color Bixbite;
-    public Color Citrine;
-    public Color Emerald;
-    public Color Jade;
-    public Color Obsidian;
-    public Color Peridot;
-    public Color Quartz;
-    public Color Ruby;
-    public Color Sapphire;
-    public Color Topaz;
+    [HideReferenceObjectPicker]
+    [ListDrawerSettings(CustomAddFunction = "@new colorListEntry()")]
+    [SerializeField] private List<colorListEntry> sColorList = new List<colorListEntry>();
 
-    public SlimeBaseSO basicSlime;
+    public class colorListEntry
+    {
+        public string cName;
+        public Color color;
+    }
 
-    // Serializable array that I can manually add slimes too
-    [System.Serializable]
+    // Dictionary enty class. Holds all necessary info
     public class SlimeBaseEntry
     {
         public string slimeBaseName;
@@ -35,102 +26,40 @@ public class SBaseDictionary : ScriptableObject
         public SlimeBaseSO slimeBaseSO;
         public GameObject slimeCrystal;
         public bool isSpecial; //RN this will alwys be false. Find way to re-implement special slimes later
+
+        // Constructor
+        public SlimeBaseEntry(string name, Color pColor, SlimeBaseSO data, GameObject crystal)
+        {
+            slimeBaseName = name;
+            slimeBaseColor = pColor;
+            slimeBaseSO = data;
+            slimeCrystal = crystal;
+            isSpecial = false;
+        }
     }
-    [SerializeField]
-    private SlimeBaseEntry[] slimeBases;
 
-    // Dictionary of data from array. A dictionary is used because it is more easily searchable
-    // However, I couldn't just use a dictionary as it isn't Serializable
+    // Dictionary of SlimeBaseEntry. Used to be easily searchable by other scripts
     private static Dictionary<string, SlimeBaseEntry> slimeBaseDict = new Dictionary<string, SlimeBaseEntry>();
+    //public Dictionary<string, SlimeBaseEntry> slimeBaseDictTWO = new Dictionary<string, SlimeBaseEntry>();
 
-    // Dictionary is filled from the array
+    // Dictionary is filled
     void OnEnable()
     {
-        //Debug.Log("slimes.Length: " + slimes.Length);
         Debug.Log("Filling Base Dictionary");
 
-        // Make array the length of each possible slime pattern (+ the Null, Null pattern)
-        int arrayLength = sColors.Length;
-        slimeBases = new SlimeBaseEntry[arrayLength];
-        for (int i = 0; i < slimeBases.Length; i++)
-        {
-            slimeBases[i] = new SlimeBaseEntry();
-        }
-
         // Add all slime patterns
-        int count = 0;
-        string sName = "";
-        for (int c = 0; c < sColors.Length; c++)
+        for (int c = 0; c < sColorList.Count; c++)
         {
-            // Add color to name
-            sName += sColors[c];
-            // Add to array / dictionary
-            slimeBases[count].slimeBaseName = sName;
-            slimeBases[count].slimeBaseSO = basicSlime;
-            switch (sColors[c])
-            {
-                case "Amethyst":
-                    slimeBases[count].slimeBaseColor = Amethyst;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/AmethystCrystal");
-                    break;
-                case "Aquamarine":
-                    slimeBases[count].slimeBaseColor = Aquamarine;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/AquamarineCrystal");
-                    break;
-                case "Bixbite":
-                    slimeBases[count].slimeBaseColor = Bixbite;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/BixbiteCrystal");
-                    break;
-                case "Citrine":
-                    slimeBases[count].slimeBaseColor = Citrine;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/CitrineCrystal");
-                    break;
-                case "Emerald":
-                    slimeBases[count].slimeBaseColor = Emerald;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/EmeraldCrystal");
-                    break;
-                case "Jade":
-                    slimeBases[count].slimeBaseColor = Jade;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/JadeCrystal");
-                    break;
-                case "Obsidian":
-                    slimeBases[count].slimeBaseColor = Obsidian;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/ObsidianCrystal");
-                    break;
-                case "Peridot":
-                    slimeBases[count].slimeBaseColor = Peridot;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/PeridotCrystal");
-                    break;
-                case "Quartz":
-                    slimeBases[count].slimeBaseColor = Quartz;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/QuartzCrystal");
-                    break;
-                case "Ruby":
-                    slimeBases[count].slimeBaseColor = Ruby;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/RubyCrystal");
-                    break;
-                case "Sapphire":
-                    slimeBases[count].slimeBaseColor = Sapphire;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/SapphireCrystal");
-                    break;
-                case "Topaz":
-                    slimeBases[count].slimeBaseColor = Topaz;
-                    slimeBases[count].slimeCrystal = Resources.Load<GameObject>("Crystals/TopazCrystal");
-                    break;
-            }
-            // Reset and Increment
-            sName = "";
-            count++;
+            string crystal = "Crystals/" + sColorList[c].cName + "Crystal";
+
+            slimeBaseDict.Add(sColorList[c].cName,
+                    new SlimeBaseEntry(sColorList[c].cName, 
+                    sColorList[c].color, basicSlime, 
+                    Resources.Load<GameObject>(crystal)));
         }
 
-        for (int i = 0; i < slimeBases.Length; i++)
-        {
-            // If Slime isn't already in the dictionary
-            if(!slimeBaseDict.ContainsKey(slimeBases[i].slimeBaseName))
-                slimeBaseDict.Add(slimeBases[i].slimeBaseName, slimeBases[i]);
-        }
+        //slimeBaseDictTWO = slimeBaseDict;
 
-        //Debug.Log(slimeDict);
         Debug.Log("Done");
     }
 

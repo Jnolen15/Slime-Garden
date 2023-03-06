@@ -1,144 +1,87 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(menuName = "SlimeSOs/SlimePatternDictionary")]
-
-public class SPatternDictionary : ScriptableObject
+public class SPatternDictionary : SerializedScriptableObject
 {
-    // Array of Pattern Colors and Pattern types. Dictionary is auto-generated from these
-    [SerializeField]
-    private string[] sColors;
-    [SerializeField]
-    private string[] sPatterns;
+    // List of Pattern Colors and Pattern types. Dictionary is auto-generated from these
+    public class colorListEntry
+    {
+        public string cName;
+        public Color color;
+    }
 
-    public Color Amethyst;
-    public Color Aquamarine;
-    public Color Bixbite;
-    public Color Citrine;
-    public Color Emerald;
-    public Color Jade;
-    public Color Obsidian;
-    public Color Peridot;
-    public Color Quartz;
-    public Color Ruby;
-    public Color Sapphire;
-    public Color Topaz;
+    public class patternListEntry
+    {
+        public string pName;
+        public SlimePatternSO pattern;
+    }
 
-    // Serializable array that I can manually add slimes too
-    [System.Serializable]
+    [HideReferenceObjectPicker]
+    [ListDrawerSettings(CustomAddFunction = "@new colorListEntry()")]
+    [SerializeField] private List<colorListEntry> sColorList = new List<colorListEntry>();
+
+    [HideReferenceObjectPicker]
+    [ListDrawerSettings(CustomAddFunction = "@new patternListEntry()")]
+    [SerializeField] private List<patternListEntry> sPatternList = new List<patternListEntry>();
+
+
+    // Slime Pattern Entry class
     public class SlimePatternEntry
     {
         public string slimePatternName = "Null";
         public string slimePatternColorName = "Null";
         public Color slimePatternColor;
         public SlimePatternSO slimePatternSO;
+
+        // Constructor
+        public SlimePatternEntry(string name, string colorName, Color pColor, SlimePatternSO data)
+        {
+            slimePatternName = name;
+            slimePatternColorName = colorName;
+            slimePatternColor = pColor;
+            slimePatternSO = data;
+        }
     }
-    [SerializeField]
-    private SlimePatternEntry[] slimePatterns;
 
-    // Dictionary of data from array. A dictionary is used because it is more easily searchable
-    // But the array is there so I can visualize it in the inspector
+    // Dictionary of SlimePatternEntry. Used to be easily searchable by other scripts
     private static Dictionary<string, SlimePatternEntry> slimePatternDict = new Dictionary<string, SlimePatternEntry>();
+    // A second dictionary to see in inspector. Since static dictionaries can't be serialized
+    //public Dictionary<string, SlimePatternEntry> slimePatternDictTWO = new Dictionary<string, SlimePatternEntry>();
 
-    // Dictionary is filled from the array
+    // Dictionary is filled
     void OnEnable()
     {
-        //Debug.Log("slimes.Length: " + slimes.Length);
         Debug.Log("Generating Pattern Dictionary");
 
-        // ---- RN it first makes an array then fills the dictionary
-        // from that array. However, it can just skip the array
-        // and load directly into the dictionary. But I can't see
-        // the dictionary so I have it load into the array so I can
-        // Check that its correct in the inspector
-        
-        // Make array the length of each possible slime pattern (+ the Null, Null pattern)
-        int arrayLength = (sColors.Length * sPatterns.Length) + 1;
-        slimePatterns = new SlimePatternEntry[arrayLength];
-        for (int i = 0; i < slimePatterns.Length; i++)
-        {
-            slimePatterns[i] = new SlimePatternEntry();
-        }
-
         // Add Null, Null
-        slimePatterns[0].slimePatternName = "Null Null";
-        slimePatterns[0].slimePatternSO = Resources.Load<SlimePatternSO>("SlimeSOs/Patterns/Null Null");
-        slimePatterns[0].slimePatternColor = Quartz;
+        slimePatternDict.Add("Null Null", 
+            new SlimePatternEntry("Null Null", "Null", Color.white, Resources.Load<SlimePatternSO>("SlimeSOs/Patterns/Null Null")));
 
         // Add all slime patterns
-        int count = 1;
         string sName = "";
-        string fileLocationName = "SlimeSOs/Patterns/";
-        for (int p = 0; p < sPatterns.Length; p++)
+        for (int p = 0; p < sPatternList.Count; p++)
         {
-            for (int c = 0; c < sColors.Length; c++)
+            for (int c = 0; c < sColorList.Count; c++)
             {
                 // Add color to name
-                sName += sColors[c];
+                sName += sColorList[c].cName;
                 sName += " ";
                 // Add pattern to name
-                sName += sPatterns[p];
-                fileLocationName += sPatterns[p];
-                // Add to array / dictionary
-                slimePatterns[count].slimePatternName = sName;
-                slimePatterns[count].slimePatternSO = Resources.Load<SlimePatternSO>(fileLocationName);
-                slimePatterns[count].slimePatternColorName = sColors[c];
-                switch (sColors[c])
-                {
-                    case "Amethyst":
-                        slimePatterns[count].slimePatternColor = Amethyst;
-                        break;
-                    case "Aquamarine":
-                        slimePatterns[count].slimePatternColor = Aquamarine;
-                        break;
-                    case "Bixbite":
-                        slimePatterns[count].slimePatternColor = Bixbite;
-                        break;
-                    case "Citrine":
-                        slimePatterns[count].slimePatternColor = Citrine;
-                        break;
-                    case "Emerald":
-                        slimePatterns[count].slimePatternColor = Emerald;
-                        break;
-                    case "Jade":
-                        slimePatterns[count].slimePatternColor = Jade;
-                        break;
-                    case "Obsidian":
-                        slimePatterns[count].slimePatternColor = Obsidian;
-                        break;
-                    case "Peridot":
-                        slimePatterns[count].slimePatternColor = Peridot;
-                        break;
-                    case "Quartz":
-                        slimePatterns[count].slimePatternColor = Quartz;
-                        break;
-                    case "Ruby":
-                        slimePatterns[count].slimePatternColor = Ruby;
-                        break;
-                    case "Sapphire":
-                        slimePatterns[count].slimePatternColor = Sapphire;
-                        break;
-                    case "Topaz":
-                        slimePatterns[count].slimePatternColor = Topaz;
-                        break;
-                }
-                // Reset and Increment
+                sName += sPatternList[p].pName;
+                // Add to dictionary
+                slimePatternDict.Add(sName,
+                    new SlimePatternEntry(sName, sColorList[c].cName, 
+                    sColorList[c].color, sPatternList[p].pattern));
+                
+                // Reset
                 sName = "";
-                fileLocationName = "SlimeSOs/Patterns/";
-                count++;
             }
         }
 
-        // Load it into the dictionary
-        for (int i = 0; i < slimePatterns.Length; i++)
-        {
-            // If Slime isn't already in the dictionary
-            if (!slimePatternDict.ContainsKey(slimePatterns[i].slimePatternName))
-                slimePatternDict.Add(slimePatterns[i].slimePatternName, slimePatterns[i]);
-        }
-
-        //Debug.Log(slimeDict);
+        //slimePatternDictTWO = slimePatternDict;
         Debug.Log("Done");
     }
 
@@ -160,5 +103,5 @@ public class SPatternDictionary : ScriptableObject
             return null;
         }
     }
-    
+
 }
