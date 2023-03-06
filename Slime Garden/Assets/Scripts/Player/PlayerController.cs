@@ -23,9 +23,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayerMask;
     private GridSystem gridSystem;
     private GameObject buildVisual;
-    [SerializeField] private bool isOverUI;
     [SerializeField] private CropSO crop;
     private MenuManager menus;
+    private bool isOverUI;
 
     public enum State
     {
@@ -92,11 +92,14 @@ public class PlayerController : MonoBehaviour
         if (!context.performed)
             return;
 
+        if(MouseOverUI())
+            return;
+
         // Click Ground
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
-            if (state == State.Build && !isOverUI)
+            if (state == State.Build)
                 BuyAndPlace(mousePos.point);
         }
 
@@ -187,7 +190,7 @@ public class PlayerController : MonoBehaviour
 
     private void RemoveBuildable(Vector3 pos)
     {
-        if (state == State.Build && !isOverUI)
+        if (state == State.Build && !MouseOverUI())
         {
             if (gridSystem.GetPlaceableObject(pos) == null)
                 return;
@@ -202,5 +205,11 @@ public class PlayerController : MonoBehaviour
 
             gridSystem.Demolish(pos);
         }
+    }
+
+    // ========== MISC ==========
+    public bool MouseOverUI()
+    {
+        return isOverUI;
     }
 }

@@ -8935,8 +8935,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 12, z: -12}
+  m_LocalRotation: {x: 0.41785678, y: 0.000000011215161, z: -0.000000005158246, w: 0.90851295}
+  m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14139,7 +14139,6 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  isOverUI: 0
   crop: {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
   state: 0
 --- !u!4 &832757452
@@ -22061,8 +22060,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309957054}
-  m_LocalRotation: {x: 0.38268346, y: -0.000000015896623, z: 0.0000000065845964, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 12, z: -12}
+  m_LocalRotation: {x: 0.41785678, y: 0.000000011215161, z: -0.000000005158246, w: 0.90851295}
+  m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -23178,7 +23177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 12, z: -12}
+  m_FollowOffset: {x: 0, y: 14, z: -12}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -23496,7 +23495,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1405860593}
   m_HandleRect: {fileID: 1056290506}
   m_Direction: 0
-  m_Value: 0.50000036
+  m_Value: 0.5000007
   m_Size: 0.7659575
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -30072,12 +30071,14 @@ MonoBehaviour:
   boundsZ: 10
   boundsY: 10
   edgeScrollSize: 20
+  zoomOffset: {x: 0, y: 14, z: -12}
   zoomMax: 25
   zoomMin: 5
   zoomYMax: 16
   zoomYMin: 4
   fovMax: 60
   fovMin: 30
+  targetFOV: 55
 --- !u!1001 &1515027615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37289,7 +37290,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1903378489}
   m_HandleRect: {fileID: 1133290405}
   m_Direction: 0
-  m_Value: 0.50000036
+  m_Value: 0.5000007
   m_Size: 0.7659575
   m_NumberOfSteps: 0
   m_OnValueChanged:

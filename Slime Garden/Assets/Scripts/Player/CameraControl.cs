@@ -24,7 +24,7 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private int boundsZ = 10;
     [SerializeField] private int boundsY = 10;
     [SerializeField] private int edgeScrollSize = 20;
-    private Vector3 zoomOffset;
+    [SerializeField] private Vector3 zoomOffset;
     private Vector3 moveVector;
     private float rotateDir;
     private int snapCount;
@@ -38,7 +38,8 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float zoomYMin = 5f;
     [SerializeField] private float fovMax = 80f;
     [SerializeField] private float fovMin = 40f;
-    private float targetFOV = 60f;
+    [SerializeField] private float targetFOV = 60f;
+
 
     private void Awake()
     {
@@ -50,11 +51,22 @@ public class CameraControl : MonoBehaviour
         curZoomFOVSpeed = zoomFOVSpeed;
     }
 
+    private PlayerController pc;
+    private void Start()
+    {
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
+
     void Update()
     {
+        // Movement
         camMovement(moveVector);
         if (useEdgeScrolling)
             camEdgeScrollMovement();
+
+        // Zoom
+
+
         if (changeZoom)
             camZoom();
         else
@@ -146,6 +158,9 @@ public class CameraControl : MonoBehaviour
 
     public void OnZoom(InputAction.CallbackContext context)
     {
+        if (pc.MouseOverUI())
+            return;
+
         float z = context.ReadValue<float>();
 
         if (z < 0)
