@@ -143,6 +143,19 @@ public class PlayerController : MonoBehaviour
             if (objectRayHit.collider.gameObject.tag == "Plantable")
                 PlantInteraction(objectRayHit.collider.gameObject.GetComponent<PlantSpot>());
         }
+
+        // Click slime
+        Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
+        {
+            // Pet Slime
+            if (state == State.Inspect && clickraycastHit.collider.gameObject.tag == "Slime")
+            {
+                var clickedSlime = clickraycastHit.collider.gameObject.GetComponent<SlimeController>();
+                clickedSlime.ChangeState(SlimeController.State.pet);
+                Debug.Log("Pet Slime");
+            }
+        }
     }
 
     public void OnSecondary(InputAction.CallbackContext context)

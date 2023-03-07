@@ -53,7 +53,8 @@ public class SlimeController : MonoBehaviour
         sleep,
         love,
         play,
-        crystalize
+        crystalize,
+        pet
     }
     [SerializeField] private State state;       // This slimes current state
     public State GetState() { return state; }   // Get State function so it can stay private
@@ -101,6 +102,7 @@ public class SlimeController : MonoBehaviour
                 {
                     StartState("Idle", brain.slimeFaceDefault);
                 }
+                // Blink
                 if (stateTimer > 0) stateTimer -= Time.deltaTime;
                 if (stateTimer <= 0.2f && stateTimer > 0)
                     StartState("none", brain.slimeFaceSleep);
@@ -177,6 +179,17 @@ public class SlimeController : MonoBehaviour
                     brain.SpawnCS();
                     ChangeState(State.jump);
                 }
+                break;
+            case State.pet:
+                if (stateChanged)
+                {
+                    StartState("Hop", brain.slimeFaceHappy, "Hearts");
+                    stateParticles.GetComponent<ParticleSystem>().Emit(8);
+                    stateTimer = 1f;
+                }
+                if (stateTimer > 0) stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0)
+                    ChangeState(State.idle);
                 break;
         }
     }
