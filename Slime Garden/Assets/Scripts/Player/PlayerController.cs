@@ -8,6 +8,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    // TODO: Tidy up these variables a bit
     [SerializeField] private int money = 0;
     public int Money
     {
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public TextMeshProUGUI csDisplay;
+    [SerializeField] private PlayerInput pInput;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
     private GridSystem gridSystem;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        pInput = this.GetComponentInParent<PlayerInput>();
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
         buildVisual.SetActive(false);
@@ -63,6 +66,16 @@ public class PlayerController : MonoBehaviour
             StopInspectSlime();
             camcontrol.EndFollowSlime();
         }
+
+        // Swap action maps if in an input field
+        GameObject currentFocus = EventSystem.current.currentSelectedGameObject;
+        if (currentFocus != null)
+        {
+            if (currentFocus.TryGetComponent(out TMP_InputField _) && pInput.currentActionMap.name != "InputField")
+                pInput.SwitchCurrentActionMap("InputField");
+        }
+        else if (pInput.currentActionMap.name != "Basic")
+            pInput.SwitchCurrentActionMap("Basic");
     }
 
     public void ChangeState(string newState)

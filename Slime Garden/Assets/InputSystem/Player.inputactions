@@ -254,6 +254,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "InputField",
+            "id": "0e81d4d9-2af0-4a08-a9ea-42cdf14aefb1",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": []

@@ -7,6 +7,7 @@ public class SlimeController : MonoBehaviour
 {
     //=============== SLIME ATTRIBUTES ===============
     public string speciesName;                  //Name of slime species
+    public string displayName;                  //Name of slime species
     public float sRarity;                       //Rarity of slime
 
     //=============== SCRIPTABLE OBJECTS ===============
@@ -65,6 +66,7 @@ public class SlimeController : MonoBehaviour
 
         // Create name and calculate rarity
         speciesName = sBaseColor + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;
+        displayName = speciesName;
         sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
 
         // ========== Sprite stuff ==========
@@ -260,5 +262,11 @@ public class SlimeController : MonoBehaviour
         {
             grounded = false;
         }
+    }
+
+    public void SetName(string newName)
+    {
+        displayName = newName;
+        Debug.Log("Display name changed: " + displayName);
     }
 }
