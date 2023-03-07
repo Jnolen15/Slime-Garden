@@ -1,7 +1,16 @@
 fileFormatVersion: 2
-guid: 6f4b29b927d27fc47a8af574e275300e
+guid: 9372bf941d027d24492ba559a2987e14
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -6402244573119792983
+    second: SlimeSheet_Quartz_0
+  - first:
+      213: 2743582117663559403
+    second: SlimeSheet_Quartz_1
+  - first:
+      213: 374196799985808654
+    second: SlimeSheet_Quartz_2
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -63,7 +72,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -153,7 +162,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SlimeSheet_Basic_0
+      name: OLDSlimeSheet_Basic_0
       rect:
         serializedVersion: 2
         x: 0
@@ -161,20 +170,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a258cdf41dccaa34f83cc04fffdaed58
-      internalID: 906263687
+      spriteID: 9a8b5063b78a627a0800000000000000
+      internalID: -6402244573119792983
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeSheet_Basic_1
+      name: OLDSlimeSheet_Basic_1
       rect:
         serializedVersion: 2
         x: 32
@@ -182,20 +191,20 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 57a8afdd83c37754dbc907897b28c963
-      internalID: 1592605791
+      spriteID: bee437f5669231620800000000000000
+      internalID: 2743582117663559403
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SlimeSheet_Basic_2
+      name: OLDSlimeSheet_Basic_2
       rect:
         serializedVersion: 2
         x: 64
@@ -203,14 +212,14 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a0570874752ed945b5b23b3c46e48fb
-      internalID: -1783031843
+      spriteID: e05fd3bc10a613500800000000000000
+      internalID: 374196799985808654
       vertices: []
       indices: 
       edges: []
@@ -226,9 +235,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SlimeSheet_Basic_0: 906263687
-      SlimeSheet_Basic_1: 1592605791
-      SlimeSheet_Basic_2: -1783031843
+      OLDSlimeSheet_Basic_0: -6402244573119792983
+      OLDSlimeSheet_Basic_2: 374196799985808654
+      OLDSlimeSheet_Basic_1: 2743582117663559403
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

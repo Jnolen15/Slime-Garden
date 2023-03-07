@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speciesName: 
+  displayName: 
   sRarity: 0
   slimeSpeciesBase: {fileID: 0}
   sBaseColor: 
@@ -262,8 +263,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6402244573119792983, guid: 9372bf941d027d24492ba559a2987e14,
-    type: 3}
+  m_Sprite: {fileID: 906263687, guid: 6f4b29b927d27fc47a8af574e275300e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

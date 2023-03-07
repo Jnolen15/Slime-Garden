@@ -19,24 +19,21 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: SlimeSheet_Basic_0
       m_Hash: -1188360903
-      m_Sprite: {fileID: -6402244573119792983, guid: 9372bf941d027d24492ba559a2987e14,
-        type: 3}
+      m_Sprite: {fileID: 906263687, guid: 6f4b29b927d27fc47a8af574e275300e, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: -6402244573119792983, guid: 9372bf941d027d24492ba559a2987e14,
+      m_SpriteOverride: {fileID: 906263687, guid: 6f4b29b927d27fc47a8af574e275300e,
         type: 3}
     - m_Name: SlimeSheet_Basic_1
       m_Hash: -835961425
-      m_Sprite: {fileID: 2743582117663559403, guid: 9372bf941d027d24492ba559a2987e14,
-        type: 3}
+      m_Sprite: {fileID: 1592605791, guid: 6f4b29b927d27fc47a8af574e275300e, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 2743582117663559403, guid: 9372bf941d027d24492ba559a2987e14,
+      m_SpriteOverride: {fileID: 1592605791, guid: 6f4b29b927d27fc47a8af574e275300e,
         type: 3}
     - m_Name: SlimeSheet_Basic_2
       m_Hash: 1462070293
-      m_Sprite: {fileID: 374196799985808654, guid: 9372bf941d027d24492ba559a2987e14,
-        type: 3}
+      m_Sprite: {fileID: -1783031843, guid: 6f4b29b927d27fc47a8af574e275300e, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 374196799985808654, guid: 9372bf941d027d24492ba559a2987e14,
+      m_SpriteOverride: {fileID: -1783031843, guid: 6f4b29b927d27fc47a8af574e275300e,
         type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 3
