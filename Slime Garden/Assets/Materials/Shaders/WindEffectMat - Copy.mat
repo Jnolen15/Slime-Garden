@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: WindEffectMat
+  m_Name: WindEffectMat - Copy
   m_Shader: {fileID: -6465566751694194690, guid: 707b2637633503a428ee6557b74312ef,
     type: 3}
   m_ValidKeywords: []
