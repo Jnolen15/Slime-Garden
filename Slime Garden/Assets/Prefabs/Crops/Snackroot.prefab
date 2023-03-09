@@ -94,9 +94,10 @@ GameObject:
   - component: {fileID: 7735107949817165060}
   - component: {fileID: 6922964043180715936}
   - component: {fileID: 6922964043180715967}
-  m_Layer: 0
+  - component: {fileID: 1532622294890849526}
+  m_Layer: 10
   m_Name: Snackroot
-  m_TagString: Untagged
+  m_TagString: Crop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +148,18 @@ CapsuleCollider:
   m_Height: 0.4
   m_Direction: 1
   m_Center: {x: 0, y: 0.09, z: 0}
+--- !u!114 &1532622294890849526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6922964043180715966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5470ab15b1553fd448785f2ec8657f7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pc: {fileID: 0}
+  inv: {fileID: 0}
+  cropData: {fileID: 0}

@@ -237,6 +237,9 @@ public class PlayerController : MonoBehaviour
         // Plant in an empty plot
         if (state == State.Plant)
         {
+            if (crop == null)
+                return;
+
             if (plantSpot.GetCropSO() == null)
             {
                 if(TryPurchase(crop.price))
@@ -291,7 +294,8 @@ public class PlayerController : MonoBehaviour
             invManager.AddCrop(crop, -1);
             menus.UpdateCropCount();
             Vector3 spawnPos = new Vector3(pos.x, pos.y + 2, pos.z);
-            Instantiate(crop.cropObj, spawnPos, Quaternion.identity);
+            var instCrop = Instantiate(crop.cropObj, spawnPos, Quaternion.identity);
+            instCrop.GetComponent<CropObj>().Setup(crop);
         }
     }
 

@@ -115,7 +115,6 @@ public class PlantSpot : MonoBehaviour
     {
         Debug.Log("Crop harvested!");
         // Yeild
-        //pc.Money += curCropSO.sellValue;
         invManager.AddCrop(curCropSO, 1);
 
         // Reset

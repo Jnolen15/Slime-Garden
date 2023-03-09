@@ -17,6 +17,8 @@ TagManager:
   - Plantable
   - UIManager
   - CamControl
+  - CropSell
+  - Crop
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - Slimes
   - CS
   - Border
-  - 
+  - Crops
   - 
   - 
   - 
