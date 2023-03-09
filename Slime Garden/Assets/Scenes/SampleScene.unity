@@ -21082,6 +21082,8 @@ MonoBehaviour:
   infoBox: {fileID: 1653790551}
   slimeInfoBox: {fileID: 1043379491}
   availablePlaceables:
+  - {fileID: 11400000, guid: 961052b25d882174b929e38264df835b, type: 2}
+  - {fileID: 11400000, guid: 025b9b343a79bce4ca2f3702bbe08293, type: 2}
   - {fileID: 11400000, guid: 3e3cf7ccd792bc94bbdef221eea73b34, type: 2}
   - {fileID: 11400000, guid: 05195cacd9001b9479e59d28c5593919, type: 2}
   - {fileID: 11400000, guid: 015af890f9d041b4ca138321f12ccd71, type: 2}
@@ -24706,8 +24708,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1405860593}
   m_HandleRect: {fileID: 1056290506}
   m_Direction: 0
-  m_Value: 0.5000009
-  m_Size: 0.7659575
+  m_Value: 0.5000007
+  m_Size: 0.76595736
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -38640,8 +38642,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1903378489}
   m_HandleRect: {fileID: 1133290405}
   m_Direction: 0
-  m_Value: 0.5000009
-  m_Size: 0.7659575
+  m_Value: 0.5000007
+  m_Size: 0.76595736
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

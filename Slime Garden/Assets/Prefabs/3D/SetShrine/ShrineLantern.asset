@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: ShrineLantern
+  m_EditorClassIdentifier: 
+  placeableName: Shrine Lantern
+  price: 10
+  description: 
+  prefab: {fileID: 7212085286625646619, guid: c072435b1493b8a49a65cf6310f3977b, type: 3}
+  visual: {fileID: 4513104203365583959, guid: 2db7c29d7a13ea54490766bc55abda54, type: 3}
+  width: 1
+  height: 1
