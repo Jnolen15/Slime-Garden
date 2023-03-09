@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlantSpot : MonoBehaviour
 {
-    private Transform cropSprite;
+    private Transform crop;
     private Transform model;
     private GardenManager gm;
     private PlayerController pc;
@@ -25,8 +25,12 @@ public class PlantSpot : MonoBehaviour
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToList(this);
 
-        cropSprite = transform.GetChild(0);
+        crop = transform.GetChild(0);
         model = transform.GetChild(1);
+
+        // Random rotation to give crops some variety
+        var randRot = Random.Range(0, 360);
+        crop.transform.rotation = Quaternion.Euler(0, randRot, 0);
     }
 
     public CropSO GetCropSO()
@@ -37,7 +41,8 @@ public class PlantSpot : MonoBehaviour
     public void Plant(CropSO crop)
     {
         curCropSO = crop;
-        cropSprite.GetComponent<SpriteRenderer>().sprite = curCropSO.spriteStages[0];
+        this.crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[0];
+        this.crop.GetComponent<Renderer>().material = curCropSO.cropMat;
         hasCrop = true;
     }
 
@@ -58,7 +63,7 @@ public class PlantSpot : MonoBehaviour
             {
                 Debug.Log(curCropSO.cropName + " has grown!");
                 growthStage++;
-                cropSprite.GetComponent<SpriteRenderer>().sprite = curCropSO.spriteStages[growthStage];
+                crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
             }
 
             // Crop is fully grown
@@ -118,7 +123,7 @@ public class PlantSpot : MonoBehaviour
         curTick = 0;
         growthStage = 0;
         curCropSO = null;
-        cropSprite.GetComponent<SpriteRenderer>().sprite = null;
+        crop.GetComponent<MeshFilter>().mesh = null;
     }
 
     public void DestroySelf()

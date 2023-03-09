@@ -13,5 +13,6 @@ public class CropSO : ScriptableObject
     public string description;
 
     public int[] growTicks;
-    public Sprite[] spriteStages;
+    public Mesh[] cropStages;
+    public Material cropMat;
 }

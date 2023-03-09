@@ -15,11 +15,12 @@ MonoBehaviour:
   cropName: Test Crop
   price: 5
   sellValue: 10
-  description: "Growing Time: 3 Ticks\nA delicious <TEST> crop! \n<WARNING DO NOT
-    CONSUME>"
-  growTicks: 010000000200000003000000
-  spriteStages:
-  - {fileID: 1151688000, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}
-  - {fileID: 583528101, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}
-  - {fileID: -755540649, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}
-  - {fileID: 1893956086, guid: 3696a3006c2fe9f4fa81e7c0e65883f1, type: 3}
+  description: 'Growing Time: 3 Ticks
+
+    A slime''s favorite treat!'
+  growTicks: 0100000003000000
+  cropStages:
+  - {fileID: -2432090755550338912, guid: 293cf7dbb89793b46b3a0978376cca2a, type: 3}
+  - {fileID: -2432090755550338912, guid: 59604e833ba57794a891beb2849a9029, type: 3}
+  - {fileID: -2432090755550338912, guid: 6231efc1052f33449b1605cc812444dd, type: 3}
+  cropMat: {fileID: 2100000, guid: 7fbf6af0f7708ca4282739b136b8ed76, type: 2}
