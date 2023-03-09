@@ -9,8 +9,11 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject placeableUIPrefab;
     [SerializeField] private GameObject seedMenu;
     [SerializeField] private GameObject seedUIPrefab;
+    [SerializeField] private GameObject cropMenu;
+    [SerializeField] private GameObject cropUIPrefab;
     [SerializeField] private GameObject infoBox;
     [SerializeField] private GameObject slimeInfoBox;
+    [SerializeField] private InventoryManager invManager;
     [SerializeField] private List<PlaceableObjectSO> availablePlaceables = new List<PlaceableObjectSO>();
     [SerializeField] private List<CropSO> availableSeeds = new List<CropSO>();
 
@@ -20,6 +23,8 @@ public class MenuManager : MonoBehaviour
         buildMenu.SetActive(false);
         UpdateSeedMenu();
         seedMenu.SetActive(false);
+        UpdateCropMenu();
+        cropMenu.SetActive(false);
         infoBox.SetActive(false);
         slimeInfoBox.SetActive(false);
     }
@@ -28,6 +33,7 @@ public class MenuManager : MonoBehaviour
     {
         buildMenu.SetActive(false);
         seedMenu.SetActive(false);
+        cropMenu.SetActive(false);
     }
 
     // ============== Build Menus ==============
@@ -65,6 +71,39 @@ public class MenuManager : MonoBehaviour
     public void SeedMenuActive(bool value)
     {
         seedMenu.SetActive(value);
+    }
+
+    // ============== Crop Menus ==============
+    public void UpdateCropMenu()
+    {
+        var contentMenu = cropMenu.transform.GetChild(0).GetChild(0);
+        foreach (Transform child in contentMenu)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (InventoryManager.CropInventroyEntry crop in invManager.inventoryList)
+        {
+            var element = Instantiate(cropUIPrefab, contentMenu);
+            element.GetComponent<CropUIContent>().Setup(crop, this);
+        }
+    }
+
+    public void UpdateCropCount()
+    {
+        var contentMenu = cropMenu.transform.GetChild(0).GetChild(0);
+        foreach (Transform child in contentMenu)
+        {
+            child.GetComponent<CropUIContent>().UpdateValues();
+        }
+    }
+
+    public void CropMenuActive(bool value)
+    {
+        if (value)
+            UpdateCropCount();
+
+        cropMenu.SetActive(value);
     }
 
     // ============== Info Box ==============

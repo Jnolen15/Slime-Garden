@@ -5,20 +5,30 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class SeedUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private TextMeshProUGUI titleText;
-    [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private TextMeshProUGUI numText;
+    public InventoryManager.CropInventroyEntry cropData;
     public CropSO so;
+    public int numStored;
     private MenuManager menuManager;
 
-    public void Setup(CropSO data, MenuManager manager)
+    public void Setup(InventoryManager.CropInventroyEntry crop, MenuManager manager)
     {
         menuManager = manager;
 
-        so = data;
+        cropData = crop;
+        so = crop.data;
         titleText.text = so.cropName;
-        priceText.text = so.price.ToString();
+        numText.text = cropData.numHeld.ToString();
+        numStored = cropData.numHeld;
+    }
+
+    public void UpdateValues()
+    {
+        numText.text = cropData.numHeld.ToString();
+        numStored = cropData.numHeld;
     }
 
     public void ButtonPressed()
@@ -27,13 +37,11 @@ public class SeedUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (pc != null)
             pc.SwapCrop(so);
-
-        Debug.Log("Swapped crop");
     }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        menuManager.SetInfoBox(so.cropName, so.price, so.seedDescription);
+        menuManager.SetInfoBox(so.cropName, numStored, so.CropDescription);
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)

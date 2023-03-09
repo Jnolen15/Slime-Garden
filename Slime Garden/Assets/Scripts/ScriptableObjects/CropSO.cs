@@ -10,9 +10,13 @@ public class CropSO : ScriptableObject
     public int sellValue;
 
     [TextArea]
-    public string description;
+    public string seedDescription;
+    [TextArea]
+    public string CropDescription;
 
     public int[] growTicks;
     public Mesh[] cropStages;
     public Material cropMat;
+
+    public GameObject cropObj;
 }

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3209495907885195787}
   - component: {fileID: 3209495907885195786}
   - component: {fileID: 3209495907885195785}
-  - component: {fileID: -6024677880897263849}
+  - component: {fileID: 206770611563538446}
   m_Layer: 5
-  m_Name: SeedContentBox
+  m_Name: CropContentBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,8 +124,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6024677880897263849}
-        m_TargetAssemblyTypeName: SeedUIContent, Assembly-CSharp
+      - m_Target: {fileID: 206770611563538446}
+        m_TargetAssemblyTypeName: CropUIContent, Assembly-CSharp
         m_MethodName: ButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -136,7 +136,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-6024677880897263849
+--- !u!114 &206770611563538446
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,11 +145,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3209495907885195791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a725b5e34e9d85a44a2f4f0c099465a2, type: 3}
+  m_Script: {fileID: 11500000, guid: e79362fa9692dfd4fa99010e45438ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   titleText: {fileID: 3209495908172476297}
-  priceText: {fileID: 3209495908966228610}
+  numText: {fileID: 3209495908966228610}
   so: {fileID: 0}
 --- !u!1 &3209495908172476303
 GameObject:
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Placeable Title
+  m_text: Crop Name
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

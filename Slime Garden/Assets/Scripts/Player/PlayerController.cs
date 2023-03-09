@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CropSO crop;
     private MenuManager menus;
     private CameraControl camcontrol;
+    private InventoryManager invManager;
     private bool isOverUI;
     private bool inspectingSlime;
 
@@ -37,7 +38,8 @@ public class PlayerController : MonoBehaviour
         Default,
         Build,
         Plant,
-        Inspect
+        Inspect,
+        Crops
     }
     public State state;
 
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
         buildVisual.SetActive(false);
         menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
         camcontrol = GameObject.FindGameObjectWithTag("CamControl").GetComponent<CameraControl>();
+        invManager = this.GetComponent<InventoryManager>();
     }
 
     private void Update()
@@ -97,6 +100,10 @@ public class PlayerController : MonoBehaviour
                 state = State.Plant;
                 menus.SeedMenuActive(true);
                 break;
+            case "Crops":
+                state = State.Crops;
+                menus.CropMenuActive(true);
+                break;
         }
     }
 
@@ -126,6 +133,9 @@ public class PlayerController : MonoBehaviour
         {
             if (state == State.Build)
                 BuyAndPlace(mousePos.point);
+
+            if (state == State.Crops)
+                SpawnCrop(mousePos.point);
         }
 
         // Click Interactable / Plantable
@@ -272,6 +282,17 @@ public class PlayerController : MonoBehaviour
         state = State.Default;
         inspectingSlime = false;
         menus.CloseSlimeStats();
+    }
+
+    private void SpawnCrop(Vector3 pos)
+    {
+        if (0 < invManager.GetNumHeld(crop))
+        {
+            invManager.AddCrop(crop, -1);
+            menus.UpdateCropCount();
+            Vector3 spawnPos = new Vector3(pos.x, pos.y + 2, pos.z);
+            Instantiate(crop.cropObj, spawnPos, Quaternion.identity);
+        }
     }
 
     // ========== MISC ==========
