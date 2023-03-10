@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df863a4009a2da479464d47399dd5eb, type: 3}
+  m_Name: SnackrootJade
+  m_EditorClassIdentifier: 
+  cropName: Jade Snackroot
+  previewImage: {fileID: 21300000, guid: 2820a7f7a7ce8f7459928e4761f17f28, type: 3}
+  price: 5
+  sellValue: 8
+  seedDescription: Snackroot is the perfect crop for a beginner gardener. This ones
+    Jade.
+  CropDescription: Snackroots make a great treat for any slime!
+  growTicks: 0100000002000000
+  cropStages:
+  - {fileID: -2432090755550338912, guid: 293cf7dbb89793b46b3a0978376cca2a, type: 3}
+  - {fileID: -2432090755550338912, guid: 59604e833ba57794a891beb2849a9029, type: 3}
+  - {fileID: -2432090755550338912, guid: 6231efc1052f33449b1605cc812444dd, type: 3}
+  cropMat: {fileID: 2100000, guid: 437ac979fd5ce2346a7055d7930c920f, type: 2}
+  cropObj: {fileID: 6922964043180715966, guid: 2668478bb9ac2784d9bbf2c53d4297e9, type: 3}
