@@ -41,7 +41,8 @@ public class SlimeController : MonoBehaviour
     private bool jumped;                        // Bool to see if slime has already jumped
     [SerializeField]    
     private float stateTimer;                   // Used to add pauses to certain states
-    private GameObject stateParticles;           // Used to keep track of state particles so they can be disabled later
+    private GameObject stateParticles;          // Used to keep track of state particles so they can be disabled later
+    private GameObject curFood;                 // Used to keep track or crop that is currently being eaten
 
     //=============== SLIME STATES ===============
     public enum State                           // All possible slime states
@@ -54,7 +55,8 @@ public class SlimeController : MonoBehaviour
         love,
         play,
         crystalize,
-        pet
+        pet,
+        eat
     }
     [SerializeField] private State state;       // This slimes current state
     public State GetState() { return state; }   // Get State function so it can stay private
@@ -191,6 +193,19 @@ public class SlimeController : MonoBehaviour
                 if (stateTimer <= 0)
                     ChangeState(State.idle);
                 break;
+            case State.eat:
+                if (stateChanged)
+                {
+                    StartState("Hop", brain.slimeFaceDefault);
+                    stateTimer = 1f;
+                }
+                if (stateTimer > 0) stateTimer -= Time.deltaTime;
+                if (stateTimer <= 0)
+                {
+                    curFood.GetComponent<CropObj>().DestroySelf();
+                    ChangeState(State.idle);
+                }
+                break;
         }
     }
 
@@ -267,6 +282,17 @@ public class SlimeController : MonoBehaviour
         {
             grounded = true;
         }
+
+        if (col.gameObject.tag == "Crop")
+        {
+            Physics.IgnoreCollision(col.collider, this.GetComponent<Collider>());
+
+            if(state != State.eat && !InNonInteruptableState())
+            {
+                ChangeState(State.eat);
+                curFood = col.gameObject;
+            }
+        }
     }
 
     private void OnCollisionExit(Collision col)
@@ -281,5 +307,19 @@ public class SlimeController : MonoBehaviour
     {
         displayName = newName;
         Debug.Log("Display name changed: " + displayName);
+    }
+
+    public bool InNonInteruptableState()
+    {
+        if (state == State.held)
+            return true;
+        else if (state == State.splice)
+            return true;
+        else if (state == State.jump)
+            return true;
+        else if (state == State.crystalize)
+            return true;
+
+        return false;
     }
 }

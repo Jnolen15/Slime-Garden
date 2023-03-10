@@ -18,6 +18,7 @@ public class CropSell : MonoBehaviour
 
         CropSO data = col.gameObject.GetComponent<CropObj>().cropData;
         pc.Money += data.sellValue;
-        Destroy(col.gameObject);
+        col.gameObject.GetComponent<CropObj>().DestroySelf();
+        //Destroy(col.gameObject);
     }
 }

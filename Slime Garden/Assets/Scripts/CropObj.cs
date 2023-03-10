@@ -7,6 +7,7 @@ public class CropObj : MonoBehaviour
     public PlayerController pc;
     public InventoryManager inv;
     public CropSO cropData;
+    public GameObject particles;
 
     public void Setup(CropSO data)
     {
@@ -33,5 +34,11 @@ public class CropObj : MonoBehaviour
 
         inv.AddCrop(cropData, 1);
         Destroy(gameObject);
+    }
+
+    public void DestroySelf()
+    {
+        Instantiate(particles,transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

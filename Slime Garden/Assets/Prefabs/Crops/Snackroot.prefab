@@ -163,3 +163,5 @@ MonoBehaviour:
   pc: {fileID: 0}
   inv: {fileID: 0}
   cropData: {fileID: 0}
+  particles: {fileID: 5545095791303980905, guid: d5a46f3d23d41b5459ae98d39d2c789c,
+    type: 3}

@@ -162,6 +162,10 @@ public class PlayerController : MonoBehaviour
             if (state == State.Inspect && clickraycastHit.collider.gameObject.tag == "Slime")
             {
                 var clickedSlime = clickraycastHit.collider.gameObject.GetComponent<SlimeController>();
+
+                if (clickedSlime.InNonInteruptableState())
+                    return;
+
                 clickedSlime.ChangeState(SlimeController.State.pet);
                 Debug.Log("Pet Slime");
             }
