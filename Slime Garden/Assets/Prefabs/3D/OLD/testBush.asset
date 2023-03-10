@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: testBush
   m_EditorClassIdentifier: 
   placeableName: Bush
+  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
   price: 5
   description: 
   prefab: {fileID: 3876073488070387028, guid: 29b0f79a604b76848b23c23d29ed7e3b, type: 3}

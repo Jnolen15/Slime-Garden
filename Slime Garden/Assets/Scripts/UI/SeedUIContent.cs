@@ -9,6 +9,7 @@ public class SeedUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private Image preview;
     public CropSO so;
     private MenuManager menuManager;
 
@@ -19,6 +20,7 @@ public class SeedUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         so = data;
         titleText.text = so.cropName;
         priceText.text = so.price.ToString();
+        preview.sprite = so.previewImage;
     }
 
     public void ButtonPressed()

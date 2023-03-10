@@ -6,6 +6,7 @@ using UnityEngine;
 public class CropSO : ScriptableObject
 {
     public string cropName;
+    public Sprite previewImage;
     public int price;
     public int sellValue;
 

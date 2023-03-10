@@ -9,6 +9,7 @@ public class placeableUIContent : MonoBehaviour, IPointerEnterHandler, IPointerE
 {
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI priceText;
+    [SerializeField] private Image preview;
     public PlaceableObjectSO so;
     private MenuManager menuManager;
 
@@ -19,6 +20,7 @@ public class placeableUIContent : MonoBehaviour, IPointerEnterHandler, IPointerE
         so = data;
         titleText.text = so.placeableName;
         priceText.text = so.price.ToString();
+        preview.sprite = so.previewImage;
     }
 
     public void ButtonPressed()

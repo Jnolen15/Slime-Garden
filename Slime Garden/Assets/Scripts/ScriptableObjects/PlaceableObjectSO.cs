@@ -14,6 +14,7 @@ public class PlaceableObjectSO : ScriptableObject
     }
 
     public string placeableName;
+    public Sprite previewImage;
     public int price;
     [TextArea]
     public string description;

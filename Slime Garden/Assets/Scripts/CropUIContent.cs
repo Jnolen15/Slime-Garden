@@ -9,6 +9,7 @@ public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI numText;
+    [SerializeField] private Image preview;
     public InventoryManager.CropInventroyEntry cropData;
     public CropSO so;
     public int numStored;
@@ -19,10 +20,11 @@ public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         menuManager = manager;
 
         cropData = crop;
-        so = crop.data;
+        so = cropData.data;
         titleText.text = so.cropName;
         numText.text = cropData.numHeld.ToString();
         numStored = cropData.numHeld;
+        preview.sprite = so.previewImage;
     }
 
     public void UpdateValues()
