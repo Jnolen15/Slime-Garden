@@ -224,4 +224,16 @@ public class GridSystem : MonoBehaviour
         return gridObj.GetPlaceableObject();
     }
 
+    public PlaceableObject GetPlaceableObjectAtGridPos(Vector2Int pos)
+    {
+        GridObject gridObj = grid.GetValue((int)pos.x, (int)pos.y);
+
+        if (gridObj == null)
+        {
+            Debug.Log("Grid space is NULL");
+            return null;
+        }
+
+        return gridObj.GetPlaceableObject();
+    }
 }

@@ -215,13 +215,13 @@ public class PlayerController : MonoBehaviour
     {
         if (Money >= cost)
         {
-            Debug.Log("Purchased!");
+            //Debug.Log("Purchased!");
             Money -= cost;
             return true;
         }
         else
         {
-            Debug.Log("Cannot afford!");
+            //Debug.Log("Cannot afford!");
             return false;
         }
     }

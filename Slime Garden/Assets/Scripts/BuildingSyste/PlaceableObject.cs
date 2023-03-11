@@ -27,8 +27,24 @@ public class PlaceableObject : MonoBehaviour
         return placeableObjectSO.GetGridPositionList(origin, dir);
     }
 
+    // Returns the origin point this placeable is occupying on the grid
+    public Vector2Int GetGridOrigin()
+    {
+        return origin;
+    }
+
     public void DestroySelf()
     {
+        // If this is a tileable object, update surrounding tiles
+        var tilePlaceable = this.GetComponentInChildren<TileablePlaceable>();
+        if (tilePlaceable)
+            tilePlaceable.UpdateNeighbors();
+
         Destroy(gameObject);
+    }
+
+    public PlaceableObjectSO GetPlaceableData()
+    {
+        return placeableObjectSO;
     }
 }

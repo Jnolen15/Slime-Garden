@@ -22522,6 +22522,7 @@ MonoBehaviour:
   availablePlaceables:
   - {fileID: 11400000, guid: 961052b25d882174b929e38264df835b, type: 2}
   - {fileID: 11400000, guid: 025b9b343a79bce4ca2f3702bbe08293, type: 2}
+  - {fileID: 11400000, guid: 78a4516acc8b7df4da0d2be37f9ceb8f, type: 2}
   - {fileID: 11400000, guid: 3e3cf7ccd792bc94bbdef221eea73b34, type: 2}
   - {fileID: 11400000, guid: 05195cacd9001b9479e59d28c5593919, type: 2}
   - {fileID: 11400000, guid: 015af890f9d041b4ca138321f12ccd71, type: 2}
