@@ -220,7 +220,7 @@ public class SplicerScript : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // Eject New Slime
-        newSlime.GetComponent<SlimeController>().ChangeState(SlimeController.State.jump);
+        //newSlime.GetComponent<SlimeController>().ChangeState(SlimeController.State.jump);
 
         // Reset Strings
         newSlimeBase = "";

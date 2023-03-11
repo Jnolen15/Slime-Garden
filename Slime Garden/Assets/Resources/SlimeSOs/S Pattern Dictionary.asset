@@ -23,7 +23,6 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
     - {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
     - {fileID: 11400000, guid: 45f8fc6193f5c5c4a9f6b14e6cc7ded0, type: 2}
-    - {fileID: 11400000, guid: 95d06e4daf3da4447856acd3e09d5a04, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -372,7 +371,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 8
+      Data: 7
     - Name: 
       Entry: 7
       Data: 14|SPatternDictionary+patternListEntry, Assembly-CSharp
@@ -457,38 +456,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 7
-      Data: 21|SPatternDictionary+patternListEntry, Assembly-CSharp
-    - Name: pName
-      Entry: 1
-      Data: Boba
-    - Name: pattern
-      Entry: 10
-      Data: 7
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: slimePatternDictTWO
-      Entry: 7
-      Data: 22|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[SPatternDictionary+SlimePatternEntry,
-        Assembly-CSharp]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 23|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
-        mscorlib]], mscorlib
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 0
     - Name: 
       Entry: 13
       Data: 
