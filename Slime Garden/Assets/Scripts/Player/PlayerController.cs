@@ -6,7 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IDataPersistence
 {
     // TODO: Tidy up these variables a bit
     [SerializeField] private int money = 0;
@@ -307,5 +307,19 @@ public class PlayerController : MonoBehaviour
     public bool MouseOverUI()
     {
         return isOverUI;
+    }
+
+
+    // move this stuff to a new PlayerData script
+    // Also move money and such there as well to 
+    // keep this script more focused.
+    public void LoadData(GameData data)
+    {
+        Money = data.money;
+    }
+
+    public void SaveData(GameData data)
+    {
+        data.money = Money;
     }
 }
