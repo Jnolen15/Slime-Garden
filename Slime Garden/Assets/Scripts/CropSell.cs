@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CropSell : MonoBehaviour
 {
-    private PlayerController pc;
+    private PlayerData pData;
 
     private void Start()
     {
-        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
     }
 
     private void OnCollisionEnter(Collision col)
@@ -17,7 +17,7 @@ public class CropSell : MonoBehaviour
             return;
 
         CropSO data = col.gameObject.GetComponent<CropObj>().cropData;
-        pc.Money += data.sellValue;
+        pData.GainMoney(data.sellValue);
         col.gameObject.GetComponent<CropObj>().DestroySelf();
         //Destroy(col.gameObject);
     }

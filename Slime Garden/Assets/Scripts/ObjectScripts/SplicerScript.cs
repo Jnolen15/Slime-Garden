@@ -9,7 +9,7 @@ public class SplicerScript : MonoBehaviour
 
     // COMPONENTS ===============
     private HabitatControl hControl;
-    private PlayerController pc;
+    private PlayerData pData;
     public GameObject slimePrefab;
     public GameObject InputLeft;
     public GameObject InputRight;
@@ -36,7 +36,7 @@ public class SplicerScript : MonoBehaviour
     void Start()
     {
         hControl = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
-        pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
         ls = InputLeft.GetComponent<SplicerInput>();
         rs = InputRight.GetComponent<SplicerInput>();
         sb = Button.GetComponent<SplicerButton>();
@@ -57,16 +57,16 @@ public class SplicerScript : MonoBehaviour
                 sb.priceText.text = price.ToString();
             }
             // If the player can afford it or not
-            if (pc.Money >= price)
+            if (pData.CanAfford(price))
             {
                 buttonLightsMat.color = Color.green;
                 sb.priceText.color = Color.green;
                 sb.canBePressed = true;
                 if (sb.isPressed)
                 {
+                    pData.MakePurchase(price);
                     sb.priceText.enabled = false;
                     splicing = true;
-                    pc.Money -= price;
                     Splice();
                 }
             } else

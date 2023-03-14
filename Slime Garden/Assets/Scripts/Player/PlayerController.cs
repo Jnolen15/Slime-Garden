@@ -6,33 +6,25 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class PlayerController : MonoBehaviour, IDataPersistence
+public class PlayerController : MonoBehaviour
 {
-    // TODO: Tidy up these variables a bit
-    [SerializeField] private int money = 0;
-    public int Money
-    {
-        get { return money; }
-        set
-        {
-            money = value;
-            csDisplay.text = money.ToString();
-        }
-    }
-
-    public TextMeshProUGUI csDisplay;
-    [SerializeField] private PlayerInput pInput;
+    // Variables
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
-    private GridSystem gridSystem;
-    private GameObject buildVisual;
-    [SerializeField] private CropSO crop;
-    private MenuManager menus;
-    private CameraControl camcontrol;
-    private InventoryManager invManager;
+    private CropSO crop;
     private bool isOverUI;
     private bool inspectingSlime;
 
+    // Script/Object Refrences
+    private PlayerInput pInput;
+    private PlayerData pData;
+    private InventoryManager invManager;
+    private MenuManager menus;
+    private CameraControl camcontrol;
+    private GridSystem gridSystem;
+    private GameObject buildVisual;
+
+    // Player State enum
     public enum State
     {
         Default,
@@ -43,15 +35,18 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     }
     public State state;
 
+
     private void Start()
     {
         pInput = this.GetComponentInParent<PlayerInput>();
+        pData = this.GetComponent<PlayerData>();
+        invManager = this.GetComponent<InventoryManager>();
+
+        menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
+        camcontrol = GameObject.FindGameObjectWithTag("CamControl").GetComponent<CameraControl>();
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
         buildVisual.SetActive(false);
-        menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
-        camcontrol = GameObject.FindGameObjectWithTag("CamControl").GetComponent<CameraControl>();
-        invManager = this.GetComponent<InventoryManager>();
     }
 
     private void Update()
@@ -81,6 +76,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
             pInput.SwitchCurrentActionMap("Basic");
     }
 
+    // ========== STATE MANAGEMENT ==========
     public void ChangeState(string newState)
     {
         menus.CloseAllSubmenus();
@@ -107,6 +103,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
         }
     }
 
+    // ========== SO MANAGEMENT ==========
     public void SwapPlaceable(PlaceableObjectSO newP)
     {
         gridSystem.SwapPlaceable(newP);
@@ -211,26 +208,11 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     }
 
     // ========== ACTIONS ==========
-    private bool TryPurchase(int cost)
-    {
-        if (Money >= cost)
-        {
-            //Debug.Log("Purchased!");
-            Money -= cost;
-            return true;
-        }
-        else
-        {
-            //Debug.Log("Cannot afford!");
-            return false;
-        }
-    }
-
     private void BuyAndPlace(Vector3 pos)
     {
         var so = gridSystem.GetPlaceableSO();
         
-        if (TryPurchase(so.price))
+        if (pData.TryAndPurchase(so.price))
             gridSystem.Place(pos);
     }
 
@@ -246,7 +228,7 @@ public class PlayerController : MonoBehaviour, IDataPersistence
 
             if (plantSpot.GetCropSO() == null)
             {
-                if(TryPurchase(crop.price))
+                if(pData.TryAndPurchase(crop.price))
                     plantSpot.Plant(crop);
             }
             else
@@ -307,19 +289,5 @@ public class PlayerController : MonoBehaviour, IDataPersistence
     public bool MouseOverUI()
     {
         return isOverUI;
-    }
-
-
-    // move this stuff to a new PlayerData script
-    // Also move money and such there as well to 
-    // keep this script more focused.
-    public void LoadData(GameData data)
-    {
-        Money = data.money;
-    }
-
-    public void SaveData(GameData data)
-    {
-        data.money = Money;
     }
 }

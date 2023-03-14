@@ -5,12 +5,12 @@ using UnityEngine;
 public class Cheats : MonoBehaviour
 {
     private RandomSlime rs;
-    private PlayerController pc;
+    private PlayerData pData;
 
     // Start is called before the first frame update
     void Start()
     {
-        pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
         rs = GetComponentInParent<RandomSlime>();
     }
 
@@ -20,7 +20,7 @@ public class Cheats : MonoBehaviour
         // Give money
         if (Input.GetKeyDown(KeyCode.M))
         {
-            pc.Money += 100;
+            pData.GainMoney(100);
         }
         
         // Spawn a random slime on button press
