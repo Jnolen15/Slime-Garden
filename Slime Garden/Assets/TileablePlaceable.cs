@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class TileablePlaceable : MonoBehaviour
 {
-    private GridSystem gridSystem;
-    private PlaceableObjectSO data;
+    [SerializeField] private GridSystem gridSystem;
+    [SerializeField] private PlaceableObjectSO data;
 
     // Configuration game objects
     [SerializeField] private GameObject post;
@@ -21,11 +21,14 @@ public class TileablePlaceable : MonoBehaviour
     [SerializeField] private TileablePlaceable southNeighbor;
     [SerializeField] private TileablePlaceable westNeighbor;
 
-    void Start()
+    private void Awake()
     {
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         data = this.GetComponentInParent<PlaceableObject>().GetPlaceableData();
+    }
 
+    void Start()
+    {
         InitialConfiguration();
     }
 
@@ -94,6 +97,9 @@ public class TileablePlaceable : MonoBehaviour
     // Gets the placeable at given pos. If the name matches this one its returned
     private TileablePlaceable GetNeighborTileable(int xPos, int yPos)
     {
+        if(!data)
+            data = this.GetComponentInParent<PlaceableObject>().GetPlaceableData();
+
         var placeableObj = gridSystem.GetPlaceableObjectAtGridPos(new Vector2Int(xPos, yPos));
         
         if(placeableObj == null)

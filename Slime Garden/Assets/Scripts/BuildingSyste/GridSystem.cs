@@ -97,9 +97,13 @@ public class GridSystem : MonoBehaviour
     public void Place(Vector3 mousePos)
     {
         grid.GetXZ(mousePos, out int x, out int y);
+        Build(new Vector2Int(x, y), placeable);
+    }
 
-        List<Vector2Int> gridPosList = placeable.GetGridPositionList(new Vector2Int(x, y), dir);
-        GridObject gridObject = grid.GetValue(x, y);
+    public void Build(Vector2Int placeablePos, PlaceableObjectSO placeableToBuild)
+    {
+        List<Vector2Int> gridPosList = placeableToBuild.GetGridPositionList(placeablePos, dir);
+        GridObject gridObject = grid.GetValue(placeablePos.x, placeablePos.y);
 
         //Test can Build
         bool canBuild = true;
@@ -113,10 +117,10 @@ public class GridSystem : MonoBehaviour
 
         if (gridObject != null && canBuild)
         {
-            Vector2Int rotationOffset = placeable.GetRotationOffset(dir);
-            Vector3 objWorldPos = grid.GetWorldPosition(x, y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * cellSize;
+            Vector2Int rotationOffset = placeableToBuild.GetRotationOffset(dir);
+            Vector3 objWorldPos = grid.GetWorldPosition(placeablePos.x, placeablePos.y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * cellSize;
 
-            PlaceableObject placeableObj = PlaceableObject.Create(objWorldPos, new Vector2Int(x, y), dir, placeable);
+            PlaceableObject placeableObj = PlaceableObject.Create(objWorldPos, placeablePos, dir, placeableToBuild);
 
             foreach (Vector2Int gridPos in gridPosList)
             {
@@ -129,7 +133,7 @@ public class GridSystem : MonoBehaviour
         }
         else
         {
-            Debug.Log("GridObject is null " + x + "," + y);
+            Debug.Log("GridObject is null " + placeablePos.x + "," + placeablePos.y);
         }
     }
 
@@ -137,6 +141,11 @@ public class GridSystem : MonoBehaviour
     public void Rotate()
     {
         dir = PlaceableObjectSO.GetNextDir(dir);
+    }
+
+    public void RotateTo(PlaceableObjectSO.Dir newDir)
+    {
+        dir = newDir;
     }
 
     // ================ Demolish ================
@@ -235,5 +244,36 @@ public class GridSystem : MonoBehaviour
         }
 
         return gridObj.GetPlaceableObject();
+    }
+
+    public List<PlaceableObject> GetAllPlaceableObjects()
+    {
+        List<PlaceableObject> placeables = new List<PlaceableObject>();
+
+        for (int i = 0; i < gridWidth; i++)
+        {
+            for (int j = 0; j < gridHeight; j++)
+            {
+                GridObject gridObj = grid.GetValue(i, j);
+
+                if (gridObj == null)
+                {
+                    Debug.LogError("NULL grid space found when looping through all spaces");
+                } else
+                {
+                    PlaceableObject curPlaceable = gridObj.GetPlaceableObject();
+                    if (curPlaceable)
+                    {
+                        // Only add the placeable to the list once (when at its origin)
+                        if (curPlaceable.GetGridOrigin() == new Vector2Int(i, j))
+                        {
+                            placeables.Add(curPlaceable);
+                        }
+                    }
+                }
+            }
+        }
+
+        return placeables;
     }
 }

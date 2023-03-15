@@ -9790,7 +9790,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.41785684, y: -9.6769934e-17, z: 3.4975507e-16, w: 0.90851295}
+  m_LocalRotation: {x: 0.4178568, y: -0.0000000270758, z: 0.000000012453105, w: 0.90851295}
   m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15669,7 +15669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962bb1a0532ac5d45a3dd7058e86c388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cropList:
+  availableCrops:
   - {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
   - {fileID: 11400000, guid: 714b8a98ab3509144bff270d0be8c8ff, type: 2}
   - {fileID: 11400000, guid: 1ba8176e8227c714c9e529cc77012de6, type: 2}
@@ -15683,6 +15683,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c4a0d17131d1cd48805d5d29cff33bc, type: 2}
   - {fileID: 11400000, guid: cb7a3ba0839facc448d181b97db601b7, type: 2}
   - {fileID: 11400000, guid: bf91536955aece44f950a2081e751909, type: 2}
+  availablePlaceables:
+  - {fileID: 11400000, guid: 3e3cf7ccd792bc94bbdef221eea73b34, type: 2}
+  - {fileID: 11400000, guid: 78a4516acc8b7df4da0d2be37f9ceb8f, type: 2}
+  - {fileID: 11400000, guid: 961052b25d882174b929e38264df835b, type: 2}
+  - {fileID: 11400000, guid: 025b9b343a79bce4ca2f3702bbe08293, type: 2}
+  - {fileID: 11400000, guid: 05195cacd9001b9479e59d28c5593919, type: 2}
+  - {fileID: 11400000, guid: 015af890f9d041b4ca138321f12ccd71, type: 2}
+  - {fileID: 11400000, guid: c8fe9b723167d84448f68252e7001228, type: 2}
+  - {fileID: 11400000, guid: 5df7df4e4a2631f42afd884bf9af35f9, type: 2}
+  - {fileID: 11400000, guid: 8ffd5ddd7f45b7c4383b1a8c4d7344e1, type: 2}
+  - {fileID: 11400000, guid: f7b12b2e1edceb44692ab195b59bd571, type: 2}
   inventoryList: []
 --- !u!114 &832757455
 MonoBehaviour:
@@ -22518,31 +22529,6 @@ MonoBehaviour:
   infoBox: {fileID: 1653790551}
   slimeInfoBox: {fileID: 1043379491}
   invManager: {fileID: 832757454}
-  availablePlaceables:
-  - {fileID: 11400000, guid: 961052b25d882174b929e38264df835b, type: 2}
-  - {fileID: 11400000, guid: 025b9b343a79bce4ca2f3702bbe08293, type: 2}
-  - {fileID: 11400000, guid: 78a4516acc8b7df4da0d2be37f9ceb8f, type: 2}
-  - {fileID: 11400000, guid: 3e3cf7ccd792bc94bbdef221eea73b34, type: 2}
-  - {fileID: 11400000, guid: 05195cacd9001b9479e59d28c5593919, type: 2}
-  - {fileID: 11400000, guid: 015af890f9d041b4ca138321f12ccd71, type: 2}
-  - {fileID: 11400000, guid: c8fe9b723167d84448f68252e7001228, type: 2}
-  - {fileID: 11400000, guid: 5df7df4e4a2631f42afd884bf9af35f9, type: 2}
-  - {fileID: 11400000, guid: 8ffd5ddd7f45b7c4383b1a8c4d7344e1, type: 2}
-  - {fileID: 11400000, guid: f7b12b2e1edceb44692ab195b59bd571, type: 2}
-  availableSeeds:
-  - {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
-  - {fileID: 11400000, guid: 714b8a98ab3509144bff270d0be8c8ff, type: 2}
-  - {fileID: 11400000, guid: 1ba8176e8227c714c9e529cc77012de6, type: 2}
-  - {fileID: 11400000, guid: 067b6499764de23459e390292c36fc91, type: 2}
-  - {fileID: 11400000, guid: f84b790436d7a3d4fa1dd4d7ffd31a82, type: 2}
-  - {fileID: 11400000, guid: 32ca60f3d80b6c44a9b70abec8680fe1, type: 2}
-  - {fileID: 11400000, guid: f3526997d764b3d478e8bf8b52801b17, type: 2}
-  - {fileID: 11400000, guid: 713f318cfeba601468ab1fb737b9f55c, type: 2}
-  - {fileID: 11400000, guid: f787fea1e2499764a95a7eeef388fba0, type: 2}
-  - {fileID: 11400000, guid: 746ef2271d550944fb86afacc3a4b236, type: 2}
-  - {fileID: 11400000, guid: 7c4a0d17131d1cd48805d5d29cff33bc, type: 2}
-  - {fileID: 11400000, guid: cb7a3ba0839facc448d181b97db601b7, type: 2}
-  - {fileID: 11400000, guid: bf91536955aece44f950a2081e751909, type: 2}
 --- !u!1 &1209422741
 GameObject:
   m_ObjectHideFlags: 0
@@ -24663,7 +24649,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309957054}
-  m_LocalRotation: {x: 0.41785684, y: -9.6769934e-17, z: 3.4975507e-16, w: 0.90851295}
+  m_LocalRotation: {x: 0.4178568, y: -0.0000000270758, z: 0.000000012453105, w: 0.90851295}
   m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34747,6 +34733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1611128136}
   - component: {fileID: 1611128135}
+  - component: {fileID: 1611128137}
   m_Layer: 0
   m_Name: GridBuildingSystem
   m_TagString: Grid
@@ -34789,6 +34776,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1611128137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611128134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8350dce0439307644b69d2573e910e6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridSystem: {fileID: 1611128135}
+  invManager: {fileID: 832757454}
 --- !u!1001 &1615136968
 PrefabInstance:
   m_ObjectHideFlags: 0

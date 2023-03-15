@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour, IDataPersistence
 {
-    public List<CropSO> cropList = new List<CropSO>();
+    public List<CropSO> availableCrops = new List<CropSO>();
+    public List<PlaceableObjectSO> availablePlaceables = new List<PlaceableObjectSO>();
+
+    // Used for saving
     public List<CropInventroyEntry> inventoryList = new List<CropInventroyEntry>();
 
     [System.Serializable]
@@ -47,7 +50,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     public CropSO GetCropData(string cName)
     {
-        foreach (CropSO crop in cropList)
+        foreach (CropSO crop in availableCrops)
         {
             if (crop.cropName == cName)
                 return crop;
@@ -60,7 +63,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     // ================== SAVE LOAD ==================
     private void ResetInventoryList()
     {
-        foreach(CropSO crop in cropList)
+        foreach(CropSO crop in availableCrops)
         {
             CropInventroyEntry newEntry = new CropInventroyEntry(crop.cropName);
 

@@ -33,6 +33,11 @@ public class PlaceableObject : MonoBehaviour
         return origin;
     }
 
+    public PlaceableObjectSO.Dir GetPlaceableDir()
+    {
+        return dir;
+    }
+
     public void DestroySelf()
     {
         // If this is a tileable object, update surrounding tiles

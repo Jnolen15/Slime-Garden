@@ -14,8 +14,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject infoBox;
     [SerializeField] private GameObject slimeInfoBox;
     [SerializeField] private InventoryManager invManager;
-    [SerializeField] private List<PlaceableObjectSO> availablePlaceables = new List<PlaceableObjectSO>();
-    [SerializeField] private List<CropSO> availableSeeds = new List<CropSO>();
 
     void Start()
     {
@@ -41,7 +39,7 @@ public class MenuManager : MonoBehaviour
     {
         var contentMenu = buildMenu.transform.GetChild(0).GetChild(0);
 
-        foreach (PlaceableObjectSO so in availablePlaceables)
+        foreach (PlaceableObjectSO so in invManager.availablePlaceables)
         {
             var element = Instantiate(placeableUIPrefab, contentMenu);
             element.GetComponent<placeableUIContent>().Setup(so, this);
@@ -61,7 +59,7 @@ public class MenuManager : MonoBehaviour
     {
         var contentMenu = seedMenu.transform.GetChild(0).GetChild(0);
 
-        foreach (CropSO so in availableSeeds)
+        foreach (CropSO so in invManager.availableCrops)
         {
             var element = Instantiate(seedUIPrefab, contentMenu);
             element.GetComponent<SeedUIContent>().Setup(so, this);
