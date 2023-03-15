@@ -14,9 +14,9 @@ public class SlimeInfoPannel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI patternColorText;
     [SerializeField] private TextMeshProUGUI patternText;
     [SerializeField] private TextMeshProUGUI rarityText;
-    [SerializeField] private SlimeController curslime;
+    [SerializeField] private SlimeData curslime;
 
-    public void Setup(SlimeController slime)
+    public void Setup(SlimeData slime)
     {
         curslime = slime;
         nameTextObj.SetActive(true);

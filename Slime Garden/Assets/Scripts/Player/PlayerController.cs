@@ -192,7 +192,7 @@ public class PlayerController : MonoBehaviour
             // Inspect Slime Popup
             if (state == State.Default && clickraycastHit.collider.gameObject.tag == "Slime")
             {
-                var clickedSlime = clickraycastHit.collider.gameObject.GetComponent<SlimeController>();
+                var clickedSlime = clickraycastHit.collider.gameObject.GetComponent<SlimeData>();
                 InspectSlime(clickedSlime);
             }
         }
@@ -258,7 +258,7 @@ public class PlayerController : MonoBehaviour
         gridSystem.Demolish(pos);
     }
 
-    private void InspectSlime(SlimeController slime)
+    private void InspectSlime(SlimeData slime)
     {
         state = State.Inspect;
         inspectingSlime = true;

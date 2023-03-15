@@ -5,23 +5,9 @@ using UnityEngine.U2D.Animation;
 
 public class SlimeController : MonoBehaviour
 {
-    //=============== SLIME ATTRIBUTES ===============
-    public string speciesName;                  //Name of slime species
-    public string displayName;                  //Name of slime species
-    public float sRarity;                       //Rarity of slime
-
-    //=============== SCRIPTABLE OBJECTS ===============
-    public SlimeBaseSO slimeSpeciesBase;        //The SO of this slime species Base color. Info is taken from here.
-    public string sBaseColor;                   //Base color of species
-    public Color slimeSpeciesBaseColor;         //The Color that will be applied to the Base
-    public SlimePatternSO slimeSpeciesPattern;  //The SO of this slime species. Info is taken from here.
-    public string sPatternColor;                //Pattern color of species
-    public Color slimeSpeciesPatternColor;      //The Color that will be applied to the Pattern
-    public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
-    public GameObject sCrystal;                 //The crystal Game object this slime produces
-
     //=============== COMPONENTS ===============
-    private GameObject sprites;               //The child gameobject that holds sprite objects
+    public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
+    private GameObject sprites;                 //The child gameobject that holds sprite objects
     private GameObject baseSlime;               //The child gameobject containing the base SR
     private GameObject pattern;                 //The child gameobject containing the pattern SR
     private GameObject face;                    //The face rendered above the slime
@@ -67,11 +53,6 @@ public class SlimeController : MonoBehaviour
         // Find Brain
         brain = this.GetComponent<SBrain>();
 
-        // Create name and calculate rarity
-        speciesName = sBaseColor + " " + sPatternColor + " " + slimeSpeciesPattern.sPattern;
-        displayName = speciesName;
-        sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
-
         // ========== Sprite stuff ==========
         sprites = this.transform.GetChild(0).gameObject;
         baseSlime = sprites.transform.GetChild(0).gameObject;
@@ -85,13 +66,6 @@ public class SlimeController : MonoBehaviour
         baseAnimator = baseSlime.GetComponent<Animator>();
         patternAnimator = pattern.GetComponent<Animator>();
         faceAnimator = face.GetComponent<Animator>();
-        // Sprite library assets (Used to swap out sprites in animations)
-        baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
-        pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
-        face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
-        // Assign Colors
-        Basesr.color = slimeSpeciesBaseColor;
-        patternsr.color = slimeSpeciesPatternColor;
     }
 
     void Update()
@@ -301,12 +275,6 @@ public class SlimeController : MonoBehaviour
         {
             grounded = false;
         }
-    }
-
-    public void SetName(string newName)
-    {
-        displayName = newName;
-        Debug.Log("Display name changed: " + displayName);
     }
 
     public bool InNonInteruptableState()

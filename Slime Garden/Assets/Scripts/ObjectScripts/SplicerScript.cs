@@ -203,17 +203,18 @@ public class SplicerScript : MonoBehaviour
         // Instantates the basic slime prefab
         // Gives prefab the correct SO from the dictionary via GetSlime
         GameObject newSlime = Instantiate(slimePrefab, Output.position, Quaternion.identity);
-        SlimeController newSC = newSlime.GetComponent<SlimeController>();
+        SlimeData newSD = newSlime.GetComponent<SlimeData>();
         var newBase = SBaseDictionary.GetSlime(newSlimeBase);
         var newpattern = SPatternDictionary.GetSlime(newSlimePattern);
 
-        newSC.slimeSpeciesBase = newBase.slimeBaseSO;
-        newSC.sBaseColor = newBase.slimeBaseName;
-        newSC.slimeSpeciesBaseColor = newBase.slimeBaseColor;
-        newSC.slimeSpeciesPattern = newpattern.slimePatternSO;
-        newSC.sPatternColor = newpattern.slimePatternColorName;
-        newSC.slimeSpeciesPatternColor = newpattern.slimePatternColor;
-        newSC.sCrystal = newBase.slimeCrystal;
+        newSD.slimeSpeciesBase = newBase.slimeBaseSO;
+        newSD.sBaseColor = newBase.slimeBaseName;
+        newSD.slimeSpeciesBaseColor = newBase.slimeBaseColor;
+        newSD.slimeSpeciesPattern = newpattern.slimePatternSO;
+        newSD.sPatternColor = newpattern.slimePatternColorName;
+        newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
+        newSD.sCrystal = newBase.slimeCrystal;
+        newSD.Setup();
 
         hControl.activeSlimes.Add(newSlime);
 

@@ -129,7 +129,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // ============== Slime Inspect ==============
-    public void ShowSlimeStats(SlimeController slime)
+    public void ShowSlimeStats(SlimeData slime)
     {
         slimeInfoBox.SetActive(true);
         slimeInfoBox.GetComponent<SlimeInfoPannel>().Setup(slime);
