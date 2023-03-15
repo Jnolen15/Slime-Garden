@@ -6,9 +6,11 @@ using UnityEngine;
 public class GameData
 {
     public int money;
+    public List<InventoryManager.CropInventroyEntry> inventoryList;
 
     public GameData()
     {
-        this.money = 0;
+        money = 0;
+        inventoryList = new List<InventoryManager.CropInventroyEntry>();
     }
 }

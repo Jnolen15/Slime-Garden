@@ -15669,33 +15669,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962bb1a0532ac5d45a3dd7058e86c388, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryList:
-  - data: {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: 714b8a98ab3509144bff270d0be8c8ff, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: 1ba8176e8227c714c9e529cc77012de6, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: 067b6499764de23459e390292c36fc91, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: f84b790436d7a3d4fa1dd4d7ffd31a82, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: 32ca60f3d80b6c44a9b70abec8680fe1, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: f3526997d764b3d478e8bf8b52801b17, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: 713f318cfeba601468ab1fb737b9f55c, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: f787fea1e2499764a95a7eeef388fba0, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: 746ef2271d550944fb86afacc3a4b236, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: 7c4a0d17131d1cd48805d5d29cff33bc, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: cb7a3ba0839facc448d181b97db601b7, type: 2}
-    numHeld: 10
-  - data: {fileID: 11400000, guid: bf91536955aece44f950a2081e751909, type: 2}
-    numHeld: 10
+  cropList:
+  - {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
+  - {fileID: 11400000, guid: 714b8a98ab3509144bff270d0be8c8ff, type: 2}
+  - {fileID: 11400000, guid: 1ba8176e8227c714c9e529cc77012de6, type: 2}
+  - {fileID: 11400000, guid: 067b6499764de23459e390292c36fc91, type: 2}
+  - {fileID: 11400000, guid: f84b790436d7a3d4fa1dd4d7ffd31a82, type: 2}
+  - {fileID: 11400000, guid: 32ca60f3d80b6c44a9b70abec8680fe1, type: 2}
+  - {fileID: 11400000, guid: f3526997d764b3d478e8bf8b52801b17, type: 2}
+  - {fileID: 11400000, guid: 713f318cfeba601468ab1fb737b9f55c, type: 2}
+  - {fileID: 11400000, guid: f787fea1e2499764a95a7eeef388fba0, type: 2}
+  - {fileID: 11400000, guid: 746ef2271d550944fb86afacc3a4b236, type: 2}
+  - {fileID: 11400000, guid: 7c4a0d17131d1cd48805d5d29cff33bc, type: 2}
+  - {fileID: 11400000, guid: cb7a3ba0839facc448d181b97db601b7, type: 2}
+  - {fileID: 11400000, guid: bf91536955aece44f950a2081e751909, type: 2}
+  inventoryList: []
 --- !u!114 &832757455
 MonoBehaviour:
   m_ObjectHideFlags: 0

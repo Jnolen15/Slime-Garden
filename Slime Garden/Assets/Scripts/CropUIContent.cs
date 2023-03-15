@@ -10,6 +10,7 @@ public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private TextMeshProUGUI numText;
     [SerializeField] private Image preview;
+    private InventoryManager iManager;
     public InventoryManager.CropInventroyEntry cropData;
     public CropSO so;
     public int numStored;
@@ -17,10 +18,11 @@ public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void Setup(InventoryManager.CropInventroyEntry crop, MenuManager manager)
     {
+        iManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
         menuManager = manager;
 
         cropData = crop;
-        so = cropData.data;
+        so = iManager.GetCropData(cropData.cropName);
         titleText.text = so.cropName;
         numText.text = cropData.numHeld.ToString();
         numStored = cropData.numHeld;

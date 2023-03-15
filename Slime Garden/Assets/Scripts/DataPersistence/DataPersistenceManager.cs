@@ -24,15 +24,19 @@ public class DataPersistenceManager : MonoBehaviour
             Debug.LogError("More than one data persistence manager in scene");
         }
         instance = this;
-    }
 
-    // SAVE AND LOAD GAME ON STARTUP AND QUIT (Move later?)
-    private void Start()
-    {
         dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
         dataPersistenceObjects = FindAllDataPersistenceObjects();
         LoadGame();
     }
+
+    // SAVE AND LOAD GAME ON STARTUP AND QUIT (Move later?)
+    /*private void Start()
+    {
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame();
+    }*/
 
     private void OnApplicationQuit()
     {
