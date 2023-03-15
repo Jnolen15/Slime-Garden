@@ -100,8 +100,10 @@ public class GridSystem : MonoBehaviour
         Build(new Vector2Int(x, y), placeable);
     }
 
-    public void Build(Vector2Int placeablePos, PlaceableObjectSO placeableToBuild)
+    public GameObject Build(Vector2Int placeablePos, PlaceableObjectSO placeableToBuild)
     {
+        GameObject newBuild = null;
+
         List<Vector2Int> gridPosList = placeableToBuild.GetGridPositionList(placeablePos, dir);
         GridObject gridObject = grid.GetValue(placeablePos.x, placeablePos.y);
 
@@ -115,6 +117,7 @@ public class GridSystem : MonoBehaviour
                 canBuild = false;
         }
 
+        // Create placeable
         if (gridObject != null && canBuild)
         {
             Vector2Int rotationOffset = placeableToBuild.GetRotationOffset(dir);
@@ -126,6 +129,8 @@ public class GridSystem : MonoBehaviour
             {
                 grid.GetValue(gridPos.x, gridPos.y).SetPlaceableObject(placeableObj);
             }
+
+            newBuild = placeableObj.gameObject;
         }
         else if (gridObject != null)
         {
@@ -135,6 +140,8 @@ public class GridSystem : MonoBehaviour
         {
             Debug.Log("GridObject is null " + placeablePos.x + "," + placeablePos.y);
         }
+
+        return newBuild;
     }
 
     // ================ Rotate ================
