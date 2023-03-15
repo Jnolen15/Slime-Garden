@@ -93,7 +93,7 @@ public class SPatternDictionary : SerializedScriptableObject
         if (slimePatternDict.TryGetValue(sName, out foundSlime))
         {
             // Success
-            Debug.Log("Found slime: " + foundSlime.slimePatternName);
+            //Debug.Log("Found slime: " + foundSlime.slimePatternName);
             return foundSlime;
         }
         else

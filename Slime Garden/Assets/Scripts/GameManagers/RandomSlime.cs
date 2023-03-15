@@ -19,13 +19,6 @@ public class RandomSlime : MonoBehaviour
     private string sPatterntype = "";
     private bool sSpecial = false;
 
-    private HabitatControl hControl;
-
-    void Start()
-    {
-        hControl = this.GetComponent<HabitatControl>();
-    }
-
     public void CreateSlime(Vector3 pos)
     {
         bool compatableName = false;
@@ -90,8 +83,6 @@ public class RandomSlime : MonoBehaviour
         newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
         newSD.sCrystal = newBase.slimeCrystal;
         newSD.Setup();
-
-        hControl.activeSlimes.Add(newSlime);
 
         sBaseColor = "";
         sPattern = "";
