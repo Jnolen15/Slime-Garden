@@ -38,7 +38,7 @@ public class Cheats : MonoBehaviour
         }
 
         // re-load scene game
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.Backslash))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

@@ -53,6 +53,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
         newSD.sCrystal = newBase.slimeCrystal;
         newSD.Setup();
+        newSD.SetName(slime.displayName);
     }
 
     public void SaveData(GameData data)
@@ -68,9 +69,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
             var sData = slime.GetComponent<SlimeData>();
 
             slimeDataList.Add( new SlimeDataEntry(slime.transform.position, 
-                sData.displayName, sData.sPattern, sData.sBaseColor, 
-                sData.slimeSpeciesBaseColor, sData.sPatternColor, 
-                sData.slimeSpeciesPatternColor));
+                sData.displayName, sData.sPattern, sData.sBaseColor, sData.sPatternColor));
 
             data.slimeList = slimeDataList;
         }
@@ -84,19 +83,15 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         public string displayName;
         public string sPattern;
         public string sBaseColor;
-        public Color slimeSpeciesBaseColor;
         public string sPatternColor;
-        public Color slimeSpeciesPatternColor;
 
-        public SlimeDataEntry(Vector3 curPos, string dispName, string pat, string bColorStr, Color bColor, string pColorStr, Color pColor)
+        public SlimeDataEntry(Vector3 curPos, string dispName, string pat, string bColorStr, string pColorStr)
         {
             pos = curPos;
             displayName = dispName;
             sPattern = pat;
             sBaseColor = bColorStr;
-            slimeSpeciesBaseColor = bColor;
             sPatternColor = pColorStr;
-            slimeSpeciesPatternColor = pColor;
         }
     }
 }
