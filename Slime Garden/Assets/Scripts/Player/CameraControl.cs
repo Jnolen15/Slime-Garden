@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 using Cinemachine;
 
 public class CameraControl : MonoBehaviour
@@ -28,6 +29,7 @@ public class CameraControl : MonoBehaviour
     private Vector3 moveVector;
     private float rotateDir;
     private int snapCount;
+    private bool isOverUI;
 
     [Header("FOV and move down zoom")]
     [SerializeField] private float zoomMax = 120f;
@@ -57,14 +59,15 @@ public class CameraControl : MonoBehaviour
         curZoomFOVSpeed = zoomFOVSpeed;
     }
 
-    private PlayerController pc;
-    private void Start()
-    {
-        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    }
-
     void Update()
     {
+        // Check to see if mouse is over UI element
+        // This proboably is not the best way to do this, so maybe fix later
+        if (EventSystem.current.IsPointerOverGameObject())
+            isOverUI = true;
+        else
+            isOverUI = false;
+
         // Movement
         if (lockedToSlime)
             this.transform.position = objectToFollow.position;
@@ -173,7 +176,7 @@ public class CameraControl : MonoBehaviour
 
     public void OnZoom(InputAction.CallbackContext context)
     {
-        if (pc.MouseOverUI())
+        if (isOverUI)
             return;
 
         if (lockedToSlime)
@@ -259,6 +262,13 @@ public class CameraControl : MonoBehaviour
         zoomOffset.y = zoomYMin;
         targetFOV = fovMin;
 
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().StopInspectSlime();
+        var habitatPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        var wildzonePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<WildZoneControler>();
+        if (habitatPlayer)
+            habitatPlayer.StopInspectSlime();
+        else if (wildzonePlayer)
+            wildzonePlayer.StopInspectSlime();
+        else
+            Debug.Log("No player controler found!");
     }
 }

@@ -8,6 +8,7 @@ public class Cheats : MonoBehaviour
     private RandomSlime rs;
     private PlayerData pData;
     [SerializeField] private DataPersistenceManager gameData;
+    [SerializeField] private bool inWild;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,10 @@ public class Cheats : MonoBehaviour
         // Spawn a random slime on button press
         if (Input.GetKeyDown(KeyCode.G))
         {
-            rs.CreateSlime(Vector3.zero);
+            if(inWild)
+                rs.CreateSlime(Vector3.zero, true);
+            else
+                rs.CreateSlime(Vector3.zero, false);
         }
 
         // Save game
