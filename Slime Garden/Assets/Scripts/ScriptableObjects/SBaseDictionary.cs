@@ -71,7 +71,7 @@ public class SBaseDictionary : SerializedScriptableObject
         if (slimeBaseDict.TryGetValue(sName, out foundSlime))
         {
             // Success
-            Debug.Log("Found slime: " + foundSlime.slimeBaseName);
+            //Debug.Log("Found slime: " + foundSlime.slimeBaseName);
             return foundSlime;
         }
         else

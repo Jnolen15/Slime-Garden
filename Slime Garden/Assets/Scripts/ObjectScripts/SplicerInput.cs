@@ -6,6 +6,7 @@ public class SplicerInput : MonoBehaviour
 {
     private SplicerScript splicer;
     private SlimeController slimeControll;
+    private SlimeData slimeData;
     public Transform slimePos;
     public GameObject currentSlime;
     public bool occupied = false;
@@ -57,17 +58,18 @@ public class SplicerInput : MonoBehaviour
                 // Set up
                 occupied = true;
                 currentSlime = col.gameObject;
-                slimeControll = currentSlime.GetComponent<SlimeController>();
                 currentSlime.GetComponent<DragDrop>().LetGo();
+                slimeControll = currentSlime.GetComponent<SlimeController>();
                 slimeControll.ChangeState(SlimeController.State.splice);
+                slimeData = currentSlime.GetComponent<SlimeData>();
                 currentSlime.transform.localPosition = slimePos.position;
+                
                 // Get slime attributes
-
-                sBaseColor = slimeControll.sBaseColor;
-                sPatternColor = slimeControll.sPatternColor;
-                sPattern = slimeControll.slimeSpeciesPattern.sPattern;
-                sRarity = slimeControll.sRarity;
-                sSpecial = slimeControll.slimeSpeciesBase.sSpecial;
+                sBaseColor = slimeData.sBaseColor;
+                sPatternColor = slimeData.sPatternColor;
+                sPattern = slimeData.slimeSpeciesPattern.sPattern;
+                sRarity = slimeData.sRarity;
+                sSpecial = slimeData.slimeSpeciesBase.sSpecial;
 
                 // Change color of lights to base color of input slime
                 SetColor(sBaseColor);

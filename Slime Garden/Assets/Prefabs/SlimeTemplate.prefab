@@ -69,6 +69,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2476212351923915012}
+  - component: {fileID: 3094945569991602921}
   - component: {fileID: 3820516103340025377}
   - component: {fileID: 3296617851318787812}
   - component: {fileID: 6095753772148874148}
@@ -99,6 +100,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3094945569991602921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538871180620568560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69289870787813945877179457e2ec58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speciesName: 
+  displayName: 
+  sRarity: 0
+  slimeSpeciesBase: {fileID: 0}
+  sBaseColor: 
+  slimeSpeciesBaseColor: {r: 0, g: 0, b: 0, a: 0}
+  slimeSpeciesPattern: {fileID: 0}
+  sPatternColor: 
+  slimeSpeciesPatternColor: {r: 0, g: 0, b: 0, a: 0}
+  slimeFace: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
+  sCrystal: {fileID: 0}
 --- !u!114 &3820516103340025377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,15 +135,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08732eacd3029a34898aff3663d3a63d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speciesName: 
-  displayName: 
-  sRarity: 0
-  slimeSpeciesBase: {fileID: 0}
-  sBaseColor: 
-  slimeSpeciesBaseColor: {r: 0, g: 0, b: 0, a: 0}
-  slimeSpeciesPattern: {fileID: 0}
-  sPatternColor: 
-  slimeSpeciesPatternColor: {r: 0, g: 0, b: 0, a: 0}
   slimeFace: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
   sCrystal: {fileID: 0}
   grounded: 0

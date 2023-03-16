@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cheats : MonoBehaviour
 {
     private RandomSlime rs;
-    private PlayerController pc;
+    private PlayerData pData;
+    [SerializeField] private DataPersistenceManager gameData;
 
     // Start is called before the first frame update
     void Start()
     {
-        pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
         rs = GetComponentInParent<RandomSlime>();
     }
 
@@ -20,13 +22,25 @@ public class Cheats : MonoBehaviour
         // Give money
         if (Input.GetKeyDown(KeyCode.M))
         {
-            pc.Money += 100;
+            pData.GainMoney(100);
         }
         
         // Spawn a random slime on button press
         if (Input.GetKeyDown(KeyCode.G))
         {
             rs.CreateSlime(Vector3.zero);
+        }
+
+        // Save game
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            gameData.SaveGame();
+        }
+
+        // re-load scene game
+        if (Input.GetKeyDown(KeyCode.Backslash))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

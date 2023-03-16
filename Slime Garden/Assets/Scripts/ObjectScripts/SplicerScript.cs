@@ -8,8 +8,7 @@ public class SplicerScript : MonoBehaviour
     public bool TestOdds = true;
 
     // COMPONENTS ===============
-    private HabitatControl hControl;
-    private PlayerController pc;
+    private PlayerData pData;
     public GameObject slimePrefab;
     public GameObject InputLeft;
     public GameObject InputRight;
@@ -35,8 +34,7 @@ public class SplicerScript : MonoBehaviour
 
     void Start()
     {
-        hControl = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
-        pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
         ls = InputLeft.GetComponent<SplicerInput>();
         rs = InputRight.GetComponent<SplicerInput>();
         sb = Button.GetComponent<SplicerButton>();
@@ -57,16 +55,16 @@ public class SplicerScript : MonoBehaviour
                 sb.priceText.text = price.ToString();
             }
             // If the player can afford it or not
-            if (pc.Money >= price)
+            if (pData.CanAfford(price))
             {
                 buttonLightsMat.color = Color.green;
                 sb.priceText.color = Color.green;
                 sb.canBePressed = true;
                 if (sb.isPressed)
                 {
+                    pData.MakePurchase(price);
                     sb.priceText.enabled = false;
                     splicing = true;
-                    pc.Money -= price;
                     Splice();
                 }
             } else
@@ -203,19 +201,18 @@ public class SplicerScript : MonoBehaviour
         // Instantates the basic slime prefab
         // Gives prefab the correct SO from the dictionary via GetSlime
         GameObject newSlime = Instantiate(slimePrefab, Output.position, Quaternion.identity);
-        SlimeController newSC = newSlime.GetComponent<SlimeController>();
+        SlimeData newSD = newSlime.GetComponent<SlimeData>();
         var newBase = SBaseDictionary.GetSlime(newSlimeBase);
         var newpattern = SPatternDictionary.GetSlime(newSlimePattern);
 
-        newSC.slimeSpeciesBase = newBase.slimeBaseSO;
-        newSC.sBaseColor = newBase.slimeBaseName;
-        newSC.slimeSpeciesBaseColor = newBase.slimeBaseColor;
-        newSC.slimeSpeciesPattern = newpattern.slimePatternSO;
-        newSC.sPatternColor = newpattern.slimePatternColorName;
-        newSC.slimeSpeciesPatternColor = newpattern.slimePatternColor;
-        newSC.sCrystal = newBase.slimeCrystal;
-
-        hControl.activeSlimes.Add(newSlime);
+        newSD.slimeSpeciesBase = newBase.slimeBaseSO;
+        newSD.sBaseColor = newBase.slimeBaseName;
+        newSD.slimeSpeciesBaseColor = newBase.slimeBaseColor;
+        newSD.slimeSpeciesPattern = newpattern.slimePatternSO;
+        newSD.sPatternColor = newpattern.slimePatternColorName;
+        newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
+        newSD.sCrystal = newBase.slimeCrystal;
+        newSD.Setup();
 
         yield return new WaitForSeconds(0.5f);
 

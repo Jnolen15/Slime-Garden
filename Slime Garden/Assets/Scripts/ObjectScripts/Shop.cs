@@ -11,19 +11,19 @@ public class Shop : MonoBehaviour
     public GameObject slimeCrate;
 
     private SlimeBuy SlimeBuy;
-    private PlayerController pc;
+    private PlayerData pData;
 
     void Start()
     {
         SlimeBuy = this.transform.GetChild(0).GetComponent<SlimeBuy>();
-        pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
     }
 
     void Update()
     {
         // Update shop price texts
         SlimeBuy.priceText.text = price.ToString();
-        if (pc.Money >= price)
+        if (pData.CanAfford(price))
             SlimeBuy.priceText.color = Color.green;
         else
             SlimeBuy.priceText.color = Color.red;
@@ -31,9 +31,8 @@ public class Shop : MonoBehaviour
 
     public void SlimePurchased()
     {
-        if (pc.Money >= price)
+        if (pData.TryAndPurchase(price))
         {
-            pc.Money -= price;
             Debug.Log("BOUGHT SLIME");
 
             // Spawn a slime crate somewhere in the pen

@@ -19,13 +19,6 @@ public class RandomSlime : MonoBehaviour
     private string sPatterntype = "";
     private bool sSpecial = false;
 
-    private HabitatControl hControl;
-
-    void Start()
-    {
-        hControl = this.GetComponent<HabitatControl>();
-    }
-
     public void CreateSlime(Vector3 pos)
     {
         bool compatableName = false;
@@ -78,19 +71,18 @@ public class RandomSlime : MonoBehaviour
         sPatterntype = sPatternColor + " " + sPattern;
 
         GameObject newSlime = Instantiate(slimePrefab, pos, Quaternion.identity);
-        SlimeController newSC = newSlime.GetComponent<SlimeController>();
+        SlimeData newSD = newSlime.GetComponent<SlimeData>();
         var newBase = SBaseDictionary.GetSlime(sBaseColor);
         var newpattern = SPatternDictionary.GetSlime(sPatterntype);
 
-        newSC.slimeSpeciesBase = newBase.slimeBaseSO;
-        newSC.sBaseColor = newBase.slimeBaseName;
-        newSC.slimeSpeciesBaseColor = newBase.slimeBaseColor;
-        newSC.slimeSpeciesPattern = newpattern.slimePatternSO;
-        newSC.sPatternColor = newpattern.slimePatternColorName;
-        newSC.slimeSpeciesPatternColor = newpattern.slimePatternColor;
-        newSC.sCrystal = newBase.slimeCrystal;
-
-        hControl.activeSlimes.Add(newSlime);
+        newSD.slimeSpeciesBase = newBase.slimeBaseSO;
+        newSD.sBaseColor = newBase.slimeBaseName;
+        newSD.slimeSpeciesBaseColor = newBase.slimeBaseColor;
+        newSD.slimeSpeciesPattern = newpattern.slimePatternSO;
+        newSD.sPatternColor = newpattern.slimePatternColorName;
+        newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
+        newSD.sCrystal = newBase.slimeCrystal;
+        newSD.Setup();
 
         sBaseColor = "";
         sPattern = "";

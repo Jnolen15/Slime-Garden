@@ -6,6 +6,7 @@ public class SBrain : MonoBehaviour
 {
     [SerializeField] private GameObject cs;
     private SlimeController currslimeControler;
+    private SlimeData currslimeData;
 
     // STATE STUFF ============
     public SlimeFaceSO slimeFaceDefault;            //The SO with Default slime facial expressions. Info is taken from here.
@@ -18,7 +19,8 @@ public class SBrain : MonoBehaviour
     private void Start()
     {
         currslimeControler = this.GetComponent<SlimeController>();
-        cs = currslimeControler.sCrystal;
+        currslimeData = this.GetComponent<SlimeData>();
+        cs = currslimeData.sCrystal;
     }
 
     private void Update()

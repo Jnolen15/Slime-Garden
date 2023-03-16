@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class CongealedSlime : MonoBehaviour
 {
-    private PlayerController pc;
+    private PlayerData pData;
     public int value = 1;
     
     void Start()
     {
-        pc = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        pData = GameObject.Find("PlayerController").GetComponent<PlayerData>();
     }
 
     public void Collect()
     {
-        pc.Money += value;
+        pData.GainMoney(value);
         Destroy(this.gameObject);
     }
 }

@@ -38,6 +38,28 @@ public class PlantSpot : MonoBehaviour
         return curCropSO;
     }
 
+    public void SetPlant(CropSO crop, bool isGrown, int newCurTick, int newWateredTicks, int newGrowthStage)
+    {
+        if (!crop)
+        {
+            Debug.Log("SetPlant was given a null crop SO");
+            return;
+        }
+        
+        curCropSO = crop;
+        fullyGrown = isGrown;
+        hasCrop = true;
+        curTick = newCurTick;
+        wateredTicks = newWateredTicks;
+        growthStage = newGrowthStage;
+
+        this.crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
+        this.crop.GetComponent<Renderer>().material = curCropSO.cropMat;
+
+        if(wateredTicks > 0)
+            model.GetComponent<Renderer>().material = wetMat;
+    }
+
     public void Plant(CropSO crop)
     {
         curCropSO = crop;

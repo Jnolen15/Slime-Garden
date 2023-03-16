@@ -39,7 +39,7 @@ public class CSSpawner : MonoBehaviour
         // Get total rarity of slimes
         foreach (GameObject slime in hControl.activeSlimes)
         {
-            totalRarity += slime.gameObject.GetComponent<SlimeController>().sRarity;
+            totalRarity += slime.gameObject.GetComponent<SlimeData>().sRarity;
         }
 
         if(numSlimes > 0)
