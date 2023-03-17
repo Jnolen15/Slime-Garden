@@ -7,13 +7,16 @@ public class Cheats : MonoBehaviour
 {
     private RandomSlime rs;
     private PlayerData pData;
+    private InventoryManager inventory;
     [SerializeField] private DataPersistenceManager gameData;
     [SerializeField] private bool inWild;
+    [SerializeField] private CropSO cheatCrop;
 
     // Start is called before the first frame update
     void Start()
     {
         pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
         rs = GetComponentInParent<RandomSlime>();
     }
 
@@ -25,7 +28,13 @@ public class Cheats : MonoBehaviour
         {
             pData.GainMoney(100);
         }
-        
+
+        // Give Crops
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            inventory.AddCrop(cheatCrop, 10);
+        }
+
         // Spawn a random slime on button press
         if (Input.GetKeyDown(KeyCode.G))
         {

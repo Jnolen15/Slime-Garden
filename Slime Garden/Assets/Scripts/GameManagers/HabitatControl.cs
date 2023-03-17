@@ -35,6 +35,12 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         {
             ConstructSlime(slime);
         }
+
+        // Create new slimes from tamed list
+        foreach (SlimeDataEntry slime in data.tamedSlimeList)
+        {
+            ConstructSlime(slime);
+        }
     }
 
     private void ConstructSlime(SlimeDataEntry slime)
@@ -53,7 +59,8 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
         newSD.sCrystal = newBase.slimeCrystal;
         newSD.Setup();
-        newSD.SetName(slime.displayName);
+        if(slime.displayName != null)
+            newSD.SetName(slime.displayName);
     }
 
     public void SaveData(GameData data)
@@ -61,7 +68,9 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         // Clear previously saved slime list
         data.slimeList.Clear();
 
-        Debug.Log("Slimelist size post clear: " + data.slimeList.Count);
+        // Clear tamed slime list
+        if(data.tamedSlimeList.Count > 0)
+            data.tamedSlimeList.Clear();
 
         // Save slime list
         foreach (GameObject slime in activeSlimes)
@@ -69,7 +78,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
             var sData = slime.GetComponent<SlimeData>();
 
             slimeDataList.Add( new SlimeDataEntry(slime.transform.position, 
-                sData.displayName, sData.sPattern, sData.sBaseColor, sData.sPatternColor));
+                 sData.sPattern, sData.sBaseColor, sData.sPatternColor, sData.displayName));
 
             data.slimeList = slimeDataList;
         }
@@ -80,18 +89,18 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
     public class SlimeDataEntry
     {
         public Vector3 pos;
-        public string displayName;
         public string sPattern;
         public string sBaseColor;
         public string sPatternColor;
+        public string displayName;
 
-        public SlimeDataEntry(Vector3 curPos, string dispName, string pat, string bColorStr, string pColorStr)
+        public SlimeDataEntry(Vector3 curPos, string pat, string bColorStr, string pColorStr, string dispName = null)
         {
             pos = curPos;
-            displayName = dispName;
             sPattern = pat;
             sBaseColor = bColorStr;
             sPatternColor = pColorStr;
+            displayName = dispName;
         }
     }
 }

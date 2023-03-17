@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WildManager : MonoBehaviour
+public class WildManager : MonoBehaviour, IDataPersistence
 {
     // Variables
     [SerializeField] private GameObject wildSlimePref;
     [SerializeField] private Vector2 zoneBorders;
     [SerializeField] private float spawnInterval;
     [SerializeField] private float spawnCoolDown;
+
+    public List<HabitatControl.SlimeDataEntry> tamedSlimes = new List<HabitatControl.SlimeDataEntry>();
 
     // Refrences
     private RandomSlime randSlime;
@@ -35,5 +37,24 @@ public class WildManager : MonoBehaviour
         newSLime.GetComponent<SlimeController>().ChangeState(SlimeController.State.jump);
 
         Debug.Log("Spawned slime " + newSLime.GetComponent<SlimeData>().speciesName);
+    }
+
+    public void AddTamedSlime(string pat, string bColorStr, string pColorStr)
+    {
+        tamedSlimes.Add(new HabitatControl.SlimeDataEntry(Vector3.zero, pat, bColorStr, pColorStr));
+    }
+
+    // =================== SAVE ===================
+    public void LoadData(GameData data)
+    {
+        // Load tamed slime list if it has not been cleared
+        // (IF saving and loading into wild zome without returning to habitat)
+        tamedSlimes = data.tamedSlimeList;
+    }
+
+    public void SaveData(GameData data)
+    {
+        // Save list of tamed slimes
+        data.tamedSlimeList = tamedSlimes;
     }
 }

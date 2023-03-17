@@ -11,10 +11,13 @@ public class WildSlime : MonoBehaviour
 
     // Refrences
     private SlimeData sData;
+    private WildManager wildManager;
 
     void Start()
     {
         sData = this.GetComponent<SlimeData>();
+
+        wildManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<WildManager>();
 
         tameThreshold = (int)((sData.sRarity/2) * 10);
     }
@@ -44,6 +47,8 @@ public class WildSlime : MonoBehaviour
 
     public void Tame()
     {
-        // TODO
+        // Save to tamed slime list
+        wildManager.AddTamedSlime(sData.sPattern, sData.sBaseColor, sData.sPatternColor);
+        Destroy(gameObject);
     }
 }
