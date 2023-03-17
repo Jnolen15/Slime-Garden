@@ -38,9 +38,12 @@ public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void ButtonPressed()
     {
         var pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        var wzc = GameObject.FindGameObjectWithTag("Player").GetComponent<WildZoneControler>();
 
         if (pc != null)
             pc.SwapCrop(so);
+        else if (wzc != null)
+            wzc.SwapCrop(so);
     }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)

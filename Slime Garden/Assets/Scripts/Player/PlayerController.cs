@@ -139,16 +139,17 @@ public class PlayerController : MonoBehaviour
         Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
         {
-            if (state == State.Default && objectRayHit.collider.gameObject.tag == "Interactable")
+            GameObject colObj = objectRayHit.collider.gameObject;
+            if (state == State.Default && (colObj.tag == "Interactable" || colObj.tag == "Crop"))
             {
-                var interactable = objectRayHit.collider.gameObject.GetComponent<IInteractable>();
+                var interactable = colObj.GetComponent<IInteractable>();
                 if (interactable == null) return;
 
                 interactable.Interact();
             }
 
-            if (objectRayHit.collider.gameObject.tag == "Plantable")
-                PlantInteraction(objectRayHit.collider.gameObject.GetComponent<PlantSpot>());
+            if (colObj.tag == "Plantable")
+                PlantInteraction(colObj.GetComponent<PlantSpot>());
         }
 
         // Click slime
