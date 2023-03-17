@@ -8,19 +8,18 @@ public class Cheats : MonoBehaviour
     private RandomSlime rs;
     private PlayerData pData;
     private InventoryManager inventory;
-    [SerializeField] private DataPersistenceManager gameData;
+    private DataPersistenceManager gameData;
     [SerializeField] private bool inWild;
     [SerializeField] private CropSO cheatCrop;
 
-    // Start is called before the first frame update
     void Start()
     {
         pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        gameData = GameObject.FindGameObjectWithTag("Data").GetComponent<DataPersistenceManager>();
         rs = GetComponentInParent<RandomSlime>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Give money
@@ -54,6 +53,19 @@ public class Cheats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        // Load Wild
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            gameData.SaveGame();
+            SceneManager.LoadScene(1);
+        }
+        // Load habitat
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            gameData.SaveGame();
+            SceneManager.LoadScene(0);
         }
     }
 }
