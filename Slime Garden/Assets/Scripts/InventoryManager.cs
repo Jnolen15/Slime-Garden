@@ -39,6 +39,9 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     public int GetNumHeld(CropSO crop)
     {
+        if (crop == null)
+            return 0;
+
         foreach (CropInventroyEntry cropSlot in inventoryList)
         {
             if (crop.cropName == cropSlot.cropName)

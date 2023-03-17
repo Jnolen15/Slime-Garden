@@ -19,7 +19,7 @@ public class SlimeData : MonoBehaviour
     public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
     public GameObject sCrystal;                 //The crystal Game object this slime produces
     [Header("Mark slime as wild")]
-    [SerializeField] private bool isWild;       // Marks it as a wild slime wich changes some behavior
+    public bool isWild;       // Marks it as a wild slime wich changes some behavior
 
     //=============== COMPONENTS ===============
     private HabitatControl hControl;

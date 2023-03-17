@@ -26,3 +26,4 @@ MonoBehaviour:
   - {fileID: -2432090755550338912, guid: 6231efc1052f33449b1605cc812444dd, type: 3}
   cropMat: {fileID: 2100000, guid: b4944e3d84d9f2249a3b6a0ea2738efe, type: 2}
   cropObj: {fileID: 6922964043180715966, guid: d511794ac5c6a51469fbc2a4e3da886f, type: 3}
+  tameValue: 3

@@ -18,6 +18,7 @@ public class SlimeController : MonoBehaviour
     private Animator patternAnimator;           //The animator for the pattern
     private Animator faceAnimator;              //The animator for the face
     private SBrain brain;                       //The Slime Brain Script
+    private SlimeData sData;                    //Info about the slime
 
     //=============== HELP VARIABLES ===============
     private bool stateChanged;                  // Bool to make sure initial state changes only happen once
@@ -28,7 +29,7 @@ public class SlimeController : MonoBehaviour
     [SerializeField]    
     private float stateTimer;                   // Used to add pauses to certain states
     private GameObject stateParticles;          // Used to keep track of state particles so they can be disabled later
-    private GameObject curFood;                 // Used to keep track or crop that is currently being eaten
+    private CropObj curFood;                 // Used to keep track or crop that is currently being eaten
 
     //=============== SLIME STATES ===============
     public enum State                           // All possible slime states
@@ -50,8 +51,9 @@ public class SlimeController : MonoBehaviour
 
     void Start()
     {
-        // Find Brain
+        // Find Brain and Data
         brain = this.GetComponent<SBrain>();
+        sData = this.GetComponent<SlimeData>();
 
         // ========== Sprite stuff ==========
         sprites = this.transform.GetChild(0).gameObject;
@@ -176,7 +178,15 @@ public class SlimeController : MonoBehaviour
                 if (stateTimer > 0) stateTimer -= Time.deltaTime;
                 if (stateTimer <= 0)
                 {
-                    curFood.GetComponent<CropObj>().DestroySelf();
+                    if(curFood != null)
+                    {
+                        curFood.DestroySelf();
+
+                        // Attempt tame if wild slime
+                        if (sData.isWild)
+                            this.GetComponent<WildSlime>().AttemptTame(curFood);
+                    }
+
                     ChangeState(State.idle);
                 }
                 break;
@@ -264,7 +274,8 @@ public class SlimeController : MonoBehaviour
             if(state != State.eat && !InNonInteruptableState())
             {
                 ChangeState(State.eat);
-                curFood = col.gameObject;
+                if(col.gameObject.GetComponent<CropObj>() != null)
+                    curFood = col.gameObject.GetComponent<CropObj>();
             }
         }
     }

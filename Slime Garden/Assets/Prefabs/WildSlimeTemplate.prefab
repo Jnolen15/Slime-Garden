@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 3094945569991602921}
   - component: {fileID: 3820516103340025377}
   - component: {fileID: 3296617851318787812}
+  - component: {fileID: 236817760256296498}
   - component: {fileID: 8598985467623667190}
   - component: {fileID: 5529369700081967155}
   m_Layer: 7
@@ -159,6 +160,21 @@ MonoBehaviour:
   slimeFaceSleep: {fileID: 11400000, guid: 5f15569523c8a454e91928ca358cf23a, type: 2}
   slimeFaceFocused: {fileID: 11400000, guid: 78b4acf78e9cbef47a0c58a4172c868e, type: 2}
   stateCD: 5
+--- !u!114 &236817760256296498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538871180620568560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c516eae92fbe7f441a8004959442f560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTamed: 0
+  tameThreshold: 0
+  tameAmmount: 0
 --- !u!65 &8598985467623667190
 BoxCollider:
   m_ObjectHideFlags: 0

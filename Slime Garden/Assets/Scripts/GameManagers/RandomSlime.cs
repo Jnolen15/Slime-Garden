@@ -19,7 +19,7 @@ public class RandomSlime : MonoBehaviour
     private string sPatterntype = "";
     private bool sSpecial = false;
 
-    public void CreateSlime(Vector3 pos, bool isWild)
+    public GameObject CreateSlime(Vector3 pos, bool isWild)
     {
         bool compatableName = false;
         while (!compatableName)
@@ -96,5 +96,7 @@ public class RandomSlime : MonoBehaviour
         sPattern = "";
         sPatternColor = "";
         sPatterntype = "";
+
+        return newSlime;
     }
 }
