@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CropObj : MonoBehaviour
+public class CropObj : MonoBehaviour, IInteractable
 {
     public PlayerController pc;
     public InventoryManager inv;
@@ -18,27 +18,21 @@ public class CropObj : MonoBehaviour
         inv = player.GetComponent<InventoryManager>();
     }
 
-    private void OnMouseDown()
+    public void DestroySelf()
     {
-        if(inv == null)
+        Instantiate(particles,transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
+
+    public void Interact()
+    {
+        if (inv == null)
         {
             Debug.LogError("Crop not setup!");
             return;
         }
 
-        if (pc.state != PlayerController.State.Default)
-        {
-            Debug.Log("Not in default State");
-            return;
-        }
-
         inv.AddCrop(cropData, 1);
         Destroy(gameObject);
-    }
-
-    public void DestroySelf()
-    {
-        Instantiate(particles,transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
     }
 }

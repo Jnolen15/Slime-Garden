@@ -10,8 +10,8 @@ public class RandomSlime : MonoBehaviour
     private string[] sPatterns;
     [SerializeField]
     private string[] sPatternColors;
-    [SerializeField]
-    private GameObject slimePrefab;
+    [SerializeField] private GameObject slimePrefab;
+    [SerializeField] private GameObject wildSlimePrefab;
 
     private string sBaseColor = "";
     private string sPattern = "";
@@ -19,7 +19,7 @@ public class RandomSlime : MonoBehaviour
     private string sPatterntype = "";
     private bool sSpecial = false;
 
-    public void CreateSlime(Vector3 pos)
+    public GameObject CreateSlime(Vector3 pos, bool isWild)
     {
         bool compatableName = false;
         while (!compatableName)
@@ -70,7 +70,15 @@ public class RandomSlime : MonoBehaviour
 
         sPatterntype = sPatternColor + " " + sPattern;
 
-        GameObject newSlime = Instantiate(slimePrefab, pos, Quaternion.identity);
+        GameObject newSlime;
+        if (!isWild)
+        {
+            newSlime = Instantiate(slimePrefab, pos, Quaternion.identity);
+        } else
+        {
+            newSlime = Instantiate(wildSlimePrefab, pos, Quaternion.identity);
+        }
+
         SlimeData newSD = newSlime.GetComponent<SlimeData>();
         var newBase = SBaseDictionary.GetSlime(sBaseColor);
         var newpattern = SPatternDictionary.GetSlime(sPatterntype);
@@ -88,5 +96,7 @@ public class RandomSlime : MonoBehaviour
         sPattern = "";
         sPatternColor = "";
         sPatterntype = "";
+
+        return newSlime;
     }
 }

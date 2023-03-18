@@ -9790,7 +9790,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.41785678, y: 0.000000011215161, z: -0.000000005158246, w: 0.90851295}
+  m_LocalRotation: {x: 0.4178568, y: -0.0000000270758, z: 0.000000012453105, w: 0.90851295}
   m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -15587,6 +15587,7 @@ GameObject:
   - component: {fileID: 832757452}
   - component: {fileID: 832757451}
   - component: {fileID: 832757453}
+  - component: {fileID: 832757456}
   - component: {fileID: 832757455}
   - component: {fileID: 832757454}
   m_Layer: 0
@@ -15654,9 +15655,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   mouseVisual: {fileID: 975407985}
-  cursorPoint: {fileID: 2800000, guid: 55e02c4a886472f4ca0e6e61eb2bfbd7, type: 3}
-  cursorClose: {fileID: 2800000, guid: 694f088bb5c0b8d439503fa3cca7f447, type: 3}
-  cursorOpen: {fileID: 2800000, guid: 52ac48efe4935b44e854d1ac4c2af169, type: 3}
 --- !u!114 &832757454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15709,6 +15707,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   csDisplay: {fileID: 1966439612}
   money: 0
+--- !u!114 &832757456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832757450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddffd3b70ac427429112875aad8b087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorPoint: {fileID: 2800000, guid: 55e02c4a886472f4ca0e6e61eb2bfbd7, type: 3}
+  cursorClose: {fileID: 2800000, guid: 694f088bb5c0b8d439503fa3cca7f447, type: 3}
+  cursorOpen: {fileID: 2800000, guid: 52ac48efe4935b44e854d1ac4c2af169, type: 3}
 --- !u!1 &842212172
 GameObject:
   m_ObjectHideFlags: 0
@@ -22467,28 +22480,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1205457718}
-  - component: {fileID: 1205457717}
-  - component: {fileID: 1205457719}
   m_Layer: 0
   m_Name: UI
-  m_TagString: UIManager
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1205457717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205457716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32bea4e95ed574e42900233a44aeebcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fpsDisplay: {fileID: 158892663}
 --- !u!4 &1205457718
 Transform:
   m_ObjectHideFlags: 0
@@ -22505,30 +22503,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1205457719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1205457716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93f4d83c6dd3056459f90f25e1631c0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildMenu: {fileID: 675849991}
-  placeableUIPrefab: {fileID: 3209495907885195791, guid: 9edc2e14c3a2fe5429f65e334b84b5c6,
-    type: 3}
-  seedMenu: {fileID: 235765039}
-  seedUIPrefab: {fileID: 3209495907885195791, guid: 74eac445e32f27a4c813498339ccb84c,
-    type: 3}
-  cropMenu: {fileID: 429788257}
-  cropUIPrefab: {fileID: 3209495907885195791, guid: 5e61848f6ec7ff54fbb07e2a57377659,
-    type: 3}
-  infoBox: {fileID: 1653790551}
-  slimeInfoBox: {fileID: 1043379491}
-  invManager: {fileID: 832757454}
 --- !u!1 &1209422741
 GameObject:
   m_ObjectHideFlags: 0
@@ -24649,7 +24623,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309957054}
-  m_LocalRotation: {x: 0.41785678, y: 0.000000011215161, z: -0.000000005158246, w: 0.90851295}
+  m_LocalRotation: {x: 0.4178568, y: -0.0000000270758, z: 0.000000012453105, w: 0.90851295}
   m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -39917,6 +39891,7 @@ MonoBehaviour:
   - Topaz
   slimePrefab: {fileID: 1538871180620568560, guid: d34828f7c2ce8c949b6cdc27a5bb3513,
     type: 3}
+  wildSlimePrefab: {fileID: 0}
 --- !u!4 &1887320833
 Transform:
   m_ObjectHideFlags: 0
@@ -39945,6 +39920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 1917337851}
+  inWild: 0
 --- !u!114 &1887320835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41431,9 +41407,11 @@ GameObject:
   - component: {fileID: 1981952621}
   - component: {fileID: 1981952620}
   - component: {fileID: 1981952619}
+  - component: {fileID: 1981952623}
+  - component: {fileID: 1981952622}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41527,6 +41505,43 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1981952622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981952617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32bea4e95ed574e42900233a44aeebcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fpsDisplay: {fileID: 158892663}
+--- !u!114 &1981952623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1981952617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f4d83c6dd3056459f90f25e1631c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildMenu: {fileID: 675849991}
+  placeableUIPrefab: {fileID: 3209495907885195791, guid: 9edc2e14c3a2fe5429f65e334b84b5c6,
+    type: 3}
+  seedMenu: {fileID: 235765039}
+  seedUIPrefab: {fileID: 3209495907885195791, guid: 74eac445e32f27a4c813498339ccb84c,
+    type: 3}
+  cropMenu: {fileID: 429788257}
+  cropUIPrefab: {fileID: 3209495907885195791, guid: 5e61848f6ec7ff54fbb07e2a57377659,
+    type: 3}
+  infoBox: {fileID: 1653790551}
+  slimeInfoBox: {fileID: 1043379491}
+  invManager: {fileID: 832757454}
 --- !u!1001 &1983449382
 PrefabInstance:
   m_ObjectHideFlags: 0

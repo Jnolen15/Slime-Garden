@@ -26,7 +26,7 @@ public class Crate : MonoBehaviour, IInteractable
         if (type == Type.Slime)
         {
             Debug.Log("Generating Slime");
-            rs.CreateSlime(transform.position);
+            rs.CreateSlime(transform.position, false);
         }
         Destroy(this.gameObject);
     }

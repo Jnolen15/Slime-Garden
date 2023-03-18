@@ -19,6 +19,7 @@ TagManager:
   - CamControl
   - CropSell
   - Crop
+  - Data
   layers:
   - Default
   - TransparentFX

@@ -7,16 +7,19 @@ public class Cheats : MonoBehaviour
 {
     private RandomSlime rs;
     private PlayerData pData;
-    [SerializeField] private DataPersistenceManager gameData;
+    private InventoryManager inventory;
+    private DataPersistenceManager gameData;
+    [SerializeField] private bool inWild;
+    [SerializeField] private CropSO cheatCrop;
 
-    // Start is called before the first frame update
     void Start()
     {
         pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        gameData = GameObject.FindGameObjectWithTag("Data").GetComponent<DataPersistenceManager>();
         rs = GetComponentInParent<RandomSlime>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Give money
@@ -24,11 +27,20 @@ public class Cheats : MonoBehaviour
         {
             pData.GainMoney(100);
         }
-        
+
+        // Give Crops
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            inventory.AddCrop(cheatCrop, 10);
+        }
+
         // Spawn a random slime on button press
         if (Input.GetKeyDown(KeyCode.G))
         {
-            rs.CreateSlime(Vector3.zero);
+            if(inWild)
+                rs.CreateSlime(Vector3.zero, true);
+            else
+                rs.CreateSlime(Vector3.zero, false);
         }
 
         // Save game
@@ -41,6 +53,19 @@ public class Cheats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Backslash))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        // Load Wild
+        if (Input.GetKeyDown(KeyCode.RightBracket))
+        {
+            gameData.SaveGame();
+            SceneManager.LoadScene(1);
+        }
+        // Load habitat
+        if (Input.GetKeyDown(KeyCode.LeftBracket))
+        {
+            gameData.SaveGame();
+            SceneManager.LoadScene(0);
         }
     }
 }

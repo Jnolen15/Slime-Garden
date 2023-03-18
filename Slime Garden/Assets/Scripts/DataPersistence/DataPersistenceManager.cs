@@ -23,7 +23,7 @@ public class DataPersistenceManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Debug.LogError("More than one data persistence manager in scene. Destroying new instance.");
+            Debug.Log("More than one data persistence manager in scene. Destroying new instance.");
             Destroy(gameObject);
             return;
         }

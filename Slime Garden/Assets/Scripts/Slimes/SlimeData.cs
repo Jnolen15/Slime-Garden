@@ -18,6 +18,8 @@ public class SlimeData : MonoBehaviour
     public Color slimeSpeciesPatternColor;      //The Color that will be applied to the Pattern
     public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
     public GameObject sCrystal;                 //The crystal Game object this slime produces
+    [Header("Mark slime as wild")]
+    public bool isWild;       // Marks it as a wild slime wich changes some behavior
 
     //=============== COMPONENTS ===============
     private HabitatControl hControl;
@@ -51,9 +53,12 @@ public class SlimeData : MonoBehaviour
         Basesr.color = slimeSpeciesBaseColor;
         patternsr.color = slimeSpeciesPatternColor;
 
-        // Add slime to habitat list
-        hControl = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
-        hControl.activeSlimes.Add(gameObject);
+        // Add slime to habitat list if not wild
+        if (!isWild)
+        {
+            hControl = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
+            hControl.activeSlimes.Add(gameObject);
+        }
     }
 
     public void SetName(string newName)
