@@ -10,6 +10,7 @@ public class WildManager : MonoBehaviour, IDataPersistence
     [SerializeField] private float spawnInterval;
     [SerializeField] private float spawnCoolDown;
 
+    public List<Transform> spawns = new List<Transform>();
     public List<HabitatControl.SlimeDataEntry> tamedSlimes = new List<HabitatControl.SlimeDataEntry>();
 
     // Refrences
@@ -32,7 +33,7 @@ public class WildManager : MonoBehaviour, IDataPersistence
 
     private void SpawnSlime()
     {
-        Vector3 randPos = new Vector3(Random.Range(-zoneBorders.x, zoneBorders.x), 0, Random.Range(-zoneBorders.y, zoneBorders.y));
+        Vector3 randPos = spawns[Random.Range(0, spawns.Count)].position;
         GameObject newSLime = randSlime.CreateSlime(randPos, true);
         newSLime.GetComponent<SlimeController>().ChangeState(SlimeController.State.jump);
 

@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTamed: 0
+  despawnTime: 30
   tameThreshold: 0
   tameAmmount: 0
 --- !u!65 &8598985467623667190

@@ -6,6 +6,7 @@ public class WildSlime : MonoBehaviour
 {
     // Variables
     [SerializeField] private bool isTamed;
+    [SerializeField] private float despawnTime;
     [SerializeField] private int tameThreshold;
     [SerializeField] private int tameAmmount;
 
@@ -20,6 +21,17 @@ public class WildSlime : MonoBehaviour
         wildManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<WildManager>();
 
         tameThreshold = (int)((sData.sRarity/2) * 10);
+    }
+
+    private void Update()
+    {
+        if (despawnTime > 0) despawnTime -= Time.deltaTime;
+        else
+        {
+            // TODO - Make this better
+            Debug.Log("Slime Despawning");
+            Destroy(gameObject);
+        }
     }
 
     public void AttemptTame(CropObj currentFood)

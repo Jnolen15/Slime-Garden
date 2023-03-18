@@ -8589,7 +8589,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0.41785678, y: 0.000000011215161, z: -0.000000005158246, w: 0.90851295}
+  m_LocalRotation: {x: 0.41785684, y: -9.6769934e-17, z: 3.4975507e-16, w: 0.90851295}
   m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -20407,7 +20407,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1309957054}
-  m_LocalRotation: {x: 0.41785678, y: 0.000000011215161, z: -0.000000005158246, w: 0.90851295}
+  m_LocalRotation: {x: 0.41785684, y: -9.6769934e-17, z: 3.4975507e-16, w: 0.90851295}
   m_LocalPosition: {x: 0, y: 14, z: -12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -29267,7 +29267,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a704fbc77f95744b95ef51c3471a148, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameData: {fileID: 0}
   inWild: 1
   cheatCrop: {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
 --- !u!114 &1887320835
@@ -29286,6 +29285,21 @@ MonoBehaviour:
   zoneBorders: {x: 20, y: 20}
   spawnInterval: 15
   spawnCoolDown: 2
+  spawns:
+  - {fileID: 1830603483}
+  - {fileID: 967145062}
+  - {fileID: 1251646198}
+  - {fileID: 887541933}
+  - {fileID: 1155634265}
+  - {fileID: 434975556}
+  - {fileID: 2117754509}
+  - {fileID: 689686140}
+  - {fileID: 711330631}
+  - {fileID: 496025966}
+  - {fileID: 17787922}
+  - {fileID: 1857201733}
+  - {fileID: 925452427}
+  - {fileID: 1983939641}
   tamedSlimes: []
 --- !u!1001 &1891263455
 PrefabInstance:
