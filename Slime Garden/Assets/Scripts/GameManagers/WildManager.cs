@@ -9,6 +9,7 @@ public class WildManager : MonoBehaviour, IDataPersistence
     [SerializeField] private Vector2 zoneBorders;
     [SerializeField] private float spawnInterval;
     [SerializeField] private float spawnCoolDown;
+    [SerializeField] private int numSpawns;
 
     public List<Transform> spawns = new List<Transform>();
     public List<HabitatControl.SlimeDataEntry> tamedSlimes = new List<HabitatControl.SlimeDataEntry>();
@@ -27,7 +28,8 @@ public class WildManager : MonoBehaviour, IDataPersistence
         else
         {
             spawnCoolDown = spawnInterval;
-            SpawnSlime();
+            for(int i = 0; i < numSpawns; i++)
+                SpawnSlime();
         }
     }
 
