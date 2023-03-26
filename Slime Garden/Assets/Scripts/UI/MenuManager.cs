@@ -37,33 +37,34 @@ public class MenuManager : MonoBehaviour
     // ============== Build Menus ==============
     public void UpdateBuildMenu()
     {
-        var contentMenu = buildMenu.transform.GetChild(0).GetChild(0);
+        var contentMenu = buildMenu.transform.GetChild(0);
 
         foreach (PlaceableObjectSO so in invManager.availablePlaceables)
         {
             var element = Instantiate(placeableUIPrefab, contentMenu);
             element.GetComponent<placeableUIContent>().Setup(so, this);
         }
+
+        buildMenu.GetComponent<ContentMenu>().UpdateContent();
     }
 
     public void BuildMenuActive(bool value)
     {
         buildMenu.SetActive(value);
-
-        if (!value)
-            CloseInfoBox();
     }
 
     // ============== Seed Menus ==============
     public void UpdateSeedMenu()
     {
-        var contentMenu = seedMenu.transform.GetChild(0).GetChild(0);
+        var contentMenu = seedMenu.transform.GetChild(0);
 
         foreach (CropSO so in invManager.availableCrops)
         {
             var element = Instantiate(seedUIPrefab, contentMenu);
             element.GetComponent<SeedUIContent>().Setup(so, this);
         }
+
+        seedMenu.GetComponent<ContentMenu>().UpdateContent();
     }
 
     public void SeedMenuActive(bool value)
@@ -74,7 +75,7 @@ public class MenuManager : MonoBehaviour
     // ============== Crop Menus ==============
     public void UpdateCropMenu()
     {
-        var contentMenu = cropMenu.transform.GetChild(0).GetChild(0);
+        var contentMenu = cropMenu.transform.GetChild(0);
         foreach (Transform child in contentMenu)
         {
             Destroy(child.gameObject);
@@ -85,11 +86,13 @@ public class MenuManager : MonoBehaviour
             var element = Instantiate(cropUIPrefab, contentMenu);
             element.GetComponent<CropUIContent>().Setup(crop, this);
         }
+
+        cropMenu.GetComponent<ContentMenu>().UpdateContent();
     }
 
     public void UpdateCropCount()
     {
-        var contentMenu = cropMenu.transform.GetChild(0).GetChild(0);
+        var contentMenu = cropMenu.transform.GetChild(0);
         foreach (Transform child in contentMenu)
         {
             child.GetComponent<CropUIContent>().UpdateValues();

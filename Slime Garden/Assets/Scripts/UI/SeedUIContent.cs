@@ -29,8 +29,6 @@ public class SeedUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         if (pc != null)
             pc.SwapCrop(so);
-
-        Debug.Log("Swapped crop");
     }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
