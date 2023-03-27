@@ -74,6 +74,15 @@ public class PlayerController : MonoBehaviour
         }
         else if (pInput.currentActionMap.name != "Basic")
             pInput.SwitchCurrentActionMap("Basic");
+
+        // Deactivate build visual if over UI
+        if (state == State.Build)
+        {
+            if (MouseOverUI() && buildVisual.activeSelf)
+                buildVisual.SetActive(false);
+            else if (!MouseOverUI() && !buildVisual.activeSelf)
+                buildVisual.SetActive(true);
+        }
     }
 
     // ========== STATE MANAGEMENT ==========
