@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class BuildingVisual : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private Material ghostMat;
     private Transform visual;
     private Transform topLeft;
     private Transform topRight;
@@ -57,6 +58,7 @@ public class BuildingVisual : MonoBehaviour
         {
             visual = Instantiate(placeableSO.visual, Vector3.zero, Quaternion.identity);
             visual.parent = transform;
+            visual.GetComponentInChildren<Renderer>().material = ghostMat;
         }
     }
 

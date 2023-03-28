@@ -98,6 +98,8 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Build":
                 state = State.Build;
+                gridSystem.SwapPlaceable(invManager.availablePlaceables[0]);
+                buildVisual.GetComponent<BuildingVisual>().RefreshVisual();
                 buildVisual.SetActive(true);
                 menus.BuildMenuActive(true);
                 break;
