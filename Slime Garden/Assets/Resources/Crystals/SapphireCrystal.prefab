@@ -129,3 +129,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   value: 5
+  sparkleFX: {fileID: 4590578557956595834, guid: cefc82534188dfe419c78f5516f75012,
+    type: 3}

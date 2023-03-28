@@ -11,6 +11,9 @@ public class PlantSpot : MonoBehaviour
 
     [SerializeField] private Material dryMat;
     [SerializeField] private Material wetMat;
+    [SerializeField] private GameObject waterFX;
+    [SerializeField] private GameObject LeafBurstFX;
+    [SerializeField] private GameObject DirtBurstFX;
 
     public CropSO curCropSO;
     public bool hasCrop;
@@ -60,12 +63,16 @@ public class PlantSpot : MonoBehaviour
             model.GetComponent<Renderer>().material = wetMat;
     }
 
-    public void Plant(CropSO crop)
+    public void Plant(CropSO cropData)
     {
-        curCropSO = crop;
+        curCropSO = cropData;
         this.crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[0];
         this.crop.GetComponent<Renderer>().material = curCropSO.cropMat;
         hasCrop = true;
+
+        // Effect
+        Vector3 pos = new Vector3(crop.position.x, crop.position.y + 0.1f, crop.position.z);
+        Instantiate(DirtBurstFX, pos, Quaternion.identity);
     }
 
     public void GrowTick()
@@ -120,11 +127,7 @@ public class PlantSpot : MonoBehaviour
         {
             // -> If not watered water
             if (wateredTicks <= 0)
-            {
-                wateredTicks += 2;
-                model.GetComponent<Renderer>().material = wetMat;
-                Debug.Log("Crop watered!");
-            }
+                Water();
             // -> If watered then nothing
             else Debug.Log("crop already watered. Water left: " + wateredTicks);
         }
@@ -133,11 +136,30 @@ public class PlantSpot : MonoBehaviour
             Harvest();
     }
 
+    private void Water()
+    {
+        wateredTicks += 2;
+        StartCoroutine(AnimateWater());
+    }
+
+    IEnumerator AnimateWater()
+    {
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.8f, transform.position.z);
+        Instantiate(waterFX, pos, Quaternion.identity);
+        yield return new WaitForSeconds(0.2f);
+        model.GetComponent<Renderer>().material = wetMat;
+        Debug.Log("Crop watered!");
+    }
+
     private void Harvest()
     {
         Debug.Log("Crop harvested!");
         // Yeild
         invManager.AddCrop(curCropSO, 1);
+
+        // Effect
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+        Instantiate(LeafBurstFX, pos, Quaternion.identity);
 
         // Reset
         hasCrop = false;

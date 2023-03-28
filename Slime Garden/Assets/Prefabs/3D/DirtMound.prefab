@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8262664872596620229}
   - component: {fileID: 6520595094269753999}
   - component: {fileID: 7735060529763933723}
-  m_Layer: 0
+  - component: {fileID: 3736737703223321735}
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +84,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3736737703223321735
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872799558305206526}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 0.25, z: 0.5}
+  m_Center: {x: 0, y: 0.125, z: 0}
 --- !u!1 &8183327988197435431
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +159,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dryMat: {fileID: 2100000, guid: 688aaca30d46adb4ebcb09bb603134e3, type: 2}
   wetMat: {fileID: 2100000, guid: 2aefd762a41b3d1439373a5346e0de84, type: 2}
+  waterFX: {fileID: 5340682786890421393, guid: ae03ae672d9eb344fb88bc9eed28cc30, type: 3}
+  LeafBurstFX: {fileID: 7342326792563791593, guid: 6f3ecdfb993c422409e638f860881407,
+    type: 3}
+  DirtBurstFX: {fileID: 3850685248341096262, guid: 2a80dbbac7503b84889f0bd85f1b951e,
+    type: 3}
   curCropSO: {fileID: 0}
   hasCrop: 0
   fullyGrown: 0

@@ -6,6 +6,7 @@ public class CongealedSlime : MonoBehaviour
 {
     private PlayerData pData;
     public int value = 1;
+    [SerializeField] private GameObject sparkleFX;
     
     void Start()
     {
@@ -15,6 +16,7 @@ public class CongealedSlime : MonoBehaviour
     public void Collect()
     {
         pData.GainMoney(value);
+        Instantiate(sparkleFX, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 }
