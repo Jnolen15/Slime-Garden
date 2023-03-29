@@ -9,14 +9,19 @@ public class WildSlime : MonoBehaviour
     [SerializeField] private float despawnTime;
     [SerializeField] private int tameThreshold;
     [SerializeField] private int tameAmmount;
+    [SerializeField] private GameObject tameFX;
 
     // Refrences
     private SlimeData sData;
+    private SlimeController sControl;
+    private SBrain sBrain;
     private WildManager wildManager;
 
     void Start()
     {
         sData = this.GetComponent<SlimeData>();
+        sControl = this.GetComponent<SlimeController>();
+        sBrain = this.GetComponent<SBrain>();
 
         wildManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<WildManager>();
 
@@ -36,6 +41,13 @@ public class WildSlime : MonoBehaviour
 
     public void AttemptTame(CropObj currentFood)
     {
+        // Dont attempt tame if already tamed
+        if (isTamed)
+            return;
+
+        // Increase despawn time on each tame attempt
+        despawnTime += 10f;
+
         Debug.Log(sData.speciesName + " was fed and is being tamed");
         tameAmmount += currentFood.cropData.tameValue;
         Debug.Log("Tame Progress: " + tameAmmount + " Tame Threshold: " + tameThreshold);
@@ -59,8 +71,18 @@ public class WildSlime : MonoBehaviour
 
     public void Tame()
     {
+        Debug.Log("Slime Tamed!");
+        isTamed = true;
+
+        // Turn off brain so it won't go to other states
+        sBrain.ToggleBrain(false);
+
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
+        Instantiate(tameFX, transform.position, transform.rotation);
+        sControl.ChangeState(SlimeController.State.tamed);
+
         // Save to tamed slime list
         wildManager.AddTamedSlime(sData.sPattern, sData.sBaseColor, sData.sPatternColor);
-        Destroy(gameObject);
+        Destroy(gameObject, 3f);
     }
 }

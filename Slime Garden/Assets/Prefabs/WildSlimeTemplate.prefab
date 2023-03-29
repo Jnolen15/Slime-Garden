@@ -159,6 +159,7 @@ MonoBehaviour:
   slimeFaceHappy: {fileID: 11400000, guid: b2c25ee572af2b746ba999c01885030f, type: 2}
   slimeFaceSleep: {fileID: 11400000, guid: 5f15569523c8a454e91928ca358cf23a, type: 2}
   slimeFaceFocused: {fileID: 11400000, guid: 78b4acf78e9cbef47a0c58a4172c868e, type: 2}
+  brainActive: 1
   stateCD: 5
 --- !u!114 &236817760256296498
 MonoBehaviour:
@@ -176,6 +177,7 @@ MonoBehaviour:
   despawnTime: 30
   tameThreshold: 0
   tameAmmount: 0
+  tameFX: {fileID: 4590578557956595834, guid: cefc82534188dfe419c78f5516f75012, type: 3}
 --- !u!65 &8598985467623667190
 BoxCollider:
   m_ObjectHideFlags: 0

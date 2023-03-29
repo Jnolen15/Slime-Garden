@@ -13,6 +13,7 @@ public class SBrain : MonoBehaviour
     public SlimeFaceSO slimeFaceHappy;              //The SO with Happy slime facial expressions. Info is taken from here.
     public SlimeFaceSO slimeFaceSleep;              //The SO with Sleep slime facial expressions. Info is taken from here.
     public SlimeFaceSO slimeFaceFocused;            //The SO with Focused slime facial expressions. Info is taken from here.
+    [SerializeField] private bool brainActive = true;
 
     public float stateCD = 5f;
 
@@ -25,7 +26,8 @@ public class SBrain : MonoBehaviour
 
     private void Update()
     {
-        UpdateState();
+        if(brainActive)
+            UpdateState();
     }
 
     private void UpdateState()
@@ -74,5 +76,10 @@ public class SBrain : MonoBehaviour
         var crystal = Instantiate(cs, transform.position, transform.rotation);
         Vector3 newPos = new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
         crystal.GetComponent<Rigidbody>().AddForce(newPos * 2, ForceMode.Impulse);
+    }
+
+    public void ToggleBrain(bool toggle)
+    {
+        brainActive = toggle;
     }
 }

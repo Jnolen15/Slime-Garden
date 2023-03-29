@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using DG.Tweening;
 
 public class SlimeController : MonoBehaviour
 {
@@ -43,7 +44,8 @@ public class SlimeController : MonoBehaviour
         play,
         crystalize,
         pet,
-        eat
+        eat,
+        tamed
     }
     [SerializeField] private State state;       // This slimes current state
     public State GetState() { return state; }   // Get State function so it can stay private
@@ -178,7 +180,9 @@ public class SlimeController : MonoBehaviour
                 if (stateTimer > 0) stateTimer -= Time.deltaTime;
                 if (stateTimer <= 0)
                 {
-                    if(curFood != null)
+                    ChangeState(State.idle);
+
+                    if (curFood != null)
                     {
                         curFood.DestroySelf();
 
@@ -186,8 +190,15 @@ public class SlimeController : MonoBehaviour
                         if (sData.isWild)
                             this.GetComponent<WildSlime>().AttemptTame(curFood);
                     }
-
-                    ChangeState(State.idle);
+                }
+                break;
+            case State.tamed:
+                if (stateChanged)
+                {
+                    StartState("Hop", brain.slimeFaceHappy, "Hearts");
+                    Basesr.DOFade(0, 2f);
+                    patternsr.DOFade(0, 2f);
+                    facesr.DOFade(0, 2f);
                 }
                 break;
         }
@@ -271,7 +282,7 @@ public class SlimeController : MonoBehaviour
         {
             Physics.IgnoreCollision(col.collider, this.GetComponent<Collider>());
 
-            if(state != State.eat && !InNonInteruptableState())
+            if(state != State.eat && state != State.tamed && !InNonInteruptableState())
             {
                 ChangeState(State.eat);
                 if(col.gameObject.GetComponent<CropObj>() != null)
@@ -300,5 +311,12 @@ public class SlimeController : MonoBehaviour
             return true;
 
         return false;
+    }
+
+    private void OnDestroy()
+    {
+        Basesr.DOKill();
+        patternsr.DOKill();
+        facesr.DOKill();
     }
 }
