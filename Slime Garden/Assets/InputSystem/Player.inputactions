@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "SecondaryHold",
+                    "type": "Button",
+                    "id": "6d0979f7-e496-4b4d-bb70-11a0ffce2a61",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.2)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Secondary",
                     "type": "Button",
                     "id": "15bb30c4-b494-43ec-922a-0d0edc914149",
@@ -250,6 +259,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "RotateBuild",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "908b415d-f425-40d4-b9b7-dcbe855d58ea",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SecondaryHold",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

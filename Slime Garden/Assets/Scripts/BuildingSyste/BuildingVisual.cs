@@ -7,6 +7,7 @@ public class BuildingVisual : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private Material ghostMat;
+    [SerializeField] private Material redGhostMat;
     private Transform visual;
     private Transform topLeft;
     private Transform topRight;
@@ -14,6 +15,8 @@ public class BuildingVisual : MonoBehaviour
     private Transform botRight;
     private GridSystem gridSystem;
     private PlaceableObjectSO placeableSO;
+    private Vector3 prevPos;
+    private Quaternion prevRot;
 
     private void Start()
     {
@@ -36,11 +39,20 @@ public class BuildingVisual : MonoBehaviour
         {
             Vector3 targetpos = gridSystem.GetSnappedWorldPos(mousePos.point);
             targetpos = new Vector3(targetpos.x, 0.5f, targetpos.z);
+            Quaternion targetrot = Quaternion.Euler(0, placeableSO.GetRotationAngle(gridSystem.GetRotationDir()), 0);
+
+            // Don't continue if have not moved or rotated
+            if (prevPos == targetpos && prevRot == targetrot)
+                return;
 
             visual.transform.position = targetpos;
-            visual.transform.rotation = Quaternion.Euler(0, placeableSO.GetRotationAngle(gridSystem.GetRotationDir()), 0);
+            visual.transform.rotation = targetrot;
 
             AdjustBounds(mousePos.point);
+            TestCanPlace(mousePos.point);
+
+            prevPos = targetpos;
+            prevRot = targetrot;
         }
     }
 
@@ -92,5 +104,13 @@ public class BuildingVisual : MonoBehaviour
         var worldpos = gridSystem.GetGridAsWorldPos(positions[listPos].x, positions[listPos].y);
         Vector3 newPos = new Vector3(worldpos.x, 0.1f, worldpos.z);
         corner.transform.position = newPos;
+    }
+
+    private void TestCanPlace(Vector3 mousePos)
+    {
+        if (gridSystem.PlacementViable(mousePos))
+            visual.GetComponentInChildren<Renderer>().material = ghostMat;
+        else
+            visual.GetComponentInChildren<Renderer>().material = redGhostMat;
     }
 }

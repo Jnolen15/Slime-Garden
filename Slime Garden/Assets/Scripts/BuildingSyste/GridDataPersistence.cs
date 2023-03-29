@@ -82,7 +82,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
             if (FindPlaceableData(pData.pName))
             {
                 gridSystem.RotateTo(pData.dir);
-                newBuild = gridSystem.Build(pData.pOrigin, FindPlaceableData(pData.pName));
+                newBuild = gridSystem.Build(pData.pOrigin, FindPlaceableData(pData.pName), false);
             }
             else
             {

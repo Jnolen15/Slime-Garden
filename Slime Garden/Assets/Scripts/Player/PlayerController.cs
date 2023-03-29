@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private CropSO crop;
     private bool isOverUI;
     private bool inspectingSlime;
+    private bool dragBuild;
+    private bool dragDestroy;
 
     // Script/Object Refrences
     private PlayerInput pInput;
@@ -82,6 +84,22 @@ public class PlayerController : MonoBehaviour
                 buildVisual.SetActive(false);
             else if (!MouseOverUI() && !buildVisual.activeSelf)
                 buildVisual.SetActive(true);
+        }
+
+        // Drag build
+        if (state == State.Build && dragBuild)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
+                BuyAndPlace(mousePos.point);
+        }
+        
+        // Drag destroy
+        if (state == State.Build && dragDestroy)
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
+                RemoveBuildable(mousePos.point);
         }
     }
 
@@ -219,13 +237,57 @@ public class PlayerController : MonoBehaviour
             gridSystem.Rotate();
     }
 
+    public void OnPrimaryHold(InputAction.CallbackContext context)
+    {
+        // Execute hold (Start pickup)
+        if (context.performed)
+        {
+            if (state == State.Build)
+            {
+                dragBuild = true;
+            }
+
+            Debug.Log("Started primary hold");
+        }
+        // Cancel hold (let go)
+        else if (context.canceled)
+        {
+            dragBuild = false;
+        }
+
+    }
+
+    public void OnSecondaryHold(InputAction.CallbackContext context)
+    {
+        // Execute hold (Start pickup)
+        if (context.performed)
+        {
+            if (state == State.Build)
+            {
+                dragDestroy = true;
+            }
+
+            Debug.Log("Started secondary hold");
+        }
+        // Cancel hold (let go)
+        else if (context.canceled)
+        {
+            dragDestroy = false;
+        }
+
+    }
+
     // ========== ACTIONS ==========
     private void BuyAndPlace(Vector3 pos)
     {
         var so = gridSystem.GetPlaceableSO();
-        
-        if (pData.TryAndPurchase(so.price))
-            gridSystem.Place(pos);
+        bool placed = false;
+
+        if (pData.CanAfford(so.price))
+            placed = gridSystem.Place(pos);
+
+        if (placed)
+            pData.MakePurchase(so.price);
     }
 
     private void PlantInteraction(PlantSpot plantSpot)

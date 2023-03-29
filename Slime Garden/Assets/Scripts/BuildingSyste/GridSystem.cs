@@ -94,13 +94,18 @@ public class GridSystem : MonoBehaviour
     }
 
     // ================ Place ================
-    public void Place(Vector3 mousePos)
+    public bool Place(Vector3 mousePos)
     {
         grid.GetXZ(mousePos, out int x, out int y);
-        Build(new Vector2Int(x, y), placeable);
+        var newBuild = Build(new Vector2Int(x, y), placeable, true);
+
+        if (newBuild)
+            return true;
+        else
+            return false;
     }
 
-    public GameObject Build(Vector2Int placeablePos, PlaceableObjectSO placeableToBuild)
+    public GameObject Build(Vector2Int placeablePos, PlaceableObjectSO placeableToBuild, bool firstPlacement)
     {
         GameObject newBuild = null;
 
@@ -108,14 +113,7 @@ public class GridSystem : MonoBehaviour
         GridObject gridObject = grid.GetValue(placeablePos.x, placeablePos.y);
 
         //Test can Build
-        bool canBuild = true;
-        foreach (Vector2Int gridPos in gridPosList)
-        {
-            if (grid.GetValue(gridPos.x, gridPos.y) == null)
-                canBuild = false;
-            else if (!grid.GetValue(gridPos.x, gridPos.y).CanBuild())
-                canBuild = false;
-        }
+        bool canBuild = CanBuildHere(gridPosList);
 
         // Create placeable
         if (gridObject != null && canBuild)
@@ -123,7 +121,7 @@ public class GridSystem : MonoBehaviour
             Vector2Int rotationOffset = placeableToBuild.GetRotationOffset(dir);
             Vector3 objWorldPos = grid.GetWorldPosition(placeablePos.x, placeablePos.y) + new Vector3(rotationOffset.x, 0, rotationOffset.y) * cellSize;
 
-            PlaceableObject placeableObj = PlaceableObject.Create(objWorldPos, placeablePos, dir, placeableToBuild);
+            PlaceableObject placeableObj = PlaceableObject.Create(objWorldPos, placeablePos, dir, placeableToBuild, this);
 
             foreach (Vector2Int gridPos in gridPosList)
             {
@@ -131,6 +129,9 @@ public class GridSystem : MonoBehaviour
             }
 
             newBuild = placeableObj.gameObject;
+
+            if(firstPlacement)
+                placeableObj.AnimatePlacement();
         }
         else if (gridObject != null)
         {
@@ -142,6 +143,21 @@ public class GridSystem : MonoBehaviour
         }
 
         return newBuild;
+    }
+
+    private bool CanBuildHere(List<Vector2Int> gridPosList)
+    {
+        bool canBuild = true;
+
+        foreach (Vector2Int gridPos in gridPosList)
+        {
+            if (grid.GetValue(gridPos.x, gridPos.y) == null)
+                canBuild = false;
+            else if (!grid.GetValue(gridPos.x, gridPos.y).CanBuild())
+                canBuild = false;
+        }
+
+        return canBuild;
     }
 
     // ================ Rotate ================
@@ -282,5 +298,14 @@ public class GridSystem : MonoBehaviour
         }
 
         return placeables;
+    }
+
+    public bool PlacementViable(Vector3 mousePos)
+    {
+        grid.GetXZ(mousePos, out int x, out int y);
+
+        List<Vector2Int> gridPosList = placeable.GetGridPositionList(new Vector2Int(x, y), dir);
+
+        return CanBuildHere(gridPosList);
     }
 }
