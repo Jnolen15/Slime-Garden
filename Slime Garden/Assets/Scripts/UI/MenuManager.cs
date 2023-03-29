@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class MenuManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject cropUIPrefab;
     [SerializeField] private GameObject infoBox;
     [SerializeField] private GameObject slimeInfoBox;
+    [SerializeField] private GameObject cSToken;
+    [SerializeField] private RectTransform tokenEndPos;
     [SerializeField] private InventoryManager invManager;
 
     void Start()
@@ -139,5 +142,14 @@ public class MenuManager : MonoBehaviour
     public void CloseSlimeStats()
     {
         slimeInfoBox.SetActive(false);
+    }
+
+    // ============== CS Token =================
+    public void AnimateToken(Color color)
+    {
+        //Vector3 pos = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue());
+        Vector3 pos = Mouse.current.position.ReadValue();
+        var token = Instantiate(cSToken, pos, Quaternion.identity, transform);
+        token.GetComponent<UIToken>().Setup(tokenEndPos.position, color);
     }
 }

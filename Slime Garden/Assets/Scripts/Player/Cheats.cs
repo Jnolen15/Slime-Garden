@@ -11,6 +11,7 @@ public class Cheats : MonoBehaviour
     private DataPersistenceManager gameData;
     [SerializeField] private bool inWild;
     [SerializeField] private CropSO cheatCrop;
+    [SerializeField] private GameObject cs;
 
     void Start()
     {
@@ -66,6 +67,12 @@ public class Cheats : MonoBehaviour
         {
             gameData.SaveGame();
             SceneManager.LoadScene(0);
+        }
+
+        // Spawn CS
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Instantiate(cs, new Vector3(0, 2, 0), Quaternion.identity);
         }
     }
 }
