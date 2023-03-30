@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: GardenLattice
+  m_EditorClassIdentifier: 
+  placeableName: Garden Lattice
+  previewImage: {fileID: 21300000, guid: 05c65788f97fade4c856f019d2c454b1, type: 3}
+  price: 15
+  description: 
+  prefab: {fileID: 7336614397981079765, guid: 65cd79f264c2fd14fb9169f85aeaff07, type: 3}
+  visual: {fileID: 6113065857670299367, guid: 9a72c2727537b5c4995397226a6f1beb, type: 3}
+  width: 1
+  height: 1

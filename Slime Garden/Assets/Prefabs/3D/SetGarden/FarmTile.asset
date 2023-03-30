@@ -15,7 +15,7 @@ MonoBehaviour:
   placeableName: Farm Tile
   previewImage: {fileID: 21300000, guid: 93874a6b4a82ded46a230c0ed3c4114b, type: 3}
   price: 5
-  description: A farmable pice of land to plant crops on!
+  description: A farmable peice of land to plant crops on!
   prefab: {fileID: 2574892198689912585, guid: 9fcd43058becdbc4ab402e1f804cf841, type: 3}
   visual: {fileID: 5392946513460962376, guid: cc62b50abdefcec4a9d0858d675e473c, type: 3}
   width: 1

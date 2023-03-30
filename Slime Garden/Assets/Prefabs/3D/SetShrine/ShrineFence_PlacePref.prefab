@@ -50,12 +50,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fee0c9ba704e13041935014bcba88ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gridSystem: {fileID: 0}
+  data: {fileID: 0}
   post: {fileID: 2201403514760661804}
   end: {fileID: 1692473151704274847}
   straight: {fileID: 5899524034214584312}
   corner: {fileID: 5796791215807877618}
   threeWay: {fileID: 6148939922167183161}
   fourWay: {fileID: 1893941381929665842}
+  northNeighbor: {fileID: 0}
+  eastNeighbor: {fileID: 0}
+  southNeighbor: {fileID: 0}
+  westNeighbor: {fileID: 0}
 --- !u!1 &1692473151704274847
 GameObject:
   m_ObjectHideFlags: 0
