@@ -33,7 +33,7 @@ public class SeedUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
-        menuManager.SetInfoBox(so.cropName, so.price, so.seedDescription);
+        menuManager.SetInfoBox(so.cropName, so.price, so.seedDescription, so.previewImage);
     }
 
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)

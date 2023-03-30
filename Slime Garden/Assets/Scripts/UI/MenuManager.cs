@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject cSToken;
     [SerializeField] private RectTransform tokenEndPos;
     [SerializeField] private InventoryManager invManager;
+    [SerializeField] private PreviewStageManager stageManager;
 
     void Start()
     {
@@ -111,13 +112,22 @@ public class MenuManager : MonoBehaviour
     }
 
     // ============== Info Box ==============
-    public void SetInfoBox(string title, int price, string description)
+    public void SetInfoBox(string title, int price, string description, Sprite previewSprite = null)
     {
         StopAllCoroutines();
         infoBox.SetActive(true);
-        infoBox.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = title;
-        infoBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = price.ToString();
-        infoBox.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = description;
+        InfoPannelManager ip = infoBox.GetComponent<InfoPannelManager>();
+        ip.Setup(title, price, description);
+
+        // Optional sprite if not a placeable on the stage
+        if(previewSprite != null)
+            ip.DisplayImage(previewSprite);
+    }
+
+    public void SetupPreview(PlaceableObjectSO data)
+    {
+        stageManager.gameObject.SetActive(true);
+        stageManager.Setup(data);
     }
     
     public void CloseInfoBox()
@@ -130,6 +140,9 @@ public class MenuManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         infoBox.SetActive(false);
+
+        if(stageManager != null)
+            stageManager.gameObject.SetActive(false);
     }
 
     // ============== Slime Inspect ==============
