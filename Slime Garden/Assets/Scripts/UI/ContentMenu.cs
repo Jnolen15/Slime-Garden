@@ -47,8 +47,6 @@ public class ContentMenu : MonoBehaviour
 
     public void UpdatePage()
     {
-        Debug.Log("Next Page " + curPage);
-
         // Clear shown content
         for (int i = shownContent.childCount; i > 0; i--)
         {
@@ -62,8 +60,6 @@ public class ContentMenu : MonoBehaviour
 
             if (curNum >= contentList.Count)
                 break;
-
-            Debug.Log("Showing "  + curNum);
 
             contentList[curNum].SetParent(shownContent);
         }

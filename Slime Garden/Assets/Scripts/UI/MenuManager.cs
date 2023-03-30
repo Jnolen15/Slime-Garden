@@ -96,7 +96,9 @@ public class MenuManager : MonoBehaviour
 
     public void UpdateCropCount()
     {
-        var contentMenu = cropMenu.transform.GetChild(0);
+        Debug.Log("Updating crop count");
+
+        var contentMenu = cropMenu.transform.GetChild(1);
         foreach (Transform child in contentMenu)
         {
             child.GetComponent<CropUIContent>().UpdateValues();

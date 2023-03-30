@@ -64,6 +64,6 @@ public class SlimeData : MonoBehaviour
     public void SetName(string newName)
     {
         displayName = newName;
-        Debug.Log("Display name changed: " + displayName);
+        //Debug.Log("Display name changed: " + displayName);
     }
 }

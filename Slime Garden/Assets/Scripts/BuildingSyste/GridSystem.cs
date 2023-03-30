@@ -262,7 +262,7 @@ public class GridSystem : MonoBehaviour
 
         if (gridObj == null)
         {
-            Debug.Log("Grid space is NULL");
+            //Debug.Log("Grid space is NULL");
             return null;
         }
 

@@ -111,13 +111,13 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
 
         foreach(PlaceableObject pObj in placeables)
         {
-            Debug.Log("Attempting to save: " + pObj.GetPlaceableData().placeableName);
+            //Debug.Log("Attempting to save: " + pObj.GetPlaceableData().placeableName);
 
             // If placeable has a plant spot with a crop, also save plant spot data
             PlantSpot pSpot = pObj.GetComponentInChildren<PlantSpot>();
             if (pSpot && pSpot.hasCrop)
             {
-                Debug.Log("Has Plant spot with: " + pSpot.curCropSO.cropName);
+                //Debug.Log("Has Plant spot with: " + pSpot.curCropSO.cropName);
 
                 PlantSpotData pSData = new PlantSpotData(pSpot.curCropSO.cropName,
                     pSpot.fullyGrown, pSpot.curTick, pSpot.wateredTicks, pSpot.growthStage);

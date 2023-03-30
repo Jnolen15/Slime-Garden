@@ -34,7 +34,7 @@ public class GardenManager : MonoBehaviour
 
     private void OnTick()
     {
-        Debug.Log("TICK");
+        //Debug.Log("TICK");
 
         foreach(PlantSpot spot in plantSpotList)
         {
