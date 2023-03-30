@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShrineGate
   m_EditorClassIdentifier: 
   placeableName: Shrine Gate
-  previewImage: {fileID: 21300000, guid: d504ef2753193e042977535fa76cfc22, type: 3}
+  previewImage: {fileID: 21300000, guid: 68b2493d01b528d4aa4cf05930badbe5, type: 3}
   price: 25
   description: 
   prefab: {fileID: 7212085286625646619, guid: a0fbfcd77ab93d745b12205095b05d2a, type: 3}

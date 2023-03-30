@@ -13,11 +13,10 @@ MonoBehaviour:
   m_Name: ShrineFence
   m_EditorClassIdentifier: 
   placeableName: Shrine Fecne
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  previewImage: {fileID: 21300000, guid: 739f6e68121857a48a423a45355dc7dc, type: 3}
   price: 5
   description: 
   prefab: {fileID: 7212085286625646619, guid: 1d1650383df24544889359302c3a0110, type: 3}
   visual: {fileID: 7212085286625646619, guid: 0f02ed90d55e74540bf7adaded12fa60, type: 3}
   width: 1
   height: 1
-  tileable: {fileID: 0}

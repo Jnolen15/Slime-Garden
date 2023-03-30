@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SnackrootSapphire
   m_EditorClassIdentifier: 
   cropName: Sapphire Snackroot
-  previewImage: {fileID: 21300000, guid: 2820a7f7a7ce8f7459928e4761f17f28, type: 3}
+  previewImage: {fileID: 21300000, guid: eab2a00ca9e23584f8b3ce48eb5fea5a, type: 3}
   price: 5
   sellValue: 8
   seedDescription: Snackroot is the perfect crop for a beginner gardener. This ones

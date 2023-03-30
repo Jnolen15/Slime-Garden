@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ShrineLantern
   m_EditorClassIdentifier: 
   placeableName: Shrine Lantern
-  previewImage: {fileID: 21300000, guid: 4618320b608e3aa4fa392e08a97148e7, type: 3}
+  previewImage: {fileID: 21300000, guid: d9669198ceb492f429f354e670dc95b1, type: 3}
   price: 10
   description: 
   prefab: {fileID: 7212085286625646619, guid: c072435b1493b8a49a65cf6310f3977b, type: 3}
