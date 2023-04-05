@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlantSpot : MonoBehaviour
 {
@@ -8,12 +9,16 @@ public class PlantSpot : MonoBehaviour
     private Transform model;
     private GardenManager gm;
     private InventoryManager invManager;
+    private AudioSource audio;
 
     [SerializeField] private Material dryMat;
     [SerializeField] private Material wetMat;
     [SerializeField] private GameObject waterFX;
     [SerializeField] private GameObject LeafBurstFX;
     [SerializeField] private GameObject DirtBurstFX;
+
+    [SerializeField] private AudioClip[] waterSounds;
+    [SerializeField] private AudioClip[] interactSounds;
 
     public CropSO curCropSO;
     public bool hasCrop;
@@ -24,6 +29,7 @@ public class PlantSpot : MonoBehaviour
 
     private void Awake()
     {
+        audio = this.GetComponent<AudioSource>();
         invManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToList(this);
@@ -71,6 +77,7 @@ public class PlantSpot : MonoBehaviour
         hasCrop = true;
 
         // Effect
+        audio.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);
         Vector3 pos = new Vector3(crop.position.x, crop.position.y + 0.1f, crop.position.z);
         Instantiate(DirtBurstFX, pos, Quaternion.identity);
     }
@@ -138,6 +145,7 @@ public class PlantSpot : MonoBehaviour
 
     private void Water()
     {
+        audio.PlayOneShot(waterSounds[Random.Range(0, waterSounds.Length)]);
         wateredTicks += 2;
         StartCoroutine(AnimateWater());
     }
@@ -158,6 +166,7 @@ public class PlantSpot : MonoBehaviour
         invManager.AddCrop(curCropSO, 1);
 
         // Effect
+        audio.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
         Instantiate(LeafBurstFX, pos, Quaternion.identity);
 

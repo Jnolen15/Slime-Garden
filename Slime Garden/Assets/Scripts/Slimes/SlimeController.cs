@@ -20,6 +20,7 @@ public class SlimeController : MonoBehaviour
     private Animator faceAnimator;              //The animator for the face
     private SBrain brain;                       //The Slime Brain Script
     private SlimeData sData;                    //Info about the slime
+    [SerializeField] private AudioClip[] jumpSounds;
 
     //=============== HELP VARIABLES ===============
     private bool stateChanged;                  // Bool to make sure initial state changes only happen once
@@ -257,6 +258,8 @@ public class SlimeController : MonoBehaviour
 
         // Jump by force
         this.GetComponent<Rigidbody>().AddForce(newPos * 4, ForceMode.Impulse);
+
+        this.GetComponent<AudioSource>().PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)]);
 
         jumped = true;
         grounded = false;

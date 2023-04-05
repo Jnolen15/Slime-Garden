@@ -206,3 +206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4951fa5e04244ea1a38246b1613bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildSounds:
+  - {fileID: 8300000, guid: dc866a8821db5bf418e4b56d161dc4b7, type: 3}
+  - {fileID: 8300000, guid: 4ad248030842ec34bba62aa3f3d61c7c, type: 3}

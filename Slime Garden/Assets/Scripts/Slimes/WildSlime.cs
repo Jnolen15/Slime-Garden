@@ -10,6 +10,7 @@ public class WildSlime : MonoBehaviour
     [SerializeField] private int tameThreshold;
     [SerializeField] private int tameAmmount;
     [SerializeField] private GameObject tameFX;
+    [SerializeField] private AudioClip[] tameSounds;
 
     // Refrences
     private SlimeData sData;
@@ -77,6 +78,7 @@ public class WildSlime : MonoBehaviour
         // Turn off brain so it won't go to other states
         sBrain.ToggleBrain(false);
 
+        this.GetComponent<AudioSource>().PlayOneShot(tameSounds[Random.Range(0, tameSounds.Length)]);
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         Instantiate(tameFX, transform.position, transform.rotation);
         sControl.ChangeState(SlimeController.State.tamed);

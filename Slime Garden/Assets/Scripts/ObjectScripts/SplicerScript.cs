@@ -26,6 +26,7 @@ public class SplicerScript : MonoBehaviour
     public Material lightsMat;
     public Material buttonLightsMat;
     private Color currentColor;
+    [SerializeField] private AudioClip spliceSound;
 
     // SLIME PARTS ===============
     //LEFT
@@ -196,6 +197,8 @@ public class SplicerScript : MonoBehaviour
         else currentColor = InputRight.GetComponent<SplicerInput>().currentColor;
 
         yield return new WaitForSeconds(1);
+
+        this.GetComponent<AudioSource>().PlayOneShot(spliceSound);
 
         // Spawn new slime apply selected SO
         // Instantates the basic slime prefab
