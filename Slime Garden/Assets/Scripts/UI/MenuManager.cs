@@ -10,8 +10,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject placeableUIPrefab;
     [SerializeField] private GameObject seedMenu;
     [SerializeField] private GameObject seedUIPrefab;
-    [SerializeField] private GameObject cropMenu;
-    [SerializeField] private GameObject cropUIPrefab;
+    //[SerializeField] private GameObject cropMenu;
+    //[SerializeField] private GameObject cropUIPrefab;
     [SerializeField] private GameObject infoBox;
     [SerializeField] private GameObject slimeInfoBox;
     [SerializeField] private GameObject cSToken;
@@ -25,8 +25,8 @@ public class MenuManager : MonoBehaviour
         buildMenu.SetActive(false);
         UpdateSeedMenu();
         seedMenu.SetActive(false);
-        UpdateCropMenu();
-        cropMenu.SetActive(false);
+        //UpdateCropMenu();
+        //cropMenu.SetActive(false);
         infoBox.SetActive(false);
         slimeInfoBox.SetActive(false);
     }
@@ -35,7 +35,7 @@ public class MenuManager : MonoBehaviour
     {
         buildMenu.SetActive(false);
         seedMenu.SetActive(false);
-        cropMenu.SetActive(false);
+        //cropMenu.SetActive(false);
     }
 
     // ============== Build Menus ==============
@@ -79,7 +79,7 @@ public class MenuManager : MonoBehaviour
     // ============== Crop Menus ==============
     public void UpdateCropMenu()
     {
-        var contentMenu = cropMenu.transform.GetChild(0);
+        /*var contentMenu = cropMenu.transform.GetChild(0);
         foreach (Transform child in contentMenu)
         {
             Destroy(child.gameObject);
@@ -91,30 +91,30 @@ public class MenuManager : MonoBehaviour
             element.GetComponent<CropUIContent>().Setup(crop, this);
         }
 
-        cropMenu.GetComponent<ContentMenu>().UpdateContent();
+        cropMenu.GetComponent<ContentMenu>().UpdateContent();*/
     }
 
     public void UpdateCropCount()
-    {
-        Debug.Log("Updating crop count");
+     {
+         /*Debug.Log("Updating crop count");
 
-        var contentMenu = cropMenu.transform.GetChild(1);
-        foreach (Transform child in contentMenu)
-        {
-            child.GetComponent<CropUIContent>().UpdateValues();
-        }
-    }
+         var contentMenu = cropMenu.transform.GetChild(1);
+         foreach (Transform child in contentMenu)
+         {
+             child.GetComponent<CropUIContent>().UpdateValues();
+         }*/
+     }
 
-    public void CropMenuActive(bool value)
-    {
-        if (value)
-            UpdateCropCount();
+     public void CropMenuActive(bool value)
+     {
+         /*if (value)
+             UpdateCropCount();
 
-        cropMenu.SetActive(value);
-    }
+         cropMenu.SetActive(value); */
+     }
 
-    // ============== Info Box ==============
-    public void SetInfoBox(string title, int price, string description, Sprite previewSprite = null)
+        // ============== Info Box ==============
+        public void SetInfoBox(string title, int price, string description, Sprite previewSprite = null)
     {
         StopAllCoroutines();
         infoBox.SetActive(true);

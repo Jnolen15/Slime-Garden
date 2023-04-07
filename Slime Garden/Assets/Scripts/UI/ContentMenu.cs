@@ -6,6 +6,7 @@ public class ContentMenu : MonoBehaviour
 {
     [SerializeField] private Transform hiddenContent;
     [SerializeField] private Transform shownContent;
+    [SerializeField] private int numPerPage;
     [SerializeField] private int curPage;
     [SerializeField] private int totalPages;
 
@@ -17,8 +18,8 @@ public class ContentMenu : MonoBehaviour
         foreach (Transform child in hiddenContent)
             contentList.Add(child);
 
-        totalPages = contentList.Count / 8;
-        if ((contentList.Count % 8) > 0)
+        totalPages = contentList.Count / numPerPage;
+        if ((contentList.Count % numPerPage) > 0)
             totalPages++;
 
         UpdatePage();
@@ -54,9 +55,9 @@ public class ContentMenu : MonoBehaviour
         }
 
         // Fill it with next page of content
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < numPerPage; i++)
         {
-            var curNum = i + (curPage * 8);
+            var curNum = i + (curPage * numPerPage);
 
             if (curNum >= contentList.Count)
                 break;
