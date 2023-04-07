@@ -16,29 +16,25 @@ public class SlimeInfoPannel : MonoBehaviour
     [SerializeField] private TMP_InputField inputText;
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI speciesText;
-    //[SerializeField] private TextMeshProUGUI baseColorText;
-    //[SerializeField] private TextMeshProUGUI patternColorText;
-    //[SerializeField] private TextMeshProUGUI patternText;
     [SerializeField] private TextMeshProUGUI rarityText;
-    [SerializeField] private SlimeData curslime;
+    [SerializeField] private SlimeData curSlimeData;
+    [SerializeField] private SlimeController curSlimeControl;
 
     private void Start()
     {
         UpdateCropMenu();
     }
 
-    public void Setup(SlimeData slime)
+    public void Setup(GameObject slime)
     {
-        curslime = slime;
+        curSlimeData = slime.GetComponent<SlimeData>();
+        curSlimeControl = slime.GetComponent<SlimeController>();
         nameTextObj.SetActive(true);
         nameInputObj.SetActive(false);
-        nameText.text = curslime.displayName;
+        nameText.text = curSlimeData.displayName;
         inputText.text = "New Name";
-        speciesText.text = curslime.sBaseColor + " " + curslime.sPatternColor + " " + curslime.slimeSpeciesPattern.sPattern;
-        //baseColorText.text = "Color 1: " + curslime.sBaseColor;
-        //patternColorText.text = "Color 2: " + curslime.sPatternColor;
-        //patternText.text = "Pattern: " + curslime.slimeSpeciesPattern.sPattern;
-        rarityText.text = "Rarity: " + curslime.sRarity;
+        speciesText.text = curSlimeData.sBaseColor + " " + curSlimeData.sPatternColor + " " + curSlimeData.slimeSpeciesPattern.sPattern;
+        rarityText.text = "Rarity: " + curSlimeData.sRarity;
 
         UpdateCropCount();
     }
@@ -51,9 +47,9 @@ public class SlimeInfoPannel : MonoBehaviour
 
     public void SetRename(string newName)
     {
-        curslime.SetName(newName);
+        curSlimeData.SetName(newName);
 
-        nameText.text = curslime.displayName;
+        nameText.text = curSlimeData.displayName;
         nameTextObj.SetActive(true);
         nameInputObj.SetActive(false);
 
@@ -88,23 +84,31 @@ public class SlimeInfoPannel : MonoBehaviour
     {
         if (0 < invManager.GetNumHeld(crop))
         {
-            // Take from inventory
-            Debug.Log("Fed " + crop.cropName);
-            invManager.AddCrop(crop, -1);
-            UpdateCropCount();
-
-            // Set slime state
-            var slime = curslime.gameObject.GetComponent<SlimeController>();
-            slime.ChangeState(SlimeController.State.eat);
-
-            // Animate Crop
+            // Create Crop
             Vector3 spawnPos = Camera.main.transform.position;
             var instCrop = Instantiate(crop.cropObj, spawnPos, Quaternion.identity);
-            instCrop.GetComponent<CropObj>().Setup(crop);
+            var cropObj = instCrop.GetComponent<CropObj>();
+            cropObj.Setup(crop);
 
-            Vector3 destination = new Vector3(curslime.transform.position.x, curslime.transform.position.y, curslime.transform.position.z - 0.5f);
+            // Set slime state
+            bool wasFed = curSlimeControl.FeedSlime(cropObj);
 
-            instCrop.transform.DOJump(destination, 2f, 1, 0.75f).OnComplete(() => instCrop.GetComponent<CropObj>().DestroySelf());
+            // If feeding was successful
+            if (wasFed)
+            {
+                // Animate Crop
+                Vector3 destination = new Vector3(curSlimeData.transform.position.x, curSlimeData.transform.position.y, curSlimeData.transform.position.z - 0.5f);
+                instCrop.transform.DOJump(destination, 2f, 1, 0.75f);
+
+                // Take from inventory
+                Debug.Log("Fed " + crop.cropName);
+                invManager.AddCrop(crop, -1);
+                UpdateCropCount();
+            } else
+            {
+                Debug.Log("Feeding failed");
+                Destroy(cropObj);
+            }
         }
     }
 }

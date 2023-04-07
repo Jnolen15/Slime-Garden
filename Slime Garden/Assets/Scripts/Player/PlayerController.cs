@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private CameraControl camcontrol;
     private GridSystem gridSystem;
     private GameObject buildVisual;
+    private SlimeController curInspectingSlime;
 
     // Player State enum
     public enum State
@@ -32,8 +33,7 @@ public class PlayerController : MonoBehaviour
         Default,
         Build,
         Plant,
-        Inspect,
-        Crops
+        Inspect
     }
     public State state;
 
@@ -60,11 +60,19 @@ public class PlayerController : MonoBehaviour
         else
             isOverUI = false;
 
-        // If inspect state is changed
-        if(inspectingSlime && state != State.Inspect)
+        if (inspectingSlime)
         {
-            StopInspectSlime();
-            camcontrol.EndFollowSlime();
+            // If inspect state is changed
+            if (state != State.Inspect)
+            {
+                StopInspectSlime();
+            }
+
+            // If inspecting slime becomes tamed
+            if (curInspectingSlime.GetState() == SlimeController.State.tamed)
+            {
+                StopInspectSlime();
+            }
         }
 
         // Swap action maps if in an input field
@@ -125,10 +133,6 @@ public class PlayerController : MonoBehaviour
                 state = State.Plant;
                 menus.SeedMenuActive(true);
                 break;
-            case "Crops":
-                state = State.Crops;
-                menus.CropMenuActive(true);
-                break;
         }
     }
 
@@ -159,9 +163,6 @@ public class PlayerController : MonoBehaviour
         {
             if (state == State.Build)
                 BuyAndPlace(mousePos.point);
-
-            if (state == State.Crops)
-                SpawnCrop(mousePos.point);
         }
 
         // Click Interactable / Plantable
@@ -222,7 +223,7 @@ public class PlayerController : MonoBehaviour
             // Inspect Slime Popup
             if (state == State.Default && clickraycastHit.collider.gameObject.tag == "Slime")
             {
-                var clickedSlime = clickraycastHit.collider.gameObject.GetComponent<SlimeData>();
+                var clickedSlime = clickraycastHit.collider.gameObject;
                 InspectSlime(clickedSlime);
             }
         }
@@ -332,31 +333,26 @@ public class PlayerController : MonoBehaviour
         gridSystem.Demolish(pos);
     }
 
-    private void InspectSlime(SlimeData slime)
+    private void InspectSlime(GameObject slime)
     {
         state = State.Inspect;
         inspectingSlime = true;
+        curInspectingSlime = slime.GetComponent<SlimeController>();
         menus.ShowSlimeStats(slime);
         camcontrol.FollowSlime(slime.gameObject.transform);
     }
 
     public void StopInspectSlime()
     {
+        if (!inspectingSlime)
+            return;
+
+        Debug.Log("Stop inspecting slime");
         state = State.Default;
         inspectingSlime = false;
+        curInspectingSlime = null;
         menus.CloseSlimeStats();
-    }
-
-    private void SpawnCrop(Vector3 pos)
-    {
-        if (0 < invManager.GetNumHeld(crop))
-        {
-            invManager.AddCrop(crop, -1);
-            menus.UpdateCropCount();
-            Vector3 spawnPos = new Vector3(pos.x, pos.y + 2, pos.z);
-            var instCrop = Instantiate(crop.cropObj, spawnPos, Quaternion.identity);
-            instCrop.GetComponent<CropObj>().Setup(crop);
-        }
+        camcontrol.EndFollowSlime();
     }
 
     // ========== MISC ==========

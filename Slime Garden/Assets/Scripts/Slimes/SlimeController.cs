@@ -277,18 +277,6 @@ public class SlimeController : MonoBehaviour
         {
             grounded = true;
         }
-
-        if (col.gameObject.tag == "Crop")
-        {
-            Physics.IgnoreCollision(col.collider, this.GetComponent<Collider>());
-
-            if(state != State.eat && state != State.tamed && !InNonInteruptableState())
-            {
-                ChangeState(State.eat);
-                if(col.gameObject.GetComponent<CropObj>() != null)
-                    curFood = col.gameObject.GetComponent<CropObj>();
-            }
-        }
     }
 
     private void OnCollisionExit(Collision col)
@@ -297,6 +285,18 @@ public class SlimeController : MonoBehaviour
         {
             grounded = false;
         }
+    }
+
+    public bool FeedSlime(CropObj food)
+    {
+        if (!InNonInteruptableState())
+        {
+            ChangeState(State.eat);
+            curFood = food;
+            return true;
+        }
+
+        return false;
     }
 
     public bool InNonInteruptableState()
@@ -308,6 +308,10 @@ public class SlimeController : MonoBehaviour
         else if (state == State.jump)
             return true;
         else if (state == State.crystalize)
+            return true;
+        else if (state == State.eat)
+            return true;
+        else if (state == State.tamed)
             return true;
 
         return false;

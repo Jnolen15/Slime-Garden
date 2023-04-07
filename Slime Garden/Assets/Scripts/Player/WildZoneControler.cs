@@ -13,7 +13,6 @@ public class WildZoneControler : MonoBehaviour
     // Variables
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
-    private CropSO crop;
     private bool isOverUI;
     private bool inspectingSlime;
 
@@ -22,12 +21,12 @@ public class WildZoneControler : MonoBehaviour
     private MenuManager menus;
     private CameraControl camcontrol;
     private InventoryManager invManager;
+    [SerializeField] private SlimeController curInspectingSlime;
 
     // Wild Player State enum
     public enum State
     {
         Default,
-        Crops,
         Inspect
     }
     public State state;
@@ -50,11 +49,20 @@ public class WildZoneControler : MonoBehaviour
         else
             isOverUI = false;
 
-        // If inspect state is changed
-        if (inspectingSlime && state != State.Inspect)
+
+        if (inspectingSlime)
         {
-            StopInspectSlime();
-            camcontrol.EndFollowSlime();
+            // If inspect state is changed
+            if (state != State.Inspect)
+            {
+                StopInspectSlime();
+            }
+
+            // If inspecting slime becomes tamed
+            if (curInspectingSlime.GetState() == SlimeController.State.tamed)
+            {
+                StopInspectSlime();
+            }
         }
     }
 
@@ -68,10 +76,6 @@ public class WildZoneControler : MonoBehaviour
             case "Default":
                 state = State.Default;
                 break;
-            case "Crops":
-                state = State.Crops;
-                menus.CropMenuActive(true);
-                break;
         }
     }
 
@@ -83,14 +87,6 @@ public class WildZoneControler : MonoBehaviour
 
         if (isOverUI)
             return;
-
-        // Click Ground
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
-        {
-            if (state == State.Crops)
-                SpawnCrop(mousePos.point);
-        }
 
         // Click Interactable
         Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -129,7 +125,7 @@ public class WildZoneControler : MonoBehaviour
             // Inspect Slime Popup
             if (state == State.Default && clickraycastHit.collider.gameObject.tag == "Slime")
             {
-                var clickedSlime = clickraycastHit.collider.gameObject.GetComponent<SlimeData>();
+                var clickedSlime = clickraycastHit.collider.gameObject;
                 InspectSlime(clickedSlime);
             }
         }
@@ -137,35 +133,25 @@ public class WildZoneControler : MonoBehaviour
 
 
     // ========== ACTIONS ==========
-    private void InspectSlime(SlimeData slime)
+    private void InspectSlime(GameObject slime)
     {
         state = State.Inspect;
         inspectingSlime = true;
+        curInspectingSlime = slime.GetComponent<SlimeController>();
         menus.ShowSlimeStats(slime);
         camcontrol.FollowSlime(slime.gameObject.transform);
     }
 
     public void StopInspectSlime()
     {
+        if (!inspectingSlime)
+            return;
+
+        Debug.Log("Stop inspecting slime");
         state = State.Default;
         inspectingSlime = false;
+        curInspectingSlime = null;
         menus.CloseSlimeStats();
-    }
-
-    public void SwapCrop(CropSO newC)
-    {
-        crop = newC;
-    }
-
-    private void SpawnCrop(Vector3 pos)
-    {
-        if (0 < invManager.GetNumHeld(crop))
-        {
-            invManager.AddCrop(crop, -1);
-            menus.UpdateCropCount();
-            Vector3 spawnPos = new Vector3(pos.x, pos.y + 2, pos.z);
-            var instCrop = Instantiate(crop.cropObj, spawnPos, Quaternion.identity);
-            instCrop.GetComponent<CropObj>().Setup(crop);
-        }
+        camcontrol.EndFollowSlime();
     }
 }

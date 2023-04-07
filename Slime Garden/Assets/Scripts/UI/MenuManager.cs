@@ -10,8 +10,6 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject placeableUIPrefab;
     [SerializeField] private GameObject seedMenu;
     [SerializeField] private GameObject seedUIPrefab;
-    //[SerializeField] private GameObject cropMenu;
-    //[SerializeField] private GameObject cropUIPrefab;
     [SerializeField] private GameObject infoBox;
     [SerializeField] private GameObject slimeInfoBox;
     [SerializeField] private GameObject cSToken;
@@ -25,8 +23,6 @@ public class MenuManager : MonoBehaviour
         buildMenu.SetActive(false);
         UpdateSeedMenu();
         seedMenu.SetActive(false);
-        //UpdateCropMenu();
-        //cropMenu.SetActive(false);
         infoBox.SetActive(false);
         slimeInfoBox.SetActive(false);
     }
@@ -76,45 +72,8 @@ public class MenuManager : MonoBehaviour
         seedMenu.SetActive(value);
     }
 
-    // ============== Crop Menus ==============
-    public void UpdateCropMenu()
-    {
-        /*var contentMenu = cropMenu.transform.GetChild(0);
-        foreach (Transform child in contentMenu)
-        {
-            Destroy(child.gameObject);
-        }
-
-        foreach (InventoryManager.CropInventroyEntry crop in invManager.inventoryList)
-        {
-            var element = Instantiate(cropUIPrefab, contentMenu);
-            element.GetComponent<CropUIContent>().Setup(crop, this);
-        }
-
-        cropMenu.GetComponent<ContentMenu>().UpdateContent();*/
-    }
-
-    public void UpdateCropCount()
-     {
-         /*Debug.Log("Updating crop count");
-
-         var contentMenu = cropMenu.transform.GetChild(1);
-         foreach (Transform child in contentMenu)
-         {
-             child.GetComponent<CropUIContent>().UpdateValues();
-         }*/
-     }
-
-     public void CropMenuActive(bool value)
-     {
-         /*if (value)
-             UpdateCropCount();
-
-         cropMenu.SetActive(value); */
-     }
-
-        // ============== Info Box ==============
-        public void SetInfoBox(string title, int price, string description, Sprite previewSprite = null)
+    // ============== Info Box ==============
+    public void SetInfoBox(string title, int price, string description, Sprite previewSprite = null)
     {
         StopAllCoroutines();
         infoBox.SetActive(true);
@@ -148,7 +107,7 @@ public class MenuManager : MonoBehaviour
     }
 
     // ============== Slime Inspect ==============
-    public void ShowSlimeStats(SlimeData slime)
+    public void ShowSlimeStats(GameObject slime)
     {
         slimeInfoBox.SetActive(true);
         slimeInfoBox.GetComponent<SlimeInfoPannel>().Setup(slime);
@@ -157,6 +116,7 @@ public class MenuManager : MonoBehaviour
     public void CloseSlimeStats()
     {
         slimeInfoBox.SetActive(false);
+        CloseInfoBox();
     }
 
     // ============== CS Token =================

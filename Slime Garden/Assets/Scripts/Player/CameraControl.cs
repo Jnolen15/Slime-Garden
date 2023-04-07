@@ -70,7 +70,12 @@ public class CameraControl : MonoBehaviour
 
         // Movement
         if (lockedToSlime)
-            this.transform.position = objectToFollow.position;
+        {
+            if (objectToFollow != null)
+                this.transform.position = objectToFollow.position;
+            else
+                EndFollowSlime();
+        }
         else
             camMovement(moveVector);
 
