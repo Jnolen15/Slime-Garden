@@ -85,7 +85,8 @@ public class SlimeInfoPannel : MonoBehaviour
         if (0 < invManager.GetNumHeld(crop))
         {
             // Create Crop
-            Vector3 spawnPos = Camera.main.transform.position;
+            var slimePos = curSlimeData.transform.position;
+            Vector3 spawnPos = new Vector3(slimePos.x - 1.5f, slimePos.y, slimePos.z - 3);
             var instCrop = Instantiate(crop.cropObj, spawnPos, Quaternion.identity);
             var cropObj = instCrop.GetComponent<CropObj>();
             cropObj.Setup(crop);
@@ -97,8 +98,8 @@ public class SlimeInfoPannel : MonoBehaviour
             if (wasFed)
             {
                 // Animate Crop
-                Vector3 destination = new Vector3(curSlimeData.transform.position.x, curSlimeData.transform.position.y, curSlimeData.transform.position.z - 0.5f);
-                instCrop.transform.DOJump(destination, 2f, 1, 0.75f);
+                Vector3 destination = new Vector3(slimePos.x, slimePos.y, slimePos.z - 0.5f);
+                instCrop.transform.DOJump(destination, 1f, 1, 0.6f).SetEase(Ease.Flash);
 
                 // Take from inventory
                 Debug.Log("Fed " + crop.cropName);
@@ -107,7 +108,7 @@ public class SlimeInfoPannel : MonoBehaviour
             } else
             {
                 Debug.Log("Feeding failed");
-                Destroy(cropObj);
+                Destroy(cropObj.gameObject);
             }
         }
     }
