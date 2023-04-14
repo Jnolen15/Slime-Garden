@@ -44,6 +44,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2285186492947253136}
   - component: {fileID: 1987155979374566508}
+  - component: {fileID: 2261669726558121097}
   m_Layer: 0
   m_Name: GardenArbor_PlacePref
   m_TagString: Untagged
@@ -79,6 +80,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4951fa5e04244ea1a38246b1613bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2261669726558121097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2285186492947253137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0945c6400136921488d1ee73df6543b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matList:
+  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: ce0d2dc907a076d4d89d87768b0d8bd5, type: 2}
+  - {fileID: 2100000, guid: d780d025011a9b94caab3089be076672, type: 2}
+  - {fileID: 2100000, guid: 5a41898d4c0964643b2b15f7f7cea3f2, type: 2}
+  curMat: 0
 --- !u!1 &7628178465303643230
 GameObject:
   m_ObjectHideFlags: 0

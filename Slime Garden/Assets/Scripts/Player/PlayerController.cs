@@ -33,7 +33,8 @@ public class PlayerController : MonoBehaviour
         Default,
         Build,
         Plant,
-        Inspect
+        Inspect,
+        Paint
     }
     public State state;
 
@@ -125,6 +126,7 @@ public class PlayerController : MonoBehaviour
             case "Build":
                 state = State.Build;
                 gridSystem.SwapPlaceable(invManager.availablePlaceables[0]);
+                buildVisual.GetComponent<BuildingVisual>().SetMode("Place");
                 buildVisual.GetComponent<BuildingVisual>().RefreshVisual();
                 buildVisual.SetActive(true);
                 menus.BuildMenuActive(true);
@@ -132,6 +134,11 @@ public class PlayerController : MonoBehaviour
             case "Plant":
                 state = State.Plant;
                 menus.SeedMenuActive(true);
+                break;
+            case "Paint":
+                buildVisual.GetComponent<BuildingVisual>().SetMode("Select");
+                buildVisual.SetActive(true);
+                state = State.Paint;
                 break;
         }
     }
@@ -163,6 +170,9 @@ public class PlayerController : MonoBehaviour
         {
             if (state == State.Build)
                 BuyAndPlace(mousePos.point);
+
+            if (state == State.Paint)
+                Paint(mousePos.point);
         }
 
         // Click Interactable / Plantable
@@ -289,6 +299,18 @@ public class PlayerController : MonoBehaviour
 
         if (placed)
             pData.MakePurchase(so.price);
+    }
+
+    private void Paint(Vector3 pos)
+    {
+        bool painted = false;
+
+        painted = gridSystem.Paint(pos);
+
+        if (painted)
+            Debug.Log("Painted");
+        else
+            Debug.Log("Nothing to Paint");
     }
 
     private void PlantInteraction(PlantSpot plantSpot)

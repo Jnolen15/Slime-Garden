@@ -15,13 +15,15 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
         public string pName;
         public Vector2Int pOrigin;
         public PlaceableObjectSO.Dir dir;
+        public int matValue;
         public PlantSpotData plantSpot;
 
-        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, PlantSpotData pSpot = null)
+        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, int matVal = 0, PlantSpotData pSpot = null)
         {
             pName = newName;
             pOrigin = newOrigin;
             dir = newDir;
+            matValue = matVal;
             plantSpot = pSpot;
         }
     }
@@ -89,6 +91,11 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                 Debug.LogError("Failed to load, placeable data not found!");
             }
 
+            // If placeable can be mat swapped
+            var matSwapper = newBuild.GetComponent<MaterialSwapper>();
+            if (matSwapper != null)
+                matSwapper.SetMat(pData.matValue);
+
             // If placeable had PlantSpotData, reinstantiate that as well
             var pSpot = newBuild.GetComponentInChildren<PlantSpot>();
             if (pSpot)
@@ -113,6 +120,12 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
         {
             //Debug.Log("Attempting to save: " + pObj.GetPlaceableData().placeableName);
 
+            // If placeable can be mat swapped
+            var matSwapper = pObj.GetComponent<MaterialSwapper>();
+            int matIndex = 0;
+            if (matSwapper != null)
+                matIndex = matSwapper.GetMatIndex();
+
             // If placeable has a plant spot with a crop, also save plant spot data
             PlantSpot pSpot = pObj.GetComponentInChildren<PlantSpot>();
             if (pSpot && pSpot.hasCrop)
@@ -123,13 +136,13 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                     pSpot.fullyGrown, pSpot.curTick, pSpot.wateredTicks, pSpot.growthStage);
 
                 placeableDataList.Add(new PlaceableData(pObj.GetPlaceableData().placeableName,
-                    pObj.GetGridOrigin(), pObj.GetPlaceableDir(), pSData));
+                    pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex, pSData));
             } 
             // Otherwise save normally
             else
             {
                 placeableDataList.Add(new PlaceableData(pObj.GetPlaceableData().placeableName,
-                    pObj.GetGridOrigin(), pObj.GetPlaceableDir()));
+                    pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex));
             }
         }
 

@@ -209,6 +209,36 @@ public class GridSystem : MonoBehaviour
         Debug.Log("Updated placecable to " + placeable.name);
     }
 
+    // ================ Paint ================
+    public bool Paint(Vector3 mousePos)
+    {
+        grid.GetXZ(mousePos, out int a, out int b);
+        GridObject gridObj = grid.GetValue(a, b);
+
+        if (gridObj == null)
+            return false;
+
+        PlaceableObject placeableObj = gridObj.GetPlaceableObject();
+
+        if (placeableObj != null)
+        {
+            var matSwapper = placeableObj.gameObject.GetComponent<MaterialSwapper>();
+            if(matSwapper != null)
+            {
+                matSwapper.Swap();
+                return true;
+            } else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            Debug.Log("Nothing at " + a + "," + b + " to paint");
+            return false;
+        }
+    }
+
     // ================ Helpers ================
     public Vector3 GetSnappedWorldPos(Vector3 mousePos)
     {
@@ -232,6 +262,7 @@ public class GridSystem : MonoBehaviour
 
     public List<Vector2Int> GetPlaceablePositions(Vector3 mousePos)
     {
+        // Returns a list of grid spaces the current placeable to build would take up
         grid.GetXZ(mousePos, out int x, out int y);
         List<Vector2Int> gridPosList = placeable.GetGridPositionList(new Vector2Int(x, y), dir);
         return gridPosList;
@@ -244,16 +275,36 @@ public class GridSystem : MonoBehaviour
 
     public PlaceableObject GetPlaceableObject(Vector3 mousePos)
     {
+        // Returns placeable object at grid space mouse is on
         grid.GetXZ(mousePos, out int a, out int b);
         GridObject gridObj = grid.GetValue(a, b);
 
         if (gridObj == null)
         {
-            Debug.Log("Grid space is NULL");
+            //Debug.Log("Grid space is NULL");
             return null;
         }
 
         return gridObj.GetPlaceableObject();
+    }
+
+    public List<Vector2Int> GetPlacedObjPositions(Vector3 mousePos)
+    {
+        // Returns a list of grid spaces of object mouse is on
+        grid.GetXZ(mousePos, out int a, out int b);
+        GridObject gridObj = grid.GetValue(a, b);
+
+        if (gridObj == null)
+            return null;
+        
+        PlaceableObject placeableObj = gridObj.GetPlaceableObject();
+        if (placeableObj != null)
+        {
+            List<Vector2Int> gridPosList = placeableObj.GetGridPositionList();
+            return gridPosList;
+        }
+
+        return null;
     }
 
     public PlaceableObject GetPlaceableObjectAtGridPos(Vector2Int pos)
