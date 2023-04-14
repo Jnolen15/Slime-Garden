@@ -157,7 +157,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -323,7 +323,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -355,6 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3823127082832003531}
   - component: {fileID: 3542977229391583799}
+  - component: {fileID: 556630031324192421}
   m_Layer: 0
   m_Name: GardenFence_PlacePref
   m_TagString: Untagged
@@ -390,6 +391,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4951fa5e04244ea1a38246b1613bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &556630031324192421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3823127082832003530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0945c6400136921488d1ee73df6543b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matList:
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
+  - {fileID: 2100000, guid: a40474616a6d38140b27975cc27df030, type: 2}
+  - {fileID: 2100000, guid: f1bf640868bf47149a13518bcf2b158b, type: 2}
+  - {fileID: 2100000, guid: aeb7867539929674a91e1ce29084c520, type: 2}
+  - {fileID: 2100000, guid: 1fde52f7d8ac6024894ccd5960855646, type: 2}
+  curMat: 0
+  renders:
+  - {fileID: 786903102051226705}
+  - {fileID: 5252801660854518963}
+  - {fileID: 5428799538346489553}
+  - {fileID: 4524252626477860878}
+  - {fileID: 6145612985826532423}
+  - {fileID: 2248954237509126134}
 --- !u!1 &4737786669890067197
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,7 +636,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -692,7 +719,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -775,7 +802,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

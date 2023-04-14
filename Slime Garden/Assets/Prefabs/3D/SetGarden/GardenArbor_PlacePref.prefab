@@ -93,11 +93,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   matList:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
-  - {fileID: 2100000, guid: ce0d2dc907a076d4d89d87768b0d8bd5, type: 2}
-  - {fileID: 2100000, guid: d780d025011a9b94caab3089be076672, type: 2}
-  - {fileID: 2100000, guid: 5a41898d4c0964643b2b15f7f7cea3f2, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
+  - {fileID: 2100000, guid: a40474616a6d38140b27975cc27df030, type: 2}
+  - {fileID: 2100000, guid: f1bf640868bf47149a13518bcf2b158b, type: 2}
+  - {fileID: 2100000, guid: aeb7867539929674a91e1ce29084c520, type: 2}
+  - {fileID: 2100000, guid: 1fde52f7d8ac6024894ccd5960855646, type: 2}
   curMat: 0
+  renders:
+  - {fileID: 966115302802955311}
 --- !u!1 &7628178465303643230
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

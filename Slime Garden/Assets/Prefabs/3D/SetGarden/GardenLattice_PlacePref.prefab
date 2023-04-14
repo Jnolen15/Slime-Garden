@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aed10eb42d48fec42b5adc8d34546a51, type: 2}
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -139,6 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7336614397981079765}
   - component: {fileID: 7058747256918500137}
+  - component: {fileID: -6327651988918235361}
   m_Layer: 0
   m_Name: GardenLattice_PlacePref
   m_TagString: Untagged
@@ -174,3 +175,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4951fa5e04244ea1a38246b1613bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6327651988918235361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7336614397981079764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0945c6400136921488d1ee73df6543b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matList:
+  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
+  - {fileID: 2100000, guid: a40474616a6d38140b27975cc27df030, type: 2}
+  - {fileID: 2100000, guid: f1bf640868bf47149a13518bcf2b158b, type: 2}
+  - {fileID: 2100000, guid: aeb7867539929674a91e1ce29084c520, type: 2}
+  - {fileID: 2100000, guid: 1fde52f7d8ac6024894ccd5960855646, type: 2}
+  curMat: 0
+  renders:
+  - {fileID: 6733091086340120696}

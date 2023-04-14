@@ -6,12 +6,7 @@ public class MaterialSwapper : MonoBehaviour
 {
     [SerializeField] private List<Material> matList = new List<Material>();
     [SerializeField] private int curMat;
-    private Renderer render;
-
-    void Awake()
-    {
-        render = GetComponentInChildren<Renderer>();
-    }
+    [SerializeField] private Renderer[] renders;
 
     public void Swap()
     {
@@ -20,7 +15,10 @@ public class MaterialSwapper : MonoBehaviour
         if (curMat >= matList.Count)
             curMat = 0;
 
-        render.material = matList[curMat];
+        foreach(Renderer render in renders)
+        {
+            render.material = matList[curMat];
+        }
     }
 
     public int GetMatIndex()
@@ -35,6 +33,9 @@ public class MaterialSwapper : MonoBehaviour
         if (curMat >= matList.Count)
             curMat = 0;
 
-        render.material = matList[curMat];
+        foreach (Renderer render in renders)
+        {
+            render.material = matList[curMat];
+        }
     }
 }
