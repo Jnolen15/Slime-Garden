@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speciesName: 
-  displayName: 
+  displayName: Slime
   sRarity: 0
   slimeSpeciesBase: {fileID: 0}
   sBaseColor: 
@@ -185,7 +185,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538871180620568560}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 265393a1929f45547b6d8bfe1d3d9236, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

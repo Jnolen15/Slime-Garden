@@ -59,7 +59,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
         newSD.sCrystal = newBase.slimeCrystal;
         newSD.Setup();
-        if(slime.displayName != null)
+        if(slime.displayName != "" && slime.displayName != null)
             newSD.SetName(slime.displayName);
     }
 

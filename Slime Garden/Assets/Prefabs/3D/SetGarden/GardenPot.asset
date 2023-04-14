@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: GardenPot
+  m_EditorClassIdentifier: 
+  placeableName: Garden Pot
+  previewImage: {fileID: 21300000, guid: ba4ce8d644da0ef47a350fb76db68021, type: 3}
+  price: 10
+  description: A pot to plant crops in!
+  prefab: {fileID: 6297345656426386180, guid: d950aab4534e7804598da0f97fb0c705, type: 3}
+  visual: {fileID: 6331002177778675790, guid: 20d1bd77b7dd4784d8da17dccb8a6ce3, type: 3}
+  width: 1
+  height: 1

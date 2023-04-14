@@ -35,7 +35,7 @@ public class SlimeData : MonoBehaviour
         // Create name and calculate rarity
         sPattern = slimeSpeciesPattern.sPattern;
         speciesName = sBaseColor + " " + sPatternColor + " " + sPattern;
-        displayName = speciesName;
+        displayName = sBaseColor + " Slime";
         sRarity = slimeSpeciesBase.sRarity + slimeSpeciesPattern.sRarity;
         // ========== Sprite stuff ==========
         sprites = this.transform.GetChild(0).gameObject;
