@@ -139,7 +139,7 @@ public class WildZoneControler : MonoBehaviour
         inspectingSlime = true;
         curInspectingSlime = slime.GetComponent<SlimeController>();
         menus.ShowSlimeStats(slime);
-        camcontrol.FollowSlime(slime.gameObject.transform);
+        camcontrol.FollowObject(slime.gameObject.transform, "slime");
     }
 
     public void StopInspectSlime()
@@ -152,6 +152,6 @@ public class WildZoneControler : MonoBehaviour
         inspectingSlime = false;
         curInspectingSlime = null;
         menus.CloseSlimeStats();
-        camcontrol.EndFollowSlime();
+        camcontrol.EndFollowObject();
     }
 }

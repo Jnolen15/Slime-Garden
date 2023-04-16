@@ -38,9 +38,14 @@ public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void ButtonPressed()
     {
         var sIP = gameObject.GetComponentInParent<SlimeInfoPannel>();
+        var cSM = gameObject.GetComponentInParent<CropSellMenu>();
 
         if (sIP != null)
             sIP.FeedSlime(so);
+        else if (cSM != null)
+            cSM.SellCrop(so);
+
+        menuManager.SetInfoBox(so.cropName, numStored, so.CropDescription, so.previewImage);
     }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)

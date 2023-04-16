@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject seedUIPrefab;
     [SerializeField] private GameObject infoBox;
     [SerializeField] private GameObject slimeInfoBox;
+    [SerializeField] private GameObject cropSellBox;
     [SerializeField] private GameObject cSToken;
     [SerializeField] private RectTransform tokenEndPos;
     [SerializeField] private InventoryManager invManager;
@@ -25,6 +26,7 @@ public class MenuManager : MonoBehaviour
         seedMenu.SetActive(false);
         infoBox.SetActive(false);
         slimeInfoBox.SetActive(false);
+        cropSellBox.SetActive(false);
     }
 
     public void CloseAllSubmenus()
@@ -116,6 +118,19 @@ public class MenuManager : MonoBehaviour
     public void CloseSlimeStats()
     {
         slimeInfoBox.SetActive(false);
+        CloseInfoBox();
+    }
+
+    // ============== Crop Sell ==============
+    public void ShowCropSell()
+    {
+        cropSellBox.SetActive(true);
+        cropSellBox.GetComponent<CropSellMenu>().UpdateCropCount();
+    }
+
+    public void CloseCropSell()
+    {
+        cropSellBox.SetActive(false);
         CloseInfoBox();
     }
 

@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private bool inspectingSlime;
     private bool dragBuild;
     private bool dragDestroy;
+    private bool inShop;
 
     // Script/Object Refrences
     private PlayerInput pInput;
@@ -34,7 +35,8 @@ public class PlayerController : MonoBehaviour
         Build,
         Plant,
         Inspect,
-        Paint
+        Paint,
+        InMenus
     }
     public State state;
 
@@ -61,20 +63,24 @@ public class PlayerController : MonoBehaviour
         else
             isOverUI = false;
 
+        // Stop inspecting edge cases
         if (inspectingSlime)
         {
             // If inspect state is changed
             if (state != State.Inspect)
             {
                 StopInspectSlime();
+                return;
             }
 
             // If inspecting slime becomes tamed
             if (curInspectingSlime.GetState() == SlimeController.State.tamed)
-            {
                 StopInspectSlime();
-            }
         }
+
+        // Close shop edge cases
+        if (inShop && state != State.InMenus)
+            CloseShop();
 
         // Swap action maps if in an input field
         GameObject currentFocus = EventSystem.current.currentSelectedGameObject;
@@ -131,6 +137,9 @@ public class PlayerController : MonoBehaviour
                 buildVisual.SetActive(true);
                 menus.BuildMenuActive(true);
                 break;
+            case "Inspect":
+                state = State.Inspect;
+                break;
             case "Plant":
                 state = State.Plant;
                 menus.SeedMenuActive(true);
@@ -139,6 +148,9 @@ public class PlayerController : MonoBehaviour
                 buildVisual.GetComponent<BuildingVisual>().SetMode("Select");
                 buildVisual.SetActive(true);
                 state = State.Paint;
+                break;
+            case "InMenus":
+                state = State.InMenus;
                 break;
         }
     }
@@ -175,7 +187,7 @@ public class PlayerController : MonoBehaviour
                 Paint(mousePos.point);
         }
 
-        // Click Interactable / Plantable
+        // Click Interactable / Plantable / Shop
         Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
         {
@@ -188,8 +200,11 @@ public class PlayerController : MonoBehaviour
                 interactable.Interact();
             }
 
-            if (colObj.tag == "Plantable")
+            if (state == State.Default && colObj.tag == "Plantable")
                 PlantInteraction(colObj.GetComponent<PlantSpot>());
+
+            if (state == State.Default && colObj.tag == "Shop")
+                OpenShop(colObj.transform);
         }
 
         // Click slime
@@ -357,11 +372,11 @@ public class PlayerController : MonoBehaviour
 
     private void InspectSlime(GameObject slime)
     {
-        state = State.Inspect;
+        ChangeState("Inspect");
         inspectingSlime = true;
         curInspectingSlime = slime.GetComponent<SlimeController>();
         menus.ShowSlimeStats(slime);
-        camcontrol.FollowSlime(slime.gameObject.transform);
+        camcontrol.FollowObject(slime.gameObject.transform, "slime");
     }
 
     public void StopInspectSlime()
@@ -369,12 +384,30 @@ public class PlayerController : MonoBehaviour
         if (!inspectingSlime)
             return;
 
-        Debug.Log("Stop inspecting slime");
-        state = State.Default;
+        ChangeState("Default");
         inspectingSlime = false;
         curInspectingSlime = null;
         menus.CloseSlimeStats();
-        camcontrol.EndFollowSlime();
+        camcontrol.EndFollowObject();
+    }
+
+    private void OpenShop(Transform shop)
+    {
+        ChangeState("InMenus");
+        inShop = true;
+        menus.ShowCropSell();
+        camcontrol.FollowObject(shop, "shop");
+    }
+
+    public void CloseShop()
+    {
+        if (!inShop)
+            return;
+
+        ChangeState("Default");
+        inShop = false;
+        menus.CloseCropSell();
+        camcontrol.EndFollowObject();
     }
 
     // ========== MISC ==========

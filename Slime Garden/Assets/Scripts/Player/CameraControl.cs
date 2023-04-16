@@ -42,10 +42,12 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private float fovMin = 40f;
     [SerializeField] private float targetFOV = 60f;
 
-    [Header("Slime Lock On")]
+    [Header("Objectt Lock On")]
     [SerializeField] private float slimeInspectZoom;
     [SerializeField] private float slimeInspectFOV;
-    [SerializeField] private bool lockedToSlime;
+    [SerializeField] private float shopInspectZoom;
+    [SerializeField] private float shopInspectFOV;
+    [SerializeField] private bool lockedToObject;
     [SerializeField] private Transform objectToFollow;
 
 
@@ -69,12 +71,12 @@ public class CameraControl : MonoBehaviour
             isOverUI = false;
 
         // Movement
-        if (lockedToSlime)
+        if (lockedToObject)
         {
             if (objectToFollow != null)
                 this.transform.position = objectToFollow.position;
             else
-                EndFollowSlime();
+                EndFollowObject();
         }
         else
             camMovement(moveVector);
@@ -158,7 +160,7 @@ public class CameraControl : MonoBehaviour
 
     private void camZoomLower()
     {
-        if (!lockedToSlime)
+        if (!lockedToObject)
         {
             zoomOffset.y = Mathf.Clamp(zoomOffset.y, zoomYMin, zoomYMax);
             targetFOV = Mathf.Clamp(targetFOV, fovMin, fovMax);
@@ -172,8 +174,8 @@ public class CameraControl : MonoBehaviour
     // ========== CONTROLS ==========
     public void OnMovement(InputAction.CallbackContext context)
     {
-        if (lockedToSlime)
-            EndFollowSlime();
+        if (lockedToObject)
+            EndFollowObject();
 
         Vector2 inputVal = context.ReadValue<Vector2>();
         moveVector = new Vector3(inputVal.x, 0, inputVal.y);
@@ -184,8 +186,8 @@ public class CameraControl : MonoBehaviour
         if (isOverUI)
             return;
 
-        if (lockedToSlime)
-            EndFollowSlime();
+        if (lockedToObject)
+            EndFollowObject();
 
         float z = context.ReadValue<float>();
 
@@ -252,17 +254,26 @@ public class CameraControl : MonoBehaviour
 
     // ========== CAMERA ACTIONS ==========
 
-    public void FollowSlime(Transform slimePos)
+    public void FollowObject(Transform objPos, string type)
     {
-        lockedToSlime = true;
-        objectToFollow = slimePos;
-        zoomOffset.y = slimeInspectZoom;
-        targetFOV = slimeInspectFOV;
+        lockedToObject = true;
+        objectToFollow = objPos;
+
+        if (type == "slime")
+        {
+            zoomOffset.y = slimeInspectZoom;
+            targetFOV = slimeInspectFOV;
+        }
+        else if (type == "shop")
+        {
+            zoomOffset.y = shopInspectZoom;
+            targetFOV = shopInspectFOV;
+        }
     }
 
-    public void EndFollowSlime()
+    public void EndFollowObject()
     {
-        lockedToSlime = false;
+        lockedToObject = false;
         objectToFollow = null;
         zoomOffset.y = zoomYMin;
         targetFOV = fovMin;
@@ -270,9 +281,14 @@ public class CameraControl : MonoBehaviour
         var habitatPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         var wildzonePlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<WildZoneControler>();
         if (habitatPlayer)
+        {
             habitatPlayer.StopInspectSlime();
+            habitatPlayer.CloseShop();
+        }
         else if (wildzonePlayer)
+        {
             wildzonePlayer.StopInspectSlime();
+        }
         else
             Debug.Log("No player controler found!");
     }
