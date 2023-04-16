@@ -55,6 +55,8 @@ public class CropSellMenu : MonoBehaviour
             invManager.AddCrop(crop, -1);
             pData.GainMoney(crop.sellValue);
             UpdateCropCount();
+
+            menuManager.AnimateToken(Color.white);
         }
     }
 }
