@@ -25,32 +25,52 @@ public class MouseControl : MonoBehaviour
 
     void Update()
     {
-        
-        if (holding)
+        // DEFAULT
+        if (pc.state == PlayerController.State.Default)
         {
-            cursorVis.UpdateCursor("close");
+            if (holding)
+            {
+                cursorVis.UpdateCursor("close");
 
-            // border detection
-            Ray borderRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
-            {
-                SlimeDropped();
-            }
-        } else
-        {
-            // Cursor swapping
-            Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-            if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
-            {
-                if (clickraycastHit.collider.gameObject.tag == "Slime")
-                    cursorVis.UpdateCursor("open");
+                // border detection
+                Ray borderRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
+                {
+                    SlimeDropped();
+                }
             }
             else
-                cursorVis.UpdateCursor("point");
+            {
+                // Cursor swapping
+                Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
+                {
+                    if (clickraycastHit.collider.gameObject.tag == "Slime")
+                        cursorVis.UpdateCursor("open");
+                }
+                else
+                    cursorVis.UpdateCursor("point");
+            }
+        }
+        // BUILD
+        if (pc.state == PlayerController.State.Build)
+        {
+            cursorVis.UpdateCursor("point");
+        }
+        // PLANT
+        if (pc.state == PlayerController.State.Plant)
+        {
+            cursorVis.UpdateCursor("point");
+        }
+        // PAINT
+        if (pc.state == PlayerController.State.Paint)
+        {
+            cursorVis.UpdateCursor("paint");
         }
 
-        // Mouse position in world space
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+            // Mouse position in world space
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             mouseVisual.transform.position = mousePos.point;

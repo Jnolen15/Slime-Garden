@@ -8,6 +8,7 @@ public class CursorVisual : MonoBehaviour
     [SerializeField] private Texture2D cursorPoint;
     [SerializeField] private Texture2D cursorClose;
     [SerializeField] private Texture2D cursorOpen;
+    [SerializeField] private Texture2D cursorPaint;
 
 
     void Start()
@@ -27,6 +28,9 @@ public class CursorVisual : MonoBehaviour
                 break;
             case "open":
                 Cursor.SetCursor(cursorOpen, Vector2.zero, CursorMode.Auto);
+                break;
+            case "paint":
+                Cursor.SetCursor(cursorPaint, Vector2.zero, CursorMode.Auto);
                 break;
         }
     }

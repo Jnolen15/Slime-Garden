@@ -19,6 +19,9 @@ public class MaterialSwapper : MonoBehaviour
         {
             render.material = matList[curMat];
         }
+
+        if (this.GetComponent<ParticleSystem>() != null)
+            this.GetComponent<ParticleSystem>().Emit(15);
     }
 
     public int GetMatIndex()
