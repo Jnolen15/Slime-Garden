@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df863a4009a2da479464d47399dd5eb, type: 3}
+  m_Name: MondoMellon
+  m_EditorClassIdentifier: 
+  cropName: Mondo Mellon
+  previewImage: {fileID: 21300000, guid: f078f61bb2f1d0944ac4d18cde813c0f, type: 3}
+  price: 10
+  sellValue: 15
+  seedDescription: Mondo mellons take a bit longer to grow, but can be useful when
+    taming wild slimes.
+  CropDescription: A large mellon that slimes love. +Tame potential
+  growTicks: 0200000004000000
+  cropStages:
+  - {fileID: -2432090755550338912, guid: 5a96932c842f89a479faa711a4e1c5cc, type: 3}
+  - {fileID: -2432090755550338912, guid: dd06c851caa8f684f92c8377af2db82b, type: 3}
+  - {fileID: -2432090755550338912, guid: 7232d5650409bfa488c3c9dec97d743c, type: 3}
+  cropMat: {fileID: 2100000, guid: 9a32d842756b41f4b884a0b0b764dce5, type: 2}
+  cropObj: {fileID: 8707272685677682037, guid: 6d1e4516b9bbf2e4cb9556c8e2506499, type: 3}
+  tameValue: 4

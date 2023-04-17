@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
                 interactable.Interact();
             }
 
-            if (state == State.Default && colObj.tag == "Plantable")
+            if ((state == State.Plant || state == State.Default) && colObj.tag == "Plantable")
                 PlantInteraction(colObj.GetComponent<PlantSpot>());
 
             if (state == State.Default && colObj.tag == "Shop")
