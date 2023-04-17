@@ -16,9 +16,9 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
         public Vector2Int pOrigin;
         public PlaceableObjectSO.Dir dir;
         public int matValue;
-        public PlantSpotData plantSpot;
+        public List<PlantSpotData> plantSpot;
 
-        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, int matVal = 0, PlantSpotData pSpot = null)
+        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, int matVal = 0, List<PlantSpotData> pSpot = null)
         {
             pName = newName;
             pOrigin = newOrigin;
@@ -97,12 +97,17 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                 matSwapper.SetMat(pData.matValue);
 
             // If placeable had PlantSpotData, reinstantiate that as well
-            var pSpot = newBuild.GetComponentInChildren<PlantSpot>();
-            if (pSpot)
+            int count = 0;
+            foreach (PlantSpot pSpot in newBuild.GetComponentsInChildren<PlantSpot>())
             {
-                pSpot.SetPlant(FindCropData(pData.plantSpot.cropName), 
-                    pData.plantSpot.fullyGrown, pData.plantSpot.curTick, 
-                    pData.plantSpot.wateredTicks, pData.plantSpot.growthStage);
+                if(pData.plantSpot[count].cropName != "empty")
+                {
+                    pSpot.SetPlant(FindCropData(pData.plantSpot[count].cropName),
+                        pData.plantSpot[count].fullyGrown, pData.plantSpot[count].curTick,
+                        pData.plantSpot[count].wateredTicks, pData.plantSpot[count].growthStage);
+                }
+
+                count++;
             }
         }
     }
@@ -127,16 +132,32 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                 matIndex = matSwapper.GetMatIndex();
 
             // If placeable has a plant spot with a crop, also save plant spot data
-            PlantSpot pSpot = pObj.GetComponentInChildren<PlantSpot>();
-            if (pSpot && pSpot.hasCrop)
+            List<PlantSpotData> pSpots = new List<PlantSpotData>();
+            foreach (PlantSpot pSpot in pObj.GetComponentsInChildren<PlantSpot>())
             {
-                //Debug.Log("Has Plant spot with: " + pSpot.curCropSO.cropName);
+                //Debug.Log(pObj.name + " has Plant spot with: " + pSpot.curCropSO.cropName);
 
-                PlantSpotData pSData = new PlantSpotData(pSpot.curCropSO.cropName,
-                    pSpot.fullyGrown, pSpot.curTick, pSpot.wateredTicks, pSpot.growthStage);
+                PlantSpotData pSData = null;
+
+                // Save if there is a crop, if not save empty
+                if (pSpot.hasCrop)
+                {
+                    pSData = new PlantSpotData(pSpot.curCropSO.cropName,
+                        pSpot.fullyGrown, pSpot.curTick, pSpot.wateredTicks, pSpot.growthStage);
+                } else
+                {
+                    pSData = new PlantSpotData("empty", false, 0, 0, 0);
+                }
+
+                pSpots.Add(pSData);
+            }
+
+            // If had plant spots
+            if (pSpots.Count > 0)
+            {
 
                 placeableDataList.Add(new PlaceableData(pObj.GetPlaceableData().placeableName,
-                    pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex, pSData));
+                    pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex, pSpots));
             } 
             // Otherwise save normally
             else

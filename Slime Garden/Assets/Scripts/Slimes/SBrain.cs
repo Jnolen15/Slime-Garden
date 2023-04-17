@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class SBrain : MonoBehaviour
 {
@@ -81,5 +82,12 @@ public class SBrain : MonoBehaviour
     public void ToggleBrain(bool toggle)
     {
         brainActive = toggle;
+    }
+
+    // FOR TESTING ONLY. (Allows to force slime into chosen state)
+    [Button]
+    private void ForceState(SlimeController.State state)
+    {
+        currslimeControler.ChangeState(state);
     }
 }

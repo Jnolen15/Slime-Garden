@@ -97,8 +97,11 @@ public class SlimeController : MonoBehaviour
                 {
                     StartState("Held", brain.slimeFaceDefault);
                     JumpState();
+                    stateTimer = 2f;
                 }
-                if (jumped && grounded)
+                // If in jump state for too long, assume stuck and set idle
+                if (stateTimer > 0) stateTimer -= Time.deltaTime;
+                if (jumped && grounded || (stateTimer <= 0))
                 {
                     jumped = false;
                     ChangeState(State.idle);

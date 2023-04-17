@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3736737703223321735}
   m_Layer: 6
   m_Name: default
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8852623167608681117}
   - component: {fileID: 980383414228011376}
   - component: {fileID: 4757940802588990569}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DirtMound
   m_TagString: Plantable
   m_Icon: {fileID: 0}
