@@ -9,6 +9,7 @@ public class CropSellMenu : MonoBehaviour
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private GameObject feedMenu;
     [SerializeField] private GameObject cropUIPrefab;
+    private int sellAmmount = 1;
 
     private void Start()
     {
@@ -41,7 +42,7 @@ public class CropSellMenu : MonoBehaviour
 
     public void SellCrop(CropSO crop)
     {
-        if (0 < invManager.GetNumHeld(crop))
+        if (invManager.GetNumHeld(crop) > 0)
         {
             // Create Crop
             //var slimePos = curSlimeData.transform.position;
@@ -50,13 +51,25 @@ public class CropSellMenu : MonoBehaviour
             //var cropObj = instCrop.GetComponent<CropObj>();
             //cropObj.Setup(crop);
 
+            // If less crops held then the current sell ammount, sell the rest
+            var numToSell = 0;
+            if (invManager.GetNumHeld(crop) < sellAmmount)
+                numToSell = (invManager.GetNumHeld(crop));
+            else
+                numToSell = sellAmmount;
+
             // Take from inventory and add money
-            Debug.Log("Sold " + crop.cropName);
-            invManager.AddCrop(crop, -1);
-            pData.GainMoney(crop.sellValue);
+            Debug.Log("Sold " + numToSell + " " + crop.cropName + " for " + (crop.sellValue * numToSell));
+            invManager.AddCrop(crop, -numToSell);
+            pData.GainMoney(crop.sellValue * numToSell);
             UpdateCropCount();
 
             menuManager.AnimateToken(Color.white);
         }
+    }
+
+    public void ChangeSellammount(int num)
+    {
+        sellAmmount = num;
     }
 }
