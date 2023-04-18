@@ -10,6 +10,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
     private List<PlaceableData> placeableDataList = new List<PlaceableData>();
     [SerializeField] private int habitatTier;
     [SerializeField] private List<HabitatTiers> habitatTiers = new List<HabitatTiers>();
+    [SerializeField] private Vector2Int borderStyle;
 
     [System.Serializable]
     public class HabitatTiers
@@ -89,10 +90,22 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
         return null;
     }
 
-    // =================== UPGRADE HANDLING ===================
+    // =================== UPGRADE / STYLE HANDLING ===================
     public void UpgradeHabitat()
     {
         habitatTier++;
+    }
+
+    public void UpdateBorderStyle(Vector2Int index)
+    {
+        borderStyle = index;
+
+        var bordersToUpdate = GameObject.FindObjectsOfType<BorderFenceStyle>();
+
+        foreach (BorderFenceStyle border in bordersToUpdate)
+        {
+            border.ChangeStyle(borderStyle.x, borderStyle.y);
+        }
     }
 
     // =================== SAVE LOAD ===================
@@ -141,6 +154,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
 
         // Environment setup
         habitatTiers[habitatTier].environment.SetActive(true);
+        UpdateBorderStyle(data.borderFenceStyle);
     }
 
     public void SaveData(GameData data)
@@ -198,8 +212,9 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
             }
         }
 
-        // Save habitat teir
+        // Save habitat teir / decor
         data.habitatTier = habitatTier;
+        data.borderFenceStyle = borderStyle;
 
         data.placeableList = placeableDataList;
     }

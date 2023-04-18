@@ -34,4 +34,16 @@ public class PreviewStageManager : MonoBehaviour
         else if (size >= 5)
             camPos.localPosition = new Vector3(0, 6, -6);
     }
+
+    public void ShowGameObject(Transform obj)
+    {
+        // Instantiate and center visual prefab
+        if (visual != null)
+            Destroy(visual.gameObject);
+
+        visual = obj;
+        visual.transform.position = stagePos.position;
+
+        camPos.localPosition = new Vector3(0, 2, -2);
+    }
 }

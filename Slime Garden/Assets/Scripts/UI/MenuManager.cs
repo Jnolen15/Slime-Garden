@@ -152,6 +152,7 @@ public class MenuManager : MonoBehaviour
     public void CloseHabitatUpgrade()
     {
         habitatUpgradeBox.SetActive(false);
+        stageManager.gameObject.SetActive(false);
         CloseInfoBox();
     }
 

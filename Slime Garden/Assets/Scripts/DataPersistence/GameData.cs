@@ -7,6 +7,7 @@ public class GameData
 {
     public int money;
     public int habitatTier;
+    public Vector2Int borderFenceStyle;
     public List<InventoryManager.CropInventroyEntry> inventoryList;
     public List<HabitatControl.SlimeDataEntry> slimeList;
     public List<HabitatControl.SlimeDataEntry> tamedSlimeList;
@@ -16,6 +17,7 @@ public class GameData
     {
         money = 0;
         habitatTier = 0;
+        borderFenceStyle = new Vector2Int(0, 0);
         inventoryList = new List<InventoryManager.CropInventroyEntry>();
         slimeList = new List<HabitatControl.SlimeDataEntry>();
         tamedSlimeList = new List<HabitatControl.SlimeDataEntry>();
