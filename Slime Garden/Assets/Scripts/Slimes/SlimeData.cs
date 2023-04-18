@@ -66,4 +66,9 @@ public class SlimeData : MonoBehaviour
         displayName = newName;
         //Debug.Log("Display name changed: " + displayName);
     }
+
+    public void RemoveFromHabitat()
+    {
+        hControl.activeSlimes.Remove(gameObject);
+    }
 }

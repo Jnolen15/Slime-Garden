@@ -112,4 +112,11 @@ public class SlimeInfoPannel : MonoBehaviour
             }
         }
     }
+
+
+    // ============== Release Slime ==============
+    public void Release()
+    {
+        curSlimeControl.ReleaseSlime();
+    }
 }

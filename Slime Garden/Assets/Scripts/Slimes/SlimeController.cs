@@ -302,6 +302,13 @@ public class SlimeController : MonoBehaviour
         return false;
     }
 
+    public void ReleaseSlime()
+    {
+        ChangeState(State.tamed);
+        Destroy(gameObject, 2f);
+        sData.RemoveFromHabitat();
+    }
+
     public bool InNonInteruptableState()
     {
         if (state == State.held)
