@@ -13,6 +13,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject infoBox;
     [SerializeField] private GameObject slimeInfoBox;
     [SerializeField] private GameObject cropSellBox;
+    [SerializeField] private GameObject habitatUpgradeBox;
     [SerializeField] private GameObject cSToken;
     [SerializeField] private RectTransform tokenEndPos;
     [SerializeField] private InventoryManager invManager;
@@ -27,6 +28,7 @@ public class MenuManager : MonoBehaviour
         infoBox.SetActive(false);
         slimeInfoBox.SetActive(false);
         cropSellBox.SetActive(false);
+        habitatUpgradeBox.SetActive(false);
     }
 
     public void CloseAllSubmenus()
@@ -121,6 +123,13 @@ public class MenuManager : MonoBehaviour
         CloseInfoBox();
     }
 
+    // ============== Shops ==============
+    public void CloseAllShops()
+    {
+        CloseCropSell();
+        CloseHabitatUpgrade();
+    }
+
     // ============== Crop Sell ==============
     public void ShowCropSell()
     {
@@ -131,6 +140,18 @@ public class MenuManager : MonoBehaviour
     public void CloseCropSell()
     {
         cropSellBox.SetActive(false);
+        CloseInfoBox();
+    }
+
+    // ============== Habitat Upgrade ==============
+    public void ShowHabitatUpgrade()
+    {
+        habitatUpgradeBox.SetActive(true);
+    }
+
+    public void CloseHabitatUpgrade()
+    {
+        habitatUpgradeBox.SetActive(false);
         CloseInfoBox();
     }
 

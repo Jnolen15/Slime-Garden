@@ -192,19 +192,19 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
         {
             GameObject colObj = objectRayHit.collider.gameObject;
-            if (state == State.Default && (colObj.tag == "Interactable" || colObj.tag == "Crop"))
+            if (state == State.Default && (colObj.tag == "Interactable" || colObj.tag == "Crop" || colObj.tag == "Shop"))
             {
                 var interactable = colObj.GetComponent<IInteractable>();
                 if (interactable == null) return;
+
+                if (colObj.tag == "Shop")
+                    OpenShop(colObj.transform);
 
                 interactable.Interact();
             }
 
             if ((state == State.Plant || state == State.Default) && colObj.tag == "Plantable")
                 PlantInteraction(colObj.GetComponent<PlantSpot>());
-
-            if (state == State.Default && colObj.tag == "Shop")
-                OpenShop(colObj.transform);
         }
 
         // Click slime
@@ -395,7 +395,7 @@ public class PlayerController : MonoBehaviour
     {
         ChangeState("InMenus");
         inShop = true;
-        menus.ShowCropSell();
+        //menus.ShowCropSell();
         camcontrol.FollowObject(shop, "shop");
     }
 
@@ -406,7 +406,8 @@ public class PlayerController : MonoBehaviour
 
         ChangeState("Default");
         inShop = false;
-        menus.CloseCropSell();
+        menus.CloseAllShops();
+        //menus.CloseCropSell();
         camcontrol.EndFollowObject();
     }
 
