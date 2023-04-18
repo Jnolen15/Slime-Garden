@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameData
 {
     public int money;
+    public int habitatTier;
     public List<InventoryManager.CropInventroyEntry> inventoryList;
     public List<HabitatControl.SlimeDataEntry> slimeList;
     public List<HabitatControl.SlimeDataEntry> tamedSlimeList;
@@ -14,6 +15,7 @@ public class GameData
     public GameData()
     {
         money = 0;
+        habitatTier = 0;
         inventoryList = new List<InventoryManager.CropInventroyEntry>();
         slimeList = new List<HabitatControl.SlimeDataEntry>();
         tamedSlimeList = new List<HabitatControl.SlimeDataEntry>();

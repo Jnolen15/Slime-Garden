@@ -8,6 +8,23 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
     [SerializeField] private InventoryManager invManager;
     private List<PlaceableObject> placeables;
     private List<PlaceableData> placeableDataList = new List<PlaceableData>();
+    [SerializeField] private int habitatTier;
+    [SerializeField] private List<HabitatTiers> habitatTiers = new List<HabitatTiers>();
+
+    [System.Serializable]
+    public class HabitatTiers
+    {
+        public int tNum;
+        public int gridSize;
+        public GameObject environment;
+
+        public HabitatTiers(int num, int size, GameObject env)
+        {
+            tNum = num;
+            gridSize = size;
+            environment = env;
+        }
+    }
 
     [System.Serializable]
     public class PlaceableData
@@ -72,11 +89,22 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
         return null;
     }
 
+    // =================== UPGRADE HANDLING ===================
+    public void UpgradeHabitat()
+    {
+        habitatTier++;
+    }
+
     // =================== SAVE LOAD ===================
     public void LoadData(GameData data)
     {
+        // Grid setup
+        habitatTier = data.habitatTier;
+        gridSystem.InstantiateGrid(habitatTiers[habitatTier].gridSize);
+
         Debug.Log("Attempting to load placeable list of size: " + data.placeableList.Count);
 
+        // Load placeables
         foreach (PlaceableData pData in data.placeableList)
         {
             GameObject newBuild = null;
@@ -110,6 +138,9 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                 count++;
             }
         }
+
+        // Environment setup
+        habitatTiers[habitatTier].environment.SetActive(true);
     }
 
     public void SaveData(GameData data)
@@ -166,6 +197,9 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                     pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex));
             }
         }
+
+        // Save habitat teir
+        data.habitatTier = habitatTier;
 
         data.placeableList = placeableDataList;
     }

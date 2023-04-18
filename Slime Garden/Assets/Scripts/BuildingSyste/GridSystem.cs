@@ -9,17 +9,31 @@ public class GridSystem : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayerMask;
     [Header("Grid Parameters")]
-    [SerializeField] private int gridWidth = 10;
-    [SerializeField] private int gridHeight = 10;
-    [SerializeField] private int cellSize = 1;
+    [SerializeField] private int gridWidth;
+    [SerializeField] private int gridHeight;
+    [SerializeField] private int cellSize;
     [SerializeField] private Vector3 offsett = Vector3.zero;
     [SerializeField] private PlaceableObjectSO placeable;
 
     private WorldGrid<GridObject> grid;
     private PlaceableObjectSO.Dir dir = PlaceableObjectSO.Dir.Down;
 
-    private void Awake()
+    /*private void Awake()
     {
+        // Moved grind instantiation to GridDataPersistence on load
+        // This way more can be controlled about how it instantiates
+
+        grid = new WorldGrid<GridObject>(gridWidth, gridHeight, cellSize, offsett,
+                                        (WorldGrid<GridObject> g, int x, int y) => new GridObject(g, x, y));
+    }*/
+
+    public void InstantiateGrid(int size)
+    {
+        Debug.Log("The Grid is being instantiated");
+
+        gridWidth = size;
+        gridHeight = size;
+
         grid = new WorldGrid<GridObject>(gridWidth, gridHeight, cellSize, offsett,
                                         (WorldGrid<GridObject> g, int x, int y) => new GridObject(g, x, y));
     }
