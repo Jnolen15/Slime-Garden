@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D.Animation;
+using Sirenix.OdinInspector;
 
 public class SlimePuppet : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class SlimePuppet : MonoBehaviour
         TriggerAnim("Idle", slimeFaces[0]);
     }
 
+    [Button]
     public void TriggerAnim(string sName, SlimeFaceSO sface, string particles = null)
     {
         // Changes the slime face, sets animations, and re-sets stateChanged bool
