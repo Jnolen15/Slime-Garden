@@ -17,7 +17,7 @@ public class SplicerInput : MonoBehaviour
     public bool sSpecial = false;
 
     // STUFF FOR COLOR CHANGING
-    public Material lightsMat;
+    [SerializeField] private Material mat;
     public Color defaultColor;
     public Color currentColor;
     public Color Amethyst;
@@ -41,11 +41,13 @@ public class SplicerInput : MonoBehaviour
         splicer = this.transform.parent.gameObject.GetComponent<SplicerScript>();
 
         particles = GetComponent<ParticleSystem>();
+
+        mat = this.GetComponentInChildren<MeshRenderer>().material;
     }
 
     private void Update()
     {
-        lightsMat.color = Color.Lerp(lightsMat.color, currentColor, 0.01f);
+        mat.SetColor("_HighlightColor", Color.Lerp(mat.GetColor("_HighlightColor"), currentColor, 0.01f));
     }
 
     // When a slime enters this inputs trigger, it gets its info.
@@ -109,6 +111,11 @@ public class SplicerInput : MonoBehaviour
 
         currentColor = defaultColor;
         particles.Stop();
+    }
+
+    private void OnDestroy()
+    {
+        Eject();
     }
 
     private void SetColor(string changeTo)

@@ -13,7 +13,8 @@ public class SplicerScript : MonoBehaviour
     public GameObject InputLeft;
     public GameObject InputRight;
     public GameObject Button;
-    public Transform Output;
+    public GameObject Output;
+    public Transform outputPos;
     private SplicerButton sb;
     private bool splicing = false;
     private string newSlimeBase;
@@ -23,8 +24,7 @@ public class SplicerScript : MonoBehaviour
     private string newSlimePattern;
     //private bool newSlimeSpecial;
     private int price = 0;
-    public Material lightsMat;
-    public Material buttonLightsMat;
+    [SerializeField] private Material outputMat;
     private Color currentColor;
 
     // SLIME PARTS ===============
@@ -38,6 +38,8 @@ public class SplicerScript : MonoBehaviour
         ls = InputLeft.GetComponent<SplicerInput>();
         rs = InputRight.GetComponent<SplicerInput>();
         sb = Button.GetComponent<SplicerButton>();
+
+        outputMat = Output.GetComponentInChildren<MeshRenderer>().material;
 
         currentColor = InputRight.GetComponent<SplicerInput>().defaultColor;
     }
@@ -57,7 +59,7 @@ public class SplicerScript : MonoBehaviour
             // If the player can afford it or not
             if (pData.CanAfford(price))
             {
-                buttonLightsMat.color = Color.green;
+                sb.UpdateColor(Color.green);
                 sb.priceText.color = Color.green;
                 sb.canBePressed = true;
                 if (sb.isPressed)
@@ -69,17 +71,17 @@ public class SplicerScript : MonoBehaviour
                 }
             } else
             {
-                buttonLightsMat.color = Color.red;
+                sb.UpdateColor(Color.red);
                 sb.priceText.color = Color.red;
             }
         } else
         {
             Removed();
+            sb.UpdateColor(currentColor);
         }
 
         // Update Lights
-        lightsMat.color = Color.Lerp(lightsMat.color, currentColor, 0.01f);
-        buttonLightsMat.color = Color.Lerp(buttonLightsMat.color, currentColor, 0.01f);
+        outputMat.SetColor("_HighlightColor", Color.Lerp(outputMat.GetColor("_HighlightColor"), currentColor, 0.01f));
     }
 
     private void CalculatePrice()
@@ -200,7 +202,7 @@ public class SplicerScript : MonoBehaviour
         // Spawn new slime apply selected SO
         // Instantates the basic slime prefab
         // Gives prefab the correct SO from the dictionary via GetSlime
-        GameObject newSlime = Instantiate(slimePrefab, Output.position, Quaternion.identity);
+        GameObject newSlime = Instantiate(slimePrefab, outputPos.position, Quaternion.identity);
         SlimeData newSD = newSlime.GetComponent<SlimeData>();
         var newBase = SBaseDictionary.GetSlime(newSlimeBase);
         var newpattern = SPatternDictionary.GetSlime(newSlimePattern);

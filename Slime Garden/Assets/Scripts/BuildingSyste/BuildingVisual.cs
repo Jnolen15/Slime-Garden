@@ -105,7 +105,15 @@ public class BuildingVisual : MonoBehaviour
         {
             visual = Instantiate(placeableSO.visual, Vector3.zero, Quaternion.identity);
             visual.parent = transform;
-            visual.GetComponentInChildren<Renderer>().material = ghostMat;
+            ChangeMaterial(visual.GetComponentsInChildren<Renderer>(), ghostMat);
+        }
+    }
+
+    private void ChangeMaterial(Renderer[] renderers, Material mat)
+    {
+        foreach (Renderer rend in renderers)
+        {
+            rend.material = mat;
         }
     }
 
@@ -188,8 +196,8 @@ public class BuildingVisual : MonoBehaviour
     private void TestCanPlace(Vector3 mousePos)
     {
         if (gridSystem.PlacementViable(mousePos))
-            visual.GetComponentInChildren<Renderer>().material = ghostMat;
+            ChangeMaterial(visual.GetComponentsInChildren<Renderer>(), ghostMat);
         else
-            visual.GetComponentInChildren<Renderer>().material = redGhostMat;
+            ChangeMaterial(visual.GetComponentsInChildren<Renderer>(), redGhostMat);
     }
 }
