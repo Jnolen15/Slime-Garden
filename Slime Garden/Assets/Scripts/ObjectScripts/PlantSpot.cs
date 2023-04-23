@@ -80,7 +80,7 @@ public class PlantSpot : MonoBehaviour
         if (!hasCrop || fullyGrown)
             return;
 
-        Debug.Log("Growth Tick");
+        //Debug.Log("Growth Tick");
 
         if (wateredTicks > 0)
         {
@@ -90,7 +90,7 @@ public class PlantSpot : MonoBehaviour
             // Crop progresses growth stage
             if (curTick == curCropSO.growTicks[growthStage])
             {
-                Debug.Log(curCropSO.cropName + " has grown!");
+                //Debug.Log(curCropSO.cropName + " has grown!");
                 growthStage++;
                 crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
             }
@@ -98,12 +98,12 @@ public class PlantSpot : MonoBehaviour
             // Crop is fully grown
             if (growthStage > (curCropSO.growTicks.Length - 1))
             {
-                Debug.Log(curCropSO.cropName + " is fully grown!");
+                //Debug.Log(curCropSO.cropName + " is fully grown!");
                 fullyGrown = true;
             }
         } else
         {
-            Debug.Log("Crop was not watered, could not grow!");
+            //Debug.Log("Crop was not watered, could not grow!");
         }
 
         if(wateredTicks == 0)
@@ -148,12 +148,12 @@ public class PlantSpot : MonoBehaviour
         Instantiate(waterFX, pos, Quaternion.identity);
         yield return new WaitForSeconds(0.2f);
         model.GetComponent<Renderer>().material = wetMat;
-        Debug.Log("Crop watered!");
+        //Debug.Log("Crop watered!");
     }
 
     private void Harvest()
     {
-        Debug.Log("Crop harvested!");
+        //Debug.Log("Crop harvested!");
         // Yeild
         invManager.AddCrop(curCropSO, 1);
 
@@ -172,7 +172,7 @@ public class PlantSpot : MonoBehaviour
 
     public void DestroySelf()
     {
-        Debug.Log("Removing self from list");
+        //Debug.Log("Removing self from list");
         gm.RemoveFromList(this);
     }
 }

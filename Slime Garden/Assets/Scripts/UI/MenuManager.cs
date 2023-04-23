@@ -35,21 +35,28 @@ public class MenuManager : MonoBehaviour
     {
         buildMenu.SetActive(false);
         seedMenu.SetActive(false);
-        //cropMenu.SetActive(false);
     }
 
     // ============== Build Menus ==============
     public void UpdateBuildMenu()
     {
-        var contentMenu = buildMenu.transform.GetChild(0);
+        /*// Clear previous content
+        buildMenu.GetComponent<ContentMenu>().ClearContent();
 
+        // Add new content
+        var hiddenContentMenu = buildMenu.transform.GetChild(0);
         foreach (PlaceableObjectSO so in invManager.availablePlaceables)
         {
-            var element = Instantiate(placeableUIPrefab, contentMenu);
+            var element = Instantiate(placeableUIPrefab, hiddenContentMenu);
             element.GetComponent<placeableUIContent>().Setup(so, this);
+            Debug.Log("Added content from inventory");
         }
 
-        buildMenu.GetComponent<ContentMenu>().UpdateContent();
+        Debug.Log($"Children instantiaded to hidden content {hiddenContentMenu.childCount}");
+
+        buildMenu.GetComponent<ContentMenu>().AddContent();*/
+
+        buildMenu.GetComponent<ContentMenu>().UpdateContent("placeable", placeableUIPrefab, invManager, this);
     }
 
     public void BuildMenuActive(bool value)
@@ -60,15 +67,26 @@ public class MenuManager : MonoBehaviour
     // ============== Seed Menus ==============
     public void UpdateSeedMenu()
     {
-        var contentMenu = seedMenu.transform.GetChild(0);
+        /*// MOVE THIS INTO CONTENT MENU SO THAT IT WORKS FOR ALL??
+        
+        //UpdateCropMenu(seedMenu);
 
+        var contentMenu = seedMenu.GetComponent<ContentMenu>();
+
+        // Clear previous content
+        contentMenu.ClearContent();
+
+        // Add new content
+        var hiddenMenu = contentMenu.transform.GetChild(0);
         foreach (CropSO so in invManager.availableCrops)
         {
-            var element = Instantiate(seedUIPrefab, contentMenu);
+            var element = Instantiate(seedUIPrefab, hiddenMenu);
             element.GetComponent<SeedUIContent>().Setup(so, this);
         }
 
-        seedMenu.GetComponent<ContentMenu>().UpdateContent();
+        contentMenu.PageSetup();*/
+
+        seedMenu.GetComponent<ContentMenu>().UpdateContent("seed", seedUIPrefab, invManager, this);
     }
 
     public void SeedMenuActive(bool value)
@@ -111,6 +129,11 @@ public class MenuManager : MonoBehaviour
     }
 
     // ============== Slime Inspect ==============
+    public void UpdateSlimeFeed()
+    {
+        slimeInfoBox.GetComponent<SlimeInfoPannel>().UpdateCropMenu();
+    }
+
     public void ShowSlimeStats(GameObject slime)
     {
         slimeInfoBox.SetActive(true);
@@ -131,6 +154,11 @@ public class MenuManager : MonoBehaviour
     }
 
     // ============== Crop Sell ==============
+    public void UpdateCropSell()
+    {
+        cropSellBox.GetComponent<CropSellMenu>().UpdateCropMenu();
+    }
+
     public void ShowCropSell()
     {
         cropSellBox.SetActive(true);

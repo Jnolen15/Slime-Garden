@@ -59,14 +59,8 @@ public class SlimeInfoPannel : MonoBehaviour
     // ============== Crop Menus ==============
     public void UpdateCropMenu()
     {
-        var contentMenu = feedMenu.transform.GetChild(0);
-        foreach (InventoryManager.CropInventroyEntry crop in invManager.inventoryList)
-        {
-            var element = Instantiate(cropUIPrefab, contentMenu);
-            element.GetComponent<CropUIContent>().Setup(crop, menuManager);
-        }
-
-        feedMenu.GetComponent<ContentMenu>().UpdateContent();
+        Debug.Log("UPDATING SLIME FEED MENU");
+        feedMenu.GetComponent<ContentMenu>().UpdateContent("crop", cropUIPrefab, invManager, menuManager);
     }
 
     public void UpdateCropCount()

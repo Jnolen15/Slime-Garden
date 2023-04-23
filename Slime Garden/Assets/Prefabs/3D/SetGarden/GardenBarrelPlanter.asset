@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: GardenBarrelPlanter
+  m_EditorClassIdentifier: 
+  placeableName: Garden Barrel Planter
+  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  price: 25
+  description: A decoritive barrel to grow plants in.
+  prefab: {fileID: 5994301542221842039, guid: 4a49ec8e1e9858044aba9e18300904a3, type: 3}
+  visual: {fileID: 8106657890647770825, guid: 050e5570b71e9c04aa727a53ae3173b1, type: 3}
+  width: 1
+  height: 1

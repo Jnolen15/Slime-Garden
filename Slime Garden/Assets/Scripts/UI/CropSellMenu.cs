@@ -19,16 +19,15 @@ public class CropSellMenu : MonoBehaviour
         UpdateCropMenu();
     }
 
+    
     public void UpdateCropMenu()
     {
-        var contentMenu = feedMenu.transform.GetChild(0);
-        foreach (InventoryManager.CropInventroyEntry crop in invManager.inventoryList)
-        {
-            var element = Instantiate(cropUIPrefab, contentMenu);
-            element.GetComponent<CropUIContent>().Setup(crop, menuManager);
-        }
+        Debug.Log("UPDATING SELL MENU");
 
-        feedMenu.GetComponent<ContentMenu>().UpdateContent();
+        if(!invManager)
+            invManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+
+        feedMenu.GetComponent<ContentMenu>().UpdateContent("crop", cropUIPrefab, invManager, menuManager);
     }
 
     public void UpdateCropCount()

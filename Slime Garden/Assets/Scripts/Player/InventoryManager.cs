@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] private MenuManager menus;
+
+    // List of all crops and placebes in game
+    public List<CropSO> inGameCrops = new List<CropSO>();
+    public List<PlaceableObjectSO> inGamePlaceables = new List<PlaceableObjectSO>();
+
+    // List of crops and placebes the player has unlocked
     public List<CropSO> availableCrops = new List<CropSO>();
     public List<PlaceableObjectSO> availablePlaceables = new List<PlaceableObjectSO>();
 
-    // Used for saving
+    // Crops the player currently has stored
     public List<CropInventroyEntry> inventoryList = new List<CropInventroyEntry>();
 
     [System.Serializable]
@@ -21,6 +28,37 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
             cropName = name;
             numHeld = num;
         }
+    }
+
+    //  ================== ADD NEW CONTENT TO LISTS ==================
+    public void UnlockFurniture(PlaceableObjectSO newData, bool fromLevelUp)
+    {
+        availablePlaceables.Add(newData);
+
+        if (fromLevelUp)
+            menus.UpdateBuildMenu();
+    }
+
+    public void UnlockCrop(CropSO newData, bool fromLevelUp)
+    {
+        // add to avaiable list and inventory list
+        availableCrops.Add(newData);
+
+        // Only add to inventory list if called as a level up
+        // This will cause a crop to be added twice if ran during load since inventory list saves
+        if (fromLevelUp)
+        {
+            CropInventroyEntry newEntry = new CropInventroyEntry(newData.cropName);
+            inventoryList.Add(newEntry);
+        }
+
+        if (fromLevelUp)
+        {
+            menus.UpdateSeedMenu();
+            menus.UpdateCropSell();
+            menus.UpdateSlimeFeed();
+        }
+
     }
 
     // ================== INVENTORY MANAGEMENT ==================
@@ -85,6 +123,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
+        // Save crop inventory
         data.inventoryList = inventoryList;
     }
 }

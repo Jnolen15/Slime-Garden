@@ -69,7 +69,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
     private PlaceableObjectSO FindPlaceableData(string pName)
     {
         
-        foreach (PlaceableObjectSO pData in invManager.availablePlaceables)
+        foreach (PlaceableObjectSO pData in invManager.inGamePlaceables)
         {
             if (pData.placeableName == pName)
                 return pData;
@@ -81,7 +81,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
     private CropSO FindCropData(string cName)
     {
 
-        foreach (CropSO cData in invManager.availableCrops)
+        foreach (CropSO cData in invManager.inGameCrops)
         {
             if (cData.cropName == cName)
                 return cData;
@@ -126,29 +126,29 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
             {
                 gridSystem.RotateTo(pData.dir);
                 newBuild = gridSystem.Build(pData.pOrigin, FindPlaceableData(pData.pName), false);
+
+                // If placeable can be mat swapped
+                var matSwapper = newBuild.GetComponent<MaterialSwapper>();
+                if (matSwapper != null)
+                    matSwapper.SetMat(pData.matValue);
+
+                // If placeable had PlantSpotData, reinstantiate that as well
+                int count = 0;
+                foreach (PlantSpot pSpot in newBuild.GetComponentsInChildren<PlantSpot>())
+                {
+                    if (pData.plantSpot[count].cropName != "empty")
+                    {
+                        pSpot.SetPlant(FindCropData(pData.plantSpot[count].cropName),
+                            pData.plantSpot[count].fullyGrown, pData.plantSpot[count].curTick,
+                            pData.plantSpot[count].wateredTicks, pData.plantSpot[count].growthStage);
+                    }
+
+                    count++;
+                }
             }
             else
             {
-                Debug.LogError("Failed to load, placeable data not found!");
-            }
-
-            // If placeable can be mat swapped
-            var matSwapper = newBuild.GetComponent<MaterialSwapper>();
-            if (matSwapper != null)
-                matSwapper.SetMat(pData.matValue);
-
-            // If placeable had PlantSpotData, reinstantiate that as well
-            int count = 0;
-            foreach (PlantSpot pSpot in newBuild.GetComponentsInChildren<PlantSpot>())
-            {
-                if(pData.plantSpot[count].cropName != "empty")
-                {
-                    pSpot.SetPlant(FindCropData(pData.plantSpot[count].cropName),
-                        pData.plantSpot[count].fullyGrown, pData.plantSpot[count].curTick,
-                        pData.plantSpot[count].wateredTicks, pData.plantSpot[count].growthStage);
-                }
-
-                count++;
+                Debug.LogError("ERROR: Failed to load, placeable data not found!");
             }
         }
 
