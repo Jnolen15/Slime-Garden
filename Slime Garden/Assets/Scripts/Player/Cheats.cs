@@ -29,6 +29,13 @@ public class Cheats : MonoBehaviour
             pData.GainMoney(100);
         }
 
+        // Give money
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            pData.GainExperience(5);
+            Debug.Log($"Gained EXP, now: {pData.Experience}");
+        }
+
         // Give Crops
         if (Input.GetKeyDown(KeyCode.C))
         {

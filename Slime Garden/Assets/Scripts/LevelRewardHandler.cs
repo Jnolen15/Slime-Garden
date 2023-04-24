@@ -5,14 +5,13 @@ using Sirenix.OdinInspector;
 
 public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 {
+    [SerializeField] private PlayerData pData;
     [SerializeField] private List<LevelReward> levelRewards = new List<LevelReward>();
-    [SerializeField] private int level;
 
     [Button]
-    public void LevelUp()
+    public void GrantLevelRewards()
     {
-        level++;
-        levelRewards[level-1].GiveReward(true);
+        levelRewards[pData.GetLevel() - 1].GiveReward(true);
     }
 
     // ================ LEVEL REWARDS ================
@@ -62,10 +61,8 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
     //================ SAVE / LOAD ================
     public void LoadData(GameData data)
     {
-        level = data.level;
-
         // Add all unlocks to Inventory lists
-        for (int i = 0; i < level; i++)
+        for (int i = 0; i < data.level; i++)
         {
             Debug.Log($"Rewarding {i}");
             levelRewards[i].GiveReward(false);
@@ -74,6 +71,6 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
-        data.level = level;
+        //Nothing needed
     }
 }

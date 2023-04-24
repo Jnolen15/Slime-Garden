@@ -29,7 +29,7 @@ public class ContentMenu : MonoBehaviour
             {
                 var element = Instantiate(contentUIPrefab, hiddenContent);
                 element.GetComponent<placeableUIContent>().Setup(so, menus);
-                Debug.Log("Added content from inventory");
+                //Debug.Log("Added content from inventory");
             }
         }
         else if (type == "seed")
@@ -50,10 +50,10 @@ public class ContentMenu : MonoBehaviour
         }
         else 
         {
-            Debug.LogError("Content type not specified");
+            //Debug.LogError("Content type not specified");
         }
 
-        Debug.Log($"Children instantiaded to hidden content {hiddenContent.childCount}");
+        //Debug.Log($"Children instantiaded to hidden content {hiddenContent.childCount}");
 
         // Set up pages
         PageSetup();
@@ -61,7 +61,7 @@ public class ContentMenu : MonoBehaviour
 
     public void ClearContent()
     {
-        Debug.Log($"Children in hidden content pre clear {hiddenContent.childCount}");
+        //Debug.Log($"Children in hidden content pre clear {hiddenContent.childCount}");
 
         // Add objects to list to be destroyed
         foreach(Transform child in hiddenContent)
@@ -78,11 +78,11 @@ public class ContentMenu : MonoBehaviour
         foreach (Transform child in trashCollection)
         {
             Destroy(child.gameObject);
-            Debug.Log("Child in trashCollection destroyed");
+            //Debug.Log("Child in trashCollection destroyed");
         }
         trashCollection.Clear();
 
-        Debug.Log($"Children in hidden content post clear {hiddenContent.childCount}");
+        //Debug.Log($"Children in hidden content post clear {hiddenContent.childCount}");
 
         // NOTE: The reason they are unparented and then destroyed is because
         // the destruction happens at the end of the frame and so it will result
@@ -91,14 +91,14 @@ public class ContentMenu : MonoBehaviour
 
     public void PageSetup()
     {
-        Debug.Log($"Content list size {contentList.Count}");
+        //Debug.Log($"Content list size {contentList.Count}");
 
         contentList.Clear();
         curPage = 0;
 
-        Debug.Log($"Content list size post clear {contentList.Count}");
+        //Debug.Log($"Content list size post clear {contentList.Count}");
 
-        Debug.Log($"Children in hidden content {hiddenContent.childCount}");
+        //Debug.Log($"Children in hidden content {hiddenContent.childCount}");
 
         foreach (Transform child in hiddenContent)
             contentList.Add(child);
@@ -107,7 +107,7 @@ public class ContentMenu : MonoBehaviour
         if ((contentList.Count % numPerPage) > 0)
             totalPages++;
 
-        Debug.Log($"Content list size post fill from hidden {contentList.Count}");
+        //Debug.Log($"Content list size post fill from hidden {contentList.Count}");
 
         UpdatePage();
     }

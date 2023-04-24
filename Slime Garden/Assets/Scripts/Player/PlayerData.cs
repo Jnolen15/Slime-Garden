@@ -5,6 +5,65 @@ using TMPro;
 
 public class PlayerData : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] LevelRewardHandler levelRewards;
+
+    // ===================== LEVEL / XP STUFF =====================
+    [SerializeField] private List<int> levelThresholds = new List<int>();
+    public TextMeshProUGUI levelDisplay;
+    [SerializeField] private int level = 0;
+    public int Level
+    {
+        get { return level; }
+        set
+        {
+            level = value;
+            levelDisplay.text = level.ToString();
+        }
+    }
+
+    [SerializeField] private int experience = 0;
+    public int Experience
+    {
+        get { return experience; }
+        set
+        {
+            experience = value;
+            var leveledUp = CheckForLevelUp(experience);
+
+            if (leveledUp)
+                IncrementLevel();
+        }
+    }
+
+    public void GainExperience(int value)
+    {
+        Experience += value;
+    }
+
+    public void IncrementLevel()
+    {
+        Debug.Log("LEVELED UP");
+        Level++;
+        levelRewards.GrantLevelRewards();
+    }
+
+    public int GetLevel()
+    {
+        return Level;
+    }
+
+    public bool CheckForLevelUp(int curExp)
+    {
+        if (GetLevel() >= levelThresholds.Count)
+            return false;
+
+        if (curExp >= levelThresholds[GetLevel()])
+        {
+            return true;
+        }
+
+        return false;
+    }
 
     // ===================== MONEY STUFF =====================
     public TextMeshProUGUI csDisplay;
@@ -57,11 +116,15 @@ public class PlayerData : MonoBehaviour, IDataPersistence
     // ===================== SAVE AND LOAD =====================
     public void LoadData(GameData data)
     {
+        Level = data.level;
+        Experience = data.experience;
         Money = data.money;
     }
 
     public void SaveData(GameData data)
     {
+        data.level = Level;
+        data.experience = Experience;
         data.money = Money;
     }
 }

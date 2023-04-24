@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameData
 {
     public int level;
+    public int experience;
     public int money;
     public int habitatTier;
     public Vector2Int borderFenceStyle;
@@ -18,6 +19,7 @@ public class GameData
     public GameData()
     {
         level = 0;
+        experience = 0;
         money = 0;
         habitatTier = 0;
         borderFenceStyle = new Vector2Int(0, 0);
