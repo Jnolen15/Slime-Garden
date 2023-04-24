@@ -8,6 +8,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
     public SBaseDictionary sBaseDictionary;         //The SO of the dictionary that holds all slime Base SOs.
     public SPatternDictionary sPatternDictionary;   //The SO of the dictionary that holds all slime Pattern SOs.
     public GameObject slimePrefab;                  // Slime prefab, used in loading
+    public List<string> unlockedSlimePatterns = new List<string>(); // List of unlocked Slime patterns
     public List<GameObject> activeSlimes;           //List of all active slimes
     public List<SlimeDataEntry> slimeDataList = new List<SlimeDataEntry>(); // List of slime data that is saved and loaded
 
@@ -18,6 +19,8 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         {
             activeSlimes.Add(ob);
         }*/
+
+        this.GetComponent<RandomSlime>().SetUnlockedSlimeList(unlockedSlimePatterns);
     }
 
     public GameObject GetRandomSlime()
@@ -26,10 +29,19 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         return activeSlimes[rand];
     }
 
+    // ===================== LEVEL UP =====================
+    public void UnlockSlime(string patName, bool fromLevelUp)
+    {
+        if (!unlockedSlimePatterns.Contains(patName))
+            unlockedSlimePatterns.Add(patName);
+    }
 
     // ===================== SAVE LOAD =====================
     public void LoadData(GameData data)
     {
+        // Load list of unlocked slimes
+        unlockedSlimePatterns = data.unlockedSlimes;
+
         // Create saved slimes from list
         foreach (SlimeDataEntry slime in data.slimeList)
         {
@@ -65,6 +77,9 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
 
     public void SaveData(GameData data)
     {
+        // Save list of unlocked slimes
+        data.unlockedSlimes = unlockedSlimePatterns;
+
         // Clear previously saved slime list
         data.slimeList.Clear();
 

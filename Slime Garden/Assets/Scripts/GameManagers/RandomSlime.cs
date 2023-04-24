@@ -7,7 +7,9 @@ public class RandomSlime : MonoBehaviour
     [SerializeField]
     private string[] sBaseColors;
     [SerializeField]
-    private string[] sPatterns;
+    private List<string> sPatterns;
+    [SerializeField]
+    private List<string> sAllPatterns;
     [SerializeField]
     private string[] sPatternColors;
     [SerializeField] private GameObject slimePrefab;
@@ -19,6 +21,11 @@ public class RandomSlime : MonoBehaviour
     private string sPatterntype = "";
     private bool sSpecial = false;
 
+    public void SetUnlockedSlimeList(List<string> patList)
+    {
+        sPatterns = patList;
+    }
+
     public GameObject CreateSlime(Vector3 pos, bool isWild)
     {
         bool compatableName = false;
@@ -28,7 +35,7 @@ public class RandomSlime : MonoBehaviour
             sBaseColor = sBaseColors[Random.Range(0, sBaseColors.Length)];
 
             // Pattern Style: 50/50 choose left or right pattern style
-            sPattern = sPatterns[Random.Range(0, sPatterns.Length)];
+            sPattern = sPatterns[Random.Range(0, sPatterns.Count)];
 
             // Test to see if pattern is Null
             if (sPattern == "Null")

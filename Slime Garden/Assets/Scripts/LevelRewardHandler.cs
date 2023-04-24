@@ -47,6 +47,18 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
         }
     }
 
+    [System.Serializable]
+    public class SlimeReward : LevelReward
+    {
+        public string data;
+
+        public override void GiveReward(bool fromLevelUp)
+        {
+            Debug.Log($"Awarding {data}");
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>().UnlockSlime(data, fromLevelUp);
+        }
+    }
+
     //================ SAVE / LOAD ================
     public void LoadData(GameData data)
     {

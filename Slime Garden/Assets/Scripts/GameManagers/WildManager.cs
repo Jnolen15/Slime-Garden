@@ -13,6 +13,8 @@ public class WildManager : MonoBehaviour, IDataPersistence
 
     public List<Transform> spawns = new List<Transform>();
     public List<HabitatControl.SlimeDataEntry> tamedSlimes = new List<HabitatControl.SlimeDataEntry>();
+    
+    [SerializeField] private List<string> unlockedSlimePatterns = new List<string>(); // List of unlocked Slime patterns
 
     // Refrences
     private RandomSlime randSlime;
@@ -20,6 +22,8 @@ public class WildManager : MonoBehaviour, IDataPersistence
     void Start()
     {
         randSlime = this.GetComponent<RandomSlime>();
+
+        randSlime.SetUnlockedSlimeList(unlockedSlimePatterns);
     }
 
     void Update()
@@ -53,6 +57,8 @@ public class WildManager : MonoBehaviour, IDataPersistence
         // Load tamed slime list if it has not been cleared
         // (IF saving and loading into wild zome without returning to habitat)
         tamedSlimes = data.tamedSlimeList;
+
+        unlockedSlimePatterns = data.unlockedSlimes;
     }
 
     public void SaveData(GameData data)
