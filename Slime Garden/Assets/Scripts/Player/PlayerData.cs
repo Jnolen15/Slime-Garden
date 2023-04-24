@@ -44,7 +44,7 @@ public class PlayerData : MonoBehaviour, IDataPersistence
     {
         Debug.Log("LEVELED UP");
         Level++;
-        levelRewards.GrantLevelRewards();
+        levelRewards.GrantLevelRewards(Level);
     }
 
     public int GetLevel()

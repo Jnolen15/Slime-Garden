@@ -9,9 +9,13 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
     [SerializeField] private List<LevelReward> levelRewards = new List<LevelReward>();
 
     [Button]
-    public void GrantLevelRewards()
+    public void GrantLevelRewards(int level)
     {
-        levelRewards[pData.GetLevel() - 1].GiveReward(true);
+        foreach (LevelReward reward in levelRewards)
+        {
+            if (reward.levelEarned == level)
+                reward.GiveReward(true);
+        }
     }
 
     // ================ LEVEL REWARDS ================
@@ -19,6 +23,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
     public abstract class LevelReward
     {
         public string rewardName;
+        public int levelEarned;
         public abstract void GiveReward(bool fromLevelUp);
     }
 
@@ -62,10 +67,10 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         // Add all unlocks to Inventory lists
-        for (int i = 0; i < data.level; i++)
+        foreach (LevelReward reward in levelRewards)
         {
-            Debug.Log($"Rewarding {i}");
-            levelRewards[i].GiveReward(false);
+            if (reward.levelEarned <= data.level)
+                reward.GiveReward(false);
         }
     }
 
