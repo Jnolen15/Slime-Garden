@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameData
 {
     public int level;
-    public int experience;
+    public float experience;
     public int money;
     public int habitatTier;
     public Vector2Int borderFenceStyle;

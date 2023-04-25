@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98719490c6fded94e815b9d2525202cb, type: 3}
   m_Name: Gradient
   m_EditorClassIdentifier: 
-  sPatternSprite: {fileID: -2409596806499744702, guid: b6bce531470874e4e99d32ee45f8d42f,
-    type: 3}
-  sPatternIdle: {fileID: 4714165574267020486, guid: b6bce531470874e4e99d32ee45f8d42f,
-    type: 3}
-  sPatternJump: {fileID: 1440501952111066979, guid: b6bce531470874e4e99d32ee45f8d42f,
-    type: 3}
   libraryAsset: {fileID: 7108339969198208228, guid: dfa0aa641d804ad48b2bf52ae6d6a083,
     type: 3}
   sPattern: Gradient
-  sRarity: 2
+  sRarity: 3

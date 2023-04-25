@@ -10,6 +10,7 @@ public class CropSO : ScriptableObject
     public Sprite previewImage;
     public int price;
     public int sellValue;
+    public int expYeild;
 
     [TextArea]
     public string seedDescription;

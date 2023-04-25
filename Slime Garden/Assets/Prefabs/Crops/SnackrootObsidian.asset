@@ -16,6 +16,7 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: 4e69e6796fb37fc41a1a3d0c9933457d, type: 3}
   price: 5
   sellValue: 8
+  expYeild: 1
   seedDescription: Snackroot is the perfect crop for a beginner gardener. This ones
     Obsidian.
   CropDescription: Snackroots make a great treat for any slime!

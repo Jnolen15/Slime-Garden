@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98719490c6fded94e815b9d2525202cb, type: 3}
   m_Name: Honeycomb
   m_EditorClassIdentifier: 
-  sPatternSprite: {fileID: -5132203549741436916, guid: 5c2cf93c7c5bbdb498b5876be73fed80,
-    type: 3}
-  sPatternIdle: {fileID: 8572648782559488545, guid: 5c2cf93c7c5bbdb498b5876be73fed80,
-    type: 3}
-  sPatternJump: {fileID: -1450254522262298056, guid: 5c2cf93c7c5bbdb498b5876be73fed80,
-    type: 3}
   libraryAsset: {fileID: 7108339969198208228, guid: a49e97fd8e760bd44befac144d659b56,
     type: 3}
   sPattern: Honeycomb
-  sRarity: 3
+  sRarity: 4

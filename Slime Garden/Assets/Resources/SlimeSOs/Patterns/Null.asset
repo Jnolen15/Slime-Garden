@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98719490c6fded94e815b9d2525202cb, type: 3}
   m_Name: Null
   m_EditorClassIdentifier: 
-  sPatternSprite: {fileID: 0}
-  sPatternIdle: {fileID: 0}
-  sPatternJump: {fileID: 0}
+  libraryAsset: {fileID: 0}
   sPattern: Null
-  sRarity: 0
+  sRarity: 1

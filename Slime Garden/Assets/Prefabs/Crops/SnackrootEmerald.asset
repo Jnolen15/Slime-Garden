@@ -16,6 +16,7 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: 9b31a74d4e3a25c4a8ce5fd2a2ef1be2, type: 3}
   price: 5
   sellValue: 8
+  expYeild: 1
   seedDescription: Snackroot is the perfect crop for a beginner gardener. This ones
     Emerald.
   CropDescription: Snackroots make a great treat for any slime!

@@ -177,6 +177,7 @@ MonoBehaviour:
   despawnTime: 30
   tameThreshold: 0
   tameAmmount: 0
+  expMod: 1.5
   tameFX: {fileID: 4590578557956595834, guid: cefc82534188dfe419c78f5516f75012, type: 3}
 --- !u!65 &8598985467623667190
 BoxCollider:

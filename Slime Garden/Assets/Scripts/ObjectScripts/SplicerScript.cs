@@ -216,6 +216,9 @@ public class SplicerScript : MonoBehaviour
         newSD.sCrystal = newBase.slimeCrystal;
         newSD.Setup();
 
+        // Award EXP
+        pData.GainExperience(newSD.sRarity);
+
         yield return new WaitForSeconds(0.5f);
 
         // Eject New Slime

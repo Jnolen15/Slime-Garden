@@ -9,6 +9,7 @@ public class WildSlime : MonoBehaviour
     [SerializeField] private float despawnTime;
     [SerializeField] private int tameThreshold;
     [SerializeField] private int tameAmmount;
+    [SerializeField] private float expMod;
     [SerializeField] private GameObject tameFX;
 
     // Refrences
@@ -80,6 +81,9 @@ public class WildSlime : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 2, transform.position.z);
         Instantiate(tameFX, transform.position, transform.rotation);
         sControl.ChangeState(SlimeController.State.tamed);
+
+        // Award EXP
+        GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>().GainExperience(sData.sRarity * expMod);
 
         // Save to tamed slime list
         wildManager.AddTamedSlime(sData.sPattern, sData.sBaseColor, sData.sPatternColor);

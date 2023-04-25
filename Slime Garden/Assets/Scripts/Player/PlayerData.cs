@@ -24,8 +24,8 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         }
     }
 
-    [SerializeField] private int experience = 0;
-    public int Experience
+    [SerializeField] private float experience = 0;
+    public float Experience
     {
         get { return experience; }
         set
@@ -33,13 +33,7 @@ public class PlayerData : MonoBehaviour, IDataPersistence
             experience = value;
 
             // Set XP bar fill
-            if (GetLevel() == 0)
-                expBarFill.fillAmount = ((float)experience / (float)levelThresholds[GetLevel()]);
-            else if (GetLevel() < levelThresholds.Count)
-                expBarFill.fillAmount = ((float)(experience - levelThresholds[GetLevel()-1]) / 
-                                        (float)(levelThresholds[GetLevel()] - levelThresholds[GetLevel() - 1]));
-            else
-                expBarFill.fillAmount = 1;
+            SetEXPBar();
 
             // Check for level up
             var leveledUp = CheckForLevelUp(experience);
@@ -48,9 +42,21 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         }
     }
 
-    public void GainExperience(int value)
+    private void SetEXPBar()
+    {
+        if (GetLevel() == 0)
+            expBarFill.fillAmount = (Experience / (float)levelThresholds[GetLevel()]);
+        else if (GetLevel() < levelThresholds.Count)
+            expBarFill.fillAmount = ((Experience - levelThresholds[GetLevel() - 1]) /
+                                    (float)(levelThresholds[GetLevel()] - levelThresholds[GetLevel() - 1]));
+        else
+            expBarFill.fillAmount = 1;
+    }
+
+    public void GainExperience(float value)
     {
         Experience += value;
+        Debug.Log($"Earned {value} EXP");
     }
 
     public void IncrementLevel()
@@ -62,6 +68,8 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         levelRewards.DisplayAllRewards(Level);
 
         levelUpScreen.SetActive(true);
+
+        SetEXPBar();
     }
 
     public int GetLevel()
@@ -69,7 +77,7 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         return Level;
     }
 
-    public bool CheckForLevelUp(int curExp)
+    public bool CheckForLevelUp(float curExp)
     {
         if (GetLevel() >= levelThresholds.Count)
             return false;

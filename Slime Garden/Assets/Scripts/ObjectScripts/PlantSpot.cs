@@ -157,6 +157,9 @@ public class PlantSpot : MonoBehaviour
         // Yeild
         invManager.AddCrop(curCropSO, 1);
 
+        // Award EXP
+        GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>().GainExperience(curCropSO.expYeild);
+
         // Effect
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
         Instantiate(LeafBurstFX, pos, Quaternion.identity);

@@ -16,6 +16,7 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: f078f61bb2f1d0944ac4d18cde813c0f, type: 3}
   price: 10
   sellValue: 15
+  expYeild: 2
   seedDescription: Mondo mellons take a bit longer to grow, but can be useful when
     taming wild slimes.
   CropDescription: A large mellon that slimes love. +Tame potential

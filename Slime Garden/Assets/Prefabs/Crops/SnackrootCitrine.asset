@@ -16,6 +16,7 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: a02507867c38ea448ae6d848be729b91, type: 3}
   price: 5
   sellValue: 8
+  expYeild: 1
   seedDescription: Snackroot is the perfect crop for a beginner gardener. This ones
     Citrine.
   CropDescription: Snackroots make a great treat for any slime!

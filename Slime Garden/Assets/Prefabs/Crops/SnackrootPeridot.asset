@@ -16,6 +16,7 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: af5e28061ede622449ce27d153726b73, type: 3}
   price: 5
   sellValue: 8
+  expYeild: 1
   seedDescription: Snackroot is the perfect crop for a beginner gardener. This ones
     Peridot.
   CropDescription: Snackroots make a great treat for any slime!

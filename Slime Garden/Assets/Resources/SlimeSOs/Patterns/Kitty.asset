@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98719490c6fded94e815b9d2525202cb, type: 3}
   m_Name: Kitty
   m_EditorClassIdentifier: 
-  sPatternSprite: {fileID: 6958675247726664006, guid: 484eeb886f866a841a1fed11f6c4c93d,
-    type: 3}
-  sPatternIdle: {fileID: 3881697330694216721, guid: 484eeb886f866a841a1fed11f6c4c93d,
-    type: 3}
-  sPatternJump: {fileID: -9056036397894636984, guid: 484eeb886f866a841a1fed11f6c4c93d,
-    type: 3}
   libraryAsset: {fileID: 7108339969198208228, guid: 99dbe85abfb3f1543b25b6c86e7e03a9,
     type: 3}
   sPattern: Kitty
-  sRarity: 4
+  sRarity: 5

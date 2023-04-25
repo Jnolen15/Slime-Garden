@@ -16,6 +16,7 @@ MonoBehaviour:
   previewImage: {fileID: 21300000, guid: 8b6c7c1f0876f6c419b3c9ce23b202e9, type: 3}
   price: 5
   sellValue: 8
+  expYeild: 1
   seedDescription: Snackroot is the perfect crop for a beginner gardener. This ones
     Quartz.
   CropDescription: Snackroots make a great treat for any slime!

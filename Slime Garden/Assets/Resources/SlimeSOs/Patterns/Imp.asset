@@ -12,13 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98719490c6fded94e815b9d2525202cb, type: 3}
   m_Name: Imp
   m_EditorClassIdentifier: 
-  sPatternSprite: {fileID: 827031626402191777, guid: 8db9b618072b10f4baa3c529d402932d,
-    type: 3}
-  sPatternIdle: {fileID: 2381923482393064076, guid: 8db9b618072b10f4baa3c529d402932d,
-    type: 3}
-  sPatternJump: {fileID: -7653448932826950769, guid: 8db9b618072b10f4baa3c529d402932d,
-    type: 3}
   libraryAsset: {fileID: 7108339969198208228, guid: f0f20ac475dd58a44831859b51c13fdd,
     type: 3}
   sPattern: Imp
-  sRarity: 5
+  sRarity: 6
