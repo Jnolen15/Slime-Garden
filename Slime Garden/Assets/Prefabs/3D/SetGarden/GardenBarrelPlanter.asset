@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GardenBarrelPlanter
   m_EditorClassIdentifier: 
   placeableName: Garden Barrel Planter
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  previewImage: {fileID: 21300000, guid: 692743227ca75024787ecbae301253de, type: 3}
   price: 25
   description: A decoritive barrel to grow plants in.
   prefab: {fileID: 5994301542221842039, guid: 4a49ec8e1e9858044aba9e18300904a3, type: 3}

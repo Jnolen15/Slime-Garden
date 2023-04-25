@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class PlayerData : MonoBehaviour, IDataPersistence
@@ -10,6 +11,8 @@ public class PlayerData : MonoBehaviour, IDataPersistence
     // ===================== LEVEL / XP STUFF =====================
     [SerializeField] private List<int> levelThresholds = new List<int>();
     public TextMeshProUGUI levelDisplay;
+    public GameObject levelUpButton;
+    public Image expBarFill;
     [SerializeField] private int level = 0;
     public int Level
     {
@@ -28,8 +31,18 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         set
         {
             experience = value;
-            var leveledUp = CheckForLevelUp(experience);
 
+            // Set XP bar fill
+            if (GetLevel() == 0)
+                expBarFill.fillAmount = ((float)experience / (float)levelThresholds[GetLevel()]);
+            else if (GetLevel() < levelThresholds.Count)
+                expBarFill.fillAmount = ((float)(experience - levelThresholds[GetLevel()-1]) / 
+                                        (float)(levelThresholds[GetLevel()] - levelThresholds[GetLevel() - 1]));
+            else
+                expBarFill.fillAmount = 1;
+
+            // Check for level up
+            var leveledUp = CheckForLevelUp(experience);
             if (leveledUp)
                 IncrementLevel();
         }
@@ -45,6 +58,7 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         Debug.Log("LEVELED UP");
         Level++;
         levelRewards.GrantLevelRewards(Level);
+        levelUpButton.SetActive(true);
     }
 
     public int GetLevel()

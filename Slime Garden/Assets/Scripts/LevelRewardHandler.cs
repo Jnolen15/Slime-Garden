@@ -1,29 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Sirenix.OdinInspector;
+using TMPro;
 
 public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 {
     [SerializeField] private PlayerData pData;
+    [SerializeField] private Transform rewardZone;
+    [SerializeField] private GameObject rewardBox;
     [SerializeField] private List<LevelReward> levelRewards = new List<LevelReward>();
 
-    [Button]
     public void GrantLevelRewards(int level)
     {
+        // Get rid of previous level up reward notifs
+        foreach (Transform child in rewardZone)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Grant awards and add them to notif
         foreach (LevelReward reward in levelRewards)
         {
             if (reward.levelEarned == level)
+            {
+                DisplayReward(reward);
                 reward.GiveReward(true);
+            }
         }
+    }
+
+    private void DisplayReward(LevelReward reward)
+    {
+        Transform box = Instantiate(rewardBox, rewardZone).transform;
+        box.GetComponentInChildren<TextMeshProUGUI>().text = reward.rewardName;
+        box.GetChild(0).GetComponent<Image>().sprite = reward.rewardImage;
     }
 
     // ================ LEVEL REWARDS ================
     [System.Serializable]
     public abstract class LevelReward
     {
-        public string rewardName;
         public int levelEarned;
+        public string rewardName;
+        public Sprite rewardImage;
         public abstract void GiveReward(bool fromLevelUp);
     }
 
