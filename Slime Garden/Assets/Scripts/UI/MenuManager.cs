@@ -6,6 +6,10 @@ using UnityEngine.InputSystem;
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private bool inWild;
+    [SerializeField] private GameObject buildTool;
+    [SerializeField] private GameObject plantTool;
+    [SerializeField] private GameObject paintTool;
     [SerializeField] private GameObject buildMenu;
     [SerializeField] private GameObject placeableUIPrefab;
     [SerializeField] private GameObject seedMenu;
@@ -35,6 +39,22 @@ public class MenuManager : MonoBehaviour
     {
         buildMenu.SetActive(false);
         seedMenu.SetActive(false);
+    }
+
+    // ============== Level Up ==============
+    public void UnlockTool(string tool)
+    {
+        if (inWild)
+            return;
+
+        if (tool == "build")
+            buildTool.SetActive(true);
+        else if (tool == "plant")
+            plantTool.SetActive(true);
+        else if (tool == "paint")
+            paintTool.SetActive(true);
+        else
+            Debug.LogError("Tool upgrade not found");
     }
 
     // ============== Build Menus ==============
@@ -67,25 +87,6 @@ public class MenuManager : MonoBehaviour
     // ============== Seed Menus ==============
     public void UpdateSeedMenu()
     {
-        /*// MOVE THIS INTO CONTENT MENU SO THAT IT WORKS FOR ALL??
-        
-        //UpdateCropMenu(seedMenu);
-
-        var contentMenu = seedMenu.GetComponent<ContentMenu>();
-
-        // Clear previous content
-        contentMenu.ClearContent();
-
-        // Add new content
-        var hiddenMenu = contentMenu.transform.GetChild(0);
-        foreach (CropSO so in invManager.availableCrops)
-        {
-            var element = Instantiate(seedUIPrefab, hiddenMenu);
-            element.GetComponent<SeedUIContent>().Setup(so, this);
-        }
-
-        contentMenu.PageSetup();*/
-
         seedMenu.GetComponent<ContentMenu>().UpdateContent("seed", seedUIPrefab, invManager, this);
     }
 

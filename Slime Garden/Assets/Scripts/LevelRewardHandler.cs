@@ -99,6 +99,32 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
         }
     }
 
+    [System.Serializable]
+    public class ToolReward : LevelReward
+    {
+        public string data;
+
+        public override void GiveReward(bool fromLevelUp)
+        {
+            Debug.Log($"Awarding {data}");
+            GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>().UnlockTool(data);
+        }
+    }
+
+    [System.Serializable]
+    public class NPCReward : LevelReward
+    {
+        public string data;
+
+        public override void GiveReward(bool fromLevelUp)
+        {
+            Debug.Log($"Awarding {data}");
+            var npcMan = GameObject.FindGameObjectWithTag("NPCManager");
+            if(npcMan != null)
+                npcMan.GetComponent<NPCManager>().UnlockNPC(data, fromLevelUp);
+        }
+    }
+
     //================ SAVE / LOAD ================
     public void LoadData(GameData data)
     {

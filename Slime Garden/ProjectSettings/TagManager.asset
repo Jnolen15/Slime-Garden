@@ -22,6 +22,7 @@ TagManager:
   - Data
   - Shop
   - PlayerData
+  - NPCManager
   layers:
   - Default
   - TransparentFX

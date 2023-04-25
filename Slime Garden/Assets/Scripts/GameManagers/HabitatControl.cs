@@ -35,7 +35,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         if (!unlockedSlimePatterns.Contains(patName))
             unlockedSlimePatterns.Add(patName);
 
-        Debug.Log($"Habitat added {patName}");
+        //Debug.Log($"Habitat added {patName}");
     }
 
     // ===================== SAVE LOAD =====================

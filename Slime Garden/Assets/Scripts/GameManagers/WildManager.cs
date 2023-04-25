@@ -57,7 +57,7 @@ public class WildManager : MonoBehaviour, IDataPersistence
         if (!unlockedSlimePatterns.Contains(patName))
             unlockedSlimePatterns.Add(patName);
 
-        Debug.Log($"Wild zone added {patName}");
+        //Debug.Log($"Wild zone added {patName}");
     }
 
     // =================== SAVE ===================
