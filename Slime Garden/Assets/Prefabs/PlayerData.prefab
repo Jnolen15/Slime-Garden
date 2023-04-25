@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3d9fcd9e1ac7c48b8cde01a650798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inWild: 0
   levelRewards: {fileID: 0}
-  levelThresholds: 6400000096000000c8000000fa0000002c010000
+  levelThresholds: 0a000000140000001e0000002800000032000000
   levelDisplay: {fileID: 0}
   levelUpButton: {fileID: 0}
   expBarFill: {fileID: 0}

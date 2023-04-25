@@ -51,6 +51,15 @@ public class WildManager : MonoBehaviour, IDataPersistence
         tamedSlimes.Add(new HabitatControl.SlimeDataEntry(Vector3.zero, pat, bColorStr, pColorStr));
     }
 
+    // ===================== LEVEL UP =====================
+    public void UnlockSlime(string patName, bool fromLevelUp)
+    {
+        if (!unlockedSlimePatterns.Contains(patName))
+            unlockedSlimePatterns.Add(patName);
+
+        Debug.Log($"Wild zone added {patName}");
+    }
+
     // =================== SAVE ===================
     public void LoadData(GameData data)
     {

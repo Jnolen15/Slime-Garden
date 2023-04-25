@@ -14,20 +14,27 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 
     public void GrantLevelRewards(int level)
     {
+        // Grant awards
+        foreach (LevelReward reward in levelRewards)
+        {
+            if (reward.levelEarned == level)
+                reward.GiveReward(true);
+        }
+    }
+
+    public void DisplayAllRewards(int level)
+    {
         // Get rid of previous level up reward notifs
         foreach (Transform child in rewardZone)
         {
             Destroy(child.gameObject);
         }
 
-        // Grant awards and add them to notif
+        // Display new award notifs
         foreach (LevelReward reward in levelRewards)
         {
             if (reward.levelEarned == level)
-            {
                 DisplayReward(reward);
-                reward.GiveReward(true);
-            }
         }
     }
 
@@ -80,7 +87,15 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
         public override void GiveReward(bool fromLevelUp)
         {
             Debug.Log($"Awarding {data}");
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>().UnlockSlime(data, fromLevelUp);
+            var habitat = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
+            var wild = GameObject.FindGameObjectWithTag("GameManager").GetComponent<WildManager>();
+
+            if (habitat)
+                habitat.UnlockSlime(data, fromLevelUp);
+            else if (wild)
+                wild.UnlockSlime(data, fromLevelUp);
+            else
+                Debug.LogError("Unable to find habitat or wild manager");
         }
     }
 

@@ -33,7 +33,7 @@ public class Cheats : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.J))
         {
             pData.GainExperience(5);
-            Debug.Log($"Gained EXP, now: {pData.Experience}");
+            //Debug.Log($"Gained EXP, now: {pData.Experience}");
         }
 
         // Give Crops
