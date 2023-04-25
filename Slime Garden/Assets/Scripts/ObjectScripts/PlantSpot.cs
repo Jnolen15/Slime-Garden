@@ -24,7 +24,7 @@ public class PlantSpot : MonoBehaviour
 
     private void Awake()
     {
-        invManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToList(this);
 

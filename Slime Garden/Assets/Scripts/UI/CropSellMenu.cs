@@ -13,8 +13,8 @@ public class CropSellMenu : MonoBehaviour
 
     private void Start()
     {
-        invManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
-        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+        invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
 
         UpdateCropMenu();
     }
@@ -25,7 +25,7 @@ public class CropSellMenu : MonoBehaviour
         Debug.Log("UPDATING SELL MENU");
 
         if(!invManager)
-            invManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+            invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         feedMenu.GetComponent<ContentMenu>().UpdateContent("crop", cropUIPrefab, invManager, menuManager);
     }

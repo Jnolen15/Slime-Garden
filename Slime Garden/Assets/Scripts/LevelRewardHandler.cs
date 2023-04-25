@@ -56,7 +56,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
         public override void GiveReward(bool fromLevelUp)
         {
             Debug.Log($"Awarding {data.placeableName}");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>().UnlockFurniture(data, fromLevelUp);
+            GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>().UnlockFurniture(data, fromLevelUp);
         }
     }
 
@@ -68,7 +68,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
         public override void GiveReward(bool fromLevelUp)
         {
             Debug.Log($"Awarding {data.cropName}");
-            GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>().UnlockCrop(data, fromLevelUp);
+            GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>().UnlockCrop(data, fromLevelUp);
         }
     }
 

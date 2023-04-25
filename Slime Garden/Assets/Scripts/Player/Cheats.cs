@@ -15,8 +15,8 @@ public class Cheats : MonoBehaviour
 
     void Start()
     {
-        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
-        inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        inventory = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
         gameData = GameObject.FindGameObjectWithTag("Data").GetComponent<DataPersistenceManager>();
         rs = GetComponentInParent<RandomSlime>();
     }

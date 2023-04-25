@@ -8,7 +8,7 @@ public class CropSell : MonoBehaviour
 
     private void Start()
     {
-        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
     }
 
     private void OnCollisionEnter(Collision col)

@@ -12,7 +12,7 @@ public class CongealedSlime : MonoBehaviour
     
     void Start()
     {
-        pData = GameObject.Find("PlayerController").GetComponent<PlayerData>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
         menuManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
     }
 

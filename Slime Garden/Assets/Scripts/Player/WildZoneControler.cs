@@ -34,7 +34,7 @@ public class WildZoneControler : MonoBehaviour
     void Start()
     {
         pInput = this.GetComponentInParent<PlayerInput>();
-        invManager = this.GetComponent<InventoryManager>();
+        invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
         camcontrol = GameObject.FindGameObjectWithTag("CamControl").GetComponent<CameraControl>();

@@ -18,7 +18,7 @@ public class CropUIContent : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void Setup(InventoryManager.CropInventroyEntry crop, MenuManager manager)
     {
-        iManager = GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager>();
+        iManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
         menuManager = manager;
 
         cropData = crop;

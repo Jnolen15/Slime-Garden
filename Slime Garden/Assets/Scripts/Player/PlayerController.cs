@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         pInput = this.GetComponentInParent<PlayerInput>();
-        pData = this.GetComponent<PlayerData>();
-        invManager = this.GetComponent<InventoryManager>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
         camcontrol = GameObject.FindGameObjectWithTag("CamControl").GetComponent<CameraControl>();

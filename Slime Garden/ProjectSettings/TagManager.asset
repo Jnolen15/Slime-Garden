@@ -21,6 +21,7 @@ TagManager:
   - Crop
   - Data
   - Shop
+  - PlayerData
   layers:
   - Default
   - TransparentFX

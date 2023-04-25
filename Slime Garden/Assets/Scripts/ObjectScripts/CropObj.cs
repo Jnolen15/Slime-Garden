@@ -13,9 +13,8 @@ public class CropObj : MonoBehaviour, IInteractable
     {
         cropData = data;
 
-        var player = GameObject.FindGameObjectWithTag("Player");
-        pc = player.GetComponent<PlayerController>();
-        inv = player.GetComponent<InventoryManager>();
+        pc = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        inv = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
     }
 
     public void DestroySelf()

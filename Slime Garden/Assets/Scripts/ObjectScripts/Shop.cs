@@ -16,7 +16,7 @@ public class Shop : MonoBehaviour
     void Start()
     {
         SlimeBuy = this.transform.GetChild(0).GetComponent<SlimeBuy>();
-        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
     }
 
     void Update()

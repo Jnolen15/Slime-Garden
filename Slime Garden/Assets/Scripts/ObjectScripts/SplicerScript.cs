@@ -34,7 +34,7 @@ public class SplicerScript : MonoBehaviour
 
     void Start()
     {
-        pData = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerData>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
         ls = InputLeft.GetComponent<SplicerInput>();
         rs = InputRight.GetComponent<SplicerInput>();
         sb = Button.GetComponent<SplicerButton>();
