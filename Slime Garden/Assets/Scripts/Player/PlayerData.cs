@@ -6,6 +6,7 @@ using TMPro;
 
 public class PlayerData : MonoBehaviour, IDataPersistence
 {
+    [SerializeField] bool inWild;
     [SerializeField] LevelRewardHandler levelRewards;
 
     // ===================== LEVEL / XP STUFF =====================
@@ -57,8 +58,12 @@ public class PlayerData : MonoBehaviour, IDataPersistence
     {
         Debug.Log("LEVELED UP");
         Level++;
-        levelRewards.GrantLevelRewards(Level);
-        levelUpButton.SetActive(true);
+
+        if (!inWild)
+        {
+            levelRewards.GrantLevelRewards(Level);
+            levelUpButton.SetActive(true);
+        }
     }
 
     public int GetLevel()
