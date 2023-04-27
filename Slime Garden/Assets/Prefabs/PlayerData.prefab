@@ -45,11 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b3d9fcd9e1ac7c48b8cde01a650798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inWild: 0
   levelRewards: {fileID: 0}
   levelThresholds: 0a000000140000001e0000002800000032000000
   levelDisplay: {fileID: 0}
-  levelUpButton: {fileID: 0}
+  levelUpScreen: {fileID: 0}
   expBarFill: {fileID: 0}
   level: 0
   experience: 0
@@ -92,6 +91,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cb332160651c66f4f9239d31c044c471, type: 2}
   - {fileID: 11400000, guid: 61d4a5c358682974b97ea5a5ac6d88c6, type: 2}
   - {fileID: 11400000, guid: ece19c4674d5cad439d08ff9bb45ba7f, type: 2}
+  - {fileID: 11400000, guid: 88dde04e6985df6488b090157c842fb5, type: 2}
   - {fileID: 11400000, guid: 5a27c02d3282cae429d3ea160fd79928, type: 2}
   - {fileID: 11400000, guid: 372a25d2f42c4c145b20d36447d3ad7a, type: 2}
   - {fileID: 11400000, guid: cf967ff43a7f69c4ca256783b606d698, type: 2}
@@ -118,13 +118,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 801021af9a44ca9418abab32c6fdf9e3, type: 2}
   - {fileID: 11400000, guid: 04d99b5dd08061c46a29d8680b4962fe, type: 2}
   - {fileID: 11400000, guid: ab5a6f872b902af4893d69166da12e5f, type: 2}
+  - {fileID: 11400000, guid: cb332160651c66f4f9239d31c044c471, type: 2}
+  - {fileID: 11400000, guid: ece19c4674d5cad439d08ff9bb45ba7f, type: 2}
+  - {fileID: 11400000, guid: 61d4a5c358682974b97ea5a5ac6d88c6, type: 2}
+  - {fileID: 11400000, guid: 88dde04e6985df6488b090157c842fb5, type: 2}
   - {fileID: 11400000, guid: cf967ff43a7f69c4ca256783b606d698, type: 2}
   - {fileID: 11400000, guid: 78a4516acc8b7df4da0d2be37f9ceb8f, type: 2}
   - {fileID: 11400000, guid: 025b9b343a79bce4ca2f3702bbe08293, type: 2}
   - {fileID: 11400000, guid: 961052b25d882174b929e38264df835b, type: 2}
-  - {fileID: 11400000, guid: cb332160651c66f4f9239d31c044c471, type: 2}
-  - {fileID: 11400000, guid: 61d4a5c358682974b97ea5a5ac6d88c6, type: 2}
-  - {fileID: 11400000, guid: ece19c4674d5cad439d08ff9bb45ba7f, type: 2}
   - {fileID: 11400000, guid: 5a27c02d3282cae429d3ea160fd79928, type: 2}
   - {fileID: 11400000, guid: 372a25d2f42c4c145b20d36447d3ad7a, type: 2}
   inventoryList: []
