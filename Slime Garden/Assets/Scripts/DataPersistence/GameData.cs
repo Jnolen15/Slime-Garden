@@ -9,6 +9,7 @@ public class GameData
     public float experience;
     public int money;
     public int habitatTier;
+    public int tutorialProgress;
     public Vector2Int borderFenceStyle;
     public List<string> unlockedSlimes;                             // Slime patterns unlocked
     public List<InventoryManager.CropInventroyEntry> inventoryList; // Cops in inventory
@@ -22,6 +23,7 @@ public class GameData
         experience = 0;
         money = 0;
         habitatTier = 0;
+        tutorialProgress = 0;
         borderFenceStyle = new Vector2Int(0, 0);
         unlockedSlimes = new List<string>();
         unlockedSlimes.Add("Null");

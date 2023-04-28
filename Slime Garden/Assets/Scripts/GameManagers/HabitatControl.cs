@@ -57,7 +57,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         }
     }
 
-    private void ConstructSlime(SlimeDataEntry slime)
+    public void ConstructSlime(SlimeDataEntry slime)
     {
         GameObject newSlime = Instantiate(slimePrefab, slime.pos, Quaternion.identity);
         SlimeData newSD = newSlime.GetComponent<SlimeData>();

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private bool textisOpen;
     [SerializeField] private bool isTypying;
     [SerializeField] private bool isFinished;
+    private Action onDlogCompleteCallback;
 
     [SerializeField] private AudioClip[] talkSounds;
     private AudioSource audioSource;
@@ -44,6 +46,7 @@ public class DialogueManager : MonoBehaviour
             {
                 ToggleDialogue(false);
                 bodyText.text = "";
+                onDlogCompleteCallback();
             }
             // Display next sentence
             else
@@ -71,7 +74,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     // Refrenced by other scripts to type text
-    public void TypeDialogue(List<string> sentences, string name)
+    public void TypeDialogue(List<string> sentences, string name, Action onCompleteCallback = null)
     {
         if (!textisOpen)
             ToggleDialogue(true);
@@ -81,6 +84,8 @@ public class DialogueManager : MonoBehaviour
             curSentence = 0;
             curText = sentences;
             nameText.text = name;
+            if (onCompleteCallback != null)
+                onDlogCompleteCallback = onCompleteCallback;
             StartCoroutine(TypeLineCharacters(curText[curSentence]));
         }
     }
@@ -119,7 +124,7 @@ public class DialogueManager : MonoBehaviour
         if (talkSounds.Length == 0)
             return;
 
-        var randSound = Random.Range(0, talkSounds.Length);
+        var randSound = UnityEngine.Random.Range(0, talkSounds.Length);
         audioSource.PlayOneShot(talkSounds[randSound]);
     }
 }

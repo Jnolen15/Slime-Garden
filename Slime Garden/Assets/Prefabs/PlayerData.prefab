@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelRewards: {fileID: 0}
-  levelThresholds: 0a000000140000001e0000002800000032000000
+  levelThresholds: 05000000080000000c00000014000000
   levelDisplay: {fileID: 0}
   levelUpScreen: {fileID: 0}
   expBarFill: {fileID: 0}
@@ -99,33 +99,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 961052b25d882174b929e38264df835b, type: 2}
   - {fileID: 11400000, guid: 025b9b343a79bce4ca2f3702bbe08293, type: 2}
   - {fileID: 11400000, guid: 9dfde5a44616666469e7787f5602eacf, type: 2}
-  availableCrops:
-  - {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
-  - {fileID: 11400000, guid: 714b8a98ab3509144bff270d0be8c8ff, type: 2}
-  - {fileID: 11400000, guid: 1ba8176e8227c714c9e529cc77012de6, type: 2}
-  - {fileID: 11400000, guid: 067b6499764de23459e390292c36fc91, type: 2}
-  - {fileID: 11400000, guid: f84b790436d7a3d4fa1dd4d7ffd31a82, type: 2}
-  - {fileID: 11400000, guid: 32ca60f3d80b6c44a9b70abec8680fe1, type: 2}
-  - {fileID: 11400000, guid: f3526997d764b3d478e8bf8b52801b17, type: 2}
-  - {fileID: 11400000, guid: 713f318cfeba601468ab1fb737b9f55c, type: 2}
-  - {fileID: 11400000, guid: f787fea1e2499764a95a7eeef388fba0, type: 2}
-  - {fileID: 11400000, guid: 746ef2271d550944fb86afacc3a4b236, type: 2}
-  - {fileID: 11400000, guid: 7c4a0d17131d1cd48805d5d29cff33bc, type: 2}
-  - {fileID: 11400000, guid: cb7a3ba0839facc448d181b97db601b7, type: 2}
-  - {fileID: 11400000, guid: bf91536955aece44f950a2081e751909, type: 2}
-  availablePlaceables:
-  - {fileID: 11400000, guid: 6ea1d363f869a96438c09cd21494ab67, type: 2}
-  - {fileID: 11400000, guid: 801021af9a44ca9418abab32c6fdf9e3, type: 2}
-  - {fileID: 11400000, guid: 04d99b5dd08061c46a29d8680b4962fe, type: 2}
-  - {fileID: 11400000, guid: ab5a6f872b902af4893d69166da12e5f, type: 2}
-  - {fileID: 11400000, guid: cb332160651c66f4f9239d31c044c471, type: 2}
-  - {fileID: 11400000, guid: ece19c4674d5cad439d08ff9bb45ba7f, type: 2}
-  - {fileID: 11400000, guid: 61d4a5c358682974b97ea5a5ac6d88c6, type: 2}
-  - {fileID: 11400000, guid: 88dde04e6985df6488b090157c842fb5, type: 2}
-  - {fileID: 11400000, guid: cf967ff43a7f69c4ca256783b606d698, type: 2}
-  - {fileID: 11400000, guid: 78a4516acc8b7df4da0d2be37f9ceb8f, type: 2}
-  - {fileID: 11400000, guid: 025b9b343a79bce4ca2f3702bbe08293, type: 2}
-  - {fileID: 11400000, guid: 961052b25d882174b929e38264df835b, type: 2}
-  - {fileID: 11400000, guid: 5a27c02d3282cae429d3ea160fd79928, type: 2}
-  - {fileID: 11400000, guid: 372a25d2f42c4c145b20d36447d3ad7a, type: 2}
+  availableCrops: []
+  availablePlaceables: []
   inventoryList: []

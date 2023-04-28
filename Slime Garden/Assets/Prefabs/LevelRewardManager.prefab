@@ -52,17 +52,13 @@ MonoBehaviour:
     - {fileID: 21300000, guid: 2597b0d79c18db14dbaf79f81389d97a, type: 3}
     - {fileID: 11400000, guid: 9dfde5a44616666469e7787f5602eacf, type: 2}
     - {fileID: 21300000, guid: 9f5c0105309b8c546b2fd6df05784e5b, type: 3}
-    - {fileID: 21300000, guid: 56fe1efb1785eec4ba72ee520a61eba0, type: 3}
+    - {fileID: 21300000, guid: 9968ed29eb4904d43844b28feb9f7c93, type: 3}
+    - {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
+    - {fileID: 21300000, guid: 93874a6b4a82ded46a230c0ed3c4114b, type: 3}
+    - {fileID: 11400000, guid: 6ea1d363f869a96438c09cd21494ab67, type: 2}
     - {fileID: 21300000, guid: f078f61bb2f1d0944ac4d18cde813c0f, type: 3}
     - {fileID: 11400000, guid: 3856a1aa154d9bd42bd3c1743f942e85, type: 2}
-    - {fileID: 21300000, guid: 692743227ca75024787ecbae301253de, type: 3}
-    - {fileID: 11400000, guid: c08f588ed96524b4496f51faf073385a, type: 2}
     - {fileID: 21300000, guid: 3b7837b2eb23063439d8053f115915bb, type: 3}
-    - {fileID: 21300000, guid: b29a74a57f0b3da488f9c3d25b845b0a, type: 3}
-    - {fileID: 21300000, guid: 0dd8523e649676243815375e66320326, type: 3}
-    - {fileID: 21300000, guid: cdf1399dfed1a5f4d9f16b62dba98101, type: 3}
-    - {fileID: 21300000, guid: b722c91d84102704caf59237f08bfba8, type: 3}
-    - {fileID: 21300000, guid: 4f21a7ef3ad7ded41bb7be2cc9eee717, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -74,7 +70,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 15
+      Data: 8
     - Name: 
       Entry: 7
       Data: 1|LevelRewardHandler+ToolReward, Assembly-CSharp
@@ -131,172 +127,64 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 4|LevelRewardHandler+ToolReward, Assembly-CSharp
+      Data: 4|LevelRewardHandler+SeedReward, Assembly-CSharp
     - Name: levelEarned
       Entry: 3
       Data: 2
     - Name: rewardName
       Entry: 1
-      Data: Paint Tool
+      Data: Snackroot
     - Name: rewardImage
       Entry: 10
       Data: 4
     - Name: data
-      Entry: 1
-      Data: paint
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 5|LevelRewardHandler+SeedReward, Assembly-CSharp
-    - Name: levelEarned
-      Entry: 3
-      Data: 2
-    - Name: rewardName
-      Entry: 1
-      Data: Mondo mellon
-    - Name: rewardImage
       Entry: 10
       Data: 5
-    - Name: data
-      Entry: 10
-      Data: 6
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 6|LevelRewardHandler+FurnitureReward, Assembly-CSharp
+      Data: 5|LevelRewardHandler+FurnitureReward, Assembly-CSharp
     - Name: levelEarned
       Entry: 3
       Data: 2
     - Name: rewardName
       Entry: 1
-      Data: Barrel
+      Data: Farm Tile
     - Name: rewardImage
       Entry: 10
-      Data: 7
+      Data: 6
     - Name: data
       Entry: 10
-      Data: 8
+      Data: 7
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 7|LevelRewardHandler+SlimeReward, Assembly-CSharp
+      Data: 6|LevelRewardHandler+SeedReward, Assembly-CSharp
     - Name: levelEarned
       Entry: 3
       Data: 3
     - Name: rewardName
       Entry: 1
-      Data: Vertical Stripe
+      Data: Mondo mellon
     - Name: rewardImage
+      Entry: 10
+      Data: 8
+    - Name: data
       Entry: 10
       Data: 9
-    - Name: data
-      Entry: 1
-      Data: Vertical Stripe
     - Name: 
       Entry: 8
       Data: 
     - Name: 
       Entry: 7
-      Data: 8|LevelRewardHandler+SlimeReward, Assembly-CSharp
+      Data: 7|LevelRewardHandler+NPCReward, Assembly-CSharp
     - Name: levelEarned
       Entry: 3
       Data: 4
-    - Name: rewardName
-      Entry: 1
-      Data: Honeycomb
-    - Name: rewardImage
-      Entry: 10
-      Data: 10
-    - Name: data
-      Entry: 1
-      Data: Honeycomb
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 9|LevelRewardHandler+SlimeReward, Assembly-CSharp
-    - Name: levelEarned
-      Entry: 3
-      Data: 4
-    - Name: rewardName
-      Entry: 1
-      Data: Gradient
-    - Name: rewardImage
-      Entry: 10
-      Data: 11
-    - Name: data
-      Entry: 1
-      Data: Gradient
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 10|LevelRewardHandler+SlimeReward, Assembly-CSharp
-    - Name: levelEarned
-      Entry: 3
-      Data: 5
-    - Name: rewardName
-      Entry: 1
-      Data: Kitty
-    - Name: rewardImage
-      Entry: 10
-      Data: 12
-    - Name: data
-      Entry: 1
-      Data: Kitty
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 11|LevelRewardHandler+SlimeReward, Assembly-CSharp
-    - Name: levelEarned
-      Entry: 3
-      Data: 5
-    - Name: rewardName
-      Entry: 1
-      Data: Imp
-    - Name: rewardImage
-      Entry: 10
-      Data: 13
-    - Name: data
-      Entry: 1
-      Data: Imp
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 12|LevelRewardHandler+SlimeReward, Assembly-CSharp
-    - Name: levelEarned
-      Entry: 3
-      Data: 5
-    - Name: rewardName
-      Entry: 1
-      Data: Planet
-    - Name: rewardImage
-      Entry: 10
-      Data: 14
-    - Name: data
-      Entry: 1
-      Data: Planet
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 13|LevelRewardHandler+NPCReward, Assembly-CSharp
-    - Name: levelEarned
-      Entry: 3
-      Data: 1
     - Name: rewardName
       Entry: 1
       Data: Balloon Unlock
@@ -311,37 +199,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 14|LevelRewardHandler+NPCReward, Assembly-CSharp
+      Data: 8|LevelRewardHandler+SlimeReward, Assembly-CSharp
     - Name: levelEarned
       Entry: 3
-      Data: 2
+      Data: 4
     - Name: rewardName
       Entry: 1
-      Data: Crop Cart
+      Data: Vertical Stripe
     - Name: rewardImage
-      Entry: 6
-      Data: 
+      Entry: 10
+      Data: 10
     - Name: data
       Entry: 1
-      Data: cc
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 15|LevelRewardHandler+NPCReward, Assembly-CSharp
-    - Name: levelEarned
-      Entry: 3
-      Data: 3
-    - Name: rewardName
-      Entry: 1
-      Data: Habitat Upgrade
-    - Name: rewardImage
-      Entry: 6
-      Data: 
-    - Name: data
-      Entry: 1
-      Data: hu
+      Data: Vertical Stripe
     - Name: 
       Entry: 8
       Data: 
