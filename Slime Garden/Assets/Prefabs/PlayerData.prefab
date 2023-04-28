@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelRewards: {fileID: 0}
-  levelThresholds: 05000000080000000c00000014000000
+  levelThresholds: 05000000080000000c000000140000001e00000028000000320000003c000000500000006400000082000000a0000000c8000000fa000000
   levelDisplay: {fileID: 0}
   levelUpScreen: {fileID: 0}
   expBarFill: {fileID: 0}
