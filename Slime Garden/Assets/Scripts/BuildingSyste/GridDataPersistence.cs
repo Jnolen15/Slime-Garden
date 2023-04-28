@@ -91,6 +91,11 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
     }
 
     // =================== UPGRADE / STYLE HANDLING ===================
+    public int GetHabitatTeir()
+    {
+        return habitatTier;
+    }
+
     public void UpgradeHabitat()
     {
         habitatTier++;

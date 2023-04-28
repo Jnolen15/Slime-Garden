@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class HabitatUpgradeMenu : MonoBehaviour
 {
     private GridDataPersistence gridData;
     private DataPersistenceManager gameData;
+    private PlayerData pData;
     [SerializeField] private PreviewStageManager stageManager;
+    [SerializeField] private TextMeshProUGUI upgradePriceText;
+    [SerializeField] private GameObject upgradeButton;
+    [SerializeField] private int[] upgradePrices;
 
     [SerializeField] private int borderStyleIndex;
     [SerializeField] private int borderPaintIndex;
@@ -17,17 +22,24 @@ public class HabitatUpgradeMenu : MonoBehaviour
     {
         gridData = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridDataPersistence>();
         gameData = GameObject.FindGameObjectWithTag("Data").GetComponent<DataPersistenceManager>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
     }
 
     private void OnEnable()
     {
         SwapStageStyle();
+        UpdateUpgradePage();
     }
 
     // ============== Habitat Upgrading ==============
     public void Upgrade()
     {
+        if (pData.Money < upgradePrices[gridData.GetHabitatTeir()])
+            return;
+
         Debug.Log("Upgrading grid");
+
+        pData.GainMoney(-upgradePrices[gridData.GetHabitatTeir()]);
 
         gridData.UpgradeHabitat();
 
@@ -36,6 +48,23 @@ public class HabitatUpgradeMenu : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public void UpdateUpgradePage()
+    {
+        string priceTxt = "Upgrade Habitat: ";
+        if (gridData.GetHabitatTeir() == 0)
+            priceTxt += upgradePrices[gridData.GetHabitatTeir()].ToString();
+        else if (gridData.GetHabitatTeir() == 1)
+            priceTxt += upgradePrices[gridData.GetHabitatTeir()].ToString();
+        else if (gridData.GetHabitatTeir() == 2)
+            priceTxt += upgradePrices[gridData.GetHabitatTeir()].ToString();
+        else if (gridData.GetHabitatTeir() == 3)
+        {
+            priceTxt = "Habitat at max teir";
+            upgradeButton.SetActive(false);
+        }
+
+        upgradePriceText.text = priceTxt;
+    }
 
     // ============== Border Styling ==============
     public List<BorderStyles> borderStyles = new List<BorderStyles>();
