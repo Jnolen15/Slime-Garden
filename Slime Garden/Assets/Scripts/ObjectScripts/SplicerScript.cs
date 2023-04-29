@@ -16,6 +16,7 @@ public class SplicerScript : MonoBehaviour
     public GameObject Output;
     public Transform outputPos;
     private SplicerButton sb;
+    private AudioSource audioSrc;
     private bool splicing = false;
     private string newSlimeBase;
     private string newSlimePatternColor;
@@ -26,6 +27,8 @@ public class SplicerScript : MonoBehaviour
     private int price = 0;
     [SerializeField] private Material outputMat;
     private Color currentColor;
+
+    [SerializeField] private AudioClip spliceSound;
 
     // SLIME PARTS ===============
     //LEFT
@@ -38,6 +41,7 @@ public class SplicerScript : MonoBehaviour
         ls = InputLeft.GetComponent<SplicerInput>();
         rs = InputRight.GetComponent<SplicerInput>();
         sb = Button.GetComponent<SplicerButton>();
+        audioSrc = this.GetComponent<AudioSource>();
 
         outputMat = Output.GetComponentInChildren<MeshRenderer>().material;
 
@@ -218,6 +222,8 @@ public class SplicerScript : MonoBehaviour
 
         // Award EXP
         pData.GainExperience(newSD.sRarity);
+
+        audioSrc.PlayOneShot(spliceSound);
 
         yield return new WaitForSeconds(0.5f);
 

@@ -50,6 +50,9 @@ public class HabitatUpgradeMenu : MonoBehaviour
 
     public void UpdateUpgradePage()
     {
+        if (gridData == null)
+            return;
+
         string priceTxt = "Upgrade Habitat: ";
         if (gridData.GetHabitatTeir() == 0)
             priceTxt += upgradePrices[gridData.GetHabitatTeir()].ToString();
@@ -115,6 +118,9 @@ public class HabitatUpgradeMenu : MonoBehaviour
 
     private void SwapStageStyle()
     {
+        if (stageManager == null)
+            return;
+
         borderPreview = Instantiate(borderStyles[borderStyleIndex].style).transform;
 
         stageManager.gameObject.SetActive(true);

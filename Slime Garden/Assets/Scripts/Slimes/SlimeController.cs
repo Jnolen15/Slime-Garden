@@ -20,6 +20,8 @@ public class SlimeController : MonoBehaviour
     private Animator faceAnimator;              //The animator for the face
     private SBrain brain;                       //The Slime Brain Script
     private SlimeData sData;                    //Info about the slime
+    private AudioSource audioSrc;
+    [SerializeField] private AudioClip[] jumpSounds;
 
     //=============== HELP VARIABLES ===============
     private bool stateChanged;                  // Bool to make sure initial state changes only happen once
@@ -70,6 +72,9 @@ public class SlimeController : MonoBehaviour
         baseAnimator = baseSlime.GetComponent<Animator>();
         patternAnimator = pattern.GetComponent<Animator>();
         faceAnimator = face.GetComponent<Animator>();
+
+        // Auido
+        audioSrc = this.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -263,6 +268,8 @@ public class SlimeController : MonoBehaviour
 
         jumped = true;
         grounded = false;
+
+        audioSrc.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)]);
     }
 
     // ========================== MISC ==========================

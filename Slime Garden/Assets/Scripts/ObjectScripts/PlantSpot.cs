@@ -8,12 +8,16 @@ public class PlantSpot : MonoBehaviour
     private Transform model;
     private GardenManager gm;
     private InventoryManager invManager;
+    private AudioSource audioSrc;
 
     [SerializeField] private Material dryMat;
     [SerializeField] private Material wetMat;
     [SerializeField] private GameObject waterFX;
     [SerializeField] private GameObject LeafBurstFX;
     [SerializeField] private GameObject DirtBurstFX;
+
+    [SerializeField] private AudioClip[] waterSounds;
+    [SerializeField] private AudioClip[] interactSounds;
 
     public CropSO curCropSO;
     public bool hasCrop;
@@ -27,6 +31,8 @@ public class PlantSpot : MonoBehaviour
         invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToList(this);
+
+        audioSrc = this.GetComponent<AudioSource>();
 
         crop = transform.GetChild(0);
         model = transform.GetChild(1);
@@ -71,6 +77,7 @@ public class PlantSpot : MonoBehaviour
         hasCrop = true;
 
         // Effect
+        audioSrc.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);
         Vector3 pos = new Vector3(crop.position.x, crop.position.y + 0.1f, crop.position.z);
         Instantiate(DirtBurstFX, pos, Quaternion.identity);
     }
@@ -138,6 +145,7 @@ public class PlantSpot : MonoBehaviour
 
     private void Water()
     {
+        audioSrc.PlayOneShot(waterSounds[Random.Range(0, waterSounds.Length)]);
         wateredTicks += 2;
         StartCoroutine(AnimateWater());
     }
@@ -161,6 +169,7 @@ public class PlantSpot : MonoBehaviour
         GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>().GainExperience(curCropSO.expYeild);
 
         // Effect
+        audioSrc.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
         Instantiate(LeafBurstFX, pos, Quaternion.identity);
 
