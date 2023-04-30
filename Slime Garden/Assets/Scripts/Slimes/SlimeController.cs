@@ -22,6 +22,7 @@ public class SlimeController : MonoBehaviour
     private SlimeData sData;                    //Info about the slime
     private AudioSource audioSrc;
     [SerializeField] private AudioClip[] jumpSounds;
+    [SerializeField] private AudioClip[] eatSounds;
 
     //=============== HELP VARIABLES ===============
     private bool stateChanged;                  // Bool to make sure initial state changes only happen once
@@ -193,6 +194,7 @@ public class SlimeController : MonoBehaviour
                     if (curFood != null)
                     {
                         curFood.DestroySelf();
+                        audioSrc.PlayOneShot(eatSounds[Random.Range(0, eatSounds.Length)]);
 
                         // Attempt tame if wild slime
                         if (sData.isWild)

@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private GridSystem gridSystem;
     private GameObject buildVisual;
     private SlimeController curInspectingSlime;
+    private AudioSource audioSrc;
+    [SerializeField] private AudioClip[] paintSounds;
 
     // Player State enum
     public enum State
@@ -52,6 +54,8 @@ public class PlayerController : MonoBehaviour
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         buildVisual = GameObject.FindGameObjectWithTag("BuildVisual");
         buildVisual.SetActive(false);
+
+        audioSrc = this.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -323,7 +327,10 @@ public class PlayerController : MonoBehaviour
         painted = gridSystem.Paint(pos);
 
         if (painted)
+        {
+            audioSrc.PlayOneShot(paintSounds[Random.Range(0, paintSounds.Length)]);
             Debug.Log("Painted");
+        }
         else
             Debug.Log("Nothing to Paint");
     }
