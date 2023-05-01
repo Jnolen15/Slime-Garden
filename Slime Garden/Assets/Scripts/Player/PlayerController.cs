@@ -315,6 +315,11 @@ public class PlayerController : MonoBehaviour
 
         if (pData.CanAfford(so.price))
             placed = gridSystem.Place(pos);
+        else
+        {
+            menus.TextPopup("Can't afford!", Color.red);
+            dragBuild = false;
+        }
 
         if (placed)
             pData.MakePurchase(so.price);

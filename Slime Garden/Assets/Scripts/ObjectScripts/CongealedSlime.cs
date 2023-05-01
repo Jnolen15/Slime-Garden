@@ -16,6 +16,11 @@ public class CongealedSlime : MonoBehaviour
         menuManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
     }
 
+    public void SetValue(int newVal)
+    {
+        value = newVal;
+    }
+
     public void Collect()
     {
         pData.GainMoney(value);

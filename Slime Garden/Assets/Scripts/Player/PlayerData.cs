@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerData : MonoBehaviour, IDataPersistence
 {
     [SerializeField] LevelRewardHandler levelRewards;
+    [SerializeField] MenuManager menus;
 
     // ===================== LEVEL / XP STUFF =====================
     [SerializeField] private List<int> levelThresholds = new List<int>();
@@ -114,11 +115,15 @@ public class PlayerData : MonoBehaviour, IDataPersistence
     public void MakePurchase(int cost)
     {
         Money -= cost;
+
+        menus.TextPopup("-" + cost, Color.red);
     }
 
     public void GainMoney(int value)
     {
         Money += value;
+
+        menus.TextPopup("+" + value, Color.green);
     }
 
     // Purchases if player can afford
@@ -126,13 +131,12 @@ public class PlayerData : MonoBehaviour, IDataPersistence
     {
         if (Money >= cost)
         {
-            //Debug.Log("Purchased!");
-            Money -= cost;
+            MakePurchase(cost);
             return true;
         }
         else
         {
-            //Debug.Log("Cannot afford!");
+            menus.TextPopup("Can't afford!", Color.red);
             return false;
         }
     }

@@ -19,6 +19,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject cropSellBox;
     [SerializeField] private GameObject habitatUpgradeBox;
     [SerializeField] private GameObject cSToken;
+    [SerializeField] private GameObject textPopup;
     [SerializeField] private RectTransform tokenEndPos;
     [SerializeField] private InventoryManager invManager;
     [SerializeField] private PreviewStageManager stageManager;
@@ -185,12 +186,19 @@ public class MenuManager : MonoBehaviour
         CloseInfoBox();
     }
 
-    // ============== CS Token =================
+    // ============== UI Popups =================
     public void AnimateToken(Color color)
     {
         //Vector3 pos = Camera.main.ScreenToViewportPoint(Mouse.current.position.ReadValue());
         Vector3 pos = Mouse.current.position.ReadValue();
         var token = Instantiate(cSToken, pos, Quaternion.identity, transform);
         token.GetComponent<UIToken>().Setup(tokenEndPos.position, color);
+    }
+
+    public void TextPopup(string str, Color color)
+    {
+        Vector3 pos = Mouse.current.position.ReadValue();
+        GameObject popup = Instantiate(textPopup, pos, Quaternion.identity, transform);
+        popup.GetComponent<TextPopup>().setup(str.ToString(), color);
     }
 }

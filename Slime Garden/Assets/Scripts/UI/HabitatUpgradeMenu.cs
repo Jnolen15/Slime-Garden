@@ -39,7 +39,7 @@ public class HabitatUpgradeMenu : MonoBehaviour
 
         Debug.Log("Upgrading grid");
 
-        pData.GainMoney(-upgradePrices[gridData.GetHabitatTeir()]);
+        pData.MakePurchase(upgradePrices[gridData.GetHabitatTeir()]);
 
         gridData.UpgradeHabitat();
 

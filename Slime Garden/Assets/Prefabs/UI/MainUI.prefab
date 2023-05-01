@@ -7376,6 +7376,8 @@ MonoBehaviour:
   cropSellBox: {fileID: 1691142453174850835}
   habitatUpgradeBox: {fileID: 1691142453441298953}
   cSToken: {fileID: 1051201515738897732, guid: 0b50deea62bd67a428003ac80a9f55dc, type: 3}
+  textPopup: {fileID: 6147762368863350513, guid: f2146af7b5a7bd04782e60fd523ec4cb,
+    type: 3}
   tokenEndPos: {fileID: 1691142452533719744}
   invManager: {fileID: 0}
   stageManager: {fileID: 0}
