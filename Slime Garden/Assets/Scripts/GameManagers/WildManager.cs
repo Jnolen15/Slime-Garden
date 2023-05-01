@@ -5,11 +5,10 @@ using UnityEngine;
 public class WildManager : MonoBehaviour, IDataPersistence
 {
     // Variables
-    [SerializeField] private GameObject wildSlimePref;
-    [SerializeField] private Vector2 zoneBorders;
-    [SerializeField] private float spawnInterval;
-    [SerializeField] private float spawnCoolDown;
-    [SerializeField] private int numSpawns;
+    [SerializeField] private GameObject slimeSpawnFX;
+    [SerializeField] private Vector2Int spawnInterval;
+    [SerializeField] private Vector2Int numSpawns;
+    private float spawnCoolDown;
 
     public List<Transform> spawns = new List<Transform>();
     public List<HabitatControl.SlimeDataEntry> tamedSlimes = new List<HabitatControl.SlimeDataEntry>();
@@ -31,17 +30,20 @@ public class WildManager : MonoBehaviour, IDataPersistence
         if (spawnCoolDown > 0) spawnCoolDown -= Time.deltaTime;
         else
         {
-            spawnCoolDown = spawnInterval;
-            for(int i = 0; i < numSpawns; i++)
+            spawnCoolDown = Random.Range(spawnInterval.x, spawnInterval.y);
+            var numtospawn = Random.Range(numSpawns.x, numSpawns.y);
+            for(int i = 0; i < numtospawn; i++)
                 SpawnSlime();
         }
     }
 
     private void SpawnSlime()
     {
-        Vector3 randPos = spawns[Random.Range(0, spawns.Count)].position;
-        GameObject newSLime = randSlime.CreateSlime(randPos, true);
+        Transform randPos = spawns[Random.Range(0, spawns.Count)];
+        GameObject newSLime = randSlime.CreateSlime(randPos.position, true);
         newSLime.GetComponent<SlimeController>().ChangeState(SlimeController.State.jump);
+
+        Instantiate(slimeSpawnFX, randPos.position, randPos.rotation);
 
         Debug.Log("Spawned slime " + newSLime.GetComponent<SlimeData>().speciesName);
     }

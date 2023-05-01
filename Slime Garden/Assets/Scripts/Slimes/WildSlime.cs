@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class WildSlime : MonoBehaviour
 {
     // Variables
     [SerializeField] private bool isTamed;
     [SerializeField] private float despawnTime;
+    private bool isDespawning;
     [SerializeField] private int tameThreshold;
     [SerializeField] private int tameAmmount;
     [SerializeField] private float expMod;
@@ -35,11 +37,11 @@ public class WildSlime : MonoBehaviour
     private void Update()
     {
         if (despawnTime > 0) despawnTime -= Time.deltaTime;
-        else
+        else if (!isDespawning)
         {
-            // TODO - Make this better
-            Debug.Log("Slime Despawning");
-            Destroy(gameObject);
+            isDespawning = true;
+            sControl.ChangeState(SlimeController.State.tamed);
+            Destroy(gameObject, 3f);
         }
     }
 

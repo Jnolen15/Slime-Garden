@@ -374,6 +374,10 @@ public class PlayerController : MonoBehaviour
             spot.DestroySelf();
         }
 
+        // Slight Refund
+        var data = gridSystem.GetPlaceableObject(pos).GetPlaceableData();
+        pData.GainMoney((data.price/2));
+
         gridSystem.Demolish(pos);
     }
 
