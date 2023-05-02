@@ -10,7 +10,7 @@ public class Cheats : MonoBehaviour
     private InventoryManager inventory;
     private DataPersistenceManager gameData;
     [SerializeField] private bool inWild;
-    [SerializeField] private CropSO cheatCrop;
+    [SerializeField] private CropSO[] cheatCrops;
     [SerializeField] private GameObject cs;
 
     void Start()
@@ -39,7 +39,10 @@ public class Cheats : MonoBehaviour
         // Give Crops
         if (Input.GetKeyDown(KeyCode.C))
         {
-            inventory.AddCrop(cheatCrop, 10);
+            foreach(CropSO crop in cheatCrops)
+            {
+                inventory.AddCrop(crop, 10);
+            }
         }
 
         // Spawn a random slime on button press

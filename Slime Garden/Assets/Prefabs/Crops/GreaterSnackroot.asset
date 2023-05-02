@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df863a4009a2da479464d47399dd5eb, type: 3}
+  m_Name: GreaterSnackroot
+  m_EditorClassIdentifier: 
+  cropName: Greater Snackroot
+  previewImage: {fileID: 21300000, guid: cfe5eb3537ee55e4d959f4c4d291fd60, type: 3}
+  price: 12
+  sellValue: 18
+  expYeild: 3
+  seedDescription: Greater Snackroot are like Snackroot, but greater!
+  CropDescription: Greater Snackroots a good crop for any scenario
+  growTicks: 0100000002000000
+  cropStages:
+  - {fileID: -2432090755550338912, guid: 9fb5bed1ac20e884182c480edd75fbbb, type: 3}
+  - {fileID: -2432090755550338912, guid: d57e8c41b072d224b979579011a9a5ac, type: 3}
+  - {fileID: -2432090755550338912, guid: 6932f48600ba1904ca30f3a37f7b4a4b, type: 3}
+  cropMat: {fileID: 2100000, guid: f5382efee35f2df48a5c7afa7af54b5f, type: 2}
+  cropObj: {fileID: 6855132800662467032, guid: 45d45b6344028cd43882b8e34ed82bcf, type: 3}
+  tameValue: 1

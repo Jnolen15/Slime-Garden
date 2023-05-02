@@ -70,9 +70,15 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
             {
                 cropSlot.numHeld += ammount;
                 Debug.Log("Harvested crop " + cropSlot.cropName);
-                break;
+                return;
             }
         }
+
+        // If crop was not in list
+        Debug.Log("Crop not in list, adding it");
+        CropInventroyEntry newEntry = new CropInventroyEntry(crop.cropName);
+        inventoryList.Add(newEntry);
+        AddCrop(crop, ammount);
     }
 
     public int GetNumHeld(CropSO crop)

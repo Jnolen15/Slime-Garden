@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelRewards: {fileID: 0}
-  levelThresholds: 05000000080000000c000000140000001e00000028000000320000003c000000500000006400000082000000a0000000c8000000fa000000
+  menus: {fileID: 0}
+  levelThresholds: 05000000080000000c000000140000001e00000028000000320000003c000000500000006400000082000000a0000000c8000000fa0000002c010000
   levelDisplay: {fileID: 0}
   levelUpScreen: {fileID: 0}
   expBarFill: {fileID: 0}
@@ -70,18 +71,8 @@ MonoBehaviour:
   inGameCrops:
   - {fileID: 11400000, guid: 3856a1aa154d9bd42bd3c1743f942e85, type: 2}
   - {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
-  - {fileID: 11400000, guid: 714b8a98ab3509144bff270d0be8c8ff, type: 2}
-  - {fileID: 11400000, guid: 1ba8176e8227c714c9e529cc77012de6, type: 2}
-  - {fileID: 11400000, guid: 067b6499764de23459e390292c36fc91, type: 2}
-  - {fileID: 11400000, guid: f84b790436d7a3d4fa1dd4d7ffd31a82, type: 2}
-  - {fileID: 11400000, guid: 32ca60f3d80b6c44a9b70abec8680fe1, type: 2}
-  - {fileID: 11400000, guid: f3526997d764b3d478e8bf8b52801b17, type: 2}
-  - {fileID: 11400000, guid: 713f318cfeba601468ab1fb737b9f55c, type: 2}
-  - {fileID: 11400000, guid: f787fea1e2499764a95a7eeef388fba0, type: 2}
-  - {fileID: 11400000, guid: 746ef2271d550944fb86afacc3a4b236, type: 2}
-  - {fileID: 11400000, guid: 7c4a0d17131d1cd48805d5d29cff33bc, type: 2}
-  - {fileID: 11400000, guid: cb7a3ba0839facc448d181b97db601b7, type: 2}
-  - {fileID: 11400000, guid: bf91536955aece44f950a2081e751909, type: 2}
+  - {fileID: 11400000, guid: 83789423a927cb24a918c0372da321d0, type: 2}
+  - {fileID: 11400000, guid: f4c236df24b5cc84781ddfbffed7fb42, type: 2}
   inGamePlaceables:
   - {fileID: 11400000, guid: 6ea1d363f869a96438c09cd21494ab67, type: 2}
   - {fileID: 11400000, guid: ab5a6f872b902af4893d69166da12e5f, type: 2}

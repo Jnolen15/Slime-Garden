@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df863a4009a2da479464d47399dd5eb, type: 3}
+  m_Name: MegaMondoMellon
+  m_EditorClassIdentifier: 
+  cropName: Mega Mondo Mellon
+  previewImage: {fileID: 21300000, guid: 02665789b478e6f4b90d9612eb4beb64, type: 3}
+  price: 25
+  sellValue: 35
+  expYeild: 5
+  seedDescription: The bigger sibling of the Mondo Mellon! Super effective for taming
+    slimes but has a long growth period.
+  CropDescription: A huge mellon that slimes love. ++Tame potential
+  growTicks: 020000000400000006000000
+  cropStages:
+  - {fileID: -2432090755550338912, guid: ea7ac957d72fc0e448b5e182e9a03931, type: 3}
+  - {fileID: -2432090755550338912, guid: 7a4f400302bfc574f9cd3e900475b15e, type: 3}
+  - {fileID: -2432090755550338912, guid: cbbe372b0e793a64381486d41a3f7db5, type: 3}
+  - {fileID: -2432090755550338912, guid: 2352a7d5209b84342a69a0feaf6513f5, type: 3}
+  cropMat: {fileID: 2100000, guid: f5382efee35f2df48a5c7afa7af54b5f, type: 2}
+  cropObj: {fileID: 4359871842989944833, guid: 95e88d1dbedf5b045937a62355db069a, type: 3}
+  tameValue: 10
