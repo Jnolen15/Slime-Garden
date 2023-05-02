@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class WildManager : MonoBehaviour, IDataPersistence
 {
+    // SLIME DICTIONARIES ===============
+    // Dictionary refrneces needed in scene.
+    // Once they are loaded once they should be fine in other scenes but just in case
+    public SBaseDictionary sBaseDictionary;
+    public SPatternDictionary sPatternDictionary;
+
     // Variables
     [SerializeField] private GameObject slimeSpawnFX;
     [SerializeField] private Vector2Int spawnInterval;

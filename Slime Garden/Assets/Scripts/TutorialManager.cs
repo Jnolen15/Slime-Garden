@@ -195,6 +195,10 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
                 pData.GainMoney(40);
                 dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
                 return;
+            case "WildZoneReturn":
+                pData.GainMoney(100);
+                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
+                return;
             default:
                 Debug.Log("Default case, progressing");
                 dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));

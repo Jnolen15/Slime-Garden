@@ -121,7 +121,7 @@ public class DialogueManager : MonoBehaviour
     // Plays a dialogue noise
     private void Vocalize()
     {
-        if (talkSounds.Length == 0)
+        if (talkSounds.Length == 0 || audioSource == null)
             return;
 
         var randSound = UnityEngine.Random.Range(0, talkSounds.Length);

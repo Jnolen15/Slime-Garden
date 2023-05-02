@@ -5637,6 +5637,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc294bc9b760d314f9da163bf7b4722b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sBaseDictionary: {fileID: 11400000, guid: 6b63382780fc7ef43a6687b4df4b2a4a, type: 2}
+  sPatternDictionary: {fileID: 11400000, guid: 588174487cfc27d4f9d226b1112744fc, type: 2}
   slimeSpawnFX: {fileID: 2109038353315481818, guid: cbf7894f279024f4f95d26222b5247bf,
     type: 3}
   spawnInterval: {x: 4, y: 10}
