@@ -9,6 +9,7 @@ public class Cheats : MonoBehaviour
     private PlayerData pData;
     private InventoryManager inventory;
     private DataPersistenceManager gameData;
+    [SerializeField] private bool cheatsEnabled;
     [SerializeField] private bool inWild;
     [SerializeField] private CropSO[] cheatCrops;
     [SerializeField] private GameObject cs;
@@ -23,6 +24,15 @@ public class Cheats : MonoBehaviour
 
     void Update()
     {
+        // Toggle cheats
+        if (Input.GetKeyDown(KeyCode.BackQuote))
+        {
+            cheatsEnabled = !cheatsEnabled;
+        }
+
+        if (!cheatsEnabled)
+            return;
+
         // Give money
         if (Input.GetKeyDown(KeyCode.M))
         {
