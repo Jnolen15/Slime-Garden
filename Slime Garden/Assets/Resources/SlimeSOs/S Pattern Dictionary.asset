@@ -17,11 +17,12 @@ MonoBehaviour:
     SerializedBytes: 
     ReferencedUnityObjects:
     - {fileID: 11400000, guid: a8ee6d36f53335a4889047b15112f262, type: 2}
-    - {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
     - {fileID: 11400000, guid: f9a52d41c591cc84e86f0005c307e3d8, type: 2}
+    - {fileID: 11400000, guid: 7121d40ca7ebcaf41894903795678507, type: 2}
+    - {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
+    - {fileID: 11400000, guid: 1036d8e6b321fa54aab716cee86e7418, type: 2}
     - {fileID: 11400000, guid: 8ad2ef3c3f6671c4f9d4a385923b02a1, type: 2}
     - {fileID: 11400000, guid: 726a3ed2433329343b9c7e2773904477, type: 2}
-    - {fileID: 11400000, guid: 0d9351025dd33914cad8cf7f5167c048, type: 2}
     - {fileID: 11400000, guid: 45f8fc6193f5c5c4a9f6b14e6cc7ded0, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
@@ -371,7 +372,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 7
+      Data: 8
     - Name: 
       Entry: 7
       Data: 14|SPatternDictionary+patternListEntry, Assembly-CSharp
@@ -389,7 +390,7 @@ MonoBehaviour:
       Data: 15|SPatternDictionary+patternListEntry, Assembly-CSharp
     - Name: pName
       Entry: 1
-      Data: Gradient
+      Data: Vertical Stripe
     - Name: pattern
       Entry: 10
       Data: 1
@@ -401,7 +402,7 @@ MonoBehaviour:
       Data: 16|SPatternDictionary+patternListEntry, Assembly-CSharp
     - Name: pName
       Entry: 1
-      Data: Vertical Stripe
+      Data: Balance
     - Name: pattern
       Entry: 10
       Data: 2
@@ -413,7 +414,7 @@ MonoBehaviour:
       Data: 17|SPatternDictionary+patternListEntry, Assembly-CSharp
     - Name: pName
       Entry: 1
-      Data: Kitty
+      Data: Honeycomb
     - Name: pattern
       Entry: 10
       Data: 3
@@ -425,7 +426,7 @@ MonoBehaviour:
       Data: 18|SPatternDictionary+patternListEntry, Assembly-CSharp
     - Name: pName
       Entry: 1
-      Data: Imp
+      Data: Gradient
     - Name: pattern
       Entry: 10
       Data: 4
@@ -437,7 +438,7 @@ MonoBehaviour:
       Data: 19|SPatternDictionary+patternListEntry, Assembly-CSharp
     - Name: pName
       Entry: 1
-      Data: Honeycomb
+      Data: Kitty
     - Name: pattern
       Entry: 10
       Data: 5
@@ -449,10 +450,22 @@ MonoBehaviour:
       Data: 20|SPatternDictionary+patternListEntry, Assembly-CSharp
     - Name: pName
       Entry: 1
-      Data: Planet
+      Data: Imp
     - Name: pattern
       Entry: 10
       Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 21|SPatternDictionary+patternListEntry, Assembly-CSharp
+    - Name: pName
+      Entry: 1
+      Data: Planet
+    - Name: pattern
+      Entry: 10
+      Data: 7
     - Name: 
       Entry: 8
       Data: 

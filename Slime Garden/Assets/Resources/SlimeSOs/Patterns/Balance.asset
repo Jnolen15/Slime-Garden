@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 98719490c6fded94e815b9d2525202cb, type: 3}
-  m_Name: Honeycomb
+  m_Name: Balance
   m_EditorClassIdentifier: 
-  libraryAsset: {fileID: 7108339969198208228, guid: a49e97fd8e760bd44befac144d659b56,
+  libraryAsset: {fileID: 7108339969198208228, guid: 97dd73f13ba33aa448b33df3ae7c713e,
     type: 3}
-  sPattern: Honeycomb
+  sPattern: Balance
   sRarity: 3
