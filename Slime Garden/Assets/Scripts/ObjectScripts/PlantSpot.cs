@@ -161,9 +161,15 @@ public class PlantSpot : MonoBehaviour
 
     private void Harvest()
     {
-        //Debug.Log("Crop harvested!");
-        // Yeild
-        invManager.AddCrop(curCropSO, 1);
+        // Yeild. If multiYeild, then give random between that and 1
+        if (curCropSO.multiYeild > 0)
+        {
+            int num = Random.Range(1, curCropSO.multiYeild+1); //+1 because its maxExlusive
+            invManager.AddCrop(curCropSO, num);
+            Debug.Log("Multi-harvest yerid " + num);
+        }
+        else
+            invManager.AddCrop(curCropSO, 1);
 
         // Award EXP
         GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>().GainExperience(curCropSO.expYeild);
@@ -173,13 +179,24 @@ public class PlantSpot : MonoBehaviour
         Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
         Instantiate(LeafBurstFX, pos, Quaternion.identity);
 
+        // Can be harvested repeatedly
+        if (curCropSO.multiHarvest)
+        {
+            fullyGrown = false;
+            growthStage--;
+            curTick -= curCropSO.regrowTicks;
+            crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
+        }
         // Reset
-        hasCrop = false;
-        fullyGrown = false;
-        curTick = 0;
-        growthStage = 0;
-        curCropSO = null;
-        crop.GetComponent<MeshFilter>().mesh = null;
+        else
+        {
+            hasCrop = false;
+            fullyGrown = false;
+            curTick = 0;
+            growthStage = 0;
+            curCropSO = null;
+            crop.GetComponent<MeshFilter>().mesh = null;
+        }
     }
 
     public void DestroySelf()

@@ -11,6 +11,9 @@ public class CropSO : ScriptableObject
     public int price;
     public int sellValue;
     public int expYeild;
+    public int multiYeild;
+    public int regrowTicks;
+    public bool multiHarvest;
 
     [TextArea]
     public string seedDescription;
