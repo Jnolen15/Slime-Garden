@@ -246,14 +246,6 @@ public class PlayerController : MonoBehaviour
         if (MouseOverUI())
             return;
 
-        // Click buildable
-        /*Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
-        {
-            if (state == State.Build)
-                RemoveBuildable(mousePos.point);
-        }*/
-
         // Click slime
         Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))

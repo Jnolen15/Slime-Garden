@@ -92,6 +92,14 @@ public class DataPersistenceManager : MonoBehaviour
         dataHandler.Save(gameData);
     }
 
+    public void DeleteSave()
+    {
+        Debug.Log("Attempting to reset save game");
+
+        dataHandler.Delete();
+        LoadGame();
+    }
+
     // Finds all scripts that implement IDataPersistence
     private List<IDataPersistence> FindAllDataPersistenceObjects()
     {

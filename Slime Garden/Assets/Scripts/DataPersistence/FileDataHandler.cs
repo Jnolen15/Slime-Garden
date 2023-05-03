@@ -88,6 +88,26 @@ public class FileDataHandler
         }
     }
 
+    public void Delete()
+    {
+        string fullPath = Path.Combine(dataDirPath, dataFileName);
+        try
+        {
+            if(File.Exists(fullPath))
+            {
+                Debug.Log("GAME DATA DELETED SUCCESSFULLY");
+                File.Delete(fullPath);
+            }
+            else
+                Debug.LogWarning("Game data could not be deleted: File does not exist");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Game data could not be deleted: Error at path " + fullPath + " " + e);
+            throw;
+        }
+    }
+
     // Encryption to make files not as easily changeable
     // But congrats if your doing it anyways.
     private string EncryptDecrypt(string data)
