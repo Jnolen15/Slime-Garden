@@ -98,6 +98,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: cf967ff43a7f69c4ca256783b606d698, type: 2}
     - {fileID: 21300000, guid: 02665789b478e6f4b90d9612eb4beb64, type: 3}
     - {fileID: 11400000, guid: f4c236df24b5cc84781ddfbffed7fb42, type: 2}
+    - {fileID: 21300000, guid: 16a563b0b19c44d4a9d1fd17b998b0d9, type: 3}
+    - {fileID: 11400000, guid: d55f1b74c240bcb4a806dbb01224d814, type: 2}
     - {fileID: 21300000, guid: b722c91d84102704caf59237f08bfba8, type: 3}
     - {fileID: 21300000, guid: 4f21a7ef3ad7ded41bb7be2cc9eee717, type: 3}
     SerializedBytesString: 
@@ -111,7 +113,7 @@ MonoBehaviour:
         Assembly-CSharp]], mscorlib
     - Name: 
       Entry: 12
-      Data: 33
+      Data: 34
     - Name: 
       Entry: 7
       Data: 1|LevelRewardHandler+ToolReward, Assembly-CSharp
@@ -672,19 +674,19 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 32|LevelRewardHandler+SlimeReward, Assembly-CSharp
+      Data: 32|LevelRewardHandler+SeedReward, Assembly-CSharp
     - Name: levelEarned
       Entry: 3
-      Data: 14
+      Data: 13
     - Name: rewardName
       Entry: 1
-      Data: Imp
+      Data: Burple Berry Bush
     - Name: rewardImage
       Entry: 10
       Data: 50
     - Name: data
-      Entry: 1
-      Data: Imp
+      Entry: 10
+      Data: 51
     - Name: 
       Entry: 8
       Data: 
@@ -693,13 +695,31 @@ MonoBehaviour:
       Data: 33|LevelRewardHandler+SlimeReward, Assembly-CSharp
     - Name: levelEarned
       Entry: 3
+      Data: 14
+    - Name: rewardName
+      Entry: 1
+      Data: Imp
+    - Name: rewardImage
+      Entry: 10
+      Data: 52
+    - Name: data
+      Entry: 1
+      Data: Imp
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 34|LevelRewardHandler+SlimeReward, Assembly-CSharp
+    - Name: levelEarned
+      Entry: 3
       Data: 15
     - Name: rewardName
       Entry: 1
       Data: Planet
     - Name: rewardImage
       Entry: 10
-      Data: 51
+      Data: 53
     - Name: data
       Entry: 1
       Data: Planet

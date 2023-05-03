@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df863a4009a2da479464d47399dd5eb, type: 3}
+  m_Name: BurpleBerry
+  m_EditorClassIdentifier: 
+  cropName: Burple Berry
+  previewImage: {fileID: 21300000, guid: 16a563b0b19c44d4a9d1fd17b998b0d9, type: 3}
+  price: 40
+  sellValue: 5
+  expYeild: 1
+  seedDescription: Burple Berry Bushes can be harvested multiple times, and each
+    harvest yeilds 1-3 berries.
+  CropDescription: These little berries are quite tart and not very useful when taming.
+  growTicks: 0100000002000000
+  cropStages:
+  - {fileID: -2432090755550338912, guid: a57bde967498c824296117cec9a0b160, type: 3}
+  - {fileID: -2432090755550338912, guid: 0094e38a56e3a954f9d82331afc69313, type: 3}
+  - {fileID: -2432090755550338912, guid: 705eec0898b01d7439acf91481704d38, type: 3}
+  cropMat: {fileID: 2100000, guid: 2eff57d949b6556488e570b1c3c36a77, type: 2}
+  cropObj: {fileID: 4966201847905522440, guid: 023fdaad1d082e5468c7de1cde6fd4fd, type: 3}
+  tameValue: 0

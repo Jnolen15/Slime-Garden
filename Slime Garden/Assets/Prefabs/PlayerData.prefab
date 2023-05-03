@@ -73,6 +73,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
   - {fileID: 11400000, guid: 83789423a927cb24a918c0372da321d0, type: 2}
   - {fileID: 11400000, guid: f4c236df24b5cc84781ddfbffed7fb42, type: 2}
+  - {fileID: 11400000, guid: d55f1b74c240bcb4a806dbb01224d814, type: 2}
   inGamePlaceables:
   - {fileID: 11400000, guid: 6ea1d363f869a96438c09cd21494ab67, type: 2}
   - {fileID: 11400000, guid: ab5a6f872b902af4893d69166da12e5f, type: 2}
