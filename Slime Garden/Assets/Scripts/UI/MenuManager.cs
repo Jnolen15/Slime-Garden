@@ -8,6 +8,7 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private bool inWild;
     [SerializeField] private GameObject buildTool;
+    [SerializeField] private GameObject destroyTool;
     [SerializeField] private GameObject plantTool;
     [SerializeField] private GameObject paintTool;
     [SerializeField] private GameObject buildMenu;
@@ -50,6 +51,8 @@ public class MenuManager : MonoBehaviour
 
         if (tool == "build")
             buildTool.SetActive(true);
+        else if (tool == "destroy")
+            destroyTool.SetActive(true);
         else if (tool == "plant")
             plantTool.SetActive(true);
         else if (tool == "paint")

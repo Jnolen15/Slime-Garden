@@ -38,7 +38,8 @@ public class PlayerController : MonoBehaviour
         Plant,
         Inspect,
         Paint,
-        InMenus
+        InMenus,
+        Destroy
     }
     public State state;
 
@@ -153,6 +154,11 @@ public class PlayerController : MonoBehaviour
                 buildVisual.SetActive(true);
                 state = State.Paint;
                 break;
+            case "Destroy":
+                buildVisual.GetComponent<BuildingVisual>().SetMode("Select");
+                buildVisual.SetActive(true);
+                state = State.Destroy;
+                break;
             case "InMenus":
                 state = State.InMenus;
                 break;
@@ -186,6 +192,9 @@ public class PlayerController : MonoBehaviour
         {
             if (state == State.Build)
                 BuyAndPlace(mousePos.point);
+
+            if (state == State.Destroy)
+                RemoveBuildable(mousePos.point);
 
             if (state == State.Paint)
                 Paint(mousePos.point);
@@ -238,12 +247,12 @@ public class PlayerController : MonoBehaviour
             return;
 
         // Click buildable
-        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        /*Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             if (state == State.Build)
                 RemoveBuildable(mousePos.point);
-        }
+        }*/
 
         // Click slime
         Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
