@@ -48,11 +48,11 @@ public class CSSpawner : MonoBehaviour
             int rareMod = (int)totalRarity / 50;
             float ratioMod = totalRarity / numSlimes;
             csSpawnMod = ratioMod + numMod + rareMod;
+            Debug.Log("Num bonus: " + numMod + " Rare bonus: " + rareMod + " Ratio bonus: " + ratioMod + " Total: " + csSpawnMod);
         } else
         {
             csSpawnMod = 0;
         }
-        //Debug.Log("Num bonus: " + numMod + " Rare bonus: " + rareMod + " Ratio bonus: " + ratioMod + " Total: " + csSpawnMod);
     }
 
     // Spawn CS at random intervals, effected by CS modifier
@@ -68,7 +68,7 @@ public class CSSpawner : MonoBehaviour
             }
 
             // Reset cooldown
-            csCooldownVal = (Random.Range(csCooldown.x, csCooldown.y));
+            csCooldownVal = (Random.Range(csCooldown.x, csCooldown.y)) + (csSpawnMod*2);
         }
         else
         {
