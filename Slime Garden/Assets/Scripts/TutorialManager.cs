@@ -12,7 +12,7 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
     [SerializeField] private int introTutProgress;
     [SerializeField] private List<string> introTutKeys = new List<string>();
     public List<TutorialEntry> tutList = new List<TutorialEntry>();
-    private TutorialEntry currentTutEntry;
+    [SerializeField] private TutorialEntry currentTutEntry;
 
     private bool inspectedSlime;
 
@@ -40,7 +40,13 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
         if(introTutProgress < introTutKeys.Count)
         {
             currentTutEntry = FindTutEntry(introTutKeys[introTutProgress]);
-            dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
+            if(currentTutEntry.key == "Intro")
+                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
+            else if (currentTutEntry.key == "WildZoneReturn")
+            {
+                pData.GainMoney(100);
+                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
+            }
         }
     }
 
@@ -195,10 +201,10 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
                 pData.GainMoney(40);
                 dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
                 return;
-            case "WildZoneReturn":
-                pData.GainMoney(100);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+            //case "WildZoneReturn":
+            //    pData.GainMoney(100);
+            //    dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
+            //    return;
             default:
                 Debug.Log("Default case, progressing");
                 dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));

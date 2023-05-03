@@ -313,6 +313,9 @@ public class SlimeController : MonoBehaviour
 
     public void ReleaseSlime()
     {
+        var player = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        player.GainMoney((int)sData.sRarity * 4);
+
         ChangeState(State.tamed);
         Destroy(gameObject, 2f);
         sData.RemoveFromHabitat();

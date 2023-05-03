@@ -12,7 +12,7 @@ public class CSSpawner : MonoBehaviour
     [SerializeField] private float totalRarity;
     [SerializeField] private float csSpawnMod;  // The spawn rate modifier
 
-    public float csCooldown = 10f;
+    public Vector2Int csCooldown;
 
     void Start()
     {
@@ -68,7 +68,7 @@ public class CSSpawner : MonoBehaviour
             }
 
             // Reset cooldown
-            csCooldownVal = (csCooldown + Random.Range(0, csCooldown)) - csSpawnMod;
+            csCooldownVal = (Random.Range(csCooldown.x, csCooldown.y));
         }
         else
         {
