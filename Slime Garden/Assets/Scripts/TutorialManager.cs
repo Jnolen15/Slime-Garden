@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
+using TMPro;
 
 public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
 {
     [SerializeField] private DialogueManager dlogManager;
+    [SerializeField] private TextMeshProUGUI questText;
     [SerializeField] private HabitatControl habitat;
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerData pData;
@@ -161,7 +163,43 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
 
         // Don't progress if there is an uncomplete task
         if (!currentTutEntry.taskCompleted)
-            return;
+        {
+            // Set tutorial quest
+            switch (currentTutEntry.key)
+            {
+                case "SlimeBasics2":
+                    SetQuestText(true, "Inspect a slime with [Right Click].");
+                    return;
+                case "BuildMode":
+                    SetQuestText(true, "Enter build mode by clicking the hammer icon in the toolbar.");
+                    return;
+                case "BuildMode2":
+                    SetQuestText(true, "Place the splicer, then return to inspect mode. The glove icon in the toolbar.");
+                    return;
+                case "PostSplice":
+                    SetQuestText(true, "Create a new slime using the splicer.");
+                    return;
+                case "Planting1":
+                    SetQuestText(true, "Create a few more new slimes.");
+                    return;
+                case "Planting2":
+                    SetQuestText(true, "Place down a few farm tiles in build mode. Then switch to planting mode.");
+                    return;
+                case "Planting3":
+                    SetQuestText(true, "Plant Snackroot seeds then return to inspect mode.");
+                    return;
+                case "Planting4":
+                    SetQuestText(true, "Water your crops. Then wait for them to grow and harvest!");
+                    return;
+                case "WildZone":
+                    SetQuestText(true, "Plant and harvest at least 4 Mondo Mellons.");
+                    return;
+                default:
+                    Debug.LogWarning("Default case, no quest");
+                    return;
+            }
+        } else
+            SetQuestText(false);
 
         // USed to trigger specific events before the next entry
         switch (currentTutEntry.key)
@@ -171,47 +209,41 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
                 HabitatControl.SlimeDataEntry slimeTwo = new HabitatControl.SlimeDataEntry(new Vector3(-2, 0, 0), "Null", "Ruby", "Ruby", "Ruby Slime");
                 habitat.ConstructSlime(slimeOne);
                 habitat.ConstructSlime(slimeTwo);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
             case "FirstLevelUp":
                 pData.GainExperience(5);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
             case "BuildMode":
                 pData.GainMoney(50);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
             case "BuildMode2":
                 pData.GainMoney(4);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
             case "PostSplice":
                 pData.GainMoney(10);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
             case "Planting1":
                 pData.GainMoney(20);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
             case "Planting2":
                 pData.GainMoney(20);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
             case "Planting4":
                 pData.GainMoney(40);
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
-            //case "WildZoneReturn":
-            //    pData.GainMoney(100);
-            //    dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-            //    return;
+                break;
             default:
                 Debug.Log("Default case, progressing");
-                dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
-                return;
+                break;
         }
+
+        dlogManager.TypeDialogue(currentTutEntry.dialogue, currentTutEntry.npc.ToString(), () => ProgressIntro(true));
     }
 
+    private void SetQuestText(bool toggle, string txt = "")
+    {
+        questText.gameObject.SetActive(toggle);
+        questText.text = txt;
+    }
 
     // ==================== SAVE AND LOAD
     public void LoadData(GameData data)

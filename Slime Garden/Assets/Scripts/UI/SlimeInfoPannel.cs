@@ -67,7 +67,15 @@ public class SlimeInfoPannel : MonoBehaviour
     {
         Debug.Log("Updating crop count");
 
-        var contentMenu = feedMenu.transform.GetChild(1);
+        // Updaate hidden
+        var contentMenu = feedMenu.transform.GetChild(0);
+        foreach (Transform child in contentMenu)
+        {
+            child.GetComponent<CropUIContent>().UpdateValues();
+        }
+
+        // update shown
+        contentMenu = feedMenu.transform.GetChild(1);
         foreach (Transform child in contentMenu)
         {
             child.GetComponent<CropUIContent>().UpdateValues();
