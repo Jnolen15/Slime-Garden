@@ -783,7 +783,7 @@ PrefabInstance:
     - target: {fileID: 6922964043180715966, guid: f31ea1da0103ba04e8e9b713314b1f57,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7735107949817165060, guid: f31ea1da0103ba04e8e9b713314b1f57,
         type: 3}
@@ -6343,7 +6343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519365100}
   m_LocalRotation: {x: 0.11141105, y: 0.14519371, z: -0.14519379, w: 0.9723298}
-  m_LocalPosition: {x: -0.073, y: 0.461, z: -0.206}
+  m_LocalPosition: {x: 0, y: 0.461, z: -0.206}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16060,7 +16060,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283948841}
   m_LocalRotation: {x: 0.28443366, y: 0, z: 0, w: 0.9586957}
-  m_LocalPosition: {x: 0.03, y: 1.02, z: -1.071}
+  m_LocalPosition: {x: 0.05, y: 1.584, z: -1.668}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16725,7 +16725,7 @@ MonoBehaviour:
   renderText: {fileID: 8400000, guid: 7340cee370cb3db4098b57f5b64b114d, type: 2}
   pathName: '"Assets/Sprites/UIIcons/"'
   identifierName: _Icon
-  fileName: BurpleBerry
+  fileName: Snackroot
 --- !u!1001 &1332191325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16991,6 +16991,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BurpleBerry
+      objectReference: {fileID: 0}
+    - target: {fileID: 4966201847905522440, guid: 023fdaad1d082e5468c7de1cde6fd4fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5737778238235363762, guid: 023fdaad1d082e5468c7de1cde6fd4fd,
         type: 3}

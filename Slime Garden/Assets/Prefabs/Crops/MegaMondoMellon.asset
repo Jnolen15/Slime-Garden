@@ -17,15 +17,19 @@ MonoBehaviour:
   price: 25
   sellValue: 35
   expYeild: 5
+  multiYeild: 0
+  regrowTicks: 0
+  multiHarvest: 0
   seedDescription: The bigger sibling of the Mondo Mellon! Super effective for taming
     slimes but has a long growth period.
   CropDescription: A huge mellon that slimes love. ++Tame potential
-  growTicks: 020000000400000006000000
+  growTicks: 050000000b00000012000000
   cropStages:
   - {fileID: -2432090755550338912, guid: ea7ac957d72fc0e448b5e182e9a03931, type: 3}
   - {fileID: -2432090755550338912, guid: 7a4f400302bfc574f9cd3e900475b15e, type: 3}
   - {fileID: -2432090755550338912, guid: cbbe372b0e793a64381486d41a3f7db5, type: 3}
   - {fileID: -2432090755550338912, guid: 2352a7d5209b84342a69a0feaf6513f5, type: 3}
   cropMat: {fileID: 2100000, guid: f5382efee35f2df48a5c7afa7af54b5f, type: 2}
+  cropWiltedMat: {fileID: 2100000, guid: ebb3c65c5812d6743b9f85dd72f52771, type: 2}
   cropObj: {fileID: 4359871842989944833, guid: 95e88d1dbedf5b045937a62355db069a, type: 3}
   tameValue: 10

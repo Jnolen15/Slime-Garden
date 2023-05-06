@@ -24,6 +24,7 @@ public class CropSO : ScriptableObject
     public int[] growTicks;
     public Mesh[] cropStages;
     public Material cropMat;
+    public Material cropWiltedMat;
 
     [Header("Crop Object")]
     public GameObject cropObj;

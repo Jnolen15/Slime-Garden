@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class PlantSpot : MonoBehaviour
 {
@@ -87,8 +88,6 @@ public class PlantSpot : MonoBehaviour
         if (!hasCrop || fullyGrown)
             return;
 
-        //Debug.Log("Growth Tick");
-
         if (wateredTicks > 0)
         {
             curTick++;
@@ -97,15 +96,14 @@ public class PlantSpot : MonoBehaviour
             // Crop progresses growth stage
             if (curTick == curCropSO.growTicks[growthStage])
             {
-                //Debug.Log(curCropSO.cropName + " has grown!");
                 growthStage++;
-                crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
+                StartCoroutine(AnimateGrowth());
+                //crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
             }
 
             // Crop is fully grown
             if (growthStage > (curCropSO.growTicks.Length - 1))
             {
-                //Debug.Log(curCropSO.cropName + " is fully grown!");
                 fullyGrown = true;
             }
         } else
@@ -116,6 +114,7 @@ public class PlantSpot : MonoBehaviour
         if(wateredTicks == 0)
         {
             model.GetComponent<Renderer>().material = dryMat;
+            crop.GetComponent<Renderer>().material = curCropSO.cropWiltedMat;
         }
     }
 
@@ -146,17 +145,8 @@ public class PlantSpot : MonoBehaviour
     private void Water()
     {
         audioSrc.PlayOneShot(waterSounds[Random.Range(0, waterSounds.Length)]);
-        wateredTicks += 2;
+        wateredTicks += 10;
         StartCoroutine(AnimateWater());
-    }
-
-    IEnumerator AnimateWater()
-    {
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.8f, transform.position.z);
-        Instantiate(waterFX, pos, Quaternion.identity);
-        yield return new WaitForSeconds(0.2f);
-        model.GetComponent<Renderer>().material = wetMat;
-        //Debug.Log("Crop watered!");
     }
 
     private void Harvest()
@@ -201,7 +191,25 @@ public class PlantSpot : MonoBehaviour
 
     public void DestroySelf()
     {
-        //Debug.Log("Removing self from list");
         gm.RemoveFromList(this);
+        crop.DOKill();
+    }
+
+    IEnumerator AnimateWater()
+    {
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.8f, transform.position.z);
+        Instantiate(waterFX, pos, Quaternion.identity);
+        yield return new WaitForSeconds(0.2f);
+        crop.DOPunchScale(new Vector3(0, -0.2f, 0), 0.3f);
+        model.GetComponent<Renderer>().material = wetMat;
+        crop.GetComponent<Renderer>().material = curCropSO.cropMat;
+    }
+
+    IEnumerator AnimateGrowth()
+    {
+        float rand = Random.Range(0, 2f);
+        yield return new WaitForSeconds(rand);
+        crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
+        crop.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f);
     }
 }
