@@ -14,8 +14,7 @@ public class PlayerController : MonoBehaviour
     private CropSO crop;
     private bool isOverUI;
     private bool inspectingSlime;
-    private bool dragBuild;
-    private bool dragDestroy;
+    private bool dragging;
     private bool inShop;
 
     // Script/Object Refrences
@@ -107,7 +106,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Drag build
-        if (state == State.Build && dragBuild)
+        if (state == State.Build && dragging)
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
@@ -115,7 +114,7 @@ public class PlayerController : MonoBehaviour
         }
         
         // Drag destroy
-        if (state == State.Build && dragDestroy)
+        if (state == State.Destroy && dragging)
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
             if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
@@ -273,9 +272,9 @@ public class PlayerController : MonoBehaviour
         // Execute hold (Start pickup)
         if (context.performed)
         {
-            if (state == State.Build)
+            if (state == State.Build || state == State.Destroy)
             {
-                dragBuild = true;
+                dragging = true;
             }
 
             Debug.Log("Started primary hold");
@@ -283,29 +282,14 @@ public class PlayerController : MonoBehaviour
         // Cancel hold (let go)
         else if (context.canceled)
         {
-            dragBuild = false;
+            dragging = false;
         }
 
     }
 
     public void OnSecondaryHold(InputAction.CallbackContext context)
     {
-        // Execute hold (Start pickup)
-        if (context.performed)
-        {
-            if (state == State.Build)
-            {
-                dragDestroy = true;
-            }
-
-            Debug.Log("Started secondary hold");
-        }
-        // Cancel hold (let go)
-        else if (context.canceled)
-        {
-            dragDestroy = false;
-        }
-
+        // ? (Used to be drag destroy)
     }
 
     // ========== ACTIONS ==========
@@ -319,7 +303,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             menus.TextPopup("Can't afford!", Color.red);
-            dragBuild = false;
+            dragging = false;
         }
 
         if (placed)
