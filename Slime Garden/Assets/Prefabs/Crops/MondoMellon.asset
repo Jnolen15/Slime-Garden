@@ -15,7 +15,7 @@ MonoBehaviour:
   cropName: Mondo Mellon
   previewImage: {fileID: 21300000, guid: f078f61bb2f1d0944ac4d18cde813c0f, type: 3}
   price: 10
-  sellValue: 15
+  sellValue: 13
   expYeild: 2
   multiYeild: 0
   regrowTicks: 0

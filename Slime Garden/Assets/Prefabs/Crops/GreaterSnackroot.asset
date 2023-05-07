@@ -15,7 +15,7 @@ MonoBehaviour:
   cropName: Greater Snackroot
   previewImage: {fileID: 21300000, guid: cfe5eb3537ee55e4d959f4c4d291fd60, type: 3}
   price: 12
-  sellValue: 18
+  sellValue: 17
   expYeild: 3
   multiYeild: 0
   regrowTicks: 0

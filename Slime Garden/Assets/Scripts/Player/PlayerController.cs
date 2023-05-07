@@ -366,7 +366,7 @@ public class PlayerController : MonoBehaviour
 
         // Slight Refund
         var data = gridSystem.GetPlaceableObject(pos).GetPlaceableData();
-        pData.GainMoney((data.price/2));
+        pData.GainMoney((int)(data.price * 0.75f));
 
         gridSystem.Demolish(pos);
     }

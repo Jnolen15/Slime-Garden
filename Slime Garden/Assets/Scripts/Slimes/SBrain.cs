@@ -77,7 +77,7 @@ public class SBrain : MonoBehaviour
     {
         //Debug.Log("Plort!");
         var crystal = Instantiate(cs, transform.position, transform.rotation);
-        crystal.GetComponent<CongealedSlime>().SetValue((int)(currslimeData.sRarity * 2f));
+        crystal.GetComponent<CongealedSlime>().SetValue((int)(currslimeData.sRarity * 1.5f));
         //Debug.Log($"Crystal made. SRarity {currslimeData.sRarity}, value {(int)(currslimeData.sRarity * 1.5f)}");
         Vector3 newPos = new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
         crystal.GetComponent<Rigidbody>().AddForce(newPos * 2, ForceMode.Impulse);
