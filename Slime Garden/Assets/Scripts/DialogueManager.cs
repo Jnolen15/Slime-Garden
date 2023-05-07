@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -64,7 +65,13 @@ public class DialogueManager : MonoBehaviour
         textisOpen = toggle;
         DialogueBox.SetActive(toggle);
 
-        if (!toggle)
+        if (toggle)
+        {
+            var menuPos = DialogueBox.transform.localPosition;
+            var yPos = menuPos.y;
+            DialogueBox.transform.localPosition = new Vector3(menuPos.x, menuPos.y - 40, menuPos.z);
+            DialogueBox.transform.DOLocalMoveY(yPos, 0.2f);
+        } else
         {
             curText.Clear();
             bodyText.text = "";

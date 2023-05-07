@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.InputSystem;
+using TMPro;
+using DG.Tweening;
 
 public class MenuManager : MonoBehaviour
 {
@@ -86,6 +87,14 @@ public class MenuManager : MonoBehaviour
     public void BuildMenuActive(bool value)
     {
         buildMenu.SetActive(value);
+
+        if (value)
+        {
+            var menuPos = buildMenu.transform.localPosition;
+            var xPos = menuPos.x;
+            buildMenu.transform.localPosition = new Vector3(menuPos.x - 40, menuPos.y, menuPos.z);
+            buildMenu.transform.DOLocalMoveX(xPos, 0.2f);
+        }
     }
 
     // ============== Seed Menus ==============
@@ -97,6 +106,14 @@ public class MenuManager : MonoBehaviour
     public void SeedMenuActive(bool value)
     {
         seedMenu.SetActive(value);
+
+        if (value)
+        {
+            var menuPos = seedMenu.transform.localPosition;
+            var xPos = menuPos.x;
+            seedMenu.transform.localPosition = new Vector3(menuPos.x - 40, menuPos.y, menuPos.z);
+            seedMenu.transform.DOLocalMoveX(xPos, 0.2f);
+        }
     }
 
     // ============== Info Box ==============
@@ -143,6 +160,11 @@ public class MenuManager : MonoBehaviour
     {
         slimeInfoBox.SetActive(true);
         slimeInfoBox.GetComponent<SlimeInfoPannel>().Setup(slime);
+
+        var menuPos = slimeInfoBox.transform.localPosition;
+        var yPos = menuPos.y;
+        slimeInfoBox.transform.localPosition = new Vector3(menuPos.x, menuPos.y - 40, menuPos.z);
+        slimeInfoBox.transform.DOLocalMoveY(yPos, 0.2f);
     }
 
     public void CloseSlimeStats()
@@ -168,6 +190,11 @@ public class MenuManager : MonoBehaviour
     {
         cropSellBox.SetActive(true);
         cropSellBox.GetComponent<CropSellMenu>().UpdateCropCount();
+
+        var menuPos = cropSellBox.transform.localPosition;
+        var yPos = menuPos.y;
+        cropSellBox.transform.localPosition = new Vector3(menuPos.x, menuPos.y - 40, menuPos.z);
+        cropSellBox.transform.DOLocalMoveY(yPos, 0.2f);
     }
 
     public void CloseCropSell()
@@ -180,6 +207,11 @@ public class MenuManager : MonoBehaviour
     public void ShowHabitatUpgrade()
     {
         habitatUpgradeBox.SetActive(true);
+
+        var menuPos = habitatUpgradeBox.transform.localPosition;
+        var yPos = menuPos.y;
+        habitatUpgradeBox.transform.localPosition = new Vector3(menuPos.x, menuPos.y - 40, menuPos.z);
+        habitatUpgradeBox.transform.DOLocalMoveY(yPos, 0.2f);
     }
 
     public void CloseHabitatUpgrade()
