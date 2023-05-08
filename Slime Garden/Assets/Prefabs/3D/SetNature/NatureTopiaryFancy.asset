@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: NatureTopiaryFancy
+  m_EditorClassIdentifier: 
+  placeableName: Topiary Fancy
+  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  price: 10
+  description: 
+  prefab: {fileID: 8537434345336900149, guid: 1499b831413d1d5449fad8724fcd36ba, type: 3}
+  visual: {fileID: 2925273523340800170, guid: e1b878537b34c2841b0d9f14207d7b81, type: 3}
+  width: 1
+  height: 1
