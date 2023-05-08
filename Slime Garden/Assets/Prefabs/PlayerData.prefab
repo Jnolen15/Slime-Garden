@@ -101,6 +101,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 806a2700951e7024ab143e62c53d83ed, type: 2}
   - {fileID: 11400000, guid: c98ce48e63d03cd42b610c28c0c95082, type: 2}
   - {fileID: 11400000, guid: 6491e72bd322b344997fcb9c3a33a698, type: 2}
+  - {fileID: 11400000, guid: 8649667da331b05439f75ea958d6fc0c, type: 2}
+  - {fileID: 11400000, guid: 10efd847dffe26241b00d0b5b2f869a0, type: 2}
+  - {fileID: 11400000, guid: fc3d98bb806d5c441a51712853ec5c91, type: 2}
   availableCrops: []
   availablePlaceables:
   - {fileID: 11400000, guid: 7a4d9130fe3cc224797f81e2c9389a9a, type: 2}
@@ -113,4 +116,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 806a2700951e7024ab143e62c53d83ed, type: 2}
   - {fileID: 11400000, guid: c98ce48e63d03cd42b610c28c0c95082, type: 2}
   - {fileID: 11400000, guid: 6491e72bd322b344997fcb9c3a33a698, type: 2}
+  - {fileID: 11400000, guid: 8649667da331b05439f75ea958d6fc0c, type: 2}
+  - {fileID: 11400000, guid: 10efd847dffe26241b00d0b5b2f869a0, type: 2}
+  - {fileID: 11400000, guid: fc3d98bb806d5c441a51712853ec5c91, type: 2}
   inventoryList: []
