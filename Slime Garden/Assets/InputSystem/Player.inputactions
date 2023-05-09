@@ -69,15 +69,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "CamSnap",
-                    "type": "Button",
-                    "id": "e3bdf9ea-726a-429a-b045-046fb2ed878b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "CamSpeedUp",
                     "type": "Button",
                     "id": "0fb34cfd-96ab-4eb2-8deb-e0bf2619b021",
@@ -125,17 +116,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Secondary",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "34ddf492-044d-469e-b6b6-44aecb28e274",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "CamSnap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
