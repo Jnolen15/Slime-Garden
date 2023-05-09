@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: SpecialStatueCS
+  m_EditorClassIdentifier: 
+  placeableName: CS Statue
+  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  price: 5
+  description: 
+  prefab: {fileID: 2477057317391977818, guid: 2ec3665ea9953764d98da9da2a1fd05d, type: 3}
+  visual: {fileID: 7845804933330427044, guid: b5d263a4c7f285742839fcb1b4e3b1fc, type: 3}
+  width: 2
+  height: 2
