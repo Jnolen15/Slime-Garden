@@ -109,6 +109,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc3d98bb806d5c441a51712853ec5c91, type: 2}
   - {fileID: 11400000, guid: a5f4602c76ad4de4685fb16a114e7b4e, type: 2}
   - {fileID: 11400000, guid: e19c86d40afb09440b486d0fb81df300, type: 2}
+  - {fileID: 11400000, guid: d38be4d70864e3c4194fd86a1ef164a4, type: 2}
+  - {fileID: 11400000, guid: 4578f94ae9f249f46acd616c98bbedea, type: 2}
   availableCrops: []
   availablePlaceables:
   - {fileID: 11400000, guid: 7a4d9130fe3cc224797f81e2c9389a9a, type: 2}
@@ -129,4 +131,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fc3d98bb806d5c441a51712853ec5c91, type: 2}
   - {fileID: 11400000, guid: a5f4602c76ad4de4685fb16a114e7b4e, type: 2}
   - {fileID: 11400000, guid: e19c86d40afb09440b486d0fb81df300, type: 2}
+  - {fileID: 11400000, guid: d38be4d70864e3c4194fd86a1ef164a4, type: 2}
+  - {fileID: 11400000, guid: 4578f94ae9f249f46acd616c98bbedea, type: 2}
   inventoryList: []
