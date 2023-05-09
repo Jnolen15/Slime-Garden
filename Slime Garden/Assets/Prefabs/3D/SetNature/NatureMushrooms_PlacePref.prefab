@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b99a6e66d0e62da44bc995224cfed192, type: 2}
+  - {fileID: 2100000, guid: 5b7bc57704869094e894f1ebefc1aae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b99a6e66d0e62da44bc995224cfed192, type: 2}
+  - {fileID: 2100000, guid: 5b7bc57704869094e894f1ebefc1aae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,7 +227,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b99a6e66d0e62da44bc995224cfed192, type: 2}
+  - {fileID: 2100000, guid: 5b7bc57704869094e894f1ebefc1aae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -310,7 +310,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b99a6e66d0e62da44bc995224cfed192, type: 2}
+  - {fileID: 2100000, guid: 5b7bc57704869094e894f1ebefc1aae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -393,7 +393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b99a6e66d0e62da44bc995224cfed192, type: 2}
+  - {fileID: 2100000, guid: 5b7bc57704869094e894f1ebefc1aae8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -425,6 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4662384206889469053}
   - component: {fileID: 4662384206889469052}
+  - component: {fileID: 6882592715980998041}
   m_Layer: 0
   m_Name: NatureMushrooms_PlacePref
   m_TagString: Untagged
@@ -460,6 +461,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df4951fa5e04244ea1a38246b1613bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6882592715980998041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662384206889469050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0945c6400136921488d1ee73df6543b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matList:
+  - {fileID: 2100000, guid: 5b7bc57704869094e894f1ebefc1aae8, type: 2}
+  - {fileID: 2100000, guid: 260d3a2f2c9377a4ebdcdf8bebec45ef, type: 2}
+  curMat: 0
+  renders:
+  - {fileID: 8511410761926037266}
+  - {fileID: 8511410762289642551}
+  - {fileID: 8511410763031023510}
+  - {fileID: 8511410762869456914}
+  - {fileID: 8511410761726353452}
 --- !u!1 &4662384207027566291
 GameObject:
   m_ObjectHideFlags: 0
