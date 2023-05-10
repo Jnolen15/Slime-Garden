@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: NatureTree
   m_EditorClassIdentifier: 
-  placeableName: Tree
+  placeableName: Nature Tree
   previewImage: {fileID: 21300000, guid: 836f51f4eeac1dd4b9e8b521b5b27203, type: 3}
   price: 25
   description: 

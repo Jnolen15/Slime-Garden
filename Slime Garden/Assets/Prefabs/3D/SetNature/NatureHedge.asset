@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: NatureHedge
   m_EditorClassIdentifier: 
-  placeableName: Hedge
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
-  price: 10
+  placeableName: Nature Hedge
+  previewImage: {fileID: 21300000, guid: bfbca34cb20720c41b9b864ce3624a59, type: 3}
+  price: 5
   description: 
   prefab: {fileID: 8795501762994224851, guid: 13fb9926ad946444d8cfb47912a6f945, type: 3}
   visual: {fileID: 8023900363013237056, guid: a07abcec02bbae64d8530f71d12e24d4, type: 3}

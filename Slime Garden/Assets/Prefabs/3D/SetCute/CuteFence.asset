@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CuteFence
   m_EditorClassIdentifier: 
   placeableName: Cute Fence
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  previewImage: {fileID: 21300000, guid: 824587e1a8272014a87050f354473ee9, type: 3}
   price: 5
   description: 
   prefab: {fileID: 7112798250014403154, guid: c83e23a144b36c549a57bc9e95c0a028, type: 3}

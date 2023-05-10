@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ShrineFlags
   m_EditorClassIdentifier: 
   placeableName: Shrine Flags
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
-  price: 5
+  previewImage: {fileID: 21300000, guid: 76ed8682d5122d64486839f71acd4da8, type: 3}
+  price: 10
   description: 
   prefab: {fileID: 7804636617093433038, guid: 92183b4a9e0120a4eacfcd2e74b8876c, type: 3}
   visual: {fileID: 1767266093347017342, guid: 67e880f75aa93a64eb6bb2967f51bc02, type: 3}

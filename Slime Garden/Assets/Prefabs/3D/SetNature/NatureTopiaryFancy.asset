@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: NatureTopiaryFancy
   m_EditorClassIdentifier: 
-  placeableName: Topiary Fancy
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  placeableName: Nature Topiary Fancy
+  previewImage: {fileID: 21300000, guid: 931da376fe132894ea4342cce97916f3, type: 3}
   price: 10
   description: 
   prefab: {fileID: 8537434345336900149, guid: 1499b831413d1d5449fad8724fcd36ba, type: 3}

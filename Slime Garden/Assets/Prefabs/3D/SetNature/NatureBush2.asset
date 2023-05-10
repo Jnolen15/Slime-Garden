@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: NatureBush2
   m_EditorClassIdentifier: 
-  placeableName: Bush2
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  placeableName: Nature Bush 2
+  previewImage: {fileID: 21300000, guid: fbb449f9a7403c34c89d98ee01f380e0, type: 3}
   price: 10
   description: 
   prefab: {fileID: 6194331692862624207, guid: b19983c1abde2eb4aa496927ad49833b, type: 3}

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SpecialStatueSnackroot
   m_EditorClassIdentifier: 
   placeableName: Snackroot Statue
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
-  price: 5
-  description: 
+  previewImage: {fileID: 21300000, guid: 8072f4df8e2d6ff45a40c7dac13ef8b3, type: 3}
+  price: 1000
+  description: This statue shows off your incredible slime garden skills!
   prefab: {fileID: 6224711315837920949, guid: 5e4a6552a2451a44a88dd3c1380fafed, type: 3}
   visual: {fileID: 4088019018808235201, guid: 66598ca6a8144e643b6071c9dfe8aaf5, type: 3}
   width: 2

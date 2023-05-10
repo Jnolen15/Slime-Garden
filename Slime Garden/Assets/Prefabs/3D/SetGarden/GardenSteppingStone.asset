@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GardenSteppingStone
   m_EditorClassIdentifier: 
   placeableName: Stepping Stone
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
-  price: 5
+  previewImage: {fileID: 21300000, guid: 73ed9b8b06779a648aefda4842ece535, type: 3}
+  price: 2
   description: 
   prefab: {fileID: 5812835801127815437, guid: 626503730c62a9a41a7c21a93e781f8f, type: 3}
   visual: {fileID: 2701210629545904580, guid: 783e2b22131e1324c9707e32b54fb870, type: 3}

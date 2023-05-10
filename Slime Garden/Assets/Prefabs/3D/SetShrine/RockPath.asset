@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: RockPath
   m_EditorClassIdentifier: 
-  placeableName: Rock Path
+  placeableName: Shrine Rock Path
   previewImage: {fileID: 21300000, guid: 19b9a26f036802d4b90eb69ecfe2be1b, type: 3}
   price: 2
   description: 

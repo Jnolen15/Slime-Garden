@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a86df261378c7f547aacaa330950eb59, type: 2}
+  - {fileID: 2100000, guid: f1bf640868bf47149a13518bcf2b158b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f1bf640868bf47149a13518bcf2b158b, type: 2}
   - {fileID: 2100000, guid: aeb7867539929674a91e1ce29084c520, type: 2}
   - {fileID: 2100000, guid: 1fde52f7d8ac6024894ccd5960855646, type: 2}
-  curMat: 0
+  curMat: 2
   renders:
   - {fileID: 7975296178707701687}
 --- !u!198 &8627025161341859536

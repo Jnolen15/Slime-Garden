@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: SpecialStatueCS
   m_EditorClassIdentifier: 
-  placeableName: CS Statue
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
-  price: 5
-  description: 
+  placeableName: Crystalized Slime Statue
+  previewImage: {fileID: 21300000, guid: 435d5cef4c9389343ac8957205631edd, type: 3}
+  price: 5000
+  description: A Shimmering glowing statue of a crystalized slime.
   prefab: {fileID: 2477057317391977818, guid: 2ec3665ea9953764d98da9da2a1fd05d, type: 3}
   visual: {fileID: 7845804933330427044, guid: b5d263a4c7f285742839fcb1b4e3b1fc, type: 3}
   width: 2

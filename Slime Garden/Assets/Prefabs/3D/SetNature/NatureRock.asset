@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: NatureRock
   m_EditorClassIdentifier: 
-  placeableName: Rock
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  placeableName: Nature Rock
+  previewImage: {fileID: 21300000, guid: 1c0db8e4c57622a408a6b8b79de26ccc, type: 3}
   price: 10
   description: 
   prefab: {fileID: 6750553665117215581, guid: 01b0f0c0dc57aa64db6edb87831b0945, type: 3}
