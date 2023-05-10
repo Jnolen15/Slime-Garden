@@ -53,35 +53,34 @@ public class SplicerInput : MonoBehaviour
     // When a slime enters this inputs trigger, it gets its info.
     private void OnTriggerStay(Collider col)
     {
-        if (col.gameObject.tag == "Slime" && !col.gameObject.GetComponent<DragDrop>().isHeld)
+        if (col.gameObject.tag != "Slime" || occupied)
+            return;
+
+        if (!col.gameObject.GetComponent<DragDrop>().isHeld && col.gameObject.GetComponent<SlimeData>().isMature)
         {
-            if (!occupied)
-            {
-                // Set up
-                occupied = true;
-                currentSlime = col.gameObject;
-                currentSlime.GetComponent<DragDrop>().LetGo();
-                slimeControll = currentSlime.GetComponent<SlimeController>();
-                slimeControll.ChangeState(SlimeController.State.splice);
-                slimeData = currentSlime.GetComponent<SlimeData>();
-                currentSlime.transform.localPosition = slimePos.position;
-                
-                // Get slime attributes
-                sBaseColor = slimeData.sBaseColor;
-                sPatternColor = slimeData.sPatternColor;
-                sPattern = slimeData.slimeSpeciesPattern.sPattern;
-                sRarity = slimeData.sRarity;
-                sSpecial = slimeData.slimeSpeciesBase.sSpecial;
+            // Set up
+            occupied = true;
+            currentSlime = col.gameObject;
+            currentSlime.GetComponent<DragDrop>().LetGo();
+            slimeControll = currentSlime.GetComponent<SlimeController>();
+            slimeControll.ChangeState(SlimeController.State.splice);
+            slimeData = currentSlime.GetComponent<SlimeData>();
+            currentSlime.transform.localPosition = slimePos.position;
 
-                // Change color of lights to base color of input slime
-                SetColor(sBaseColor);
+            // Get slime attributes
+            sBaseColor = slimeData.sBaseColor;
+            sPatternColor = slimeData.sPatternColor;
+            sPattern = slimeData.slimeSpeciesPattern.sPattern;
+            sRarity = slimeData.sRarity;
+            sSpecial = slimeData.slimeSpeciesBase.sSpecial;
 
-                // Start Particles
-                particles.Play();
-                ParticleSystem.MainModule settings = particles.GetComponent<ParticleSystem>().main;
-                settings.startColor = new ParticleSystem.MinMaxGradient(currentColor);
+            // Change color of lights to base color of input slime
+            SetColor(sBaseColor);
 
-            }
+            // Start Particles
+            particles.Play();
+            ParticleSystem.MainModule settings = particles.GetComponent<ParticleSystem>().main;
+            settings.startColor = new ParticleSystem.MinMaxGradient(currentColor);
         }
     }
 

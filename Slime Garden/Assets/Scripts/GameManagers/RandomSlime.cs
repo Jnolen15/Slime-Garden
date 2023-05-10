@@ -97,7 +97,7 @@ public class RandomSlime : MonoBehaviour
         newSD.sPatternColor = newpattern.slimePatternColorName;
         newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
         newSD.sCrystal = newBase.slimeCrystal;
-        newSD.Setup();
+        newSD.Setup(false, false);
 
         sBaseColor = "";
         sPattern = "";

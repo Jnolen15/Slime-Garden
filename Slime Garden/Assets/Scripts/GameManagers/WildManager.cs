@@ -56,7 +56,7 @@ public class WildManager : MonoBehaviour, IDataPersistence
 
     public void AddTamedSlime(string pat, string bColorStr, string pColorStr)
     {
-        tamedSlimes.Add(new HabitatControl.SlimeDataEntry(Vector3.zero, pat, bColorStr, pColorStr));
+        tamedSlimes.Add(new HabitatControl.SlimeDataEntry(Vector3.zero, pat, bColorStr, pColorStr, 0));
     }
 
     // ===================== LEVEL UP =====================

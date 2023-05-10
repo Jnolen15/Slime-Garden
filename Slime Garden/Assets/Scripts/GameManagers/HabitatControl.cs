@@ -72,8 +72,16 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         newSD.sPatternColor = newpattern.slimePatternColorName;
         newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
         newSD.sCrystal = newBase.slimeCrystal;
-        newSD.Setup();
-        if(slime.displayName != "" && slime.displayName != null)
+
+        if(slime.infancyTimer > 0)
+        {
+            newSD.infancyTimer = slime.infancyTimer;
+            newSD.Setup(true, false);
+        }
+        else
+            newSD.Setup(false, false);
+
+        if (slime.displayName != "" && slime.displayName != null)
             newSD.SetName(slime.displayName);
     }
 
@@ -95,7 +103,7 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
             var sData = slime.GetComponent<SlimeData>();
 
             slimeDataList.Add( new SlimeDataEntry(slime.transform.position, 
-                 sData.sPattern, sData.sBaseColor, sData.sPatternColor, sData.displayName));
+                 sData.sPattern, sData.sBaseColor, sData.sPatternColor, sData.infancyTimer, sData.displayName));
 
             data.slimeList = slimeDataList;
         }
@@ -109,14 +117,16 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
         public string sPattern;
         public string sBaseColor;
         public string sPatternColor;
+        public float infancyTimer;
         public string displayName;
 
-        public SlimeDataEntry(Vector3 curPos, string pat, string bColorStr, string pColorStr, string dispName = null)
+        public SlimeDataEntry(Vector3 curPos, string pat, string bColorStr, string pColorStr, float babyTimer, string dispName = null)
         {
             pos = curPos;
             sPattern = pat;
             sBaseColor = bColorStr;
             sPatternColor = pColorStr;
+            infancyTimer = babyTimer;
             displayName = dispName;
         }
     }

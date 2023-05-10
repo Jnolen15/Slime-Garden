@@ -125,6 +125,9 @@ MonoBehaviour:
   slimeSpeciesPatternColor: {r: 0, g: 0, b: 0, a: 0}
   slimeFace: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
   sCrystal: {fileID: 0}
+  isMature: 0
+  infancyTimer: 0
+  maturityTime: 30
   isWild: 0
 --- !u!114 &3820516103340025377
 MonoBehaviour:

@@ -230,9 +230,12 @@ public class SlimeController : MonoBehaviour
             Destroy(stateParticles);
 
         this.slimeFace = sface;
-        face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
+        if(sData.isMature)
+            face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
+        else
+            face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.babyLibraryAsset;
 
-        if(sName != "none")
+        if (sName != "none")
         {
             baseAnimator.SetTrigger(sName);
             patternAnimator.SetTrigger(sName);
@@ -314,7 +317,10 @@ public class SlimeController : MonoBehaviour
     public void ReleaseSlime()
     {
         var player = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
-        player.GainMoney((int)sData.sRarity * 4);
+        if(sData.isMature)
+            player.GainMoney((int)sData.sRarity * 4);
+        else
+            player.GainMoney((int)sData.sRarity);
 
         ChangeState(State.tamed);
         Destroy(gameObject, 2f);

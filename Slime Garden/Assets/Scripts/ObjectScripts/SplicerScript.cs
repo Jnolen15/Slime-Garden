@@ -218,7 +218,7 @@ public class SplicerScript : MonoBehaviour
         newSD.sPatternColor = newpattern.slimePatternColorName;
         newSD.slimeSpeciesPatternColor = newpattern.slimePatternColor;
         newSD.sCrystal = newBase.slimeCrystal;
-        newSD.Setup();
+        newSD.Setup(true, true);
 
         // Award EXP
         pData.GainExperience(newSD.sRarity);

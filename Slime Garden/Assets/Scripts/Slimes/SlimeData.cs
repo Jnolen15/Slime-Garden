@@ -18,6 +18,12 @@ public class SlimeData : MonoBehaviour
     public Color slimeSpeciesPatternColor;      //The Color that will be applied to the Pattern
     public SlimeFaceSO slimeFace;               //The SO with slime facial expressions. Info is taken from here.
     public GameObject sCrystal;                 //The crystal Game object this slime produces
+
+    [Header("Maturity")]
+    public bool isMature;
+    public float infancyTimer;
+    [SerializeField]private float maturityTime;
+
     [Header("Mark slime as wild")]
     public bool isWild;       // Marks it as a wild slime wich changes some behavior
 
@@ -30,7 +36,7 @@ public class SlimeData : MonoBehaviour
     private SpriteRenderer Basesr;              //The SpriteRenderer of the base child object
     private SpriteRenderer patternsr;           //The SpriteRenderer of the pattern child object
 
-    public void Setup()
+    public void Setup(bool isInfant, bool newInfant)
     {
         // Create name and calculate rarity
         sPattern = slimeSpeciesPattern.sPattern;
@@ -46,12 +52,25 @@ public class SlimeData : MonoBehaviour
         Basesr = baseSlime.GetComponent<SpriteRenderer>();
         patternsr = pattern.GetComponent<SpriteRenderer>();
         // Sprite library assets (Used to swap out sprites in animations)
-        baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
-        pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
-        face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
+        if (isInfant)
+        {
+            baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.babyLibraryAsset;
+            pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.babyLibraryAsset;
+            face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.babyLibraryAsset;
+        } else
+        {
+            isMature = true;
+            baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
+            pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
+            face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
+        }
         // Assign Colors
         Basesr.color = slimeSpeciesBaseColor;
         patternsr.color = slimeSpeciesPatternColor;
+
+        // Set infancy Timer
+        if (newInfant)
+            infancyTimer = maturityTime;
 
         // Add slime to habitat list if not wild
         if (!isWild)
@@ -59,6 +78,28 @@ public class SlimeData : MonoBehaviour
             hControl = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
             hControl.activeSlimes.Add(gameObject);
         }
+    }
+
+    // Slime Aging
+    private void Update()
+    {
+        if (isMature)
+            return;
+
+        if (infancyTimer >= 0)
+            infancyTimer -= Time.deltaTime;
+        else
+            Mature();
+    }
+
+    public void Mature()
+    {
+        isMature = true;
+
+        // Set mature sprites
+        baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
+        pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
+        face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
     }
 
     public void SetName(string newName)
