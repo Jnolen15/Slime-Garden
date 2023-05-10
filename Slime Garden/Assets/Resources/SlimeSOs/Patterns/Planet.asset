@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryAsset: {fileID: 7108339969198208228, guid: fcaf0bca31c34744295d7e3cc7114fd9,
     type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: 72b99656fed2cd444bffa4e7073e741d,
+    type: 3}
   sPattern: Planet
   sRarity: 7

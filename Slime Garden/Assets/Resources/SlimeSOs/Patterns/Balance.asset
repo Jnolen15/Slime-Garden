@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryAsset: {fileID: 7108339969198208228, guid: 97dd73f13ba33aa448b33df3ae7c713e,
     type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: a07cf8b45399dab4e8f8755f5d2a2af4,
+    type: 3}
   sPattern: Balance
   sRarity: 3

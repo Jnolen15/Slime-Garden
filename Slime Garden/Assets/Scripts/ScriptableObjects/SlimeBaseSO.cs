@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 public class SlimeBaseSO : ScriptableObject
 {
     public SpriteLibraryAsset libraryAsset; // The slimes library of sprites
+    public SpriteLibraryAsset babyLibraryAsset; // The slimes library of baby sprites
     public GameObject sParticles;           // The Particle system used by the slime
     public string sName = "Null";           // The species name of the slime
     public float sRarity;                   // How rare a slime is

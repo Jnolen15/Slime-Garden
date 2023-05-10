@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryAsset: {fileID: 7108339969198208228, guid: 566cf6fce8fcab54d86c2a12b5d62852,
     type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: cfb92956db985734c90e811e9ebe3428,
+    type: 3}

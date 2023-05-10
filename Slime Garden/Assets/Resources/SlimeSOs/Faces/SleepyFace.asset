@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff9f8a2499cd864c8e69172e743d121, type: 3}
   m_Name: SleepyFace
   m_EditorClassIdentifier: 
-  faceSprite: {fileID: -1049641511376401200, guid: 32201e35de5c3b540a70147d4f2724bb,
-    type: 3}
-  faceIdle: {fileID: 5204487084075329271, guid: 32201e35de5c3b540a70147d4f2724bb,
-    type: 3}
-  faceJump: {fileID: 5174375301884307925, guid: 32201e35de5c3b540a70147d4f2724bb,
-    type: 3}
   libraryAsset: {fileID: 7108339969198208228, guid: 68321349ae452b94db62baa126e57ae3,
+    type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: aee961a9fa6a9724a93dad81f37c18fc,
     type: 3}

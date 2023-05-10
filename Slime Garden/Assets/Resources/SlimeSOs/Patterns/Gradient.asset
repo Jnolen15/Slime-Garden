@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryAsset: {fileID: 7108339969198208228, guid: dfa0aa641d804ad48b2bf52ae6d6a083,
     type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: 13625c25e025d274998e06c8f693982a,
+    type: 3}
   sPattern: Gradient
   sRarity: 4

@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryAsset: {fileID: 7108339969198208228, guid: 99dbe85abfb3f1543b25b6c86e7e03a9,
     type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: 5cc0f8edab1014b47a1c8d55353e9a59,
+    type: 3}
   sPattern: Kitty
   sRarity: 5

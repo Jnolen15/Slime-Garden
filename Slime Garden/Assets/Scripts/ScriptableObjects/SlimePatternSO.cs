@@ -9,6 +9,7 @@ using Sirenix.OdinInspector;
 public class SlimePatternSO : ScriptableObject
 {
     public SpriteLibraryAsset libraryAsset; // The slimes library of sprites
+    public SpriteLibraryAsset babyLibraryAsset; // The slimes library of baby sprites
     public string sPattern = "Null";        // The base color of the slime
     public float sRarity;                   // How rare a slime is
 }

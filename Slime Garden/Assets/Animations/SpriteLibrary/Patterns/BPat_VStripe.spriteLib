@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: BaicSprites
+    m_Hash: 729768974
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: SlimeSheet_Basic_0
+      m_Hash: -1188360903
+      m_Sprite: {fileID: 906263687, guid: 6f4b29b927d27fc47a8af574e275300e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: 1092839986, guid: 25ddacaf92ebd8548bed9fe088459082,
+        type: 3}
+    - m_Name: SlimeSheet_Basic_1
+      m_Hash: -835961425
+      m_Sprite: {fileID: 1592605791, guid: 6f4b29b927d27fc47a8af574e275300e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -543189844, guid: 25ddacaf92ebd8548bed9fe088459082,
+        type: 3}
+    - m_Name: SlimeSheet_Basic_2
+      m_Hash: 1462070293
+      m_Sprite: {fileID: -1783031843, guid: 6f4b29b927d27fc47a8af574e275300e, type: 3}
+      m_FromMain: 1
+      m_SpriteOverride: {fileID: -27080558, guid: 25ddacaf92ebd8548bed9fe088459082,
+        type: 3}
+    m_FromMain: 1
+    m_EntryOverrideCount: 3
+  m_PrimaryLibraryGUID: 4592757f78bf91f428894389b7a95c4e

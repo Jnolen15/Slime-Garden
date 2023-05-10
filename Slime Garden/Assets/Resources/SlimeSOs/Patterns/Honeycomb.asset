@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   libraryAsset: {fileID: 7108339969198208228, guid: a49e97fd8e760bd44befac144d659b56,
     type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: 6dfd1ded4f029064b91f3568f3c198df,
+    type: 3}
   sPattern: Honeycomb
   sRarity: 3

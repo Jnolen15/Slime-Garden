@@ -12,11 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff9f8a2499cd864c8e69172e743d121, type: 3}
   m_Name: HappyFace
   m_EditorClassIdentifier: 
-  faceSprite: {fileID: 8398221859202748116, guid: 57d01cd7b3d4aa74e9f5487f553c6c26,
-    type: 3}
-  faceIdle: {fileID: 3420700856928727492, guid: 57d01cd7b3d4aa74e9f5487f553c6c26,
-    type: 3}
-  faceJump: {fileID: 8478601470941039338, guid: 57d01cd7b3d4aa74e9f5487f553c6c26,
-    type: 3}
   libraryAsset: {fileID: 7108339969198208228, guid: 6dea16c9f5304df4d8a543b6f47d0b37,
+    type: 3}
+  babyLibraryAsset: {fileID: 7108339969198208228, guid: 4dc93fec88380c648a571648a719ddd1,
     type: 3}
