@@ -127,7 +127,9 @@ MonoBehaviour:
   sCrystal: {fileID: 0}
   isMature: 0
   infancyTimer: 0
-  maturityTime: 30
+  maturityTime: 60
+  infancyHungerReduction: 0
+  hungerLevel: 0
   isWild: 0
 --- !u!114 &3820516103340025377
 MonoBehaviour:

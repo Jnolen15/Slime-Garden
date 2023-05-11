@@ -23,13 +23,17 @@ public class SlimeData : MonoBehaviour
     public bool isMature;
     public float infancyTimer;
     [SerializeField]private float maturityTime;
+    [SerializeField]private float infancyHungerReduction;
+
+    [Header("Hunger")]
+    public int hungerLevel;
 
     [Header("Mark slime as wild")]
     public bool isWild;       // Marks it as a wild slime wich changes some behavior
 
     //=============== COMPONENTS ===============
     private HabitatControl hControl;
-    private GameObject sprites;               //The child gameobject that holds sprite objects
+    private GameObject sprites;                 //The child gameobject that holds sprite objects
     private GameObject baseSlime;               //The child gameobject containing the base SR
     private GameObject pattern;                 //The child gameobject containing the pattern SR
     private GameObject face;                    //The face rendered above the slime
@@ -72,6 +76,9 @@ public class SlimeData : MonoBehaviour
         if (newInfant)
             infancyTimer = maturityTime;
 
+        if (!isMature)
+            infancyHungerReduction = maturityTime * (hungerLevel * 0.0025f);
+
         // Add slime to habitat list if not wild
         if (!isWild)
         {
@@ -86,7 +93,7 @@ public class SlimeData : MonoBehaviour
         if (isMature)
             return;
 
-        if (infancyTimer >= 0)
+        if (infancyTimer >= infancyHungerReduction)
             infancyTimer -= Time.deltaTime;
         else
             Mature();
@@ -95,11 +102,39 @@ public class SlimeData : MonoBehaviour
     public void Mature()
     {
         isMature = true;
+        infancyTimer = 0;
+        LooseHunger(100);
 
         // Set mature sprites
         baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
         pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
         face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
+    }
+
+    public void Feed(CropObj food)
+    {
+        hungerLevel += food.cropData.feedValue;
+
+        // Clamp Hunger Value
+        if (hungerLevel >= 100) hungerLevel = 100;
+        else if (hungerLevel <= 0) hungerLevel = 0;
+
+        if (!isMature)
+        {
+            infancyHungerReduction = maturityTime * (hungerLevel * 0.0025f);
+        }
+    }
+
+    // Loose hunger when producing CS or Maturing
+    public void LooseHunger(int val)
+    {
+        hungerLevel -= val;
+
+        // Clamp Hunger Value
+        if (hungerLevel >= 100) hungerLevel = 100;
+        else if (hungerLevel <= 0) hungerLevel = 0;
+
+        Debug.Log($"Slime lost {val} hunger, now at {hungerLevel}");
     }
 
     public void SetName(string newName)

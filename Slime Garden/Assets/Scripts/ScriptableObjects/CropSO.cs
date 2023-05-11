@@ -31,4 +31,5 @@ public class CropSO : ScriptableObject
 
     [Header("Nutritional Value")]
     public int tameValue;
+    public int feedValue;
 }

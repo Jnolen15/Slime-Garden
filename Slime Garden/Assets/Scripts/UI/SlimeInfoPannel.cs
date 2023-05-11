@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
 
@@ -17,12 +18,28 @@ public class SlimeInfoPannel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI speciesText;
     [SerializeField] private TextMeshProUGUI rarityText;
+    [SerializeField] private Image hungerBarFill;
     [SerializeField] private SlimeData curSlimeData;
     [SerializeField] private SlimeController curSlimeControl;
+
+    private int prevHungerLevel = 0;
 
     private void Start()
     {
         UpdateCropMenu();
+    }
+
+    private void Update()
+    {
+        // Update hunger
+        if (!hungerBarFill.IsActive())
+            return;
+
+        if(curSlimeData.hungerLevel != prevHungerLevel)
+        {
+            prevHungerLevel = curSlimeData.hungerLevel;
+            SetHungerBar();
+        }
     }
 
     public void Setup(GameObject slime)
@@ -35,6 +52,9 @@ public class SlimeInfoPannel : MonoBehaviour
         inputText.text = "New Name";
         speciesText.text = curSlimeData.sBaseColor + " " + curSlimeData.sPatternColor + " " + curSlimeData.slimeSpeciesPattern.sPattern;
         rarityText.text = "Rarity: " + curSlimeData.sRarity;
+
+        prevHungerLevel = 0;
+        SetHungerBar();
 
         UpdateCropCount();
     }
@@ -56,7 +76,7 @@ public class SlimeInfoPannel : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
     }
 
-    // ============== Crop Menus ==============
+    // ============== Crop / Feeding ==============
     public void UpdateCropMenu()
     {
         Debug.Log("UPDATING SLIME FEED MENU");
@@ -113,6 +133,12 @@ public class SlimeInfoPannel : MonoBehaviour
                 Destroy(cropObj.gameObject);
             }
         }
+    }
+
+    private void SetHungerBar()
+    {
+        //Debug.Log($" Hunger {curSlimeData.hungerLevel} out of 100");
+        hungerBarFill.fillAmount = (curSlimeData.hungerLevel / 100f);
     }
 
 

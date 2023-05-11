@@ -32,3 +32,4 @@ MonoBehaviour:
   cropWiltedMat: {fileID: 2100000, guid: ebb3c65c5812d6743b9f85dd72f52771, type: 2}
   cropObj: {fileID: 8707272685677682037, guid: 6d1e4516b9bbf2e4cb9556c8e2506499, type: 3}
   tameValue: 4
+  feedValue: 5

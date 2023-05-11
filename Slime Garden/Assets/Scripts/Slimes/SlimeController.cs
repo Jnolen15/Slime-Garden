@@ -193,12 +193,14 @@ public class SlimeController : MonoBehaviour
 
                     if (curFood != null)
                     {
-                        curFood.DestroySelf();
-                        audioSrc.PlayOneShot(eatSounds[Random.Range(0, eatSounds.Length)]);
-
-                        // Attempt tame if wild slime
+                        // Attempt tame if wild slime Or feed if not
                         if (sData.isWild)
                             this.GetComponent<WildSlime>().AttemptTame(curFood);
+                        else
+                            sData.Feed(curFood);
+
+                        curFood.DestroySelf();
+                        audioSrc.PlayOneShot(eatSounds[Random.Range(0, eatSounds.Length)]);
                     }
                 }
                 break;

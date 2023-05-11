@@ -205,8 +205,8 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
         switch (currentTutEntry.key)
         {
             case "SlimeBasics":
-                HabitatControl.SlimeDataEntry slimeOne = new HabitatControl.SlimeDataEntry(new Vector3(2, 0, 0), "Null", "Sapphire", "Sapphire", 0, "Sapphire Slime");
-                HabitatControl.SlimeDataEntry slimeTwo = new HabitatControl.SlimeDataEntry(new Vector3(-2, 0, 0), "Null", "Ruby", "Ruby", 0, "Ruby Slime");
+                HabitatControl.SlimeDataEntry slimeOne = new HabitatControl.SlimeDataEntry(new Vector3(2, 0, 0), "Null", "Sapphire", "Sapphire", 0, 100, "Sapphire Slime");
+                HabitatControl.SlimeDataEntry slimeTwo = new HabitatControl.SlimeDataEntry(new Vector3(-2, 0, 0), "Null", "Ruby", "Ruby", 0, 100, "Ruby Slime");
                 habitat.ConstructSlime(slimeOne);
                 habitat.ConstructSlime(slimeTwo);
                 break;
