@@ -74,6 +74,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83789423a927cb24a918c0372da321d0, type: 2}
   - {fileID: 11400000, guid: f4c236df24b5cc84781ddfbffed7fb42, type: 2}
   - {fileID: 11400000, guid: d55f1b74c240bcb4a806dbb01224d814, type: 2}
+  - {fileID: 11400000, guid: 4ccce8c2a467742459277ee1fa08c57a, type: 2}
+  - {fileID: 11400000, guid: 7b81092fa35d8a449bcae0639defbb0d, type: 2}
+  - {fileID: 11400000, guid: a8534a40470f32d4484ab1beda14feb5, type: 2}
+  - {fileID: 11400000, guid: ed9e409b81255cf49a3a44ff6e317061, type: 2}
+  - {fileID: 11400000, guid: c4b864aca7fc9dd4494ee9a7fc74d2f3, type: 2}
+  - {fileID: 11400000, guid: 87c17bb36fd74d24c806d185047d5eff, type: 2}
+  - {fileID: 11400000, guid: e98669fa40edca045945502ce37f0630, type: 2}
+  - {fileID: 11400000, guid: fd9de3cb0fed5db45bad0e42ffc86eab, type: 2}
+  - {fileID: 11400000, guid: 97ab5caf853d7cb478b6a4d1251baace, type: 2}
+  - {fileID: 11400000, guid: 9ba13d4a90b72334386c1cc1b56bc35d, type: 2}
+  - {fileID: 11400000, guid: 5ca10872d982dff4ba60c3286f0efebe, type: 2}
+  - {fileID: 11400000, guid: 1b4691b177078554793b4e4cb8d9d46b, type: 2}
   inGamePlaceables:
   - {fileID: 11400000, guid: 6ea1d363f869a96438c09cd21494ab67, type: 2}
   - {fileID: 11400000, guid: ab5a6f872b902af4893d69166da12e5f, type: 2}
@@ -115,7 +127,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1bf28ba8306cd340bc239d216334736, type: 2}
   - {fileID: 11400000, guid: 39bd504ba71393c4983f96c50ed25a50, type: 2}
   - {fileID: 11400000, guid: 3a14c088484d7fa4f9c13ec657dee69d, type: 2}
-  availableCrops: []
+  availableCrops:
+  - {fileID: 11400000, guid: 4ccce8c2a467742459277ee1fa08c57a, type: 2}
+  - {fileID: 11400000, guid: 7b81092fa35d8a449bcae0639defbb0d, type: 2}
+  - {fileID: 11400000, guid: a8534a40470f32d4484ab1beda14feb5, type: 2}
+  - {fileID: 11400000, guid: ed9e409b81255cf49a3a44ff6e317061, type: 2}
+  - {fileID: 11400000, guid: c4b864aca7fc9dd4494ee9a7fc74d2f3, type: 2}
+  - {fileID: 11400000, guid: 87c17bb36fd74d24c806d185047d5eff, type: 2}
+  - {fileID: 11400000, guid: e98669fa40edca045945502ce37f0630, type: 2}
+  - {fileID: 11400000, guid: fd9de3cb0fed5db45bad0e42ffc86eab, type: 2}
+  - {fileID: 11400000, guid: 97ab5caf853d7cb478b6a4d1251baace, type: 2}
+  - {fileID: 11400000, guid: 9ba13d4a90b72334386c1cc1b56bc35d, type: 2}
+  - {fileID: 11400000, guid: 5ca10872d982dff4ba60c3286f0efebe, type: 2}
+  - {fileID: 11400000, guid: 1b4691b177078554793b4e4cb8d9d46b, type: 2}
   availablePlaceables:
   - {fileID: 11400000, guid: 7a4d9130fe3cc224797f81e2c9389a9a, type: 2}
   - {fileID: 11400000, guid: ae6238335cd5dc74abb271217e0716fa, type: 2}
