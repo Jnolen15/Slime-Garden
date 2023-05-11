@@ -151,6 +151,27 @@ public class PlantSpot : MonoBehaviour
 
     private void Harvest()
     {
+        // Effect
+        audioSrc.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);
+        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
+        Instantiate(LeafBurstFX, pos, Quaternion.identity);
+
+        // If no crop object, return
+        if (!curCropSO.cropObj)
+        {
+            Debug.Log("This crop cannot be harvested!");
+
+            // Reset
+            hasCrop = false;
+            fullyGrown = false;
+            curTick = 0;
+            growthStage = 0;
+            curCropSO = null;
+            crop.GetComponent<MeshFilter>().mesh = null;
+
+            return;
+        }
+        
         // Yeild. If multiYeild, then give random between that and 1
         if (curCropSO.multiYeild > 0)
         {
@@ -163,11 +184,6 @@ public class PlantSpot : MonoBehaviour
 
         // Award EXP
         GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>().GainExperience(curCropSO.expYeild);
-
-        // Effect
-        audioSrc.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);
-        Vector3 pos = new Vector3(transform.position.x, transform.position.y + 0.4f, transform.position.z);
-        Instantiate(LeafBurstFX, pos, Quaternion.identity);
 
         // Can be harvested repeatedly
         if (curCropSO.multiHarvest)

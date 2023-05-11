@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df863a4009a2da479464d47399dd5eb, type: 3}
   m_Name: FlowerTallCitrine
   m_EditorClassIdentifier: 
-  cropName: Tall Citrine Flower
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  cropName: Citrine Tall Flower
+  previewImage: {fileID: 21300000, guid: c25a4a8f940134747a569b8ca016636a, type: 3}
   price: 5
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
-  seedDescription: A Tall Flower
+  seedDescription: A large flower that emanates warmth
   CropDescription: NONE
   growTicks: 02000000
   cropStages:
