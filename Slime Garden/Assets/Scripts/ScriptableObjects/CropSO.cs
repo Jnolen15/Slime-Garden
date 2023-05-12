@@ -14,6 +14,7 @@ public class CropSO : ScriptableObject
     public int multiYeild;
     public int regrowTicks;
     public bool multiHarvest;
+    public bool canBeHarvested;
 
     [TextArea]
     public string seedDescription;

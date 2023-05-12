@@ -46,7 +46,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
         // Only add to inventory list if called as a level up
         // This will cause a crop to be added twice if ran during load since inventory list saves
-        if (fromLevelUp)
+        if (fromLevelUp && newData.canBeHarvested)
         {
             CropInventroyEntry newEntry = new CropInventroyEntry(newData.cropName);
             inventoryList.Add(newEntry);
@@ -112,9 +112,12 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     {
         foreach(CropSO crop in availableCrops)
         {
-            CropInventroyEntry newEntry = new CropInventroyEntry(crop.cropName);
+            if (crop.canBeHarvested)
+            {
+                CropInventroyEntry newEntry = new CropInventroyEntry(crop.cropName);
 
-            inventoryList.Add(newEntry);
+                inventoryList.Add(newEntry);
+            }
         }
     }
 

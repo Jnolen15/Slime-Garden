@@ -20,6 +20,7 @@ MonoBehaviour:
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 1
   seedDescription: Greater Snackroot are like Snackroot, but greater!
   CropDescription: Greater Snackroots a good crop for any scenario
   growTicks: 0500000008000000

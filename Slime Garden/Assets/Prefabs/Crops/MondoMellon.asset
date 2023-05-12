@@ -20,6 +20,7 @@ MonoBehaviour:
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 1
   seedDescription: Mondo mellons take a bit longer to grow, but can be useful when
     taming wild slimes.
   CropDescription: A large mellon that slimes love. +Tame potential

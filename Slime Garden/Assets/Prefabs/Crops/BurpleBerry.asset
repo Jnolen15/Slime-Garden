@@ -20,6 +20,7 @@ MonoBehaviour:
   multiYeild: 3
   regrowTicks: 3
   multiHarvest: 1
+  canBeHarvested: 1
   seedDescription: Burple Berry Bushes can be harvested multiple times, and each
     harvest yeilds 1-3 berries.
   CropDescription: These little berries are quite tart and not very useful when taming.

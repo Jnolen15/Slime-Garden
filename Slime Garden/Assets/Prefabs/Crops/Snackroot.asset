@@ -20,6 +20,7 @@ MonoBehaviour:
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 1
   seedDescription: Snackroot is the perfect crop for a beginner gardener.
   CropDescription: Snackroots make a great treat for any slime!
   growTicks: 0300000005000000

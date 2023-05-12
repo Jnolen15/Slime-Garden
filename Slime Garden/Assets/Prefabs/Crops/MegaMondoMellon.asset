@@ -20,6 +20,7 @@ MonoBehaviour:
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 1
   seedDescription: The bigger sibling of the Mondo Mellon! Super effective for taming
     slimes but has a long growth period.
   CropDescription: A huge mellon that slimes love. ++Tame potential
