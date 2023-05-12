@@ -7,8 +7,8 @@ public class GardenManager : MonoBehaviour
     [SerializeField] private float tickSpeed;
     private float tickTime;
 
-    [SerializeField]
-    private List<PlantSpot> plantSpotList = new List<PlantSpot>();
+    [SerializeField] private List<PlantSpot> plantSpotList = new List<PlantSpot>();
+    [SerializeField] private List<BeeBox> beeBoxList = new List<BeeBox>();
 
     void Update()
     {
@@ -32,6 +32,16 @@ public class GardenManager : MonoBehaviour
         plantSpotList.Remove(spot);
     }
 
+    public void AddToBeeBoxList(BeeBox box)
+    {
+        beeBoxList.Add(box);
+    }
+
+    public void RemoveFromBeeBoxList(BeeBox box)
+    {
+        beeBoxList.Remove(box);
+    }
+
     private void OnTick()
     {
         //Debug.Log("TICK");
@@ -39,6 +49,11 @@ public class GardenManager : MonoBehaviour
         foreach(PlantSpot spot in plantSpotList)
         {
             spot.GrowTick();
+        }
+
+        foreach (BeeBox box in beeBoxList)
+        {
+            box.GrowTick();
         }
     }
 }

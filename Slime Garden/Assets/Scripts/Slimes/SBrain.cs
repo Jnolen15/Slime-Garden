@@ -80,7 +80,7 @@ public class SBrain : MonoBehaviour
         // Calculate crystal value
         var hungerValueBonus = (currslimeData.hungerLevel * 0.005f);
         crystal.GetComponent<CongealedSlime>().SetValue((int)(currslimeData.sRarity * (1.5f + hungerValueBonus)));
-        Debug.Log($"Crystal made. SRarity {currslimeData.sRarity} with hunger bonus {hungerValueBonus} = value {(int)(currslimeData.sRarity * (1.5f + hungerValueBonus))}");
+        //Debug.Log($"Crystal made. SRarity {currslimeData.sRarity} with hunger bonus {hungerValueBonus} = value {(int)(currslimeData.sRarity * (1.5f + hungerValueBonus))}");
 
         // Add some force to crystal
         Vector3 newPos = new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
