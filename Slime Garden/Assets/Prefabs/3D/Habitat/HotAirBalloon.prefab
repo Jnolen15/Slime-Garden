@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 444839967934383470}
   - component: {fileID: 7019099279654325133}
   - component: {fileID: 7019099279654325132}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HotAirBalloon
   m_TagString: Interactable
   m_Icon: {fileID: 0}

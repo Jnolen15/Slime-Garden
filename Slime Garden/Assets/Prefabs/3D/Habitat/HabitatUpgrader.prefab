@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 542409590176043959}
   - component: {fileID: 3166904772027445105}
   - component: {fileID: 542409590176043958}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: HabitatUpgrader
   m_TagString: Shop
   m_Icon: {fileID: 0}

@@ -5023,7 +5023,7 @@ GameObject:
   - component: {fileID: 8627025161341859536}
   - component: {fileID: 8627025161341859551}
   - component: {fileID: 4123428447054172212}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpecialBeeBox_PlacePref
   m_TagString: Interactable
   m_Icon: {fileID: 0}
