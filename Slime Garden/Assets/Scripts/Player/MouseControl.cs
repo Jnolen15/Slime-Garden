@@ -7,11 +7,11 @@ public class MouseControl : MonoBehaviour
 {
     public bool holding;
     public GameObject heldSlime;
+    public DragDrop heldSlimeDragDrop;
     private GameObject potentialSlime;
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
-    [SerializeField] private LayerMask borderLayerMask;
     [SerializeField] private GameObject mouseVisual;
 
     private PlayerController pc;
@@ -25,19 +25,22 @@ public class MouseControl : MonoBehaviour
 
     void Update()
     {
+        // If slime held becomes false drop it
+        if (holding)
+        {
+            if (!heldSlimeDragDrop.isHeld)
+            {
+                SlimeDropped();
+            }
+        }
+
+        // CURSOR VISUAL SWAPPING
         // DEFAULT
         if (pc.state == PlayerController.State.Default)
         {
             if (holding)
             {
                 cursorVis.UpdateCursor("close");
-
-                // border detection
-                Ray borderRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-                if (Physics.Raycast(borderRay, out RaycastHit borderRaycastHit, 999f, borderLayerMask))
-                {
-                    SlimeDropped();
-                }
             }
             else
             {
@@ -69,14 +72,14 @@ public class MouseControl : MonoBehaviour
         }
 
 
-            // Mouse position in world space
-            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        // Mouse position in world space
+        Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             mouseVisual.transform.position = mousePos.point;
 
             if (holding)
-                heldSlime.GetComponent<DragDrop>().SlimeHeld(mousePos.point);
+                heldSlimeDragDrop.SlimeHeld(mousePos.point);
         }
     }
 
@@ -84,16 +87,18 @@ public class MouseControl : MonoBehaviour
     {
         heldSlime = slime;
         holding = true;
-        heldSlime.GetComponent<DragDrop>().PickedUp();
+        heldSlimeDragDrop = heldSlime.GetComponent<DragDrop>();
+        heldSlimeDragDrop.PickedUp();
     }
 
     private void SlimeDropped()
     {
         if(heldSlime != null)
-            heldSlime.GetComponent<DragDrop>().LetGo();
+            heldSlimeDragDrop.LetGo();
         
         holding = false;
         heldSlime = null;
+        heldSlimeDragDrop = null;
         potentialSlime = null;
     }
 

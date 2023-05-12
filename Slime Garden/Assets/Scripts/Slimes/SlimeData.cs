@@ -134,7 +134,7 @@ public class SlimeData : MonoBehaviour
         if (hungerLevel >= 100) hungerLevel = 100;
         else if (hungerLevel <= 0) hungerLevel = 0;
 
-        Debug.Log($"Slime lost {val} hunger, now at {hungerLevel}");
+        //Debug.Log($"Slime lost {val} hunger, now at {hungerLevel}");
     }
 
     public void SetName(string newName)

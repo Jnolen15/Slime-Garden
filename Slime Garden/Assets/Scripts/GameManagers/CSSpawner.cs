@@ -48,7 +48,7 @@ public class CSSpawner : MonoBehaviour
             int rareMod = (int)totalRarity / 50;
             float ratioMod = totalRarity / numSlimes;
             csSpawnMod = ratioMod + numMod + rareMod;
-            Debug.Log("Num bonus: " + numMod + " Rare bonus: " + rareMod + " Ratio bonus: " + ratioMod + " Total: " + csSpawnMod);
+            //Debug.Log("Num bonus: " + numMod + " Rare bonus: " + rareMod + " Ratio bonus: " + ratioMod + " Total: " + csSpawnMod);
         } else
         {
             csSpawnMod = 0;

@@ -12,7 +12,6 @@ public class DragDrop : MonoBehaviour
 
     private void Start()
     {
-        // Auido
         audioSrc = this.GetComponent<AudioSource>();
     }
 
@@ -33,5 +32,14 @@ public class DragDrop : MonoBehaviour
     public void SlimeHeld(Vector3 mousePos)
     {
         this.transform.position = new Vector3(mousePos.x, 0.2f, mousePos.z);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // border detection
+        if (collision.gameObject.tag == "Border")
+        {
+            isHeld = false;
+        }
     }
 }

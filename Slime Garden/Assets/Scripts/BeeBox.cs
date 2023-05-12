@@ -67,7 +67,7 @@ public class BeeBox : MonoBehaviour, IInteractable
     private void AttemptProduceHoney()
     {
         CheckNeighbors();
-        Debug.Log("There are " + flowers.Count + "/8 Plant spots nearby");
+        //Debug.Log("There are " + flowers.Count + "/8 Plant spots nearby");
 
         if (flowers.Count <= 0)
             return;

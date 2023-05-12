@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     // Variables
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
+    [SerializeField] private LayerMask interactLayerMask;
     private CropSO crop;
     private bool isOverUI;
     private bool inspectingSlime;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Script/Object Refrences
     private PlayerInput pInput;
     private PlayerData pData;
+    private MouseControl mouseControl;
     private InventoryManager invManager;
     private MenuManager menus;
     private CameraControl camcontrol;
@@ -47,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         pInput = this.GetComponentInParent<PlayerInput>();
         pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        mouseControl = this.GetComponent<MouseControl>();
         invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         menus = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
@@ -201,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
         // Click Interactable / Plantable / Shop
         Ray objectRay = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f))
+        if (Physics.Raycast(objectRay, out RaycastHit objectRayHit, 999f, interactLayerMask))
         {
             GameObject colObj = objectRayHit.collider.gameObject;
             if (state == State.Default && (colObj.tag == "Interactable" || colObj.tag == "Crop" || colObj.tag == "Shop"))
@@ -242,7 +245,7 @@ public class PlayerController : MonoBehaviour
         if (!context.performed)
             return;
 
-        if (MouseOverUI())
+        if (MouseOverUI() || mouseControl.holding)
             return;
 
         // Click slime
@@ -277,7 +280,7 @@ public class PlayerController : MonoBehaviour
                 dragging = true;
             }
 
-            Debug.Log("Started primary hold");
+            //Debug.Log("Started primary hold");
         }
         // Cancel hold (let go)
         else if (context.canceled)
