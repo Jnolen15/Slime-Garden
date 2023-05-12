@@ -10,6 +10,11 @@ public class GardenManager : MonoBehaviour
     [SerializeField] private List<PlantSpot> plantSpotList = new List<PlantSpot>();
     [SerializeField] private List<BeeBox> beeBoxList = new List<BeeBox>();
 
+    private void Start()
+    {
+        tickTime = tickSpeed;
+    }
+
     void Update()
     {
         if(tickTime > 0)

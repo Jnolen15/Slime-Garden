@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class BeeBox : MonoBehaviour, IInteractable
 {
@@ -10,8 +11,10 @@ public class BeeBox : MonoBehaviour, IInteractable
     private PlayerData pData;
     private GardenManager gm;
 
+    public TextMeshPro honeyTimerText;
+
     [SerializeField] Vector2Int honeyProductionTime;
-    [SerializeField] int honeyTimer;
+    public int honeyTimer;
 
     [SerializeField] private GameObject honey;
     [SerializeField] private List<Vector2Int> positions = new List<Vector2Int>();
@@ -30,7 +33,15 @@ public class BeeBox : MonoBehaviour, IInteractable
         if (hasHoney)
             honey.SetActive(true);
 
-        honeyTimer = Random.Range(honeyProductionTime.x, honeyProductionTime.y);
+        if (honeyTimer == 0)
+            AttemptProduceHoney();
+        else if (honeyTimer == -1)
+            honeyTimer = Random.Range(honeyProductionTime.x, honeyProductionTime.y);
+    }
+
+    private void Update()
+    {
+        honeyTimerText.text = honeyTimer.ToString();
     }
 
     public void Interact()
@@ -48,14 +59,11 @@ public class BeeBox : MonoBehaviour, IInteractable
 
     public void GrowTick()
     {
-        if(honeyTimer <= 0 && !hasHoney)
-        {
-            AttemptProduceHoney();
-        } 
-        else
-        {
+        if (honeyTimer > 0 && !hasHoney)
             honeyTimer--;
-        }
+
+        if (honeyTimer == 0 && !hasHoney)
+            AttemptProduceHoney();
     }
 
     private void AttemptProduceHoney()
@@ -70,6 +78,7 @@ public class BeeBox : MonoBehaviour, IInteractable
         transform.GetChild(1).DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f);
 
         hasHoney = true;
+        honeyTimer = 0;
         honey.SetActive(true);
         honeyValue = (10 * flowers.Count);
     }
@@ -105,6 +114,10 @@ public class BeeBox : MonoBehaviour, IInteractable
             return null;
 
         PlantSpot crop = placeableObj.gameObject.GetComponentInChildren<PlantSpot>();
+
+        if(crop == null)
+            return null;
+
         if (crop.hasCrop && crop.fullyGrown)
         {
             string cropName = crop.GetCropSO().cropName;
