@@ -11,12 +11,12 @@ public class BeeBox : MonoBehaviour, IInteractable
     private PlayerData pData;
     private GardenManager gm;
 
-    public TextMeshPro honeyTimerText;
-
     [SerializeField] Vector2Int honeyProductionTime;
     public int honeyTimer;
 
     [SerializeField] private GameObject honey;
+    [SerializeField] private GameObject honeyFX;
+    [SerializeField] private ParticleSystem beeFX;
     [SerializeField] private List<Vector2Int> positions = new List<Vector2Int>();
     [SerializeField] private List<string> flowers = new List<string>();
     [SerializeField] private bool hasHoney;
@@ -39,16 +39,14 @@ public class BeeBox : MonoBehaviour, IInteractable
             honeyTimer = Random.Range(honeyProductionTime.x, honeyProductionTime.y);
     }
 
-    private void Update()
-    {
-        honeyTimerText.text = honeyTimer.ToString();
-    }
-
     public void Interact()
     {
         // Harvest
         if (hasHoney)
         {
+            transform.GetChild(0).DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f);
+            transform.GetChild(1).DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f);
+
             hasHoney = false;
             honey.SetActive(false);
             pData.GainMoney(honeyValue);
@@ -74,9 +72,14 @@ public class BeeBox : MonoBehaviour, IInteractable
         if (flowers.Count <= 0)
             return;
 
+        // Effects
         transform.GetChild(0).DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f);
         transform.GetChild(1).DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f);
+        Instantiate(honeyFX, new Vector3(transform.position.x+0.5f, transform.position.y+1, transform.position.z+0.5f), Quaternion.identity);
+        var fxEmmission = beeFX.emission;
+        fxEmmission.rateOverTime = (flowers.Count/8);
 
+        // Set / Reset
         hasHoney = true;
         honeyTimer = 0;
         honey.SetActive(true);
