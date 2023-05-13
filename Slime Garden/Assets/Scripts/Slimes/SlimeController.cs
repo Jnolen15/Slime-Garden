@@ -303,7 +303,7 @@ public class SlimeController : MonoBehaviour
         // if surface is mostly below
         for (int k = 0; k < col.contacts.Length; k++)
         {
-            Debug.Log("Hit angle " + Vector3.Angle(col.contacts[k].normal, validDirection));
+            //Debug.Log("Hit angle " + Vector3.Angle(col.contacts[k].normal, validDirection));
             if (Vector3.Angle(col.contacts[k].normal, validDirection) >= contactThresholds.x &&
                 Vector3.Angle(col.contacts[k].normal, validDirection) <= contactThresholds.y)
             {
