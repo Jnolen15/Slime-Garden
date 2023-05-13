@@ -281,7 +281,39 @@ public class SlimeController : MonoBehaviour
         this.GetComponent<Rigidbody>().AddForce(newPos * 4, ForceMode.Impulse);
 
         audioSrc.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)]);
+        Stretch();
     }
+
+
+    // ========================== SPRITE STUFF ==========================
+    private void FlipSprite(bool flip)
+    {
+        Basesr.flipX = flip;
+        patternsr.flipX = flip;
+        facesr.flipX = flip;
+    }
+
+    private void Squish()
+    {
+        ResetScale(sprites);
+
+        sprites.transform.DOPunchScale(new Vector3(0.1f, -0.05f, 0), 0.3f, 5, 0.5f);
+    }
+
+    private void Stretch()
+    {
+        ResetScale(sprites);
+
+        sprites.transform.DOPunchScale(new Vector3(-0.1f, 0.2f, 0), 0.3f, 5, 0.5f);
+    }
+
+    private void ResetScale(GameObject obj)
+    {
+        obj.transform.DOKill();
+
+        obj.transform.localScale = new Vector3(1, 1, 1);
+    }
+
 
     // ========================== MISC ==========================
 
@@ -317,13 +349,7 @@ public class SlimeController : MonoBehaviour
     {
         groundedBuffer = 0.2f;
         grounded = isGrounded;
-    }
-
-    private void FlipSprite(bool flip)
-    {
-        Basesr.flipX = flip;
-        patternsr.flipX = flip;
-        facesr.flipX = flip;
+        Squish();
     }
 
     public bool FeedSlime(CropObj food)
@@ -374,5 +400,7 @@ public class SlimeController : MonoBehaviour
         Basesr.DOKill();
         patternsr.DOKill();
         facesr.DOKill();
+
+        sprites.transform.DOKill();
     }
 }

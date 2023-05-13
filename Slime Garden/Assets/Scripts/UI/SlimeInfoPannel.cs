@@ -18,6 +18,7 @@ public class SlimeInfoPannel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI speciesText;
     [SerializeField] private TextMeshProUGUI rarityText;
+    [SerializeField] private TextMeshProUGUI ageText;
     [SerializeField] private Image hungerBarFill;
     [SerializeField] private SlimeData curSlimeData;
     [SerializeField] private SlimeController curSlimeControl;
@@ -52,6 +53,10 @@ public class SlimeInfoPannel : MonoBehaviour
         inputText.text = "New Name";
         speciesText.text = curSlimeData.sBaseColor + " " + curSlimeData.sPatternColor + " " + curSlimeData.slimeSpeciesPattern.sPattern;
         rarityText.text = "Rarity: " + curSlimeData.sRarity;
+        if(curSlimeData.isMature)
+            ageText.text = "Mature";
+        else
+            ageText.text = "Baby";
 
         prevHungerLevel = 0;
         SetHungerBar();
