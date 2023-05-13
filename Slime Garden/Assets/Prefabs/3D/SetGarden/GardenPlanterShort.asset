@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: GardenPlanterShort
+  m_EditorClassIdentifier: 
+  placeableName: Garden Planter Short
+  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  price: 5
+  description: A short planter for crops. Connects with adjacent short planters.
+  prefab: {fileID: 4538001653507727923, guid: 1e680d35cf21df84ea4442b021259568, type: 3}
+  visual: {fileID: 3857867143676051800, guid: a36adae10bdcd594592b4fd344ada22c, type: 3}
+  width: 1
+  height: 1

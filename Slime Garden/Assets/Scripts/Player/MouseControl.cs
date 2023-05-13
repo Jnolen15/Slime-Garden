@@ -12,7 +12,7 @@ public class MouseControl : MonoBehaviour
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
-    [SerializeField] private GameObject mouseVisual;
+    [SerializeField] private GameObject mousePoint;
 
     [SerializeField] private SlimeDropCheck slimeDropcheck;
     private PlayerController pc;
@@ -32,7 +32,7 @@ public class MouseControl : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
-            mouseVisual.transform.position = mousePos.point;
+            mousePoint.transform.position = mousePos.point;
         }
     }
 
@@ -42,6 +42,7 @@ public class MouseControl : MonoBehaviour
         holding = true;
         heldSlimeDragDrop = heldSlime.GetComponent<DragDrop>();
         heldSlimeDragDrop.PickedUp();
+        slimeDropcheck.Activate();
     }
 
     private void SlimeDropped()
@@ -63,6 +64,7 @@ public class MouseControl : MonoBehaviour
         heldSlime = null;
         heldSlimeDragDrop = null;
         potentialSlime = null;
+        slimeDropcheck.Deactivate();
     }
 
 
