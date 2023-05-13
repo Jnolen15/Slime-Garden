@@ -22,24 +22,19 @@ public class DragDrop : MonoBehaviour
         audioSrc.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)]);
     }
 
+    public void LetGo(Vector3 pos)
+    {
+        isHeld = false;
+        sc.ChangeState(SlimeController.State.idle);
+        audioSrc.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)]);
+
+        this.transform.position = pos;
+    }
+
     public void LetGo()
     {
         isHeld = false;
         sc.ChangeState(SlimeController.State.idle);
         audioSrc.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)]);
-    }
-
-    public void SlimeHeld(Vector3 mousePos)
-    {
-        this.transform.position = new Vector3(mousePos.x, 0.2f, mousePos.z);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // border detection
-        if (collision.gameObject.tag == "Border")
-        {
-            isHeld = false;
-        }
     }
 }

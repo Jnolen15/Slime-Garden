@@ -7,13 +7,14 @@ public class MouseControl : MonoBehaviour
 {
     public bool holding;
     public GameObject heldSlime;
-    public DragDrop heldSlimeDragDrop;
+    private DragDrop heldSlimeDragDrop;
     private GameObject potentialSlime;
 
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private LayerMask slimeLayerMask;
     [SerializeField] private GameObject mouseVisual;
 
+    [SerializeField] private SlimeDropCheck slimeDropcheck;
     private PlayerController pc;
     private CursorVisual cursorVis;
 
@@ -25,61 +26,13 @@ public class MouseControl : MonoBehaviour
 
     void Update()
     {
-        // If slime held becomes false drop it
-        if (holding)
-        {
-            if (!heldSlimeDragDrop.isHeld)
-            {
-                SlimeDropped();
-            }
-        }
+        CursorStyle();
 
-        // CURSOR VISUAL SWAPPING
-        // DEFAULT
-        if (pc.state == PlayerController.State.Default)
-        {
-            if (holding)
-            {
-                cursorVis.UpdateCursor("close");
-            }
-            else
-            {
-                // Cursor swapping
-                Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-                if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
-                {
-                    if (clickraycastHit.collider.gameObject.tag == "Slime")
-                        cursorVis.UpdateCursor("open");
-                }
-                else
-                    cursorVis.UpdateCursor("point");
-            }
-        }
-        // BUILD
-        if (pc.state == PlayerController.State.Build)
-        {
-            cursorVis.UpdateCursor("point");
-        }
-        // PLANT
-        if (pc.state == PlayerController.State.Plant)
-        {
-            cursorVis.UpdateCursor("point");
-        }
-        // PAINT
-        if (pc.state == PlayerController.State.Paint)
-        {
-            cursorVis.UpdateCursor("paint");
-        }
-
-
-        // Mouse position in world space
+        // Mouse position in world space (Hitbox)
         Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
         if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
         {
             mouseVisual.transform.position = mousePos.point;
-
-            if (holding)
-                heldSlimeDragDrop.SlimeHeld(mousePos.point);
         }
     }
 
@@ -93,9 +46,19 @@ public class MouseControl : MonoBehaviour
 
     private void SlimeDropped()
     {
-        if(heldSlime != null)
-            heldSlimeDragDrop.LetGo();
-        
+        if (heldSlime != null)
+        {
+            // TP slime to mouse location if check passes
+            if (!slimeDropcheck.collision)
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
+                    heldSlimeDragDrop.LetGo(mousePos.point);
+            }
+            else
+                heldSlimeDragDrop.LetGo();
+        }
+
         holding = false;
         heldSlime = null;
         heldSlimeDragDrop = null;
@@ -130,6 +93,47 @@ public class MouseControl : MonoBehaviour
         else if (context.canceled)
         {
             SlimeDropped();
+        }
+    }
+
+
+    // ========== CURSOR VISUAL SWAPPING ==========
+    private void CursorStyle()
+    {
+        // DEFAULT
+        if (pc.state == PlayerController.State.Default)
+        {
+            if (holding)
+            {
+                cursorVis.UpdateCursor("close");
+            }
+            else
+            {
+                // Cursor swapping
+                Ray clickray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+                if (Physics.Raycast(clickray, out RaycastHit clickraycastHit, 999f, slimeLayerMask))
+                {
+                    if (clickraycastHit.collider.gameObject.tag == "Slime")
+                        cursorVis.UpdateCursor("open");
+                }
+                else
+                    cursorVis.UpdateCursor("point");
+            }
+        }
+        // BUILD
+        if (pc.state == PlayerController.State.Build)
+        {
+            cursorVis.UpdateCursor("point");
+        }
+        // PLANT
+        if (pc.state == PlayerController.State.Plant)
+        {
+            cursorVis.UpdateCursor("point");
+        }
+        // PAINT
+        if (pc.state == PlayerController.State.Paint)
+        {
+            cursorVis.UpdateCursor("paint");
         }
     }
 }

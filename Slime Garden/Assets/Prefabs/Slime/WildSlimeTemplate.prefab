@@ -125,6 +125,11 @@ MonoBehaviour:
   slimeSpeciesPatternColor: {r: 0, g: 0, b: 0, a: 0}
   slimeFace: {fileID: 11400000, guid: b100893b08f80a2488600ca652bdc85c, type: 2}
   sCrystal: {fileID: 0}
+  isMature: 0
+  infancyTimer: 0
+  maturityTime: 0
+  infancyHungerReduction: 0
+  hungerLevel: 0
   isWild: 1
 --- !u!114 &3820516103340025377
 MonoBehaviour:
@@ -146,6 +151,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4f88a9edbf123254cb132e0547ae6279, type: 3}
   - {fileID: 8300000, guid: 5003ecdc2c5267f458b5ac2b2886404a, type: 3}
   grounded: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 65600
   jumped: 0
   stateTimer: 0
   state: 0

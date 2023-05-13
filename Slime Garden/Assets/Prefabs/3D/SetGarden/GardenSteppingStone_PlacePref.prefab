@@ -4928,9 +4928,9 @@ GameObject:
   - component: {fileID: 2409847834514193965}
   - component: {fileID: 1176783069384104633}
   - component: {fileID: 694086689342291691}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SteppingStone
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

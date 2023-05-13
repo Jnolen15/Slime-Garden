@@ -28,6 +28,7 @@ public class SlimeController : MonoBehaviour
     private bool stateChanged;                  // Bool to make sure initial state changes only happen once
     [SerializeField]
     private bool grounded;                      // Bool to make sure slime is grounded
+    private float groundedBuffer;               // Timer to prevent odd behavior
     [SerializeField]
     private bool jumped;                        // Bool to see if slime has already jumped
     [SerializeField]    
@@ -80,6 +81,9 @@ public class SlimeController : MonoBehaviour
 
     void Update()
     {
+        // Grounded buffer
+        if (groundedBuffer > 0) groundedBuffer -= Time.deltaTime;
+
         // State machine switch
         switch (state)
         {
@@ -146,14 +150,14 @@ public class SlimeController : MonoBehaviour
                 if (stateTimer > 0) stateTimer -= Time.deltaTime;
                 if (!jumped && grounded && stateTimer <= 0)
                 {
-                    StartState("Held", brain.slimeFaceHappy);
                     JumpState();
+                    StartState("Held", brain.slimeFaceHappy);
                 }
                 if (jumped && grounded)
                 {
                     StartState("Idle", brain.slimeFaceHappy);
                     jumped = false;
-                    stateTimer = 0.2f;
+                    stateTimer = 0.4f;
                 }
                 break;
             case State.crystalize:
@@ -270,38 +274,56 @@ public class SlimeController : MonoBehaviour
         else
             FlipSprite(true);
 
+        jumped = true;
+        SetGrounded(false);
+
         // Jump by force
         this.GetComponent<Rigidbody>().AddForce(newPos * 4, ForceMode.Impulse);
-
-        jumped = true;
-        grounded = false;
 
         audioSrc.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)]);
     }
 
     // ========================== MISC ==========================
 
+    private Vector3 validDirection = Vector3.down;
+    private Vector2Int contactThresholds = new Vector2Int(160, 200);
+
+    void OnCollisionStay(Collision col)
+    {
+        if (grounded || groundedBuffer > 0)
+            return;
+
+        // If surface is ground or ground object
+        if (col.gameObject.tag == "Ground" || col.gameObject.tag == "GroundObj")
+        {
+            SetGrounded(true);
+            return;
+        }
+
+        // if surface is mostly below
+        for (int k = 0; k < col.contacts.Length; k++)
+        {
+            Debug.Log("Hit angle " + Vector3.Angle(col.contacts[k].normal, validDirection));
+            if (Vector3.Angle(col.contacts[k].normal, validDirection) >= contactThresholds.x &&
+                Vector3.Angle(col.contacts[k].normal, validDirection) <= contactThresholds.y)
+            {
+                SetGrounded(true);
+                return;
+            }
+        }
+    }
+
+    public void SetGrounded(bool isGrounded)
+    {
+        groundedBuffer = 0.2f;
+        grounded = isGrounded;
+    }
+
     private void FlipSprite(bool flip)
     {
         Basesr.flipX = flip;
         patternsr.flipX = flip;
         facesr.flipX = flip;
-    }
-
-    private void OnCollisionEnter(Collision col)
-    {
-        if(col.gameObject.tag == "Ground")
-        {
-            grounded = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision col)
-    {
-        if (col.gameObject.tag == "Ground")
-        {
-            grounded = false;
-        }
     }
 
     public bool FeedSlime(CropObj food)

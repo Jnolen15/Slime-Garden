@@ -187,9 +187,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sc: {fileID: 3820516103340025377}
   isHeld: 0
-  borderLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
   jumpSounds:
   - {fileID: 8300000, guid: 70de01657879c0241ad847f41d8ce71e, type: 3}
   - {fileID: 8300000, guid: 04c98b9d2e4d6f041858809518d47a55, type: 3}

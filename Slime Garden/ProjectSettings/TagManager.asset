@@ -40,8 +40,8 @@ TagManager:
   - Farmable
   - SlimeIgnore
   - Interactable
-  - 
-  - 
+  - GroundObj
+  - SlimeDragCheck
   - 
   - 
   - 

@@ -61,7 +61,6 @@ public class SplicerInput : MonoBehaviour
             // Set up
             occupied = true;
             currentSlime = col.gameObject;
-            currentSlime.GetComponent<DragDrop>().LetGo();
             slimeControll = currentSlime.GetComponent<SlimeController>();
             slimeControll.ChangeState(SlimeController.State.splice);
             slimeData = currentSlime.GetComponent<SlimeData>();
