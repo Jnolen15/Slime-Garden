@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class Cheats : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Cheats : MonoBehaviour
     private PlayerData pData;
     private InventoryManager inventory;
     private DataPersistenceManager gameData;
+    [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private bool cheatsEnabled;
     [SerializeField] private bool inWild;
     [SerializeField] private CropSO[] cheatCrops;
@@ -39,7 +41,7 @@ public class Cheats : MonoBehaviour
             pData.GainMoney(100);
         }
 
-        // Give money
+        // Give exp
         if (Input.GetKeyDown(KeyCode.J))
         {
             pData.GainExperience(5);
@@ -62,6 +64,16 @@ public class Cheats : MonoBehaviour
                 rs.CreateSlime(Vector3.zero, true);
             else
                 rs.CreateSlime(Vector3.zero, false);
+        }
+
+        // Spawn CS
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+            if (Physics.Raycast(ray, out RaycastHit mousePos, 999f, groundLayerMask))
+            {
+                Instantiate(cs, new Vector3(mousePos.point.x, 2, mousePos.point.z), Quaternion.identity);
+            }
         }
 
         // Save game
@@ -87,12 +99,6 @@ public class Cheats : MonoBehaviour
         {
             gameData.SaveGame();
             SceneManager.LoadScene(0);
-        }
-
-        // Spawn CS
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            Instantiate(cs, new Vector3(0, 2, 0), Quaternion.identity);
         }
     }
 }

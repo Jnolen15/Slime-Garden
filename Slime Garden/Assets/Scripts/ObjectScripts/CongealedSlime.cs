@@ -28,4 +28,10 @@ public class CongealedSlime : MonoBehaviour
         menuManager.AnimateToken(color);
         Destroy(this.gameObject);
     }
+
+    public void Store()
+    {
+        Instantiate(sparkleFX, transform.position, Quaternion.identity);
+        Destroy(this.gameObject);
+    }
 }

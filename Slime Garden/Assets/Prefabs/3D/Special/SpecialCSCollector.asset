@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
+  m_Name: SpecialCSCollector
+  m_EditorClassIdentifier: 
+  placeableName: CS Collector
+  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
+  price: 500
+  description: Automatically collects crystalized slime within 6 grid spaces on all
+    sides.
+  prefab: {fileID: 2897353483412181114, guid: 53ffcfefba6361548a02c75a100125b7, type: 3}
+  visual: {fileID: 3135905219842564516, guid: 9d30bf71864d4b246965a2fd1ae9fcf8, type: 3}
+  width: 1
+  height: 1
