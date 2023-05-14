@@ -184,7 +184,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: f1bf640868bf47149a13518bcf2b158b, type: 2}
   - {fileID: 2100000, guid: aeb7867539929674a91e1ce29084c520, type: 2}
   - {fileID: 2100000, guid: 1fde52f7d8ac6024894ccd5960855646, type: 2}
-  curMat: 2
+  curMat: 0
   renders:
   - {fileID: 5069231418353752019}
 --- !u!198 &2897353483412181110

@@ -35,15 +35,17 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
         public PlaceableObjectSO.Dir dir;
         public int matValue;
         public int beeBoxHoneyTimer;
+        public int csCollectorStoredValue;
         public List<PlantSpotData> plantSpot;
 
-        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, int matVal = 0, int honeyTime = 0, List<PlantSpotData> pSpot = null)
+        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, int matVal = 0, int honeyTime = 0, int csStoredVal = 0, List<PlantSpotData> pSpot = null)
         {
             pName = newName;
             pOrigin = newOrigin;
             dir = newDir;
             matValue = matVal;
             beeBoxHoneyTimer = honeyTime;
+            csCollectorStoredValue = csStoredVal;
             plantSpot = pSpot;
         }
     }
@@ -143,6 +145,10 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                 if (newBuild.GetComponent<BeeBox>())
                     newBuild.GetComponent<BeeBox>().honeyTimer = pData.beeBoxHoneyTimer;
 
+                // If placeable a CS Collector
+                if (newBuild.GetComponent<CSCollector>())
+                    newBuild.GetComponent<CSCollector>().storedValue = pData.csCollectorStoredValue;
+
                 // If placeable had PlantSpotData, reinstantiate that as well
                 int count = 0;
                 foreach (PlantSpot pSpot in newBuild.GetComponentsInChildren<PlantSpot>())
@@ -217,8 +223,13 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
             if (pObj.GetComponent<BeeBox>())
                 honeyTimer = pObj.GetComponent<BeeBox>().honeyTimer;
 
+            // If CS Collector
+            int storedVal = 0;
+            if (pObj.GetComponent<CSCollector>())
+                storedVal = pObj.GetComponent<CSCollector>().storedValue;
+
             placeableDataList.Add(new PlaceableData(pObj.GetPlaceableData().placeableName,
-                            pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex, honeyTimer, pSpots));
+                            pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex, honeyTimer, storedVal, pSpots));
         }
 
         // Save habitat teir / decor

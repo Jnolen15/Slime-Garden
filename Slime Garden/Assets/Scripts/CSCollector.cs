@@ -6,7 +6,7 @@ using DG.Tweening;
 public class CSCollector : MonoBehaviour, IInteractable
 {
     public int maxValue;
-    [SerializeField] private int storedValue;
+    public int storedValue;
     [SerializeField] private CSCollectionRadious collectionRadious;
     [SerializeField] private Transform collector;
     [SerializeField] private Transform ejectionPoint;
