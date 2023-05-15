@@ -7089,80 +7089,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 614477406}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &617783277
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7635826562936255635, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: f5382efee35f2df48a5c7afa7af54b5f, type: 2}
-    - target: {fileID: 919132149155446097, guid: 0ec981f0d455dcb49a27420a5c97c8a1,
-        type: 3}
-      propertyPath: m_Name
-      value: FlowerTowerPeridot
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 0ec981f0d455dcb49a27420a5c97c8a1, type: 3}
 --- !u!1 &624126933
 GameObject:
   m_ObjectHideFlags: 0
@@ -12810,6 +12736,75 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1059337100}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1062077468
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254016, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8933181581729254017, guid: 04654289e138ef4409911d2e89bb94b8,
+        type: 3}
+      propertyPath: m_Name
+      value: GardenPlanterTall_PlacePref
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 04654289e138ef4409911d2e89bb94b8, type: 3}
 --- !u!1001 &1062668244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14994,7 +14989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1283948841}
   m_LocalRotation: {x: 0.27563733, y: 0, z: 0, w: 0.96126175}
-  m_LocalPosition: {x: 0, y: 0.959, z: -1.105}
+  m_LocalPosition: {x: 0, y: 1.426, z: -1.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15659,7 +15654,7 @@ MonoBehaviour:
   renderText: {fileID: 8400000, guid: 7340cee370cb3db4098b57f5b64b114d, type: 2}
   pathName: '"Assets/Sprites/UIIcons/"'
   identifierName: _Icon
-  fileName: FlowerTowerPeridot
+  fileName: GardenPlantertall
 --- !u!1001 &1332191325
 PrefabInstance:
   m_ObjectHideFlags: 0

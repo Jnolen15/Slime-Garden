@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: GardenSteppingStone
   m_EditorClassIdentifier: 
-  placeableName: Stepping Stone
+  placeableName: Garden Stepping Stone
   previewImage: {fileID: 21300000, guid: 73ed9b8b06779a648aefda4842ece535, type: 3}
   price: 2
   description: 

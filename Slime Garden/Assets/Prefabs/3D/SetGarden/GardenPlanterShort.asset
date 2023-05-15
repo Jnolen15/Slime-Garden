@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GardenPlanterShort
   m_EditorClassIdentifier: 
   placeableName: Garden Planter Short
-  previewImage: {fileID: 21300000, guid: f9161c6c9e06dc445ada3ee16d991f90, type: 3}
-  price: 5
+  previewImage: {fileID: 21300000, guid: 6c24b8993f9a65742901b57027736b4a, type: 3}
+  price: 10
   description: A short planter for crops. Connects with adjacent short planters.
   prefab: {fileID: 4538001653507727923, guid: 1e680d35cf21df84ea4442b021259568, type: 3}
   visual: {fileID: 3857867143676051800, guid: a36adae10bdcd594592b4fd344ada22c, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: CuteSlimeBed
   m_EditorClassIdentifier: 
-  placeableName: Slime Bed
+  placeableName: Cute Slime Bed
   previewImage: {fileID: 21300000, guid: cd1ae717e0f6c2d4a9bf6aa41ba213e3, type: 3}
   price: 20
   description: 
