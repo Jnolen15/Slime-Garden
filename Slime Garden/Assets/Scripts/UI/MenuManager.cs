@@ -20,6 +20,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject slimeInfoBox;
     [SerializeField] private GameObject cropSellBox;
     [SerializeField] private GameObject habitatUpgradeBox;
+    [SerializeField] private GameObject taskBoard;
     [SerializeField] private GameObject cSToken;
     [SerializeField] private GameObject textPopup;
     [SerializeField] private RectTransform tokenEndPos;
@@ -36,6 +37,7 @@ public class MenuManager : MonoBehaviour
         slimeInfoBox.SetActive(false);
         cropSellBox.SetActive(false);
         habitatUpgradeBox.SetActive(false);
+        taskBoard.SetActive(false);
     }
 
     public void CloseAllSubmenus()
@@ -178,6 +180,7 @@ public class MenuManager : MonoBehaviour
     {
         CloseCropSell();
         CloseHabitatUpgrade();
+        CloseTaskBoard();
     }
 
     // ============== Crop Sell ==============
@@ -219,6 +222,22 @@ public class MenuManager : MonoBehaviour
         habitatUpgradeBox.SetActive(false);
         stageManager.gameObject.SetActive(false);
         CloseInfoBox();
+    }
+
+    // ============== Task Board ==============
+    public void ShowTaskBoard()
+    {
+        taskBoard.SetActive(true);
+
+        var menuPos = taskBoard.transform.localPosition;
+        var yPos = menuPos.y;
+        taskBoard.transform.localPosition = new Vector3(menuPos.x, menuPos.y - 40, menuPos.z);
+        taskBoard.transform.DOLocalMoveY(yPos, 0.2f);
+    }
+
+    public void CloseTaskBoard()
+    {
+        taskBoard.SetActive(false);
     }
 
     // ============== UI Popups =================
