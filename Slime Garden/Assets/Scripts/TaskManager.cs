@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class TaskManager : MonoBehaviour
 {
     [SerializeField] private GameObject taskPref;
+    [SerializeField] private GameObject rewardPref;
     [SerializeField] private Transform taskGroup;
+    [SerializeField] private Transform rewards;
+    [SerializeField] private Transform rewardsZone;
     private int maxTasks = 3;
     [SerializeField] private List<TaskSO> allTasks = new List<TaskSO>();
     [SerializeField] private List<TaskSO> queuedTasks = new List<TaskSO>();
@@ -14,10 +18,15 @@ public class TaskManager : MonoBehaviour
     [SerializeField] private List<TaskSO> finishedTasks = new List<TaskSO>();
 
     private StatTracker statTracker;
+    private InventoryManager inventoryManager;
 
     void Start()
     {
         statTracker = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
+        inventoryManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
+
+        taskGroup.gameObject.SetActive(true);
+        rewards.gameObject.SetActive(false);
 
         AddTasksToBoard(inProgressTasks);
     }
@@ -120,7 +129,12 @@ public class TaskManager : MonoBehaviour
             finishedTasks.Add(taskData);
 
             // Reward player
-            // TODO -> Only 3 tasks at a time, make a task Queue
+            taskGroup.gameObject.SetActive(false);
+            rewards.gameObject.SetActive(true);
+            DisplayRewards(taskData);
+            GrantRewards(taskData);
+
+            // Add new Tasks
             foreach (TaskSO newTask in taskData.unlockedTasks)
                 queuedTasks.Add(newTask);
 
@@ -129,6 +143,38 @@ public class TaskManager : MonoBehaviour
         else
         {
             Debug.Log("Task not complete yet!");
+        }
+    }
+
+    public void DisplayRewards(TaskSO completedTask)
+    {
+        // Get rid of previous level up reward notifs
+        foreach (Transform child in rewardsZone)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // Display new award notifs
+        foreach (TaskSO.RewardEntry reward in completedTask.rewards)
+        {
+            Transform box = Instantiate(rewardPref, rewardsZone).transform;
+            box.GetComponentInChildren<TextMeshProUGUI>().text = reward.rewardName;
+            box.GetChild(0).GetComponent<Image>().sprite = reward.rewardImage;
+        }
+    }
+
+    public void GrantRewards(TaskSO completedTask)
+    {
+        foreach (TaskSO.RewardEntry reward in completedTask.rewards)
+        {
+            if(reward.rewardType == TaskSO.RewardType.crop)
+            {
+                inventoryManager.UnlockCrop(reward.cropReward, true);
+            }
+            else if (reward.rewardType == TaskSO.RewardType.placeable)
+            {
+                inventoryManager.UnlockFurniture(reward.placeableReward, true);
+            }
         }
     }
 }

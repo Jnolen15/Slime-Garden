@@ -16,7 +16,18 @@ MonoBehaviour:
   description: Collect 5 Crystalized Slime
   stat: csCollected
   goal: 5
-  rewards: []
+  offsetTask: 0
+  rewards:
+  - rewardType: 1
+    rewardName: Garden Fountain
+    rewardImage: {fileID: 21300000, guid: f84f29ac101e2984e9031afe20a3b31d, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: 8649667da331b05439f75ea958d6fc0c, type: 2}
+  - rewardType: 1
+    rewardName: Garden Pot
+    rewardImage: {fileID: 21300000, guid: ba4ce8d644da0ef47a350fb76db68021, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: cb332160651c66f4f9239d31c044c471, type: 2}
   unlockedTasks:
   - {fileID: 11400000, guid: 3501800182c934147b9e7feee646efcb, type: 2}
   - {fileID: 11400000, guid: 3823cc2566f774246abbf61d96bc36c0, type: 2}

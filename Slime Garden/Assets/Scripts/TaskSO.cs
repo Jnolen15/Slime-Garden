@@ -7,7 +7,6 @@ public class TaskSO : ScriptableObject
 {
     public enum RewardType
     {
-        slime,
         crop,
         placeable
     }
@@ -30,5 +29,7 @@ public class TaskSO : ScriptableObject
         public RewardType rewardType;
         public string rewardName;
         public Sprite rewardImage;
+        public CropSO cropReward;
+        public PlaceableObjectSO placeableReward;
     }
 }

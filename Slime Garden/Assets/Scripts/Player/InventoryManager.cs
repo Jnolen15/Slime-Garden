@@ -31,28 +31,28 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     }
 
     //  ================== ADD NEW CONTENT TO LISTS ==================
-    public void UnlockFurniture(PlaceableObjectSO newData, bool fromLevelUp)
+    public void UnlockFurniture(PlaceableObjectSO newData, bool newUnlock)
     {
         availablePlaceables.Add(newData);
 
-        if (fromLevelUp)
+        if (newUnlock)
             menus.UpdateBuildMenu();
     }
 
-    public void UnlockCrop(CropSO newData, bool fromLevelUp)
+    public void UnlockCrop(CropSO newData, bool newUnlock)
     {
         // add to avaiable list and inventory list
         availableCrops.Add(newData);
 
-        // Only add to inventory list if called as a level up
+        // Only add to inventory list if called as a new unlock
         // This will cause a crop to be added twice if ran during load since inventory list saves
-        if (fromLevelUp && newData.canBeHarvested)
+        if (newUnlock && newData.canBeHarvested)
         {
             CropInventroyEntry newEntry = new CropInventroyEntry(newData.cropName);
             inventoryList.Add(newEntry);
         }
 
-        if (fromLevelUp)
+        if (newUnlock)
         {
             menus.UpdateSeedMenu();
             menus.UpdateCropSell();

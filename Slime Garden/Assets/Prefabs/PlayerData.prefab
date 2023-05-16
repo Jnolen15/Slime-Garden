@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelRewards: {fileID: 0}
+  statTracker: {fileID: 0}
   menus: {fileID: 0}
   levelThresholds: 05000000080000000c000000140000001e00000028000000320000003c00000050000000640000008c000000c8000000180100009001000058020000
   levelDisplay: {fileID: 0}
@@ -128,47 +129,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1fba22bf25dae34db3f572741495768, type: 2}
   - {fileID: 11400000, guid: b0263637f4e3aa94eb142afddb51b6b0, type: 2}
   - {fileID: 11400000, guid: f4d650aa4da3ad84caa4af477935daa5, type: 2}
-  availableCrops:
-  - {fileID: 11400000, guid: 4ccce8c2a467742459277ee1fa08c57a, type: 2}
-  - {fileID: 11400000, guid: 7b81092fa35d8a449bcae0639defbb0d, type: 2}
-  - {fileID: 11400000, guid: a8534a40470f32d4484ab1beda14feb5, type: 2}
-  - {fileID: 11400000, guid: ed9e409b81255cf49a3a44ff6e317061, type: 2}
-  - {fileID: 11400000, guid: c4b864aca7fc9dd4494ee9a7fc74d2f3, type: 2}
-  - {fileID: 11400000, guid: 87c17bb36fd74d24c806d185047d5eff, type: 2}
-  - {fileID: 11400000, guid: e98669fa40edca045945502ce37f0630, type: 2}
-  - {fileID: 11400000, guid: fd9de3cb0fed5db45bad0e42ffc86eab, type: 2}
-  - {fileID: 11400000, guid: 97ab5caf853d7cb478b6a4d1251baace, type: 2}
-  - {fileID: 11400000, guid: 9ba13d4a90b72334386c1cc1b56bc35d, type: 2}
-  - {fileID: 11400000, guid: 5ca10872d982dff4ba60c3286f0efebe, type: 2}
-  - {fileID: 11400000, guid: 1b4691b177078554793b4e4cb8d9d46b, type: 2}
-  availablePlaceables:
-  - {fileID: 11400000, guid: 7a4d9130fe3cc224797f81e2c9389a9a, type: 2}
-  - {fileID: 11400000, guid: ae6238335cd5dc74abb271217e0716fa, type: 2}
-  - {fileID: 11400000, guid: bebc0485781357445b4b56271b7591bb, type: 2}
-  - {fileID: 11400000, guid: a7a9b66044dd4244788c327029eccafd, type: 2}
-  - {fileID: 11400000, guid: d8228f987145d414195fd4e636831753, type: 2}
-  - {fileID: 11400000, guid: dd099abfe6cae244c8347984b88e225d, type: 2}
-  - {fileID: 11400000, guid: 54bb9cd1ea09b5044a822f5efe74a223, type: 2}
-  - {fileID: 11400000, guid: 806a2700951e7024ab143e62c53d83ed, type: 2}
-  - {fileID: 11400000, guid: 873198233a12d914b96308dd6abf056b, type: 2}
-  - {fileID: 11400000, guid: c98ce48e63d03cd42b610c28c0c95082, type: 2}
-  - {fileID: 11400000, guid: 5222bb0b4422a5b4da2bb394eb0657c4, type: 2}
-  - {fileID: 11400000, guid: 6491e72bd322b344997fcb9c3a33a698, type: 2}
-  - {fileID: 11400000, guid: 2d54ae4dfcb75c541ac0560cafc9284b, type: 2}
-  - {fileID: 11400000, guid: 8649667da331b05439f75ea958d6fc0c, type: 2}
-  - {fileID: 11400000, guid: 10efd847dffe26241b00d0b5b2f869a0, type: 2}
-  - {fileID: 11400000, guid: fc3d98bb806d5c441a51712853ec5c91, type: 2}
-  - {fileID: 11400000, guid: a5f4602c76ad4de4685fb16a114e7b4e, type: 2}
-  - {fileID: 11400000, guid: e19c86d40afb09440b486d0fb81df300, type: 2}
-  - {fileID: 11400000, guid: d38be4d70864e3c4194fd86a1ef164a4, type: 2}
-  - {fileID: 11400000, guid: 4578f94ae9f249f46acd616c98bbedea, type: 2}
-  - {fileID: 11400000, guid: 5ddd1ce671295d446a008a94c38b7a57, type: 2}
-  - {fileID: 11400000, guid: b1bf28ba8306cd340bc239d216334736, type: 2}
-  - {fileID: 11400000, guid: 39bd504ba71393c4983f96c50ed25a50, type: 2}
-  - {fileID: 11400000, guid: 3a14c088484d7fa4f9c13ec657dee69d, type: 2}
-  - {fileID: 11400000, guid: b1fba22bf25dae34db3f572741495768, type: 2}
-  - {fileID: 11400000, guid: b0263637f4e3aa94eb142afddb51b6b0, type: 2}
-  - {fileID: 11400000, guid: f4d650aa4da3ad84caa4af477935daa5, type: 2}
+  availableCrops: []
+  availablePlaceables: []
   inventoryList: []
 --- !u!114 &7577233294854124093
 MonoBehaviour:
@@ -182,3 +144,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a1e6ee7ed7cc64c85cb51ac5f0154f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  csCollected: 0
+  csEarned: 0
