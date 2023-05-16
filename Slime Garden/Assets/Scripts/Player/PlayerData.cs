@@ -7,6 +7,7 @@ using TMPro;
 public class PlayerData : MonoBehaviour, IDataPersistence
 {
     [SerializeField] LevelRewardHandler levelRewards;
+    [SerializeField] StatTracker statTracker;
     [SerializeField] MenuManager menus;
 
     // ===================== LEVEL / XP STUFF =====================
@@ -124,6 +125,8 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         Money += value;
 
         menus.TextPopup("+" + value, Color.green);
+
+        statTracker.IncrementStat("csEarned", value);
     }
 
     // Purchases if player can afford

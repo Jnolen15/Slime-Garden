@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 4402080545133192462}
   - component: {fileID: 513421117097159464}
   - component: {fileID: 3582998322650400622}
+  - component: {fileID: 7167691141112610998}
   m_Layer: 5
   m_Name: Task
   m_TagString: Untagged
@@ -394,4 +395,31 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 513421117097159464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7167691141112610998}
+        m_TargetAssemblyTypeName: TaskElement, Assembly-CSharp
+        m_MethodName: OnPress
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7167691141112610998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8740749235695363714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6665c8820960ab418850f1ee43a41b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  task: {fileID: 0}
+  description: {fileID: 3240241916106151355}
+  goal: {fileID: 7092299997155713771}

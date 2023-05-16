@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1677759995860851632}
   - component: {fileID: 1677759995860851638}
   - component: {fileID: 1677759995860851639}
+  - component: {fileID: 7577233294854124093}
   m_Layer: 0
   m_Name: PlayerData
   m_TagString: PlayerData
@@ -169,3 +170,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b0263637f4e3aa94eb142afddb51b6b0, type: 2}
   - {fileID: 11400000, guid: f4d650aa4da3ad84caa4af477935daa5, type: 2}
   inventoryList: []
+--- !u!114 &7577233294854124093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677759995860851633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25a1e6ee7ed7cc64c85cb51ac5f0154f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

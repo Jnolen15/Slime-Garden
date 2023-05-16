@@ -5,6 +5,7 @@ using UnityEngine;
 public class CongealedSlime : MonoBehaviour
 {
     private PlayerData pData;
+    private StatTracker stats;
     private MenuManager menuManager;
     public int value = 1;
     [SerializeField] private Color color;
@@ -13,6 +14,7 @@ public class CongealedSlime : MonoBehaviour
     void Start()
     {
         pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         menuManager = GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>();
     }
 
@@ -23,6 +25,7 @@ public class CongealedSlime : MonoBehaviour
 
     public void Collect()
     {
+        stats.IncrementStat("csCollected", 1);
         pData.GainMoney(value);
         Instantiate(sparkleFX, transform.position, Quaternion.identity);
         menuManager.AnimateToken(color);
