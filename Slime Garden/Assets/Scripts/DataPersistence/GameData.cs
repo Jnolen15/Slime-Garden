@@ -16,6 +16,11 @@ public class GameData
     public List<HabitatControl.SlimeDataEntry> slimeList;           // Slimes in the habitat
     public List<HabitatControl.SlimeDataEntry> tamedSlimeList;      // Tamed slimes not yet in the habitat
     public List<GridDataPersistence.PlaceableData> placeableList;   // Placeables in the habitat
+    public List<string> queuedTasks;
+    public List<string> inProgressTasks;
+    public List<string> finishedTasks;
+    public List<StatTracker.StatDataEnrty> gameStats;
+    public List<StatTracker.StatDataEnrty> taskOffsets;
 
     public GameData()
     {
@@ -31,5 +36,10 @@ public class GameData
         slimeList = new List<HabitatControl.SlimeDataEntry>();
         tamedSlimeList = new List<HabitatControl.SlimeDataEntry>();
         placeableList = new List<GridDataPersistence.PlaceableData>();
-    }
+        queuedTasks = new List<string>();
+        inProgressTasks = new List<string>();
+        finishedTasks = new List<string>();
+        gameStats = new List<StatTracker.StatDataEnrty>();
+        taskOffsets = new List<StatTracker.StatDataEnrty>();
+}
 }

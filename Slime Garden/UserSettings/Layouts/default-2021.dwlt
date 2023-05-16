@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 1
-  controlID: 11472
+  controlID: 29
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 8096}
   vertical: 0
-  controlID: 11473
+  controlID: 30
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -166,8 +166,8 @@ MonoBehaviour:
     y: 0
     width: 264
     height: 689
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
@@ -321,21 +321,21 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: a4e1f9ff54e6fbff6ce6fbfff0faffff
+      m_ExpandedIDs: 6c06fcffb839fcff3874ffffe0b5fffff0faffff287c000056810000e0b006003acc0600
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: RewardBox(Clone)
+        m_OriginalName: RewardBox(Clone)
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: -206276
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_ClientGUIView: {fileID: 7}
       m_SearchString: 
@@ -688,9 +688,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 11.763746, y: 1.1113482, z: 15.09672}
+    m_Target: {x: 3540, y: 1080, z: 0}
     speed: 2
-    m_Value: {x: -0.39604092, y: -2.4292243, z: -11.416931}
+    m_Value: {x: 3540, y: 1080, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -737,13 +737,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.26495, y: -0.30333647, z: 0.09115447, w: -0.9099321}
+    m_Target: {x: -0.24935366, y: -0.2246335, z: 0.06260761, w: -0.9391031}
     speed: 2
-    m_Value: {x: 0.0073418547, y: -0.98919344, z: 0.1425469, w: 0.033508893}
+    m_Value: {x: -0.24954441, y: -0.22480534, z: 0.0626555, w: -0.9398215}
   m_Size:
-    m_Target: 0.33910093
+    m_Target: 407.29352
     speed: 2
-    m_Value: 7.25535
+    m_Value: 407.29352
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -761,7 +761,7 @@ MonoBehaviour:
     m_FarClip: 10000
     m_DynamicClip: 1
     m_OcclusionCulling: 0
-  m_LastSceneViewRotation: {x: -0.325657, y: -0.08685521, z: 0.032889348, w: -0.9401443}
+  m_LastSceneViewRotation: {x: -0.24935366, y: -0.2246335, z: 0.06260761, w: -0.9391031}
   m_LastSceneViewOrtho: 0
   m_ReplacementShader: {fileID: 0}
   m_ReplacementString: 
@@ -1359,13 +1359,13 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs/3D/Special
+    - Assets/Prefabs/UI
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 36
   m_LastFolders:
-  - Assets/Prefabs/3D/Special
+  - Assets/Prefabs/UI
   m_LastFoldersGridSize: 36
   m_LastProjectPath: C:\Users\Legod\Desktop\Folders\Game Projects\Slime-Garden\Slime
     Garden
@@ -1373,9 +1373,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 9ca90000
-    m_LastClickedID: 43420
-    m_ExpandedIDs: 000000005ea9000060a9000062a9000064a90000
+    m_SelectedIDs: eaaa0000
+    m_LastClickedID: 43754
+    m_ExpandedIDs: 0000000092aa000094aa000096aa000098aa0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1403,7 +1403,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000005ea9000060a9000062a9000064a90000
+    m_ExpandedIDs: 0000000092aa000094aa000096aa000098aa0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1767,4 +1767,4 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 33040
+  m_LastSelectedObjectID: 299324

@@ -229,7 +229,7 @@ public class MenuManager : MonoBehaviour
     {
         taskBoard.SetActive(true);
 
-        taskBoard.GetComponent<TaskManager>().UpdateTasks();
+        taskBoard.GetComponent<TaskUI>().UpdateTasks();
 
         var menuPos = taskBoard.transform.localPosition;
         var yPos = menuPos.y;
