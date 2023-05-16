@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelRewards: {fileID: 0}
-  statTracker: {fileID: 0}
+  statTracker: {fileID: 7577233294854124093}
   menus: {fileID: 0}
   levelThresholds: 05000000080000000c000000140000001e00000028000000320000003c00000050000000640000008c000000c8000000180100009001000058020000
   levelDisplay: {fileID: 0}
