@@ -12,6 +12,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject destroyTool;
     [SerializeField] private GameObject plantTool;
     [SerializeField] private GameObject paintTool;
+    [SerializeField] private GameObject tooltips;
     [SerializeField] private GameObject buildMenu;
     [SerializeField] private GameObject placeableUIPrefab;
     [SerializeField] private GameObject seedMenu;
@@ -38,6 +39,11 @@ public class MenuManager : MonoBehaviour
         cropSellBox.SetActive(false);
         habitatUpgradeBox.SetActive(false);
         taskBoard.SetActive(false);
+
+        if (PlayerPrefs.GetInt("TooltipsEnabled") == 0 && !inWild)
+            tooltips.SetActive(true);
+        else if (PlayerPrefs.GetInt("TooltipsEnabled") == 1)
+            tooltips.SetActive(false);
     }
 
     public void CloseAllSubmenus()
@@ -67,22 +73,6 @@ public class MenuManager : MonoBehaviour
     // ============== Build Menus ==============
     public void UpdateBuildMenu()
     {
-        /*// Clear previous content
-        buildMenu.GetComponent<ContentMenu>().ClearContent();
-
-        // Add new content
-        var hiddenContentMenu = buildMenu.transform.GetChild(0);
-        foreach (PlaceableObjectSO so in invManager.availablePlaceables)
-        {
-            var element = Instantiate(placeableUIPrefab, hiddenContentMenu);
-            element.GetComponent<placeableUIContent>().Setup(so, this);
-            Debug.Log("Added content from inventory");
-        }
-
-        Debug.Log($"Children instantiaded to hidden content {hiddenContentMenu.childCount}");
-
-        buildMenu.GetComponent<ContentMenu>().AddContent();*/
-
         buildMenu.GetComponent<ContentMenu>().UpdateContent("placeable", placeableUIPrefab, invManager, this);
     }
 
@@ -150,6 +140,39 @@ public class MenuManager : MonoBehaviour
 
         if(stageManager != null)
             stageManager.gameObject.SetActive(false);
+    }
+
+    // ============== Tooltips ==============
+    public void ToggleTooltips()
+    {
+        tooltips.SetActive(!tooltips.activeSelf);
+
+        if (tooltips.activeSelf)
+            PlayerPrefs.SetInt("TooltipsEnabled", 0);
+        else
+            PlayerPrefs.SetInt("TooltipsEnabled", 1);
+    }
+
+    public void ShowTooltip(string tool)
+    {
+        tooltips.transform.GetChild(0).gameObject.SetActive(false);
+        tooltips.transform.GetChild(1).gameObject.SetActive(false);
+        tooltips.transform.GetChild(2).gameObject.SetActive(false);
+        tooltips.transform.GetChild(3).gameObject.SetActive(false);
+        tooltips.transform.GetChild(4).gameObject.SetActive(false);
+
+        if (tool == "interact")
+            tooltips.transform.GetChild(0).gameObject.SetActive(true);
+        else if (tool == "plant")
+            tooltips.transform.GetChild(1).gameObject.SetActive(true);
+        else if (tool == "build")
+            tooltips.transform.GetChild(2).gameObject.SetActive(true);
+        else if (tool == "destroy")
+            tooltips.transform.GetChild(3).gameObject.SetActive(true);
+        else if (tool == "paint")
+            tooltips.transform.GetChild(4).gameObject.SetActive(true);
+        else
+            Debug.LogError("Tooltip not found");
     }
 
     // ============== Slime Inspect ==============

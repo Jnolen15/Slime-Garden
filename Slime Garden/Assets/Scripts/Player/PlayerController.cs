@@ -128,6 +128,9 @@ public class PlayerController : MonoBehaviour
     // ========== STATE MANAGEMENT ==========
     public void ChangeState(string newState)
     {
+        if (menus == null)
+            return;
+
         menus.CloseAllSubmenus();
         buildVisual.SetActive(false);
 

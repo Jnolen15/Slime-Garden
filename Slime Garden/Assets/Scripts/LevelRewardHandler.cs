@@ -62,7 +62,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 
         public override void GiveReward(bool fromLevelUp)
         {
-            Debug.Log($"Awarding {data.placeableName}");
+            //Debug.Log($"Awarding {data.placeableName}");
             GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>().UnlockFurniture(data, fromLevelUp);
         }
     }
@@ -74,7 +74,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 
         public override void GiveReward(bool fromLevelUp)
         {
-            Debug.Log($"Awarding {data.cropName}");
+            //Debug.Log($"Awarding {data.cropName}");
             GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>().UnlockCrop(data, fromLevelUp);
         }
     }
@@ -86,7 +86,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 
         public override void GiveReward(bool fromLevelUp)
         {
-            Debug.Log($"Awarding {data}");
+            //Debug.Log($"Awarding {data}");
             var habitat = GameObject.FindGameObjectWithTag("GameManager").GetComponent<HabitatControl>();
             var wild = GameObject.FindGameObjectWithTag("GameManager").GetComponent<WildManager>();
 
@@ -106,7 +106,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 
         public override void GiveReward(bool fromLevelUp)
         {
-            Debug.Log($"Awarding {data}");
+            //Debug.Log($"Awarding {data}");
             GameObject.FindGameObjectWithTag("UIManager").GetComponent<MenuManager>().UnlockTool(data);
         }
     }
@@ -118,7 +118,7 @@ public class LevelRewardHandler : SerializedMonoBehaviour, IDataPersistence
 
         public override void GiveReward(bool fromLevelUp)
         {
-            Debug.Log($"Awarding {data}");
+            //Debug.Log($"Awarding {data}");
             var npcMan = GameObject.FindGameObjectWithTag("NPCManager");
             if(npcMan != null)
                 npcMan.GetComponent<NPCManager>().UnlockNPC(data, fromLevelUp);
