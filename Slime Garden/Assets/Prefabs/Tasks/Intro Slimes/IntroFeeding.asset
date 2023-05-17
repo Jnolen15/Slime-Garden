@@ -23,6 +23,7 @@ MonoBehaviour:
     different amounts.
   - A full slime is a happy slime! Hunger can affect the growth of baby slimes and
     the value of CS in mature slimes.
+  - A slimes hunger meter will deplete when they grow to maturity or produce a crystal.
   - "However, slimes don\u2019t need food to survive as they get energy from the
     sun. But who doesn't love a good snack?"
   csReward: 40
