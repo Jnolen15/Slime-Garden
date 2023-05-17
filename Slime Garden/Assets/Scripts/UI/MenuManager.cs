@@ -40,9 +40,9 @@ public class MenuManager : MonoBehaviour
         habitatUpgradeBox.SetActive(false);
         taskBoard.SetActive(false);
 
-        if (PlayerPrefs.GetInt("TooltipsEnabled") == 0 && !inWild)
+        if (PlayerPrefs.GetInt("TooltipsEnabled") == 1 && !inWild)
             tooltips.SetActive(true);
-        else if (PlayerPrefs.GetInt("TooltipsEnabled") == 1)
+        else if (PlayerPrefs.GetInt("TooltipsEnabled") == 0)
             tooltips.SetActive(false);
     }
 
@@ -148,9 +148,9 @@ public class MenuManager : MonoBehaviour
         tooltips.SetActive(!tooltips.activeSelf);
 
         if (tooltips.activeSelf)
-            PlayerPrefs.SetInt("TooltipsEnabled", 0);
-        else
             PlayerPrefs.SetInt("TooltipsEnabled", 1);
+        else
+            PlayerPrefs.SetInt("TooltipsEnabled", 0);
     }
 
     public void ShowTooltip(string tool)

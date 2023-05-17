@@ -13,13 +13,19 @@ public class TaskManager : MonoBehaviour, IDataPersistence
     [SerializeField] private TaskUI taskUI;
     private StatTracker statTracker;
     private InventoryManager inventoryManager;
+    private bool setup;
 
-    void Start()
+    void OnEnable()
     {
+        if (setup)
+            return;
+
         statTracker = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         inventoryManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         taskUI.AddTasksToBoard(inProgressTasks);
+
+        setup = true;
     }
 
     public void AddQueuedTasks()

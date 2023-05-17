@@ -67,9 +67,12 @@ public class PlayerData : MonoBehaviour, IDataPersistence
         Level++;
 
         levelRewards.GrantLevelRewards(Level);
-        levelRewards.DisplayAllRewards(Level);
-
-        levelUpScreen.SetActive(true);
+        
+        if(Level != 1)
+        {
+            levelRewards.DisplayAllRewards(Level);
+            levelUpScreen.SetActive(true);
+        }
 
         SetEXPBar();
     }
