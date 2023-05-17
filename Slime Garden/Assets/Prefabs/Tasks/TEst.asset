@@ -17,6 +17,10 @@ MonoBehaviour:
   stat: csCollected
   goal: 5
   offsetTask: 0
+  hasDialogue: 1
+  dialogue:
+  - Testing
+  - Poggers job on that task bro
   rewards:
   - rewardType: 1
     rewardName: Garden Fountain

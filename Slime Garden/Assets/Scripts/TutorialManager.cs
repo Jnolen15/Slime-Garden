@@ -7,14 +7,16 @@ using TMPro;
 public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
 {
     [SerializeField] private DialogueManager dlogManager;
+    [SerializeField] private TaskManager taskManager;
     [SerializeField] private TextMeshProUGUI questText;
     [SerializeField] private HabitatControl habitat;
     [SerializeField] private PlayerController player;
     [SerializeField] private PlayerData pData;
-    [SerializeField] private int introTutProgress;
     [SerializeField] private List<string> introTutKeys = new List<string>();
     public List<TutorialEntry> tutList = new List<TutorialEntry>();
-    [SerializeField] private TutorialEntry currentTutEntry;
+    [SerializeField] private List<TaskSO> startingTasks = new List<TaskSO>();
+    private TutorialEntry currentTutEntry;
+    private int introTutProgress;
 
     private bool inspectedSlime;
 
@@ -114,6 +116,7 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
                 break;
             case "Finish":
                 pData.GainExperience(10);
+                taskManager.AddTasks(startingTasks);
                 break;
         }
 

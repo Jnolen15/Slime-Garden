@@ -14,13 +14,19 @@ public class TaskUI : MonoBehaviour
 
     [SerializeField] private TaskManager taskManager;
     private StatTracker statTracker;
+    private bool setup = false;
 
-    void Start()
+    void OnEnable()
     {
+        if (setup)
+            return;
+
         statTracker = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
 
         taskGroup.gameObject.SetActive(true);
         rewards.gameObject.SetActive(false);
+
+        setup = true;
     }
 
     public void AddTasksToBoard(List<TaskSO> tasksToAdd)
@@ -37,6 +43,9 @@ public class TaskUI : MonoBehaviour
 
     public void UpdateTasks()
     {
+        if (statTracker == null)
+            return;
+
         foreach (Transform taskUI in taskGroup)
         {
             var taskElement = taskUI.GetComponent<TaskElement>();

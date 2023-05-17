@@ -11,21 +11,25 @@ public class TaskManager : MonoBehaviour, IDataPersistence
     [SerializeField] private List<TaskSO> finishedTasks = new List<TaskSO>();
 
     [SerializeField] private TaskUI taskUI;
+    [SerializeField] private DialogueManager dlogManager;
     private StatTracker statTracker;
     private InventoryManager inventoryManager;
-    private bool setup;
 
-    void OnEnable()
+    void Start()
     {
-        if (setup)
-            return;
-
         statTracker = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         inventoryManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         taskUI.AddTasksToBoard(inProgressTasks);
+    }
 
-        setup = true;
+    public void AddTasks(List<TaskSO> newTasks)
+    {
+        // Add new Tasks
+        foreach (TaskSO newTask in newTasks)
+            queuedTasks.Add(newTask);
+
+        AddQueuedTasks();
     }
 
     public void AddQueuedTasks()
@@ -93,6 +97,13 @@ public class TaskManager : MonoBehaviour, IDataPersistence
             // Reward player
             taskUI.DisplayRewards(taskData);
             GrantRewards(taskData, true);
+
+            // Display dialogue if there is any
+            if (taskData.hasDialogue)
+            {
+                var listCopy = new List<string>(taskData.dialogue);
+                dlogManager.TypeDialogue(listCopy, "Tutorial");
+            }
 
             // Add new Tasks
             foreach (TaskSO newTask in taskData.unlockedTasks)

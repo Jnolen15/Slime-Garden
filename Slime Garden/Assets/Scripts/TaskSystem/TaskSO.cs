@@ -17,6 +17,9 @@ public class TaskSO : ScriptableObject
     public string stat;
     public int goal;
     public bool offsetTask;
+    public bool hasDialogue;
+    [TextArea()]
+    public List<string> dialogue;
 
     [Header("Reward Info")]
     public List<RewardEntry> rewards;
