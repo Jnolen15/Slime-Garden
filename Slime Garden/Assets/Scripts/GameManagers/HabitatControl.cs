@@ -14,12 +14,6 @@ public class HabitatControl : MonoBehaviour, IDataPersistence
 
     void Start()
     {
-        // Creates slime duplication
-        /*foreach (GameObject ob in GameObject.FindGameObjectsWithTag("Slime"))
-        {
-            activeSlimes.Add(ob);
-        }*/
-
         this.GetComponent<RandomSlime>().SetUnlockedSlimeList(unlockedSlimePatterns);
     }
 

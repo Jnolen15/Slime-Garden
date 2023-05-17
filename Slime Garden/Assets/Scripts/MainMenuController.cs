@@ -22,4 +22,9 @@ public class MainMenuController : MonoBehaviour
     {
         gameDataManager.DeleteSave();
     }
+
+    public void OpenLink(string link)
+    {
+        Application.OpenURL(link);
+    }
 }

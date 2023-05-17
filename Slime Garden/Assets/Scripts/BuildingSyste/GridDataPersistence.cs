@@ -34,18 +34,16 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
         public Vector2Int pOrigin;
         public PlaceableObjectSO.Dir dir;
         public int matValue;
-        public int beeBoxHoneyTimer;
-        public int csCollectorStoredValue;
+        public int specialPropertyValue;
         public List<PlantSpotData> plantSpot;
 
-        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, int matVal = 0, int honeyTime = 0, int csStoredVal = 0, List<PlantSpotData> pSpot = null)
+        public PlaceableData(string newName, Vector2Int newOrigin, PlaceableObjectSO.Dir newDir, int matVal = 0, int specialVal = 0, List<PlantSpotData> pSpot = null)
         {
             pName = newName;
             pOrigin = newOrigin;
             dir = newDir;
             matValue = matVal;
-            beeBoxHoneyTimer = honeyTime;
-            csCollectorStoredValue = csStoredVal;
+            specialPropertyValue = specialVal;
             plantSpot = pSpot;
         }
     }
@@ -143,11 +141,11 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
 
                 // If placeable a bee box
                 if (newBuild.GetComponent<BeeBox>())
-                    newBuild.GetComponent<BeeBox>().honeyTimer = pData.beeBoxHoneyTimer;
+                    newBuild.GetComponent<BeeBox>().honeyTimer = pData.specialPropertyValue;
 
                 // If placeable a CS Collector
                 if (newBuild.GetComponent<CSCollector>())
-                    newBuild.GetComponent<CSCollector>().storedValue = pData.csCollectorStoredValue;
+                    newBuild.GetComponent<CSCollector>().storedValue = pData.specialPropertyValue;
 
                 // If placeable had PlantSpotData, reinstantiate that as well
                 int count = 0;
@@ -219,17 +217,16 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
                 pSpots = null;
 
             // If bee box
-            int honeyTimer = 0;
+            int propertyVal = 0;
             if (pObj.GetComponent<BeeBox>())
-                honeyTimer = pObj.GetComponent<BeeBox>().honeyTimer;
+                propertyVal = pObj.GetComponent<BeeBox>().honeyTimer;
 
             // If CS Collector
-            int storedVal = 0;
             if (pObj.GetComponent<CSCollector>())
-                storedVal = pObj.GetComponent<CSCollector>().storedValue;
+                propertyVal = pObj.GetComponent<CSCollector>().storedValue;
 
             placeableDataList.Add(new PlaceableData(pObj.GetPlaceableData().placeableName,
-                            pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex, honeyTimer, storedVal, pSpots));
+                            pObj.GetGridOrigin(), pObj.GetPlaceableDir(), matIndex, propertyVal, pSpots));
         }
 
         // Save habitat teir / decor

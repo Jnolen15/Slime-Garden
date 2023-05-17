@@ -22,6 +22,7 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject cropSellBox;
     [SerializeField] private GameObject habitatUpgradeBox;
     [SerializeField] private GameObject taskBoard;
+    [SerializeField] private GameObject fps;
     [SerializeField] private GameObject cSToken;
     [SerializeField] private GameObject textPopup;
     [SerializeField] private RectTransform tokenEndPos;
@@ -44,6 +45,11 @@ public class MenuManager : MonoBehaviour
             tooltips.SetActive(true);
         else if (PlayerPrefs.GetInt("TooltipsEnabled") == 0)
             tooltips.SetActive(false);
+
+        if (PlayerPrefs.GetInt("FPSEnabled") == 1)
+            fps.SetActive(true);
+        else if (PlayerPrefs.GetInt("FPSEnabled") == 0)
+            fps.SetActive(false);
     }
 
     public void CloseAllSubmenus()
@@ -279,5 +285,14 @@ public class MenuManager : MonoBehaviour
         Vector3 pos = Mouse.current.position.ReadValue();
         GameObject popup = Instantiate(textPopup, pos, Quaternion.identity, transform);
         popup.GetComponent<TextPopup>().setup(str.ToString(), color);
+    }
+
+
+    // ============== Misc =================
+    public void ToggleFPS(bool toggle)
+    {
+        fps.SetActive(toggle);
+
+        Debug.Log("FPS Toggled to " + toggle + " saved value is " + PlayerPrefs.GetInt("FPSEnabled"));
     }
 }

@@ -103,7 +103,7 @@ public class SlimeData : MonoBehaviour
     {
         isMature = true;
         infancyTimer = 0;
-        LooseHunger(100);
+        LooseHunger(50);
 
         // Set mature sprites
         baseSlime.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesBase.libraryAsset;
