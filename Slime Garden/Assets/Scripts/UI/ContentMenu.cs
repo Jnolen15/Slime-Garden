@@ -50,7 +50,7 @@ public class ContentMenu : MonoBehaviour
         }
         else 
         {
-            //Debug.LogError("Content type not specified");
+            Debug.LogError("Content type not specified");
         }
 
         //Debug.Log($"Children instantiaded to hidden content {hiddenContent.childCount}");
