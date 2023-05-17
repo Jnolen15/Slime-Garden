@@ -13,11 +13,13 @@ public class TaskManager : MonoBehaviour, IDataPersistence
     [SerializeField] private TaskUI taskUI;
     [SerializeField] private DialogueManager dlogManager;
     private StatTracker statTracker;
+    private PlayerData pData;
     private InventoryManager inventoryManager;
 
     void Start()
     {
         statTracker = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
         inventoryManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         taskUI.AddTasksToBoard(inProgressTasks);
@@ -125,6 +127,13 @@ public class TaskManager : MonoBehaviour, IDataPersistence
         if(inventoryManager == null)
             inventoryManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
+        // Award CS but only on completion not on re-load
+        if (newUnlock && completedTask.csReward > 0)
+        {
+            pData.GainMoney(completedTask.csReward);
+        }
+
+        // Award rewards
         foreach (TaskSO.RewardEntry reward in completedTask.rewards)
         {
             if(reward.rewardType == TaskSO.RewardType.crop)

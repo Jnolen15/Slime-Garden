@@ -22,6 +22,7 @@ public class TaskSO : ScriptableObject
     public List<string> dialogue;
 
     [Header("Reward Info")]
+    public int csReward;
     public List<RewardEntry> rewards;
     public List<TaskSO> unlockedTasks;
 

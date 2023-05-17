@@ -37,3 +37,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3823cc2566f774246abbf61d96bc36c0, type: 2}
   - {fileID: 11400000, guid: ad4a6587654b3b14dbd50c8db9eeef41, type: 2}
   - {fileID: 11400000, guid: 09b1fdb49e70273449cde8357a617751, type: 2}
+  csReward: 200
