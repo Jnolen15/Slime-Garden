@@ -12,6 +12,8 @@ public class DataPersistenceManager : MonoBehaviour
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     [SerializeField] private bool useEncryption;
+    [SerializeField] private float autosavePeriod;
+    [SerializeField] private float autosaveTimer;
 
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
@@ -53,6 +55,17 @@ public class DataPersistenceManager : MonoBehaviour
     private void OnApplicationQuit()
     {
         SaveGame();
+    }
+
+    private void Update()
+    {
+        if (autosaveTimer > 0) autosaveTimer -= Time.deltaTime;
+        else
+        {
+            Debug.Log("AUTOSAVING");
+            SaveGame();
+            autosaveTimer = autosavePeriod;
+        }
     }
 
     // ================ DATA MANAGEMENT ================
