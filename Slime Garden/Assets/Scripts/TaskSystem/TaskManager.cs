@@ -11,15 +11,27 @@ public class TaskManager : MonoBehaviour, IDataPersistence
     [SerializeField] private List<TaskSO> finishedTasks = new List<TaskSO>();
 
     [SerializeField] private TaskUI taskUI;
+    [SerializeField] private DialogueManager dlogManager;
     private StatTracker statTracker;
+    private PlayerData pData;
     private InventoryManager inventoryManager;
 
     void Start()
     {
         statTracker = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
         inventoryManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
         taskUI.AddTasksToBoard(inProgressTasks);
+    }
+
+    public void AddTasks(List<TaskSO> newTasks)
+    {
+        // Add new Tasks
+        foreach (TaskSO newTask in newTasks)
+            queuedTasks.Add(newTask);
+
+        AddQueuedTasks();
     }
 
     public void AddQueuedTasks()
@@ -85,8 +97,16 @@ public class TaskManager : MonoBehaviour, IDataPersistence
             finishedTasks.Add(taskData);
 
             // Reward player
-            taskUI.DisplayRewards(taskData);
+            if(taskData.rewards.Count > 0)
+                taskUI.DisplayRewards(taskData);
             GrantRewards(taskData, true);
+
+            // Display dialogue if there is any
+            if (taskData.hasDialogue)
+            {
+                var listCopy = new List<string>(taskData.dialogue);
+                dlogManager.TypeDialogue(listCopy, "Tutorial");
+            }
 
             // Add new Tasks
             foreach (TaskSO newTask in taskData.unlockedTasks)
@@ -108,6 +128,13 @@ public class TaskManager : MonoBehaviour, IDataPersistence
         if(inventoryManager == null)
             inventoryManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
+        // Award CS but only on completion not on re-load
+        if (newUnlock && completedTask.csReward > 0)
+        {
+            pData.GainMoney(completedTask.csReward);
+        }
+
+        // Award rewards
         foreach (TaskSO.RewardEntry reward in completedTask.rewards)
         {
             if(reward.rewardType == TaskSO.RewardType.crop)

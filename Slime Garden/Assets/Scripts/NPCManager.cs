@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class NPCManager : MonoBehaviour
 {
+    [SerializeField] private GameObject taskBoard;
     [SerializeField] private GameObject airBalloon;
     [SerializeField] private GameObject cropCart;
     [SerializeField] private GameObject habitatUpgade;
 
-    void Start()
-    {
-        // ?
-    }
-
     public void UnlockNPC(string npc, bool fromLevelUp)
     {
-        if (npc == "wz")
+        if (npc == "tb")
+            taskBoard.SetActive(true);
+        else if (npc == "wz")
             airBalloon.SetActive(true);
         else if (npc == "cc")
             cropCart.SetActive(true);

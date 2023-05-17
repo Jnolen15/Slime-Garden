@@ -47,7 +47,8 @@ public class DialogueManager : MonoBehaviour
             {
                 ToggleDialogue(false);
                 bodyText.text = "";
-                onDlogCompleteCallback();
+                if(onDlogCompleteCallback != null)
+                    onDlogCompleteCallback();
             }
             // Display next sentence
             else

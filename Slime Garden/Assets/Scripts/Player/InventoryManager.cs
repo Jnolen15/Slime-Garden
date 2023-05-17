@@ -79,6 +79,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         CropInventroyEntry newEntry = new CropInventroyEntry(crop.cropName);
         inventoryList.Add(newEntry);
         AddCrop(crop, ammount);
+        menus.UpdateSlimeFeed();
     }
 
     public int GetNumHeld(CropSO crop)
@@ -97,7 +98,7 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
     public CropSO GetCropData(string cName)
     {
-        foreach (CropSO crop in availableCrops)
+        foreach (CropSO crop in inGameCrops)
         {
             if (crop.cropName == cName)
                 return crop;

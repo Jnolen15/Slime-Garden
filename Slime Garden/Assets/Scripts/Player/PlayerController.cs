@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     // Script/Object Refrences
     private PlayerInput pInput;
     private PlayerData pData;
+    private StatTracker stats;
     private MouseControl mouseControl;
     private InventoryManager invManager;
     private MenuManager menus;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
     {
         pInput = this.GetComponentInParent<PlayerInput>();
         pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         mouseControl = this.GetComponent<MouseControl>();
         invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
 
@@ -313,7 +315,10 @@ public class PlayerController : MonoBehaviour
         }
 
         if (placed)
+        {
             pData.MakePurchase(so.price);
+            stats.IncrementStat("placeablesBuilt", 1);
+        }
     }
 
     private void Paint(Vector3 pos)
@@ -343,8 +348,11 @@ public class PlayerController : MonoBehaviour
 
             if (plantSpot.GetCropSO() == null)
             {
-                if(pData.TryAndPurchase(crop.price))
+                if (pData.TryAndPurchase(crop.price))
+                {
+                    stats.IncrementStat("cropsPlanted", 1);
                     plantSpot.Plant(crop);
+                }
             }
             else
                 Debug.Log("spot already has plant: " + plantSpot.GetCropSO().cropName);

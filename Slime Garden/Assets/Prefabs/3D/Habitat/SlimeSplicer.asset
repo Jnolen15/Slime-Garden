@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: SlimeSplicer
   m_EditorClassIdentifier: 
-  placeableName: Slime Splicer
+  placeableName: Slime Artifact
   previewImage: {fileID: 21300000, guid: 2597b0d79c18db14dbaf79f81389d97a, type: 3}
   price: 50
   description: This ancient shrine can produce an offspring slime when given two

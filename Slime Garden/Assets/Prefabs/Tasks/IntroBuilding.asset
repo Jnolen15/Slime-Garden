@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: IntroBuilding
+  m_EditorClassIdentifier: 
+  id: IntroBuilding
+  description: Use the build tool to place a tree
+  stat: placeablesBuilt
+  goal: 1
+  offsetTask: 1
+  hasDialogue: 1
+  dialogue:
+  - The habitat is looking better already!
+  - You can also press [R] while building to rotate the item before placing.
+  - If you place something in the wrong spot, or change your mind, you can get rid
+    of it with the destroy tool and will even be refunded some of its cost.
+  - You just unlocked some gardening supplies! Place down a few of those farming
+    tiles first so you have somewhere to plant a few Snackroot.
+  - Once you have placed a few down, you can plant Snackroot with the planting tool
+    by clicking on the dirt mounds.
+  csReward: 50
+  rewards:
+  - rewardType: 1
+    rewardName: Garden Farm Tile
+    rewardImage: {fileID: 21300000, guid: 93874a6b4a82ded46a230c0ed3c4114b, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: 6ea1d363f869a96438c09cd21494ab67, type: 2}
+  - rewardType: 0
+    rewardName: Snackroot
+    rewardImage: {fileID: 21300000, guid: 9968ed29eb4904d43844b28feb9f7c93, type: 3}
+    cropReward: {fileID: 11400000, guid: 2a375e8c7f2fbdb4cb8b611ba320b3b5, type: 2}
+    placeableReward: {fileID: 0}
+  unlockedTasks:
+  - {fileID: 11400000, guid: 03718a0df62f5b74c89d36d225a46991, type: 2}

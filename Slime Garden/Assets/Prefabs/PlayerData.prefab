@@ -49,7 +49,7 @@ MonoBehaviour:
   levelRewards: {fileID: 0}
   statTracker: {fileID: 7577233294854124093}
   menus: {fileID: 0}
-  levelThresholds: 05000000080000000c000000140000001e00000028000000320000003c00000050000000640000008c000000c8000000180100009001000058020000
+  levelThresholds: 0a0000000f00000014000000190000001e00000028000000320000003c00000050000000640000008c000000c8000000180100009001000058020000
   levelDisplay: {fileID: 0}
   levelUpScreen: {fileID: 0}
   expBarFill: {fileID: 0}
@@ -148,5 +148,19 @@ MonoBehaviour:
   - id: csEarned
     value: 0
   - id: csCollected
+    value: 0
+  - id: slimesTamed
+    value: 0
+  - id: slimesCreated
+    value: 0
+  - id: snacksFed
+    value: 0
+  - id: slimesReleased
+    value: 0
+  - id: placeablesBuilt
+    value: 0
+  - id: cropsPlanted
+    value: 0
+  - id: cropsHarvested
     value: 0
   taskOffsets: []

@@ -9,6 +9,7 @@ public class SplicerScript : MonoBehaviour
 
     // COMPONENTS ===============
     private PlayerData pData;
+    private StatTracker stats;
     public GameObject slimePrefab;
     public GameObject InputLeft;
     public GameObject InputRight;
@@ -38,6 +39,7 @@ public class SplicerScript : MonoBehaviour
     void Start()
     {
         pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         ls = InputLeft.GetComponent<SplicerInput>();
         rs = InputRight.GetComponent<SplicerInput>();
         sb = Button.GetComponent<SplicerButton>();
@@ -220,9 +222,9 @@ public class SplicerScript : MonoBehaviour
         newSD.sCrystal = newBase.slimeCrystal;
         newSD.Setup(true, true);
 
-        // Award EXP
+        // Award EXP and increment stat
         pData.GainExperience(newSD.sRarity);
-
+        stats.IncrementStat("slimesCreated", 1);
         audioSrc.PlayOneShot(spliceSound);
 
         yield return new WaitForSeconds(0.5f);
