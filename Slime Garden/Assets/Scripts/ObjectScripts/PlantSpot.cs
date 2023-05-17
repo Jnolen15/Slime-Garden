@@ -9,6 +9,8 @@ public class PlantSpot : MonoBehaviour
     private Transform model;
     private GardenManager gm;
     private InventoryManager invManager;
+    private PlayerData pData;
+    private StatTracker stats;
     private AudioSource audioSrc;
 
     [SerializeField] private Material dryMat;
@@ -30,6 +32,8 @@ public class PlantSpot : MonoBehaviour
     private void Awake()
     {
         invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
+        pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToList(this);
 
@@ -182,8 +186,9 @@ public class PlantSpot : MonoBehaviour
         else
             invManager.AddCrop(curCropSO, 1);
 
-        // Award EXP
-        GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>().GainExperience(curCropSO.expYeild);
+        // Award EXP + Increment stat
+        pData.GainExperience(curCropSO.expYeild);
+        stats.IncrementStat("cropsHarvested", 1);
 
         // Can be harvested repeatedly
         if (curCropSO.multiHarvest)

@@ -116,6 +116,7 @@ public class TutorialManager : SerializedMonoBehaviour, IDataPersistence
                 break;
             case "Finish":
                 pData.GainExperience(10);
+                pData.GainMoney(50);
                 taskManager.AddTasks(startingTasks);
                 break;
         }

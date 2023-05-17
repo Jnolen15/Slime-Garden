@@ -149,4 +149,18 @@ MonoBehaviour:
     value: 0
   - id: csCollected
     value: 0
+  - id: slimesTamed
+    value: 0
+  - id: slimesCreated
+    value: 0
+  - id: snacksFed
+    value: 0
+  - id: slimesReleased
+    value: 0
+  - id: placeablesBuilt
+    value: 0
+  - id: cropsPlanted
+    value: 0
+  - id: cropsHarvested
+    value: 0
   taskOffsets: []

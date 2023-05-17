@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: IntroPlanting
+  m_EditorClassIdentifier: 
+  id: IntroPlanting
+  description: Plant 5 Snackroots
+  stat: cropsPlanted
+  goal: 5
+  offsetTask: 1
+  hasDialogue: 1
+  dialogue:
+  - Quite the green thumb you have!
+  - You unlocked mondo mellons. They are extra good for taming wild slimes.
+  - If you haven't already, be sure to water the crops you planted, you can do this
+    by clicking on them while in interact mode.
+  - When the crops look fully grown you can harvest them the same way!
+  csReward: 0
+  rewards:
+  - rewardType: 0
+    rewardName: Mondo Mellon
+    rewardImage: {fileID: 21300000, guid: f078f61bb2f1d0944ac4d18cde813c0f, type: 3}
+    cropReward: {fileID: 11400000, guid: 3856a1aa154d9bd42bd3c1743f942e85, type: 2}
+    placeableReward: {fileID: 0}
+  unlockedTasks:
+  - {fileID: 11400000, guid: fc6d1589b9d74e24a9b4aa5bef96a9f6, type: 2}

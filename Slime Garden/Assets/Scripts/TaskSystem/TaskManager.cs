@@ -97,7 +97,8 @@ public class TaskManager : MonoBehaviour, IDataPersistence
             finishedTasks.Add(taskData);
 
             // Reward player
-            taskUI.DisplayRewards(taskData);
+            if(taskData.rewards.Count > 0)
+                taskUI.DisplayRewards(taskData);
             GrantRewards(taskData, true);
 
             // Display dialogue if there is any

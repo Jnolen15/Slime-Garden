@@ -9,6 +9,7 @@ using DG.Tweening;
 public class SlimeInfoPannel : MonoBehaviour
 {
     [SerializeField] private InventoryManager invManager;
+    [SerializeField] private StatTracker stats;
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private GameObject feedMenu;
     [SerializeField] private GameObject cropUIPrefab;
@@ -27,6 +28,8 @@ public class SlimeInfoPannel : MonoBehaviour
 
     private void Start()
     {
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
+
         UpdateCropMenu();
     }
 
@@ -132,6 +135,11 @@ public class SlimeInfoPannel : MonoBehaviour
                 Debug.Log("Fed " + crop.cropName);
                 invManager.AddCrop(crop, -1);
                 UpdateCropCount();
+
+                // Increment stat
+                if(stats == null)
+                    stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
+                stats.IncrementStat("snacksFed", 1);
             } else
             {
                 Debug.Log("Feeding failed");
@@ -150,6 +158,7 @@ public class SlimeInfoPannel : MonoBehaviour
     // ============== Release Slime ==============
     public void Release()
     {
+        stats.IncrementStat("slimesReleased", 1);
         curSlimeControl.ReleaseSlime();
     }
 }

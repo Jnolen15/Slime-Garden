@@ -23,9 +23,11 @@ public class WildManager : MonoBehaviour, IDataPersistence
 
     // Refrences
     private RandomSlime randSlime;
+    private StatTracker stats;
 
     void Start()
     {
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         randSlime = this.GetComponent<RandomSlime>();
 
         randSlime.SetUnlockedSlimeList(unlockedSlimePatterns);
@@ -56,6 +58,7 @@ public class WildManager : MonoBehaviour, IDataPersistence
 
     public void AddTamedSlime(string pat, string bColorStr, string pColorStr)
     {
+        stats.IncrementStat("slimesTamed", 1);
         tamedSlimes.Add(new HabitatControl.SlimeDataEntry(Vector3.zero, pat, bColorStr, pColorStr, 0, 50));
     }
 

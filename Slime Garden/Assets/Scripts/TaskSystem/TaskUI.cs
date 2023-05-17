@@ -60,7 +60,7 @@ public class TaskUI : MonoBehaviour
                 else if (offset != -1)
                     taskElement.UpdateGoal(progress, offset);
                 else
-                    Debug.LogError("Task Offset not found");
+                    Debug.LogError($"Task Offset {taskElement.task} returned -1");
             }
             else
                 Debug.LogWarning("Progress returned -1");
