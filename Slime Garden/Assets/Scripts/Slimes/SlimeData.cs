@@ -87,7 +87,8 @@ public class SlimeData : MonoBehaviour
             hControl.activeSlimes.Add(gameObject);
         }
 
-        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
+        if(!isWild)
+            stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
     }
 
     // Slime Aging
@@ -113,7 +114,8 @@ public class SlimeData : MonoBehaviour
         pattern.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeSpeciesPattern.libraryAsset;
         face.GetComponent<SpriteLibrary>().spriteLibraryAsset = slimeFace.libraryAsset;
 
-        stats.IncrementStat("slimesRaised", 1);
+        if(stats != null)
+            stats.IncrementStat("slimesRaised", 1);
     }
 
     public void Feed(CropObj food)
