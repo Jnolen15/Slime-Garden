@@ -145,6 +145,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameStats:
+  - id: introTasksComplete
+    value: 0
   - id: csEarned
     value: 0
   - id: csCollected

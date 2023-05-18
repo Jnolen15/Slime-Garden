@@ -16,6 +16,7 @@ public class TaskSO : ScriptableObject
     public string description;
     public string stat;
     public int goal;
+    public bool introTask;
     public bool offsetTask;
     public bool hasDialogue;
     [TextArea()]

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Release a slime into the wild
   stat: slimesReleased
   goal: 1
+  introTask: 1
   offsetTask: 1
   hasDialogue: 1
   dialogue:

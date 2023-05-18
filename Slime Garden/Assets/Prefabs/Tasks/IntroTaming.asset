@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Tame a slime in the Wild Zone
   stat: slimesTamed
   goal: 1
+  introTask: 1
   offsetTask: 0
   hasDialogue: 1
   dialogue:

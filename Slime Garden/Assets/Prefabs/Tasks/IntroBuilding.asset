@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Use the build tool to place a tree
   stat: placeablesBuilt
   goal: 1
+  introTask: 1
   offsetTask: 1
   hasDialogue: 1
   dialogue:

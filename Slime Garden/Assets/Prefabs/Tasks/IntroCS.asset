@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Collect 5 Crystalized Slime
   stat: csCollected
   goal: 5
+  introTask: 1
   offsetTask: 0
   hasDialogue: 1
   dialogue:

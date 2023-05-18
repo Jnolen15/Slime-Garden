@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Feed a slime a snack
   stat: snacksFed
   goal: 1
+  introTask: 1
   offsetTask: 1
   hasDialogue: 1
   dialogue:

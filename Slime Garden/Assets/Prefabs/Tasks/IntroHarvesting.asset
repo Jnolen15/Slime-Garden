@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Harvest 5 crops
   stat: cropsHarvested
   goal: 5
+  introTask: 1
   offsetTask: 1
   hasDialogue: 1
   dialogue:

@@ -16,6 +16,7 @@ MonoBehaviour:
   description: Plant 5 Snackroots
   stat: cropsPlanted
   goal: 5
+  introTask: 1
   offsetTask: 1
   hasDialogue: 1
   dialogue:

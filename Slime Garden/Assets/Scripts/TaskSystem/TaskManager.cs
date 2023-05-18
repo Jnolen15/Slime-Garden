@@ -34,27 +34,51 @@ public class TaskManager : MonoBehaviour, IDataPersistence
         AddQueuedTasks();
     }
 
+    // I modified this at 1230am after working all day.
+    // I just want to finish this last thing before I release the game tomorrow
+    // if its kinda wack thats why
     public void AddQueuedTasks()
     {
         int numTaks = maxTasks - inProgressTasks.Count;
         List<TaskSO> tasksToAdd = new List<TaskSO>();
 
+        bool onlyIntro = true;
+        if (statTracker.GetStat("introTasksComplete") == 8)
+            onlyIntro = false;
+
         // Add queued tasks to board, as long as there is room (3 max)
-        for (int i = 0; i < numTaks; i++)
+        foreach(TaskSO task in queuedTasks)
         {
             if (queuedTasks.Count == 0)
                 break;
 
-            var task = queuedTasks[0];
+            var addTask = false;
 
+            if (onlyIntro && task.introTask)
+                addTask = true;
+            else if (!onlyIntro)
+                addTask = true;
+
+            if (addTask)
+            {
+                inProgressTasks.Add(task);
+
+                tasksToAdd.Add(task);
+
+                // if offset task, save offset
+                if (task.offsetTask)
+                    statTracker.SetTaskOffset(task.id, statTracker.GetStat(task.stat));
+
+                numTaks--;
+            }
+
+            if (numTaks <= 0)
+                break;
+        }
+
+        foreach(TaskSO task in tasksToAdd)
+        {
             queuedTasks.Remove(task);
-            inProgressTasks.Add(task);
-
-            tasksToAdd.Add(task);
-
-            // if offset task, save offset
-            if (task.offsetTask)
-                statTracker.SetTaskOffset(task.id, statTracker.GetStat(task.stat));
         }
 
         taskUI.AddTasksToBoard(tasksToAdd);
@@ -91,6 +115,10 @@ public class TaskManager : MonoBehaviour, IDataPersistence
         if (CheckTaskCompletion(taskData))
         {
             Debug.Log("Task Complete!");
+
+            // If intro task
+            if(taskData.introTask)
+                statTracker.IncrementStat("introTasksComplete", 1);
 
             // Move task to complete
             inProgressTasks.Remove(taskData);
