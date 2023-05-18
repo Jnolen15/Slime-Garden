@@ -9,6 +9,7 @@ public class Cheats : MonoBehaviour
     private RandomSlime rs;
     private PlayerData pData;
     private InventoryManager inventory;
+    private StatTracker stats;
     private DataPersistenceManager gameData;
     [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private bool cheatsEnabled;
@@ -20,6 +21,7 @@ public class Cheats : MonoBehaviour
     {
         pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
         inventory = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         gameData = GameObject.FindGameObjectWithTag("Data").GetComponent<DataPersistenceManager>();
         rs = GetComponentInParent<RandomSlime>();
     }
@@ -74,6 +76,12 @@ public class Cheats : MonoBehaviour
             {
                 Instantiate(cs, new Vector3(mousePos.point.x, 2, mousePos.point.z), Quaternion.identity);
             }
+        }
+
+        // Increase all stats by 10
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            stats.IncrementAllStats();
         }
 
         // Save game

@@ -67,6 +67,15 @@ public class StatTracker : MonoBehaviour, IDataPersistence
         return -1;
     }
 
+    // ================== FOR TESTING ONLY ==================
+    public void IncrementAllStats()
+    {
+        foreach (StatDataEnrty statEntry in gameStats)
+        {
+            statEntry.value += 10;
+        }
+    }
+
     // ==================== SAVE / LOAD ====================
     public void LoadData(GameData data)
     {

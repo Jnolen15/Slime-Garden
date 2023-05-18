@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: CuteRaise
+  m_EditorClassIdentifier: 
+  id: CuteRaise
+  description: Raise 20 Slimes into maturity
+  stat: slimesRaised
+  goal: 20
+  offsetTask: 1
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 1
+    rewardName: Cute Slime Bed
+    rewardImage: {fileID: 21300000, guid: cd1ae717e0f6c2d4a9bf6aa41ba213e3, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: 4578f94ae9f249f46acd616c98bbedea, type: 2}
+  unlockedTasks:
+  - {fileID: 11400000, guid: 33e9952180a84cd42b7ede8116c0c8a0, type: 2}

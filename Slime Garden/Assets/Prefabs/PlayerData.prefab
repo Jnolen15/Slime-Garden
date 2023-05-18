@@ -163,4 +163,6 @@ MonoBehaviour:
     value: 0
   - id: cropsHarvested
     value: 0
+  - id: slimesRaised
+    value: 0
   taskOffsets: []

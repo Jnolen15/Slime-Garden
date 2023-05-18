@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: CuteSplice
+  m_EditorClassIdentifier: 
+  id: CuteSplice
+  description: Create 20 slimes
+  stat: slimesCreated
+  goal: 20
+  offsetTask: 1
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 1
+    rewardName: Cute Fence
+    rewardImage: {fileID: 21300000, guid: 824587e1a8272014a87050f354473ee9, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: d38be4d70864e3c4194fd86a1ef164a4, type: 2}
+  unlockedTasks:
+  - {fileID: 11400000, guid: 05a1e82952cf6754795cd2dae5c6ecb7, type: 2}
