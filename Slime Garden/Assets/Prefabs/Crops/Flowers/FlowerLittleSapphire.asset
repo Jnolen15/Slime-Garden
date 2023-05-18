@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Sapphire Little Flower
   previewImage: {fileID: 21300000, guid: 3cc5bbdd3912b284fa5646cbef5d562f, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A grouping of forest flowers
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 050b82e063f661748b226e8d861af465, type: 3}
   - {fileID: -2432090755550338912, guid: cd85940dc94213e46acf5b9ee78f7957, type: 3}

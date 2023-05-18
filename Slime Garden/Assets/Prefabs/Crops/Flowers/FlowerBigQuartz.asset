@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Quartz Big Flower
   previewImage: {fileID: 21300000, guid: fa3917ae8fb065949a577375d911649f, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A large flower with stone-like petals
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: b6528d7dde9800240b6316a389f437dc, type: 3}
   - {fileID: -2432090755550338912, guid: dd441bcb9a4fd394f9f1033b4f6706e8, type: 3}

@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Amethyst Bush Flower
   previewImage: {fileID: 21300000, guid: c75c513c63698b949b18116f91148100, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A bush of flowers with pleasant aromas
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 20ecc3f618fb20d40ad4c79253daeb4e, type: 3}
   - {fileID: -2432090755550338912, guid: a8f524c0e6ce00d4dbbee920188c01f4, type: 3}

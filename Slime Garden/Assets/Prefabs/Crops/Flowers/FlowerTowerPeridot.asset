@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Peridot Tower Flower
   previewImage: {fileID: 21300000, guid: bf0c5c8ce8d2a754998eb7b5eda51ffd, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A trio of flowers that is covered in a sticky sap
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 69adf6911b0fca94185d85b58037ccd3, type: 3}
   - {fileID: -2432090755550338912, guid: 0ec981f0d455dcb49a27420a5c97c8a1, type: 3}

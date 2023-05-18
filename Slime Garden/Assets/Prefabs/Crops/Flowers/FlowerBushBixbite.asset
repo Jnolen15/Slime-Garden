@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Bixbite Bush Flower
   previewImage: {fileID: 21300000, guid: 922a3a00d701a9f4f845a856a29f749a, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A bush of flowers with pleasant aromas
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 20ecc3f618fb20d40ad4c79253daeb4e, type: 3}
   - {fileID: -2432090755550338912, guid: e604070d3c32ca4439e0ef0f08a9d0d8, type: 3}

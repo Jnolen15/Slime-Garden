@@ -12,6 +12,7 @@ public class Cheats : MonoBehaviour
     private StatTracker stats;
     private DataPersistenceManager gameData;
     [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] private bool cheatsCanBeEnabled;
     [SerializeField] private bool cheatsEnabled;
     [SerializeField] private bool inWild;
     [SerializeField] private CropSO[] cheatCrops;
@@ -28,6 +29,9 @@ public class Cheats : MonoBehaviour
 
     void Update()
     {
+        if (!cheatsCanBeEnabled)
+            return;
+
         // Toggle cheats
         if (Input.GetKeyDown(KeyCode.BackQuote))
         {

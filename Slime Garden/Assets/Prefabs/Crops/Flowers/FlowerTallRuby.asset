@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Ruby Tall Flower
   previewImage: {fileID: 21300000, guid: 68cdb2a335cf1fb419b54f1ba58a0d34, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A large flower that emanates warmth
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 4cab6da3b62036d46b310d7c90d4752c, type: 3}
   - {fileID: -2432090755550338912, guid: da6632ff34b7c4f4b8f88eb4e8909fc9, type: 3}

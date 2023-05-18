@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Emerald Tower Flower
   previewImage: {fileID: 21300000, guid: 69a387558ac5ced44b3d278f4f99c9f2, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A trio of flowers that is covered in a sticky sap
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 69adf6911b0fca94185d85b58037ccd3, type: 3}
   - {fileID: -2432090755550338912, guid: d8be86a73ef46c9468b5172e19bebcfc, type: 3}

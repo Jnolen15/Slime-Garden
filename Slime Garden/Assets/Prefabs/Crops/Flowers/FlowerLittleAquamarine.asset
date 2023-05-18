@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cropName: Aquamarine Little Flower
   previewImage: {fileID: 21300000, guid: ec27f0f75d9764f46926b81dfee1411c, type: 3}
-  price: 5
+  price: 25
   sellValue: 0
   expYeild: 0
   multiYeild: 0
   regrowTicks: 0
   multiHarvest: 0
+  canBeHarvested: 0
   seedDescription: A grouping of forest flowers
   CropDescription: NONE
-  growTicks: 02000000
+  growTicks: 06000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 050b82e063f661748b226e8d861af465, type: 3}
   - {fileID: -2432090755550338912, guid: bbb8a00cf40592e409581d7d3100d9e8, type: 3}

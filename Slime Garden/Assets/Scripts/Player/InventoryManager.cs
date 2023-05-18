@@ -55,7 +55,19 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
         if (newUnlock && newData.canBeHarvested)
         {
             CropInventroyEntry newEntry = new CropInventroyEntry(newData.cropName);
-            inventoryList.Add(newEntry);
+
+            // Make sure its not already in inventory (Harvested from wild zone before unlocking)
+            bool inInventory = false;
+            foreach (CropInventroyEntry entry in inventoryList)
+            {
+                if (entry.cropName == newEntry.cropName)
+                    inInventory = true;
+            }
+
+            if (!inInventory)
+            {
+                inventoryList.Add(newEntry);
+            }
         }
 
         if (newUnlock)
