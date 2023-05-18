@@ -102,7 +102,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
     public void UpgradeHabitat()
     {
         habitatTier++;
-        stats.IncrementStat("habitatTier", 1);
+        stats.SetStat("habitatTier", habitatTier);
     }
 
     public void UpdateBorderStyle(Vector2Int index)

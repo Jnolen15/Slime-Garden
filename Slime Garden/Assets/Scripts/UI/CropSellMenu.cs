@@ -6,6 +6,7 @@ public class CropSellMenu : MonoBehaviour
 {
     private InventoryManager invManager;
     private PlayerData pData;
+    private StatTracker stats;
     [SerializeField] private MenuManager menuManager;
     [SerializeField] private GameObject feedMenu;
     [SerializeField] private GameObject cropUIPrefab;
@@ -15,6 +16,7 @@ public class CropSellMenu : MonoBehaviour
     {
         invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
         pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
 
         UpdateCropMenu();
     }
@@ -64,6 +66,8 @@ public class CropSellMenu : MonoBehaviour
             UpdateCropCount();
 
             menuManager.AnimateToken(Color.white);
+
+            stats.IncrementStat("cropsSold", sellAmmount);
         }
     }
 

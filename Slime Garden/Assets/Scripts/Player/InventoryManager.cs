@@ -74,15 +74,16 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
     {
         foreach(CropInventroyEntry cropSlot in inventoryList)
         {
-            if(crop.cropName == cropSlot.cropName)
+            if (crop.cropName == cropSlot.cropName)
             {
                 cropSlot.numHeld += ammount;
                 Debug.Log("Harvested crop " + cropSlot.cropName);
+
+                if (crop.cropName == "Snackroot")
+                    stats.SetStat("snackrootsHeld", GetNumHeld(GetCropData("Snackroot")));
+
                 return;
             }
-
-            if (crop.cropName == "Snackroot")
-                stats.SetStat("snackrootsHeld", GetNumHeld(GetCropData("Snackroot")));
         }
 
         // If crop was not in list

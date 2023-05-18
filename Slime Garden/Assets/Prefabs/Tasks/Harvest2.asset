@@ -28,3 +28,4 @@ MonoBehaviour:
     placeableReward: {fileID: 0}
   unlockedTasks:
   - {fileID: 11400000, guid: d14a77253f04d1a4eaa9e729ab1bb6d4, type: 2}
+  - {fileID: 11400000, guid: a6c1210bc63c5054e996ffaacc05d7f6, type: 2}
