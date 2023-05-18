@@ -150,6 +150,7 @@ public class PlantSpot : MonoBehaviour
     {
         audioSrc.PlayOneShot(waterSounds[Random.Range(0, waterSounds.Length)]);
         wateredTicks += 10;
+        stats.IncrementStat("cropsWatered", 1);
         StartCoroutine(AnimateWater());
     }
 

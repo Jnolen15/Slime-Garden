@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: Flowers1
+  m_EditorClassIdentifier: 
+  id: Flowers1
+  description: Water crops 50 times
+  stat: cropsWatered
+  goal: 50
+  offsetTask: 1
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 0
+    rewardName: Amethyst Bush Flower
+    rewardImage: {fileID: 21300000, guid: c75c513c63698b949b18116f91148100, type: 3}
+    cropReward: {fileID: 11400000, guid: a8534a40470f32d4484ab1beda14feb5, type: 2}
+    placeableReward: {fileID: 0}
+  - rewardType: 0
+    rewardName: Bixbite Bush Flower
+    rewardImage: {fileID: 21300000, guid: 922a3a00d701a9f4f845a856a29f749a, type: 3}
+    cropReward: {fileID: 11400000, guid: ed9e409b81255cf49a3a44ff6e317061, type: 2}
+    placeableReward: {fileID: 0}
+  unlockedTasks:
+  - {fileID: 11400000, guid: 7996409dda74af94098b81781d7d0b55, type: 2}

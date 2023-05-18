@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private MenuManager menus;
+    private StatTracker stats;
 
     // List of all crops and placebes in game
     public List<CropSO> inGameCrops = new List<CropSO>();
@@ -28,6 +29,11 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
             cropName = name;
             numHeld = num;
         }
+    }
+
+    private void Start()
+    {
+        stats = this.gameObject.GetComponent<StatTracker>();
     }
 
     //  ================== ADD NEW CONTENT TO LISTS ==================
@@ -72,6 +78,9 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
                 Debug.Log("Harvested crop " + cropSlot.cropName);
                 return;
             }
+
+            if (crop.cropName == "Snackroot")
+                stats.SetStat("snackrootsHeld", GetNumHeld(GetCropData("Snackroot")));
         }
 
         // If crop was not in list

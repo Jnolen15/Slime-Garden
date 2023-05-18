@@ -13,11 +13,13 @@ public class WildCrop : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip[] interactSounds;
     private bool fullyGrown;
     private InventoryManager invManager;
+    private StatTracker stats;
     private AudioSource audioSrc;
 
     private void Awake()
     {
         invManager = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<InventoryManager>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
 
         audioSrc = this.GetComponent<AudioSource>();
 
@@ -54,6 +56,7 @@ public class WildCrop : MonoBehaviour, IInteractable
 
         // Award EXP
         GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>().GainExperience(cropSO.expYeild);
+        stats.IncrementStat("wildCropsHarvested", 1);
 
         // Effect
         audioSrc.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);

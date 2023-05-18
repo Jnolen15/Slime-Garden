@@ -40,6 +40,22 @@ public class StatTracker : MonoBehaviour, IDataPersistence
         Debug.LogError(statName + " not found in gameStats list!");
     }
 
+    public void SetStat(string statName, int ammount)
+    {
+        Debug.Log($"Setting stat {statName}");
+
+        foreach (StatDataEnrty statEntry in gameStats)
+        {
+            if (statEntry.id == statName)
+            {
+                statEntry.value = ammount;
+                return;
+            }
+        }
+
+        Debug.LogError(statName + " not found in gameStats list!");
+    }
+
     public int GetStat(string statName)
     {
         foreach (StatDataEnrty statEntry in gameStats)

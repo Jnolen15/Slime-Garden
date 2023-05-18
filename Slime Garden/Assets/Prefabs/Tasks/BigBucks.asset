@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: BigBucks
+  m_EditorClassIdentifier: 
+  id: BigBucks
+  description: Make a total of 10000 CS
+  stat: csEarned
+  goal: 10000
+  offsetTask: 0
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 1
+    rewardName: CS Statue
+    rewardImage: {fileID: 21300000, guid: 435d5cef4c9389343ac8957205631edd, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: 3a14c088484d7fa4f9c13ec657dee69d, type: 2}
+  unlockedTasks: []

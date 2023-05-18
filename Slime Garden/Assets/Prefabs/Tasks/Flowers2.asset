@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: Flowers2
+  m_EditorClassIdentifier: 
+  id: Flowers2
+  description: Harvest 20 wild crops
+  stat: wildCropsHarvested
+  goal: 20
+  offsetTask: 1
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 0
+    rewardName: Aquamarine Little Flower
+    rewardImage: {fileID: 21300000, guid: ec27f0f75d9764f46926b81dfee1411c, type: 3}
+    cropReward: {fileID: 11400000, guid: c4b864aca7fc9dd4494ee9a7fc74d2f3, type: 2}
+    placeableReward: {fileID: 0}
+  - rewardType: 0
+    rewardName: Sapphire Little Flower
+    rewardImage: {fileID: 21300000, guid: 3cc5bbdd3912b284fa5646cbef5d562f, type: 3}
+    cropReward: {fileID: 11400000, guid: 87c17bb36fd74d24c806d185047d5eff, type: 2}
+    placeableReward: {fileID: 0}
+  unlockedTasks:
+  - {fileID: 11400000, guid: 5480f9aa81f14904ebb8593b55f68bc8, type: 2}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: BuildPlaceables
+  m_EditorClassIdentifier: 
+  id: BuildPlaceables
+  description: Build 50 placeables
+  stat: placeablesBuilt
+  goal: 50
+  offsetTask: 1
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 1
+    rewardName: Garden Arbor
+    rewardImage: {fileID: 21300000, guid: 52f0489cbb3e4164b9c0515621b230a0, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: ab5a6f872b902af4893d69166da12e5f, type: 2}
+  unlockedTasks:
+  - {fileID: 11400000, guid: d165792046fab8e4d89045b318db95a7, type: 2}

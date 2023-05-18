@@ -374,6 +374,9 @@ public class PlayerController : MonoBehaviour
         var ps = gridSystem.GetPlaceableObject(pos).GetComponentsInChildren<PlantSpot>();
         foreach (PlantSpot spot in ps)
         {
+            if(spot.hasCrop && spot.fullyGrown)
+                stats.IncrementStat("cropsDestroyed", 1);
+
             Debug.Log("Getting rid of garden refrence");
             spot.DestroySelf();
         }

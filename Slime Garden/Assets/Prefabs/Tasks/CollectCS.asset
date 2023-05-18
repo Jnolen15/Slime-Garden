@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: CollectCS
+  m_EditorClassIdentifier: 
+  id: CollectCS
+  description: Collect a total of 200 Crystalized Slime
+  stat: csCollected
+  goal: 200
+  offsetTask: 0
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 1
+    rewardName: CS Collector
+    rewardImage: {fileID: 21300000, guid: 41fc0c5b48fb9ef4cb90e68c561ea126, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: f4d650aa4da3ad84caa4af477935daa5, type: 2}
+  unlockedTasks:
+  - {fileID: 11400000, guid: b7a1cb6fad49f87458282e35b40eb7e7, type: 2}

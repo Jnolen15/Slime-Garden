@@ -153,6 +153,8 @@ MonoBehaviour:
     value: 0
   - id: slimesCreated
     value: 0
+  - id: slimesRaised
+    value: 0
   - id: snacksFed
     value: 0
   - id: slimesReleased
@@ -161,8 +163,16 @@ MonoBehaviour:
     value: 0
   - id: cropsPlanted
     value: 0
+  - id: cropsWatered
+    value: 0
   - id: cropsHarvested
     value: 0
-  - id: slimesRaised
+  - id: cropsSold
+    value: 0
+  - id: wildCropsHarvested
+    value: 0
+  - id: snackrootsHeld
+    value: 0
+  - id: cropsDestroyed
     value: 0
   taskOffsets: []
