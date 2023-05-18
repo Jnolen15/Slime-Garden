@@ -6,6 +6,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private GridSystem gridSystem;
     [SerializeField] private InventoryManager invManager;
+    [SerializeField] private StatTracker stats;
     private List<PlaceableObject> placeables;
     private List<PlaceableData> placeableDataList = new List<PlaceableData>();
     [SerializeField] private int habitatTier;
@@ -101,6 +102,7 @@ public class GridDataPersistence : MonoBehaviour, IDataPersistence
     public void UpgradeHabitat()
     {
         habitatTier++;
+        stats.IncrementStat("habitatTier", 1);
     }
 
     public void UpdateBorderStyle(Vector2Int index)

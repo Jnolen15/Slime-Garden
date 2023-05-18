@@ -60,6 +60,8 @@ public class InventoryManager : MonoBehaviour, IDataPersistence
 
         if (newUnlock)
         {
+            stats.IncrementStat("cropTypesUnlocked", 1);
+
             menus.UpdateSeedMenu();
             menus.UpdateCropSell();
             menus.UpdateSlimeFeed();

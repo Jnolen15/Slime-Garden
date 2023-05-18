@@ -175,4 +175,8 @@ MonoBehaviour:
     value: 0
   - id: cropsDestroyed
     value: 0
+  - id: habitatTier
+    value: 0
+  - id: cropTypesUnlocked
+    value: 0
   taskOffsets: []

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b445994f70584abecc3f09e3e59d4, type: 3}
+  m_Name: Harvest1
+  m_EditorClassIdentifier: 
+  id: Harvest1
+  description: Harvest 25 crops
+  stat: cropsHarvested
+  goal: 25
+  offsetTask: 1
+  hasDialogue: 0
+  dialogue: []
+  csReward: 0
+  rewards:
+  - rewardType: 1
+    rewardName: Garden Lattice
+    rewardImage: {fileID: 21300000, guid: 05c65788f97fade4c856f019d2c454b1, type: 3}
+    cropReward: {fileID: 0}
+    placeableReward: {fileID: 11400000, guid: 04d99b5dd08061c46a29d8680b4962fe, type: 2}
+  unlockedTasks:
+  - {fileID: 11400000, guid: 2e42b98168ef2fc4396c5fff09edf457, type: 2}
+  - {fileID: 11400000, guid: d14a77253f04d1a4eaa9e729ab1bb6d4, type: 2}
