@@ -15,7 +15,7 @@ MonoBehaviour:
   cropName: Snackroot
   previewImage: {fileID: 21300000, guid: 9968ed29eb4904d43844b28feb9f7c93, type: 3}
   price: 5
-  sellValue: 7
+  sellValue: 6
   expYeild: 1
   multiYeild: 0
   regrowTicks: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   canBeHarvested: 1
   seedDescription: Snackroot is the perfect crop for a beginner gardener.
   CropDescription: Snackroots make a great treat for any slime!
-  growTicks: 0300000005000000
+  growTicks: 0500000008000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 293cf7dbb89793b46b3a0978376cca2a, type: 3}
   - {fileID: -2432090755550338912, guid: 59604e833ba57794a891beb2849a9029, type: 3}
@@ -32,4 +32,4 @@ MonoBehaviour:
   cropWiltedMat: {fileID: 2100000, guid: ebb3c65c5812d6743b9f85dd72f52771, type: 2}
   cropObj: {fileID: 6922964043180715966, guid: f31ea1da0103ba04e8e9b713314b1f57, type: 3}
   tameValue: 1
-  feedValue: 15
+  feedValue: 30

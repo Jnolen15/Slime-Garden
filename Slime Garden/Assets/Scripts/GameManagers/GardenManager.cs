@@ -5,7 +5,7 @@ using UnityEngine;
 public class GardenManager : MonoBehaviour
 {
     [SerializeField] private float tickSpeed;
-    private float tickTime;
+    [SerializeField] private float tickTime;
 
     [SerializeField] private List<PlantSpot> plantSpotList = new List<PlantSpot>();
     [SerializeField] private List<BeeBox> beeBoxList = new List<BeeBox>();

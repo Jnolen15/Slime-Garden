@@ -15,7 +15,7 @@ MonoBehaviour:
   cropName: Greater Snackroot
   previewImage: {fileID: 21300000, guid: cfe5eb3537ee55e4d959f4c4d291fd60, type: 3}
   price: 12
-  sellValue: 17
+  sellValue: 16
   expYeild: 3
   multiYeild: 0
   regrowTicks: 0
@@ -23,7 +23,7 @@ MonoBehaviour:
   canBeHarvested: 1
   seedDescription: Greater Snackroot are like Snackroot, but greater!
   CropDescription: Greater Snackroots a good crop for any scenario
-  growTicks: 0500000008000000
+  growTicks: 080000000c000000
   cropStages:
   - {fileID: -2432090755550338912, guid: 9fb5bed1ac20e884182c480edd75fbbb, type: 3}
   - {fileID: -2432090755550338912, guid: d57e8c41b072d224b979579011a9a5ac, type: 3}
@@ -31,5 +31,5 @@ MonoBehaviour:
   cropMat: {fileID: 2100000, guid: f5382efee35f2df48a5c7afa7af54b5f, type: 2}
   cropWiltedMat: {fileID: 2100000, guid: ebb3c65c5812d6743b9f85dd72f52771, type: 2}
   cropObj: {fileID: 6855132800662467032, guid: 45d45b6344028cd43882b8e34ed82bcf, type: 3}
-  tameValue: 1
-  feedValue: 30
+  tameValue: 3
+  feedValue: 60

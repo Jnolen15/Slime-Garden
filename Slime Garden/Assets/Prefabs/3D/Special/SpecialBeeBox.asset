@@ -15,7 +15,9 @@ MonoBehaviour:
   placeableName: Bee Box
   previewImage: {fileID: 21300000, guid: f125a57b5f5c0fa47986196db7a35004, type: 3}
   price: 250
-  description: 
+  description: The Bee Box will produce honey if there are fully grown flowers adjacent
+    to it. Honey can be harvested for CS, and the value increases up to 8 adjacent
+    flowers.
   prefab: {fileID: 8627025161341859548, guid: 2538fb15e4450fd4097275b30fcf5b5d, type: 3}
   visual: {fileID: 7409682785666055054, guid: 61ce7645ac5764d41bf6b9b75577693c, type: 3}
   width: 1

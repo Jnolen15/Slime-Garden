@@ -86,7 +86,7 @@ public class SBrain : MonoBehaviour
         Vector3 newPos = new Vector3(Random.Range(-1f, 1f), 1, Random.Range(-1f, 1f));
         crystal.GetComponent<Rigidbody>().AddForce(newPos * 2, ForceMode.Impulse);
 
-        currslimeData.LooseHunger(20);
+        currslimeData.LooseHunger(10);
     }
 
     public void ToggleBrain(bool toggle)

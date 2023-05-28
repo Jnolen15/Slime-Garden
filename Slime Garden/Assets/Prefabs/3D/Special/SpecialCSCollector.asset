@@ -15,8 +15,8 @@ MonoBehaviour:
   placeableName: CS Collector
   previewImage: {fileID: 21300000, guid: 41fc0c5b48fb9ef4cb90e68c561ea126, type: 3}
   price: 500
-  description: Automatically collects crystalized slime within 6 grid spaces on all
-    sides.
+  description: Automatically collects crystalized slime within a 15 by 15 grid space
+    square around it.
   prefab: {fileID: 2897353483412181114, guid: 53ffcfefba6361548a02c75a100125b7, type: 3}
   visual: {fileID: 3135905219842564516, guid: 9d30bf71864d4b246965a2fd1ae9fcf8, type: 3}
   width: 1

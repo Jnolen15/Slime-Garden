@@ -43,7 +43,7 @@ public class TaskManager : MonoBehaviour, IDataPersistence
         List<TaskSO> tasksToAdd = new List<TaskSO>();
 
         bool onlyIntro = true;
-        if (statTracker.GetStat("introTasksComplete") == 8)
+        if (statTracker.GetStat("introTasksComplete") >= 8)
             onlyIntro = false;
 
         // Add queued tasks to board, as long as there is room (3 max)

@@ -47,6 +47,11 @@ public class PlantSpot : MonoBehaviour
         crop.transform.rotation = Quaternion.Euler(0, randRot, 0);
     }
 
+    private void Start()
+    {
+        UpdateTextures();
+    }
+
     public CropSO GetCropSO()
     {
         return curCropSO;
@@ -85,12 +90,22 @@ public class PlantSpot : MonoBehaviour
         audioSrc.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Length)]);
         Vector3 pos = new Vector3(crop.position.x, crop.position.y + 0.1f, crop.position.z);
         Instantiate(DirtBurstFX, pos, Quaternion.identity);
+
+        UpdateTextures();
     }
 
     public void GrowTick()
     {
+        // If there is no crop or its fully grown don't update
+        // (But do reduce water)
         if (!hasCrop || fullyGrown)
+        {
+            if (wateredTicks > 0)
+                wateredTicks--;
+            UpdateTextures();
+
             return;
+        }
 
         if (wateredTicks > 0)
         {
@@ -115,10 +130,23 @@ public class PlantSpot : MonoBehaviour
             //Debug.Log("Crop was not watered, could not grow!");
         }
 
-        if(wateredTicks == 0)
+        UpdateTextures();
+    }
+
+    private void UpdateTextures()
+    {
+        if (wateredTicks > 0)
+        {
+            model.GetComponent<Renderer>().material = wetMat;
+
+            if(curCropSO != null && !fullyGrown)
+                crop.GetComponent<Renderer>().material = curCropSO.cropMat;
+        } else
         {
             model.GetComponent<Renderer>().material = dryMat;
-            crop.GetComponent<Renderer>().material = curCropSO.cropWiltedMat;
+
+            if (curCropSO != null && !fullyGrown)
+                crop.GetComponent<Renderer>().material = curCropSO.cropWiltedMat;
         }
     }
 
@@ -223,14 +251,14 @@ public class PlantSpot : MonoBehaviour
         Instantiate(waterFX, pos, Quaternion.identity);
         yield return new WaitForSeconds(0.2f);
         crop.DOPunchScale(new Vector3(0, -0.2f, 0), 0.3f);
-        model.GetComponent<Renderer>().material = wetMat;
-        crop.GetComponent<Renderer>().material = curCropSO.cropMat;
+        UpdateTextures();
     }
 
     IEnumerator AnimateGrowth()
     {
         float rand = Random.Range(0, 2f);
         yield return new WaitForSeconds(rand);
+        crop.GetComponent<Renderer>().material = curCropSO.cropMat;
         crop.GetComponent<MeshFilter>().mesh = curCropSO.cropStages[growthStage];
         crop.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), 0.3f);
     }

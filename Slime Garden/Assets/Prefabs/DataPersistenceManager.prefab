@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fileName: data.game
-  useEncryption: 1
-  autosavePeriod: 300
-  autosaveTimer: 300
+  useEncryption: 0
+  autosavePeriod: 900
+  autosaveTimer: 900

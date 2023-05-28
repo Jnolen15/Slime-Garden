@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame (bool toggle)
     {
-        gameData.SaveGame();
+        //gameData.SaveGame();
 
         pMenu.SetActive(toggle);
 
@@ -39,7 +39,7 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
-        gameData.SaveGame();
+        //gameData.SaveGame();
 
         Application.Quit();
     }
