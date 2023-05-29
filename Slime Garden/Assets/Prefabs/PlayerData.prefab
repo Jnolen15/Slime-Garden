@@ -181,4 +181,6 @@ MonoBehaviour:
     value: 0
   - id: cropTypesUnlocked
     value: 0
+  - id: honeyCollected
+    value: 0
   taskOffsets: []

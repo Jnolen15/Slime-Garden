@@ -16,9 +16,14 @@ MonoBehaviour:
   description: Plant 500 crops total
   stat: cropsPlanted
   goal: 500
+  introTask: 0
   offsetTask: 0
-  hasDialogue: 0
-  dialogue: []
+  hasDialogue: 1
+  dialogue:
+  - Hey great work, your garden is looking great!
+  - The bee box can produce honey that can be a valuable source of income.
+  - It will only produce honey if there are adjacent fully grown flowers. The more
+    flowers adjacent, the higher the value of the honey. Up to 8 surrounding.
   csReward: 0
   rewards:
   - rewardType: 1
@@ -26,4 +31,5 @@ MonoBehaviour:
     rewardImage: {fileID: 21300000, guid: f125a57b5f5c0fa47986196db7a35004, type: 3}
     cropReward: {fileID: 0}
     placeableReward: {fileID: 11400000, guid: b1bf28ba8306cd340bc239d216334736, type: 2}
-  unlockedTasks: []
+  unlockedTasks:
+  - {fileID: 11400000, guid: 07bcbe9b214cf3f438174188f7a19724, type: 2}

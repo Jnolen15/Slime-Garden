@@ -5072,7 +5072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de81370caaf5b124c996e6f580974e06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  honeyProductionTime: {x: 20, y: 30}
+  honeyProductionTime: {x: 15, y: 20}
   honeyTimer: -1
   honey: {fileID: 362509906608084259}
   honeyFX: {fileID: 8946898221421103436, guid: 5ef1ded98262a0e428e591519f2446df, type: 3}

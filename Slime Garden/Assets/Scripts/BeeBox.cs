@@ -8,6 +8,7 @@ public class BeeBox : MonoBehaviour, IInteractable
     private GridSystem gridSystem;
     private PlaceableObjectSO placeableData;
     private PlayerData pData;
+    private StatTracker stats;
     private GardenManager gm;
 
     [SerializeField] Vector2Int honeyProductionTime;
@@ -26,6 +27,7 @@ public class BeeBox : MonoBehaviour, IInteractable
         gridSystem = GameObject.FindGameObjectWithTag("Grid").GetComponent<GridSystem>();
         placeableData = this.GetComponentInParent<PlaceableObject>().GetPlaceableData();
         pData = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<PlayerData>();
+        stats = GameObject.FindGameObjectWithTag("PlayerData").GetComponent<StatTracker>();
         gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GardenManager>();
         gm.AddToBeeBoxList(this);
 
@@ -51,6 +53,8 @@ public class BeeBox : MonoBehaviour, IInteractable
             pData.GainMoney(honeyValue);
             honeyValue = 0;
             honeyTimer = Random.Range(honeyProductionTime.x, honeyProductionTime.y);
+
+            stats.IncrementStat("honeyCollected", 1);
         }
     }
 
