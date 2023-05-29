@@ -53,8 +53,13 @@ public class SlimeInfoPannel : MonoBehaviour
         nameTextObj.SetActive(true);
         nameInputObj.SetActive(false);
         nameText.text = curSlimeData.displayName;
+
+        if (curSlimeData.sPattern == "Null")
+            speciesText.text = curSlimeData.sBaseColor;
+        else
+            speciesText.text = curSlimeData.sBaseColor + " " + curSlimeData.sPatternColor + " " + curSlimeData.slimeSpeciesPattern.sPattern;
+
         inputText.text = "New Name";
-        speciesText.text = curSlimeData.sBaseColor + " " + curSlimeData.sPatternColor + " " + curSlimeData.slimeSpeciesPattern.sPattern;
         rarityText.text = "Rarity: " + curSlimeData.sRarity;
         if(curSlimeData.isMature)
             ageText.text = "Mature";
