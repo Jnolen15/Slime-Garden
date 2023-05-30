@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e0c275ba01fba499133bd12e95b9b7, type: 3}
   m_Name: GardenFence
   m_EditorClassIdentifier: 
-  placeableName: Garden Fecne
+  placeableName: Garden Fence
   previewImage: {fileID: 21300000, guid: ee6bf090e1a9e534f93d5fba5441065f, type: 3}
   price: 5
   description: 
